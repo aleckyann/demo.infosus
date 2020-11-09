@@ -19,9 +19,19 @@ class Login_controller extends CI_Controller {
      */
 	public function login()
 	{
-		$dados = $this->input->post();
-		$this->session->set_userdata($this->Login_model->login($dados));
-        redirect('usuario/dashboard');
+        $dados = $this->input->post(['usuario_email', 'usuario_password']);
+        
+        $usuario_autenticado = $this->Login_model->login($dados);
+        
+        if(!empty($usuario_autenticado)) {
+            $this->session->set_userdata($usuario_autenticado);
+            $this->session->set_flashdata('success', 'Seja bem vindo.');
+            redirect('usuario/dashboard');
+        } else {
+            $this->session->set_flashdata('danger', 'Falha ao tentar autenticar.');
+            redirect();
+        }
+        
 	}
 
     /**
@@ -29,9 +39,7 @@ class Login_controller extends CI_Controller {
      */
     public function logout()
     {
-        session_destroy();
-        session_start();
-        $this->session->set_flashdata('info', 'Logout realizado com sucesso.');
+        $this->session->sess_destroy();
         redirect();
     }
 

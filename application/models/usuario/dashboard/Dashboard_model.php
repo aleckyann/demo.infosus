@@ -282,8 +282,8 @@ class Dashboard_model extends CI_model
         }
 
     public function procedimentos_realizados($inicio, $fim){
-        $fim = (isset($fim)) ? $fim : "9999-99-99";
-        $inicio = (isset($inicio)) ? $inicio : "0000-00-00";
+        $fim = (isset($fim)) ? $fim : "3000-12-31";
+        $inicio = (isset($inicio)) ? $inicio : "0000-01-01";
 
         $this->db->join('pacientes', 'procedimentos.paciente_id =  pacientes.paciente_id');
         $this->db->where('data <=', $fim);
@@ -294,8 +294,8 @@ class Dashboard_model extends CI_model
     }
 
      public function demanda_reprimida($inicio, $fim){
-        $fim = (isset($fim)) ? $fim : "9999-99-99";
-        $inicio = (isset($inicio)) ? $inicio : "0000-00-00";
+        $fim = (isset($fim)) ? $fim : "3000-01-01";
+        $inicio = (isset($inicio)) ? $inicio : "2000-01-01";
 
         $this->db->join('pacientes', 'procedimentos.paciente_id =  pacientes.paciente_id');
         $this->db->where('data <=', $fim);
@@ -307,8 +307,8 @@ class Dashboard_model extends CI_model
 
 
     public function procedimentos_realizados_tfd($inicio, $fim){
-        $fim = (isset($fim)) ? $fim : "9999-99-99";
-        $inicio = (isset($inicio)) ? $inicio : "0000-00-00";
+        $fim = (isset($fim)) ? $fim : "3000-01-01";
+        $inicio = (isset($inicio)) ? $inicio : "2000-01-01";
 
         $this->db->join('pacientes', 'tfd.paciente_id =  pacientes.paciente_id');
         $this->db->where('data <=', $fim);
@@ -319,8 +319,8 @@ class Dashboard_model extends CI_model
     }
 
      public function demanda_reprimida_tfd($inicio, $fim){
-        $fim = (isset($fim)) ? $fim : "9999-99-99";
-        $inicio = (isset($inicio)) ? $inicio : "0000-00-00";
+        $fim = (isset($fim)) ? $fim : "3000-01-01";
+        $inicio = (isset($inicio)) ? $inicio : "2000-01-01";
 
         $this->db->join('pacientes', 'tfd.paciente_id =  pacientes.paciente_id');
         $this->db->where('data <=', $fim);

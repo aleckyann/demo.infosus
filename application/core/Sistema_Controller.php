@@ -60,7 +60,7 @@ class Sistema_Controller extends CI_Controller
 
 
         $this->load->view('usuario/includes/Header_view', $data);
-        $this->load->view('usuario/'.segment(2).'/'.$view, $data);
+        $this->load->view('usuario/'.segment(3).'/'.$view, $data);
         $this->load->view('usuario/includes/Footer_view');
     }
 

@@ -10,11 +10,10 @@ class Sistema_Controller extends CI_Controller
     {
         parent::__construct();
         if($this->session->usuario_email == ''){
-            $this->session->set_flashdata('login', 'Erro ao autenticar, tente novamente.');
+            $this->session->set_flashdata('danger', 'Falha na autenticação. Faça login novamente.');
             redirect();
         } else {
-            $this->session->set_flashdata('login', 'Você está logado, para sair <a href="'.base_url('logout').'">clique aqui.</a>');
-            return true;
+            $this->session->set_flashdata('warning', 'Você está logado, para sair <a href="'.base_url('logout').'">clique aqui.</a>');
         }
     }
 

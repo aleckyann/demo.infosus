@@ -3,10 +3,12 @@
         <div class="container">
             <div class="login-content">
                 <div class="login-form">
-                    <div class="login-logo">
+                    <div class="login-logo my-4">
+                    <?php $this->ui->alert_flashdata() ?>
                         <img class="align-content" src="<?= base_url() ?>public/images/logo.png" alt="Logo" width="300" alt="">
-                    </div><br><br>
-                	<form action="<?= base_url('login') ?>" method="post">
+                    </div>
+                    <form action="<?= base_url('login') ?>" method="post">
+                    
                         <div class="form-group">
 						    <input class="form-control" type="email" name="usuario_email" required="true" placeholder="Email de login">
 						</div>

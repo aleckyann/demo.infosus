@@ -57,10 +57,10 @@ class Sistema_Controller extends CI_Controller
         $data['procedimentos_realizados_tfd'] = $this->Dashboard_model->procedimentos_realizados_tfd(@$dados['data_inicio_tfd'], @$dados['data_fim_tfd']);
         $data['demanda_reprimida_tfd'] = $this->Dashboard_model->demanda_reprimida_tfd(@$dados['data_inicio_tfd'], @$dados['data_fim_tfd']);
 
-
-        $this->load->view('usuario/includes/Header_view', $data);
-        $this->load->view('usuario/'.segment(3).'/'.$view, $data);
-        $this->load->view('usuario/includes/Footer_view');
+        // pre($this->uri->segment(2));
+        $this->load->view($this->uri->segment(1). '/includes/Header_view', $data);
+        $this->load->view($this->uri->segment(1). '/'.$this->uri->segment(2).'/'.$view, $data);
+        $this->load->view($this->uri->segment(1). '/includes/Footer_view', $data);
     }
 
 }

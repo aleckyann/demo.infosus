@@ -3,10 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $project = '/infosus.net.br';
 
-if($_SERVER['SERVER_NAME'] == 'localhost'){
+if($_SERVER['HTTP_HOST'] == 'localhost'){
     $config['base_url'] = 'http://'.$_SERVER['SERVER_NAME'].$project;
 } else {
-    $config['base_url'] = 'https://'.$_SERVER['HTTP_HOST'];
+    $config['base_url'] = 'https://'.$_SERVER['SERVER_NAME'];
 }
 
 

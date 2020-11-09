@@ -37,7 +37,6 @@ class Ui
                     </button>
                 </div>
             ';
-            die();
         }
 
         if ($this->CI->session->flashdata('danger')) {

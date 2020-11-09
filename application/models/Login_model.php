@@ -6,7 +6,11 @@ class Login_model extends CI_model
     public function login($dados)
     {
         $dados['usuario_password'] = criptografia($dados['usuario_password']);
-        return $this->db->where($dados)->get('usuarios')->result_array()[0];
+        if($this->db->where($dados)->get('usuarios')->result_array()){
+        	return $this->db->where($dados)->get('usuarios')->result_array()[0];
+        }else{
+        	return false;
+        }
     }
 
 

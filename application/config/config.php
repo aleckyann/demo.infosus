@@ -2,18 +2,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-$project = 'plataforma';
+$project = $_SERVER['SERVER_NAME'];
 
-if($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == '127.0.0.1'){
-    $config['base_url'] = 'http://localhost/' . $project;
-} else {
-    $config['base_url'] = 'http://infosus-net-br.umbler.net';
-}
-
-
-
-
-
+// if($_SERVER['SERVER_NAME'] == 'localhost'){
+//     $config['base_url'] = 'http://localhost/' . $project;
+// } else {
+//     $config['base_url'] = 'http://monte-azul.infosus.net.br';
+// }
 
 
 $config['index_page'] = '';
@@ -53,7 +48,7 @@ $config['allow_get_array'] = TRUE;
 
 
 
-$config['log_threshold'] = 1;
+$config['log_threshold'] = 0;
 
 
 $config['log_path'] = '';
@@ -89,7 +84,7 @@ $config['sess_regenerate_destroy'] = FALSE;
 $config['cookie_prefix']	= '';
 $config['cookie_domain']	= '';
 $config['cookie_path']		= '/';
-$config['cookie_secure']	= false;
+$config['cookie_secure']	= FALSE;
 $config['cookie_httponly'] 	= TRUE;
 
 

@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $autoload['packages'] = array();
 
 
-$autoload['libraries'] = array('session', 'email', 'database', 'upload');
+$autoload['libraries'] = array('session', 'email', 'database', 'upload', 'user_agent');
 
 
 $autoload['drivers'] = array();
@@ -21,6 +21,5 @@ $autoload['language'] = array();
 
 $autoload['model'] = array(
                             'Login_model',
-                            'Site_model',
                             'usuario/dashboard/Dashboard_model'
 );

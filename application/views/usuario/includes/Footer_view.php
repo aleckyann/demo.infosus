@@ -1,18 +1,35 @@
-<footer class="footer">
-		<div class="footer_background" style="background-image:url(<?= base_url() ?>public/images/footer_background.png)"></div>
-</footer>
-<script src="<?= base_url() ?>public/js/jquery-3.2.1.min.js"></script>
-<script src="<?= base_url() ?>public/styles/bootstrap4/popper.js"></script>
-<script src="<?= base_url() ?>public/styles/bootstrap4/bootstrap.min.js"></script>
-<script src="<?= base_url() ?>public/plugins/greensock/TweenMax.min.js"></script>
-<script src="<?= base_url() ?>public/plugins/greensock/TimelineMax.min.js"></script>
-<script src="<?= base_url() ?>public/plugins/scrollmagic/ScrollMagic.min.js"></script>
-<script src="<?= base_url() ?>public/plugins/greensock/animation.gsap.min.js"></script>
-<script src="<?= base_url() ?>public/plugins/greensock/ScrollToPlugin.min.js"></script>
-<script src="<?= base_url() ?>public/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-<script src="<?= base_url() ?>public/plugins/easing/easing.js"></script>
-<script src="<?= base_url() ?>public/plugins/parallax-js-master/parallax.min.js"></script>
-<script src="<?= base_url() ?>public/plugins/colorbox/jquery.colorbox-min.js"></script>
-<script src="<?= base_url() ?>public/js/about.js"></script>
+    <script src="<?= base_url() ?>public/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="<?= base_url() ?>public/vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="<?= base_url() ?>public/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="<?= base_url() ?>public/assets/js/main.js"></script>
+    <script src="<?= base_url() ?>public/vendors/chart.js/dist/Chart.bundle.min.js"></script>
+    <script src="<?= base_url() ?>public/assets/js/dashboard.js"></script>
+    <script src="<?= base_url() ?>public/assets/js/widgets.js"></script>
+    <script src="<?= base_url() ?>public/vendors/jqvmap/dist/jquery.vmap.min.js"></script>
+    <script src="<?= base_url() ?>public/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <script src="<?= base_url() ?>public/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="<?= base_url() ?>public/vendors/popper.js/dist/umd/popper.min.js"></script>
+
+    <!--  Chart js -->
+    <script src="<?= base_url() ?>public/vendors/chart.js/dist/Chart.bundle.min.js"></script>
+    <script src="<?= base_url() ?>public/assets/js/init-scripts/chart-js/chartjs-init.js.php"></script>
+    <script>
+        (function($) {
+            "use strict";
+            jQuery('#vmap').vectorMap({
+                map: 'world_en',
+                backgroundColor: null,
+                color: '#ffffff',
+                hoverOpacity: 0.7,
+                selectedColor: '#1de9b6',
+                enableZoom: true,
+                showTooltip: true,
+                values: sample_data,
+                scaleColors: ['#1de9b6', '#03a9f5'],
+                normalizeFunction: 'polynomial'
+            });
+        })(jQuery);
+    </script>
 </body>
 </html>
+

@@ -7,24 +7,16 @@ class Login_controller extends CI_Controller {
 
     public function index()
     {
-        
+        $this->load->view('usuario/includes/Data_view');
         $this->load->view('Login_view');
-        $this->load->view('includes/Footer_view');
-
-
     }
 
-    public function login()
+	public function login()
 	{
 		$dados = $this->input->post();
-		@$this->session->set_userdata($this->Login_model->login($dados));
-        @redirect('usuario/meus-treinamentos');
+		$this->session->set_userdata($this->Login_model->login($dados));
+        redirect('usuario/dashboard');
 	}
-
-    public function recovery()
-    {
-        //
-    }
 
     public function logout()
     {

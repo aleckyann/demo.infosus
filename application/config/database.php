@@ -3,14 +3,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 $query_builder = TRUE;
 
-
-$active_group = $_SERVER['SERVER_NAME'];
-
+/**
+ * Método utilizado para automatizar novos clientes
+ * os usuários e bancos de dados devem ser criados
+ * com o máximo de caracteres da umbler (16)
+ */
+$active_group = substr($_SERVER['SERVER_NAME'],0,16);
 
 /**
  * CRIAR BANCO DE DADOS COM MESMO NOME DO DOMÍNIO UTILIZADO
- * USERNAME: demo.infosus.com.br
- * DATABASE: demo.infosus.com.br
+ * USERNAME: demo.infosus.com.br (max 16 caracteres)
+ * DATABASE: demo.infosus.com.br (max 16 caracteres)
  */
 $db[$_SERVER['SERVER_NAME']] = array(
 	'dsn'	=> '',

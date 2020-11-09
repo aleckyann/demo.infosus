@@ -34,7 +34,7 @@
                     <i class="fa fa-bars"></i>
                 </button><br>
                 <a class="navbar-brnd hidden-xs" href="<?= base_url() ?>usuario/dashboard"><img src="<?= base_url() ?>public/images/logoinfo.png" alt="Logo" width="150"></a><br>
-                
+
             </div><br>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -62,10 +62,10 @@
 
                     <li class="menu-item-has-children dropdown">
                         <a href="<?= base_url() ?>usuario/atencao-primaria" class="dropdown-" data-toggle="" aria-haspopup="true" aria-expanded=""> <i class="menu-icon fa fa-laptop"></i>ATENÇÃO PRIMÁRIA</a>
-                        
+
                     </li>
 
-                     <h2 class="menu-title">RELATÓRIOS - REGULAÇÃO</h2><!-- /.menu-title -->
+                    <h2 class="menu-title">RELATÓRIOS - REGULAÇÃO</h2><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
                         <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>PROCED DIVERSOS</a>
                         <ul class="sub-menu children dropdown-menu">
@@ -82,7 +82,7 @@
 
                         </ul>
                     </li>
-                  
+
 
             </div>
         </nav>
@@ -97,7 +97,7 @@
                     <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
                     <div class="header-left">
                         <div class="dropdown for-notification">
-                            
+                            <?php $this->ui->alert_flashdata() ?>
                         </div>
                     </div>
                 </div>

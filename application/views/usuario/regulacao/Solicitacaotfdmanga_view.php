@@ -63,7 +63,7 @@
                                     <option value="<?= $proced['nome'] ?>"><?= $proced['codigo'] ?></option>
                                 <?php endforeach ?>
                             </datalist>
-                            <input type="hidden" name="paciente_id" value="<?= segment('5') ?>">
+                            <input type="hidden" name="paciente_id" value="<?= segment('4') ?>">
                         </div>
                     <div class="form-group col-md-3">
                         <label for="country" class=" form-control-label">DATA DO ATENDIMENTO</label>

@@ -37,7 +37,7 @@
                                     <tbody>
 
                                       <?php
-                                      $poltronas = $this->Dashboard_model->poltronas(segment(5));
+                                      $poltronas = $this->Dashboard_model->poltronas(segment(4));
                                        foreach (json_decode($poltronas, true) as $poltrona): ?>
                                         <tr>
                                            <td><?= $poltrona['numero'] ?></td>

@@ -30,11 +30,11 @@
             <div class="card-header"><strong>INCLUSÃO</strong><small> NA CASA</small></div>
                 <div class="row">
                  <div class="card-body card-block">
-                    <form action="../add-paciente-casa-save/<?= segment('5') ?>" method="post" autocomplete="off">
+                    <form action="../add-paciente-casa-save/<?= segment('4') ?>" method="post" autocomplete="off">
                         <div class="form-grou col-md-6">
                             <label for="street" class=" form-control-label">DATA DE ENTRADA</label>
                             <input name="data_entrada" type="date" id="street" class="form-control" required>
-                            <input name="paciente_id" type="hidden" value="<?= segment('5') ?>">
+                            <input name="paciente_id" type="hidden" value="<?= segment('4') ?>">
 
                         </div>
 

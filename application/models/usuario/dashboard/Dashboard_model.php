@@ -59,7 +59,7 @@ class Dashboard_model extends CI_model
     public function nome_paciente(){
 
         $this->db->select('*');            
-        $query = $this->db->get_where('pacientes', array('paciente_id' => segment('5')));
+        $query = $this->db->get_where('pacientes', array('paciente_id' => segment('4')));
         //echo $this->db->last_query();
         return @$query->result_array()[0];
     }
@@ -67,7 +67,7 @@ class Dashboard_model extends CI_model
     public function dados_veiculo(){
 
         $this->db->select('*');            
-        $query = $this->db->get_where('veiculos', array('veiculo_id' => segment('5')));
+        $query = $this->db->get_where('veiculos', array('veiculo_id' => segment('3')));
         //echo $this->db->last_query();
         return @$query->result_array()[0];
     }
@@ -84,7 +84,7 @@ class Dashboard_model extends CI_model
      public function dados_casa(){
 
         $this->db->select('*');            
-        $query = $this->db->get_where('casa_de_apoio', array('apoio_id' => segment('6')));
+        $query = $this->db->get_where('casa_de_apoio', array('apoio_id' => segment('5')));
         //echo $this->db->last_query();
         return @$query->result_array()[0];
     }
@@ -116,14 +116,14 @@ class Dashboard_model extends CI_model
     }
 
      public function baixa_casa_de_apoio(){
-        $this->db->where('apoio_id', segment('5'));
+        $this->db->where('apoio_id', segment('4'));
         $this->db->update('casa_de_apoio', array('saiu' => 1 ));
         //echo $this->db->last_query();
     }
 
     public function atualizar_datas_casa($dados){
 
-        $this->db->where('apoio_id', segment('5'));
+        $this->db->where('apoio_id', segment('4'));
         $this->db->update('casa_de_apoio', $dados);
         //echo $this->db->last_query();
     }
@@ -138,7 +138,7 @@ class Dashboard_model extends CI_model
 
 
       public function procedimentos_i(){
-        $query = $this->db->get_where('procedimentos', array('paciente_id' => segment('5')));
+        $query = $this->db->get_where('procedimentos', array('paciente_id' => segment('4')));
 
         //echo $this->db->last_query();
 
@@ -146,7 +146,7 @@ class Dashboard_model extends CI_model
     }
 
      public function tfd_i(){
-        $query = $this->db->get_where('tfd', array('paciente_id' => segment('5')));
+        $query = $this->db->get_where('tfd', array('paciente_id' => segment('4')));
 
         //echo $this->db->last_query();
 
@@ -155,7 +155,7 @@ class Dashboard_model extends CI_model
 
      public function procedimentos_i_tfd(){
         $this->db->join('pacientes', 'tfd.paciente_id =  pacientes.paciente_id');
-        $query = $this->db->get_where('tfd', array('tfd_id' => segment('5')));
+        $query = $this->db->get_where('tfd', array('tfd_id' => segment('4')));
 
         //echo $this->db->last_query();
 
@@ -164,7 +164,7 @@ class Dashboard_model extends CI_model
 
     public function procedimentos_agenda(){
         $this->db->join('pacientes', 'procedimentos.paciente_id =  pacientes.paciente_id');
-        $query = $this->db->get_where('procedimentos', array('procedimentos_id' => segment('5')));
+        $query = $this->db->get_where('procedimentos', array('procedimentos_id' => segment('4')));
         //echo $this->db->last_query();
         return @$query->result_array()[0];
     }
@@ -218,7 +218,7 @@ class Dashboard_model extends CI_model
         }
 
       public function edita_paciente($data){
-            $this->db->where('paciente_id', segment('5'));
+            $this->db->where('paciente_id', segment('4'));
             $this->db->update('pacientes', $data);
         }
 
@@ -227,12 +227,12 @@ class Dashboard_model extends CI_model
         }
 
     public function baixa_paciente($realizado){
-            $this->db->where('procedimentos_id', segment('5'));
+            $this->db->where('procedimentos_id', segment('4'));
             $this->db->update('procedimentos', array('realizado' => $realizado ));
         }
 
         public function baixa_paciente_tfd($realizado){
-            $this->db->where('tfd_id', segment('5'));
+            $this->db->where('tfd_id', segment('4'));
             $this->db->update('tfd', array('realizado' => $realizado ));
         }
 
@@ -264,13 +264,13 @@ class Dashboard_model extends CI_model
 
     public function atualiza_veiculo($dados){
 
-        $this->db->where('veiculo_id', segment('5'));
+        $this->db->where('veiculo_id', segment('4'));
         $this->db->update('veiculos', $dados);
         //echo $this->db->last_query();
     }
 
     public function finalizar_viagem(){
-        $this->db->where('viagem_id', segment('5'));
+        $this->db->where('viagem_id', segment('4'));
         $this->db->update('viagens', array('realizada' => sim ));
         //echo $this->db->last_query();
     }

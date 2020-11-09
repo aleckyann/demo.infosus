@@ -4,7 +4,7 @@
             <div class="login-content">
                 <div class="login-form">
                     <div class="login-logo my-4">
-                    <?php $this->ui->alert_flashdata() ?>
+                        <?php $this->ui->alert_flashdata() ?>
                         <img class="align-content" src="<?= base_url() ?>public/images/logo.png" alt="Logo" width="300" alt="">
                     </div>
                     <form action="<?= base_url('login') ?>" method="post">
@@ -17,7 +17,6 @@
 						</div>
                         <div class="form-group">
 						    <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Autenticar</button>
-						    <?php alert($this->session->flashdata('login'), 'danger') ?>
 						</div>
 					</form>
                 </div>

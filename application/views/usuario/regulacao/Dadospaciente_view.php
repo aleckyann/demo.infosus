@@ -40,7 +40,7 @@
                                     <option value="<?= $proced['nome'] ?>"><?= $proced['codigo'] ?></option>
                                 <?php endforeach ?>
                             </datalist>
-                            <input type="hidden" name="paciente_id" value="<?= segment('5') ?>">
+                            <input type="hidden" name="paciente_id" value="<?= segment('4') ?>">
                         </div>
                          <div class="form-group col-md-4">
                             <label for="street" class=" form-control-label">ESPECIALIDADE</label>

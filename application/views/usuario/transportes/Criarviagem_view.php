@@ -34,7 +34,7 @@
                         <div class="form-group col-md-6">
                             <label for="street" class=" form-control-label">DATA DA VIAGEM</label>
                             <input name="data" type="date" id="street" class="form-control" required>
-                            <input name="veiculo_id" type="hidden" value="<?= segment('5') ?>">
+                            <input name="veiculo_id" type="hidden" value="<?= segment('4') ?>">
                             <input name="realizada" type="hidden" value="nao">
                             <br><br>
                             <?php for ($i=1; $i <= $veiculo_dados['lugares']; $i++) { ?>

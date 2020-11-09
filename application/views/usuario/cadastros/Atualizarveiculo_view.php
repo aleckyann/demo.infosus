@@ -3,7 +3,7 @@
             <div class="card-header"><strong>DADOS</strong><small> DO VEÍCULO</small></div>
             <div class="card-body card-block">
                 <div class="row">
-                    <form action="../atualizar-veiculo-save/<?= segment(5) ?>" method="post">
+                    <form action="../atualizar-veiculo-save/<?= segment(4) ?>" method="post">
                     <div class="form-group col-md-6">
                         <label for="company" class=" form-control-label">MARCA</label>
                         <input type="text" id="company" name="marca" value="<?= $dados_veiculo['marca'] ?>" required class="form-control">

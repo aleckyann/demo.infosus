@@ -15,12 +15,12 @@ $active_group = substr($_SERVER['SERVER_NAME'],0,16);
  * USERNAME: demo.infosus.com.br (max 16 caracteres)
  * DATABASE: demo.infosus.com.br (max 16 caracteres)
  */
-$db[$_SERVER['SERVER_NAME']] = array(
+$db[$active_group] = array(
 	'dsn'	=> '',
 	'hostname' => 'mysql741.umbler.com',
-	'username' => $_SERVER['SERVER_NAME'],
+	'username' => $active_group,
 	'password' => 'jf91500290',
-	'database' => $_SERVER['SERVER_NAME'],
+	'database' => $active_group,
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

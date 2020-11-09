@@ -6,7 +6,7 @@ $project = '/infosus.net.br';
 if($_SERVER['SERVER_NAME'] == 'localhost'){
     $config['base_url'] = 'http://'.$_SERVER['SERVER_NAME'].$project;
 } else {
-    $config['base_url'] = $_SERVER['SERVER_NAME'];;
+    $config['base_url'] = 'https://'.$_SERVER['SERVER_NAME'];;
 }
 
 

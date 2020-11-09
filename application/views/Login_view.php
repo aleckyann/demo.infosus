@@ -25,3 +25,5 @@
     </div>
     <p class="text-center small">v1.0.1</p>
 </body>
+
+<?=pre($_SERVER['HTTP_HOST']); pre($_SERVER['SERVER_NAME']);?>

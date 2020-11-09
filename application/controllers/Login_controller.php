@@ -35,4 +35,10 @@ class Login_controller extends CI_Controller {
         redirect();
     }
 
+    public function error_404()
+    {
+        $this->output->set_status_header(404);
+        $this->load->view('error_404');
+    }
+
 }

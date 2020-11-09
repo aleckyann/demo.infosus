@@ -1,14 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+$project = '/infosus.net.br';
 
-$project = $_SERVER['SERVER_NAME'];
-
-// if($_SERVER['SERVER_NAME'] == 'localhost'){
-//     $config['base_url'] = 'http://localhost/' . $project;
-// } else {
-//     $config['base_url'] = 'http://monte-azul.infosus.net.br';
-// }
+if($_SERVER['SERVER_NAME'] == 'localhost'){
+    $config['base_url'] = 'http://'.$_SERVER['SERVER_NAME'].$project;
+} else {
+    $config['base_url'] = $_SERVER['SERVER_NAME'];;
+}
 
 
 $config['index_page'] = '';
@@ -47,7 +46,6 @@ $config['directory_trigger'] = 'd';
 $config['allow_get_array'] = TRUE;
 
 
-
 $config['log_threshold'] = 0;
 
 
@@ -56,12 +54,15 @@ $config['log_path'] = '';
 
 $config['log_file_extension'] = '';
 
+
 $config['log_file_permissions'] = 0644;
+
 
 $config['log_date_format'] = 'd/m/Y H:i:s';
 
 
 $config['error_views_path'] = '';
+
 
 $config['cache_path'] = '';
 
@@ -103,6 +104,7 @@ $config['csrf_exclude_uris'] = array();
 
 
 $config['compress_output'] = FALSE;
+
 
 $config['time_reference'] = 'local';
 

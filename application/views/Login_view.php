@@ -22,4 +22,5 @@
             </div>
         </div>
     </div>
+    <p class="text-center small">v1.0.1</p>
 </body>

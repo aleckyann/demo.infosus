@@ -6,7 +6,7 @@
                     <form action="../atualizar-veiculo-save/<?= segment(4) ?>" method="post">
                     <div class="form-group col-md-6">
                         <label for="company" class=" form-control-label">MARCA</label>
-                        <input type="text" id="company" name="marca" value="<?= $dados_veiculo['marca'] ?>" required class="form-control">
+                        <input type="text" id="company" name="marca" value="<?= $veiculo['marca'] ?>" required class="form-control">
                     </div>
 
                     <div class="form-group col-md-6">
@@ -21,16 +21,16 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="vat" class=" form-control-label">ANO</label>
-                        <input type="number" id="vat" name="ano" value="<?= $dados_veiculo['ano']?>" class="form-control" maxlength="4" minlength="4">
+                        <input type="number" id="vat" name="ano" value="<?= $veiculo['ano']?>" class="form-control" maxlength="4" minlength="4">
                     </div>
                     
                     <div class="form-group col-md-4">
                         <label for="id" class=" form-control-label">PLACA</label>
-                        <input type="text" id="id" name="placa" value="<?= $dados_veiculo['placa'] ?>" class="form-control">
+                        <input type="text" id="id" name="placa" value="<?= $veiculo['placa'] ?>" class="form-control">
                     </div>
                     <div class="form-group col-md-4">
                         <label for="resp" class=" form-control-label">QUANTIDADE DE LUGARES</label>
-                        <input type="number" required id="resp" name="lugares" value="<?= $dados_veiculo['lugares'] ?>" class="form-control">
+                        <input type="number" required id="resp" name="lugares" value="<?= $veiculo['lugares'] ?>" class="form-control">
                     </div>
                     
 

@@ -5,20 +5,20 @@
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label for="company" class=" form-control-label">NOME</label>
-                        <input type="text" id="company" value="<?= $nome_paciente['nome_paciente'] ?>" class="form-control" disabled>
+                        <input type="text" id="company" value="<?= $paciente['nome_paciente'] ?>" class="form-control" disabled>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="vat" class=" form-control-label">NOME DO RESPONSÁVEL</label>
-                        <input type="text" id="vat" value="<?= @$nome_paciente['responsavel'] ?>" class="form-control" disabled>
+                        <input type="text" id="vat" value="<?= $paciente['responsavel'] ?>" class="form-control" disabled>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="street" class=" form-control-label">CNS</label>
-                        <input type="text" id="street" class="form-control" value="<?= $nome_paciente['cns_paciente'] ?>" disabled>
+                        <input type="text" id="street" class="form-control" value="<?= $paciente['cns_paciente'] ?>" disabled>
                     </div>
              
                     <div class="form-group col-md-6">
                         <label for="country" class=" form-control-label">ENDEREÇO</label>
-                        <input type="text" id="country"  class="form-control" value="<?= $nome_paciente['endereco_paciente'] ?>" disabled>
+                        <input type="text" id="country"  class="form-control" value="<?= $paciente['endereco_paciente'] ?>" disabled>
                     </div>
                 </div>
             </div>

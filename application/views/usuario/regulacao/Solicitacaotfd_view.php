@@ -1,37 +1,37 @@
-   <div class="col-lg-12">
+<div class="col-lg-12">
         <div class="card">
             <div class="card-header" align="center"><h3>SOLICITAÇÃO DE TRATAMENTO FORA DO DOMICILIO</h3></div>
             <div class="card-body card-block">
                 <div class="row">
                     <div class="form-group col-md-4">
                         <label for="company" class=" form-control-label">NOME</label>
-                        <input type="text" id="company" value="<?= $nome_paciente['nome_paciente'] ?>" class="form-control" disabled>
+                        <input type="text" id="company" value="<?= $paciente['nome_paciente'] ?>" class="form-control" disabled>
                     </div>
                    
                     <div class="form-group col-md-4">
                         <label for="street" class=" form-control-label">IDENTIDADE</label>
-                        <input type="text" id="street" class="form-control" value="<?= $nome_paciente['identidade'] ?>" disabled>
+                        <input type="text" id="street" class="form-control" value="<?= $paciente['identidade'] ?>" disabled>
                     </div>
              
                     <div class="form-group col-md-4">
                         <label for="country" class=" form-control-label">RESIDÊNCIA</label>
-                        <input type="text" id="country"  class="form-control" value="<?= $nome_paciente['endereco_paciente'] ?>" disabled>
+                        <input type="text" id="country"  class="form-control" value="<?= $paciente['endereco_paciente'] ?>" disabled>
                     </div>
                     <div class="form-group col-md-3">
                         <label for="country" class=" form-control-label">TELEFONE</label>
-                        <input type="text" id="country"  class="form-control" value="<?= $nome_paciente['telefone_paciente'] ?>" disabled>
+                        <input type="text" id="country"  class="form-control" value="<?= $paciente['telefone_paciente'] ?>" disabled>
                     </div>
                     <div class="form-group col-md-3">
                         <label for="country" class=" form-control-label">CEP</label>
-                        <input type="text" id="country"  class="form-control" value="<?= $nome_paciente['cep'] ?>" disabled>
+                        <input type="text" id="country"  class="form-control" value="<?= $paciente['cep'] ?>" disabled>
                     </div>
                     <div class="form-group col-md-3">
                         <label for="country" class=" form-control-label">PROFISSÃO</label>
-                        <input type="text" id="country"  class="form-control" value="<?= $nome_paciente['profissao'] ?>" disabled>
+                        <input type="text" id="country"  class="form-control" value="<?= $paciente['profissao'] ?>" disabled>
                     </div>
                     <div class="form-group col-md-3">
                         <label for="country" class=" form-control-label">DATA DE NASCIMENTO</label>
-                        <input id="country"  class="form-control" value="<?= $nome_paciente['nascimento'] ?>" disabled>
+                        <input id="country"  class="form-control" value="<?= $paciente['nascimento'] ?>" disabled>
                     </div>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                     <div class="form-group col-md-4">
                         <label for="company" class=" form-control-label">NOME</label>
                         <input type="text" id="company" value="" name="nome_acompanhante" class="form-control" >
-                        <input type="hidden"  value="<?= $nome_paciente['paciente_id'] ?>" name="paciente_id" >
+                        <input type="hidden"  value="<?= $paciente['paciente_id'] ?>" name="paciente_id" >
 
 
                     </div>

@@ -23,7 +23,6 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
 </head>
-<?=pre($this->Especialidades->getAll(['especialidades_id'=>1]))?>
 <body>
     <!-- Left Panel -->
     <aside id="left-panel" class="left-panel d-print-none">

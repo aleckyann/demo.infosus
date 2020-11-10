@@ -37,13 +37,20 @@
                                     <tbody>
 
                                       <?php
-                                      $poltronas = $this->Dashboard_model->poltronas(segment(4));
                                        foreach (json_decode($poltronas, true) as $poltrona): ?>
                                         <tr>
-                                           <td><?= $poltrona['numero'] ?></td>
-                                           <td><?= $this->Dashboard_model->nome_passageiro($poltrona['paciente'])['nome_paciente'] ?></td>
-                                           <td><?= @$poltrona['ponto_partida'] ?></td>
-                                           <td><?= @$poltrona['hora_viagem'] ?></td>
+                                           <td>
+                                               <?= $poltrona['numero'] ?>
+                                            </td>
+                                           <td>
+                                               <?= ($poltrona['paciente']) ? $this->Pacientes->getAll(['paciente_id'=>$poltrona['paciente']])[0]['nome_paciente'] : ''?>
+                                            </td>
+                                           <td>
+                                               <?= $poltrona['ponto_partida']??'' ?>
+                                            </td>
+                                           <td>
+                                               <?= $poltrona['hora_viagem']??'' ?>
+                                            </td>
                                         </tr>
                                         <?php endforeach ?>
                                     </tbody>

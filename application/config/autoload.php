@@ -36,10 +36,10 @@ $autoload['language'] = array();
 
 
 $autoload['model'] = array(
+    'Especialidades',
     'Auth',
     'Casa_de_apoio',
     'Dashboard_model',
-    'Especialidades',
     'Pacientes',
     'Procedimentos',
     'Tabela_proced',

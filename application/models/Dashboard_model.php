@@ -41,7 +41,7 @@ class Dashboard_model extends CI_model
     {
 
         $this->db->select('*');
-        $query = $this->db->get_where('veiculos', array('veiculo_id' => segment('6')));
+        $query = $this->db->get_where('veiculos', array('veiculo_id' => segment('5')));
         //echo $this->db->last_query();
         return @$query->result_array()[0];
     }
@@ -149,8 +149,6 @@ class Dashboard_model extends CI_model
     public function procedimentos_i()
     {
         $query = $this->db->get_where('procedimentos', array('paciente_id' => segment('5')));
-
-        //echo $this->db->last_query();
 
         return $query->result_array();
     }

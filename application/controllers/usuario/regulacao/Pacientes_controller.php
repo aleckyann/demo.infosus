@@ -4,12 +4,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Pacientes_controller extends Sistema_Controller {
 
-    public function index()
+    /**
+     * GET usuario/regulacao/lista-pacientes
+     */
+    public function index(): void
     {
-
-
-    
-        $this->usuario_view('Pacientes_view', array());
+        $data['pacientes'] = $this->Pacientes->getAll();
+        $this->usuario_view('Pacientes_view', $data);
       
     }
 

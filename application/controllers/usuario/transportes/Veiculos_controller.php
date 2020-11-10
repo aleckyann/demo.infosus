@@ -4,9 +4,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Veiculos_controller extends Sistema_Controller {
 
+    /**
+     * GET: usuario/transportes/veiculos
+     */
     public function index()
     {
-        $this->usuario_view('Veiculos_view', array());
+        $data['veiculos'] = $this->Veiculos->getAll();
+        $this->usuario_view('Veiculos_view', $data);
     }
 
 }

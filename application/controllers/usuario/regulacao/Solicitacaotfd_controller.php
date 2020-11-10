@@ -4,9 +4,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Solicitacaotfd_controller extends Sistema_Controller {
 
-    public function index()
+    /**
+     * GET 
+     */
+    public function index(int $paciente_id): void
     {
-        $this->usuario_view('Solicitacaotfd_view', array());
+        $data['paciente'] = $this->Pacientes->getAll(['paciente_id'=>$paciente_id])[0];
+        $this->usuario_view('Solicitacaotfd_view', $data);
     }
 
 }

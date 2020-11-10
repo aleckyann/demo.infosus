@@ -23,12 +23,11 @@
         </div>
         <link rel="stylesheet" href="<?= base_url() ?>public/vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
         <link rel="stylesheet" href="<?= base_url() ?>public/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
-
         <div class="content mt-1">
             <div class="animated fadeIn"><br>
                 <div class="card-title" align="center">
                     <h3 align="center" class="text-center">HISTÓRICO DO PACIENTE</h3>
-                        <h5 class="text-info"><?= $nome_paciente['nome_paciente'] ?></h5>
+                        <h5 class="text-info"><?= $paciente[0]['nome_paciente'] ?></h5>
 
                 </div>
                 <div class="row">

@@ -4,9 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Filatfd_controller extends Sistema_Controller {
 
-    public function index()
+    public function index(): void
     {
-        $this->usuario_view('Filatfd_view', array());
+        $data['procedimentos_tfd'] = $this->Tfd->porPaciente(['realizado' => '']);
+        $this->usuario_view('Filatfd_view', $data);
     }
 
 }

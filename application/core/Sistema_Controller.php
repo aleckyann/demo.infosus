@@ -12,8 +12,6 @@ class Sistema_Controller extends CI_Controller
         if($this->session->usuario_email == ''){
             $this->session->set_flashdata('danger', 'Falha na autenticação. Faça login novamente.');
             redirect();
-        } else {
-            $this->session->set_flashdata('warning', 'Você está logado, para sair <a href="'.base_url('logout').'">clique aqui.</a>');
         }
     }
 

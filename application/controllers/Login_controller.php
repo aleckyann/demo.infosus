@@ -21,14 +21,14 @@ class Login_controller extends CI_Controller {
 	{
         $dados = $this->input->post(['usuario_email', 'usuario_password']);
         
-        $usuario_autenticado = $this->Login_model->login($dados);
+        $usuario_autenticado = $this->Auth->login($dados);
         
         if(!empty($usuario_autenticado)) {
             $this->session->set_userdata($usuario_autenticado);
             $this->session->set_flashdata('success', 'Seja bem vindo.');
             redirect('usuario/dashboard');
         } else {
-            $this->session->set_flashdata('danger', 'Falha ao tentar autenticar.');
+            $this->session->set_flashdata('danger', 'Login ou senha incorretos.');
             redirect();
         }
         

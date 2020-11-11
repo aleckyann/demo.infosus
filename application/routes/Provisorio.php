@@ -41,7 +41,6 @@ $route['usuario/regulacao/baixa-paciente-casa/(:num)'] = 'usuario/regulacao/Baix
 
 $route['usuario/regulacao/atualizar-datas-casa/(:num)/(:num)'] = 'usuario/regulacao/Atualizardatascasa_controller/index/$1/$2';
 
-$route['usuario/regulacao/atualizar-datas-casa-save/(:num)'] = 'usuario/regulacao/Atualizardatascasasave_controller/index/$1';
 
 
 
@@ -126,17 +125,3 @@ $route['usuario/cadastros/editar-veiculo/(:num)'] = 'usuario/cadastros/Atualizar
 //atenção primária
 
 $route['usuario/atencao-primaria'] = 'usuario/atencao-primaria/Atencaoprimaria_controller/index';
-
-$route['usuario/regulacao/json'] = "usuario/regulacao/Api_controller/index";
-
-// nucleo de informações
-
-$route['usuario/nucleo-informacoes'] = 'usuario/nucleoinformacoes/Nucleo_controller/index';
-
-$route['usuario/nucleo-informacoes/siasus'] = 'usuario/nucleoinformacoes/Siasus_controller/index';
-
-$route['usuario/nucleo-informacoes/sihsus'] = 'usuario/nucleoinformacoes/Sihsus_controller/index';
-
-$route['usuario/nucleo-informacoes/cnes'] = 'usuario/nucleoinformacoes/Cnes_controller/index';
-
-$route['usuario/nucleo-informacoes/sinan'] = 'usuario/nucleoinformacoes/Sinan_controller/index';

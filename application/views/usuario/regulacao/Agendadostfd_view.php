@@ -30,8 +30,8 @@
                 </div><br>
                 <form action="" method="post">Informe o período para filtrar:
                   <div class="row">
-                    <div class="col-md-3"><input class="form-control" type="date" name="data_inicio"></div> até
-                    <div class="col-md-3"><input class="form-control" type="date" name="data_fim"></div>
+                    <div class="col-md-3"><input class="form-control" type="date" name="data_inicio" required></div> até
+                    <div class="col-md-3"><input class="form-control" type="date" name="data_fim" required></div>
                     <div class="col-md-1"><button class="btn btn-info"><i class="fa fa-search"></i></button></div>
                   </div>
                 </form><br>

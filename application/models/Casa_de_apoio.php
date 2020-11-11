@@ -34,4 +34,14 @@ class Casa_de_apoio extends CI_model
     {
         $this->db->insert($this->table, $dados);
     }
+
+    /**
+     * 
+     */
+    public function porPaciente(array $where = [])
+    {
+        $this->db->join('pacientes', 'casa_de_apoio.paciente_id =  pacientes.paciente_id');
+        return $this->db->get_where($this->table, $where)->result_array();
+    }
+    
 }

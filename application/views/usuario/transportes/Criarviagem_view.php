@@ -30,13 +30,13 @@
             <div class="card-header"><strong>DADOS</strong><small> DA VIAGEM</small></div>
                 <div class="row">
                  <div class="card-body card-block">
-                    <form action="../add-paciente-casa-save" method="post" autocomplete="off">
+                    <form action="<?=base_url('usuario/transportes/criar-viagem')?>" method="post" autocomplete="off">
                         <div class="form-group col-md-6">
                             <label for="street" class=" form-control-label">DATA DA VIAGEM</label>
                             <input name="data" type="date" id="street" class="form-control" required>
-                            <input name="veiculo_id" type="hidden" value="<?= segment('4') ?>">
+                            <input name="veiculo_id" type="hidden" value="<?= segment('5') ?>">
                             <input name="realizada" type="hidden" value="nao">
-                            <br><br>
+                            
                             <?php for ($i=1; $i <= $veiculo['lugares']; $i++) { ?>
                                 <input type="hidden" name="poltronas_json[<?=$i?>][numero]" value="<?= $i ?>">
                                 <input type="hidden" name="poltronas_json[<?=$i?>][paciente]" value="">
@@ -47,13 +47,13 @@
                         <div class="form-group col-md-6">
                             <label for="street" class=" form-control-label">TIPO DE PERCURSO</label>
                             <select required id="street" name="percurso" class="form-control">
-                                <option value="">SELECIONE</option>
+                                <option value="" selected diabled>SELECIONE</option>
                                 <option value="Ida e Volta">IDA E VOLTA</option>
                                 <option value="Ida">SOMENTE IDA</option>
                                 <option value="Volta">SOMETE VOLTA</option>
                             </select>
                         </div>
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-12 mt-5">
                             <button style="margin-left: 10px" class="btn btn-success d-print-none">CONCLUIR</button> 
                             <a href="<?=$this->agent->referrer()?>" class="btn btn-warning d-print-none">VOLTAR</a>
                         </div>

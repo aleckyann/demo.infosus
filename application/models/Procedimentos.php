@@ -41,6 +41,14 @@ class Procedimentos extends CI_model
     {
         $this->db->join('pacientes', 'procedimentos.paciente_id =  pacientes.paciente_id');
         return $this->db->get_where('procedimentos', $where)->result_array();
+    }
 
+    /**
+     * Agenda
+     */
+    public function agenda(array $where = []): array
+    {
+        $this->db->join('pacientes', 'procedimentos.paciente_id =  pacientes.paciente_id');
+        return $this->db->get_where($this->table, $where)->result_array();
     }
 }

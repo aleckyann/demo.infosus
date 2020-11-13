@@ -1,12 +1,16 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 
-class Agendar_controller extends Sistema_Controller {
+class Agendar_controller extends Sistema_Controller
+{
 
-    public function index()
+    /**
+     * GET: /usuario/regulacao/agendar-paciente/(:num)
+     */
+    public function index(int $procedimento_id): void
     {
-        $this->usuario_view('Agendar_view', array());
+        $data['procedimentos_agenda'] = $this->Procedimentos->agenda(['procedimentos_id' => $procedimento_id])[0];
+        $this->usuario_view('Agendar_view', $data);
     }
-
 }

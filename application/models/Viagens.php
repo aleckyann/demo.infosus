@@ -37,10 +37,22 @@ class Viagens extends CI_model
     /**
      * 
      */
-    public function porVeiculo(array $where): array
+    public function porVeiculo(array $where = []): array
     {
         $this->db->join('veiculos', 'veiculos.veiculo_id =  viagens.veiculo_id');
         $this->db->order_by('data', 'asc');
         return $this->db->get_where('viagens', $where)->result_array();
+    }
+
+    /**
+     * 
+     */
+    public function poltronasPorViagem(int $viagem_id)
+    {
+        $this->db->select('poltronas_json');
+        $query = $this->db->get_where('viagens', ['viagem_id' => $viagem_id]);
+        //echo $this->db->last_query();
+        // pre( $query->result_array()[0]['poltronas_json']);
+        return $query->result_array()[0]['poltronas_json'];
     }
 }

@@ -31,7 +31,7 @@ $route['usuario/regulacao/fila'] = 'usuario/regulacao/Fila_controller/index';
 
 $route['usuario/regulacao/historico-paciente/(:num)']['get'] = 'usuario/regulacao/Historico_controller/index/$1';
 
-$route['usuario/regulacao/agendar-paciente/(:num)'] = 'usuario/regulacao/Agendar_controller/index/$1';
+$route['usuario/regulacao/agendar-paciente/(:num)']['get'] = 'usuario/regulacao/Agendar_controller/index/$1';
 
 $route['usuario/regulacao/add-paciente-casa-save/(:num)'] = 'usuario/regulacao/Addpacientecasasave_controller/index/$1';
 
@@ -93,16 +93,17 @@ $route['usuario/regulacao/concluir-paciente-tfd/(:num)'] = 'usuario/regulacao/Ba
 
 $route['usuario/regulacao/concluir-paciente-tfd-manga/(:num)'] = 'usuario/regulacao/Baixapacientetfdmanga_controller/index/$1';
 
-
 $route['usuario/regulacao/casa-de-apoio'] = 'usuario/regulacao/Casaapoio_controller/index';
+
+
 
 $route['usuario/transportes/inicial'] = 'usuario/transportes/Transportes_controller/index';
 
 $route['usuario/transportes/veiculos'] = 'usuario/transportes/Veiculos_controller/index';
 
-$route['usuario/transportes/criar-viagem/(:num)'] = 'usuario/transportes/Criarviagem_controller/index/$1';
+$route['usuario/transportes/criar-viagem/(:num)']['get'] = 'usuario/transportes/Criarviagem_controller/index/$1';
 
-$route['usuario/transportes/add-paciente-casa-save'] = 'usuario/transportes/Criarviagemsave_controller/index';
+$route['usuario/transportes/criar-viagem']['post'] = 'usuario/transportes/Criarviagem_controller/criar';
 
 $route['usuario/transportes/viagens'] = 'usuario/transportes/Viagens_controller/index';
 

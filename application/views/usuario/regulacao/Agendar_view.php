@@ -37,7 +37,7 @@ img.icon {
                     </div>
                     <div class="form-group col-md-6">
                         <p for="vat" class=" form-control-label">TELEFONE</p>
-                        <input type="text" id="vat" value="<?= @$procedimentos_agenda['telefone_paciente'] ?>" class="form-control" disabled>
+                        <input type="text" id="vat" value="<?= $procedimentos_agenda['telefone_paciente'] ?>" class="form-control" disabled>
                     </div>
                     <div class="form-group col-md-6">
                         <p for="street" class=" form-control-label">CNS</p>
@@ -125,9 +125,9 @@ img.icon {
                             
 
                             <div class="col-md-12" style="margin-top: 30px">
-                            <?php foreach ($viagens as $viagem): 
-                                $poltronas = $this->Dashboard_model->poltronas($viagem['viagem_id']); ?>
-                                <button style="margin-top: 4px" title="Viagem dia <?= data_tratada($viagem['data']) ?>" type="button" class="btn btn-default d-print-none" data-toggle="modal" data-target=".bd-example<?= $viagem['viagem_id']?>-modal-lg"><?= $viagem['marca'].'/<b>'.$viagem['percurso'] ?></b> <b style="font-size: 12px"><?= data_tratada($viagem['data']) ?></b></button>
+                            <?php foreach ($this->Viagens->porVeiculo() as $viagem): 
+                                $poltronas = $this->Viagens->poltronasPorViagem($viagem['viagem_id']); ?>
+                                <button style="margin-top: 4px" title="Viagem dia <?= data_tratada($viagem['data']) ?>" type="button" class="btn btn-default d-print-none" data-toggle="modal" data-target=".bd-example<?= $viagem['viagem_id']?>-modal-lg"><?= @$viagem['marca'].'/<b>'.$viagem['percurso'] ?></b> <b style="font-size: 12px"><?= data_tratada($viagem['data']) ?></b></button>
                                     
 
                                 <div class="modal fade bd-example<?= $viagem['viagem_id']?>-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">

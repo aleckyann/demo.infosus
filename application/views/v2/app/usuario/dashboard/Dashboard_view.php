@@ -85,9 +85,9 @@
                                 </a>
                                 <ul class="nav collapse" id="home" data-parent="#navbarVerticalCollapse">
                                     <li class="nav-item"><a class="nav-link" href="#">Regulação</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="../home/dashboard-alt.html">Atenção primária</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="../home/feed.html">Transporte</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="../home/landing.html">Almoxarifado</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Atenção primária</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Transporte</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Almoxarifado</a></li>
                                 </ul>
                             </li>
                         </ul>

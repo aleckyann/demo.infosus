@@ -19,59 +19,48 @@ class Ui
     {
         if ($this->CI->session->flashdata('success')) {
             echo '
-                <div class="alert alert-success alert-dismissible fade show text-left" role="alert">
-                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i> ' . $this->CI->session->flashdata("success") . '
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    ' . $this->CI->session->flashdata('success') . '
+                    <button class="btn-close" type="button" data-dismiss="alert" aria-label="Close"></button>
                 </div>
             ';
         }
 
         if ($this->CI->session->flashdata('warning')) {
             echo '
-                <div class="alert alert-warning alert-dismissible fade show text-left" role="alert">
-                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i> ' . $this->CI->session->flashdata("warning") . '
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    ' . $this->CI->session->flashdata('warning') . '
+                    <button class="btn-close" type="button" data-dismiss="alert" aria-label="Close"></button>
                 </div>
             ';
         }
 
         if ($this->CI->session->flashdata('danger')) {
             echo '
-                <div class="alert alert-danger alert-dismissible fade show text-left" role="alert">
-                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i> ' . $this->CI->session->flashdata("danger") . '
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    '. $this->CI->session->flashdata('danger') .'
+                    <button class="btn-close" type="button" data-dismiss="alert" aria-label="Close"></button>
                 </div>
             ';
         }
 
         if ($this->CI->session->flashdata('info')) {
             echo '
-                <div class="alert alert-info alert-dismissible fade show text-left" role="alert">
-                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i> ' . $this->CI->session->flashdata("info") . '
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    ' . $this->CI->session->flashdata('info') . '
+                    <button class="btn-close" type="button" data-dismiss="alert" aria-label="Close"></button>
                 </div>
             ';
         }
 
         if ($this->CI->session->flashdata('help')) {
             echo '
-                <div class="alert alert-dark alert-dismissible fade show text-left" role="alert">
-                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i> ' . $this->CI->session->flashdata("help") . '
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                <div class="alert alert-dark alert-dismissible fade show" role="alert">
+                    ' . $this->CI->session->flashdata('dark') . '
+                    <button class="btn-close" type="button" data-dismiss="alert" aria-label="Close"></button>
                 </div>
             ';
         }
-
     }
 
     /**

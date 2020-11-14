@@ -1,10 +1,11 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 
-class Excluirpaciente_controller extends Sistema_Controller {
+class Excluirpaciente_controller extends Sistema_Controller
+{
 
-    public function index(int $paciente_id) :void
+    public function index(int $paciente_id): void
     {
         $this->Dashboard_model->excluir_paciente($paciente_id);
         $this->session->set_flashdata('success', 'Paciente removido com sucesso.');

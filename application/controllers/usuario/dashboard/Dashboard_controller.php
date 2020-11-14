@@ -4,7 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Dashboard_controller extends Sistema_Controller {
 
-    public function index()
+    /**
+     * GET: usuario/dashboard
+     */
+    public function index():void
     {
         $this->usuario_view('Dashboard_view', []);
     }

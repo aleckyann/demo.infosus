@@ -47,8 +47,22 @@ class Incluiestabelecimento_controller extends Sistema_Controller {
         //Atualiza as poltronas
 		$this->db->update('viagens', ['poltronas_json'=>$viagemupdated], ['viagem_id'=>$this->input->post('viagem_id')]);
  
-        $this->Dashboard_model->atualiza_solicitacao($estabelecimento_prestador, $cidade_prestador, $cota, $profissional_agendamento, $data, $ponto_partida, $hora_viagem, $procedimentos_id);
-
+        $this->Procedimentos->update(
+            [
+                'procedimentos_id' => $this->input->post('procedimentos_id')
+            ],
+            [
+                'estabelecimento_prestador' => $this->input->post('estabelecimento_prestador'),
+                'cidade_prestador' => $this->input->post('cidade_prestador'),
+                'cota' => $this->input->post('cota'),
+                'profissional_agendamento' => $this->input->post('profissional_agendamento'),
+                'data' => $this->input->post('data'),
+                'ponto_partida' => $this->input->post('ponto_partida'),
+                'ponto_partida' => $this->input->post('ponto_partida'),
+                'hora_vidagem' => $this->input->post('hora_vidagem'),
+            ]
+        );
+        $this->session->set_flashdata('success', 'Solicitação atualizada com sucesso');
         redirect('usuario/regulacao/fila');
     }
 }

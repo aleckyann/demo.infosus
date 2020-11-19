@@ -51,8 +51,6 @@ class Viagens extends CI_model
     {
         $this->db->select('poltronas_json');
         $query = $this->db->get_where('viagens', ['viagem_id' => $viagem_id]);
-        //echo $this->db->last_query();
-        // pre( $query->result_array()[0]['poltronas_json']);
         return $query->result_array()[0]['poltronas_json'];
     }
 }

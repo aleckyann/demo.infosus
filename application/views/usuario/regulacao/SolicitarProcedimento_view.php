@@ -30,17 +30,17 @@
             <div class="card-header"><strong>SOLICITAÇÃO</strong><small></small></div>
             <div class="card-body card-block">
                 <div class="row">
-                    <form action="../salva-procedimento" method="post" autocomplete="off">
+                    <form action="<?=base_url('usuario/regulacao/salva-procedimento')?>" method="post" autocomplete="off">
                         
                         <div class="form-group col-md-8">
                             <label for="company" class=" form-control-label">PROCEDIMENTO</label>
                             <input name="nome_procedimento" type="text" list="proced" class="form-control">
                             <datalist id="proced">
-                                <?php foreach ($tabela_proced as $proced): ?>
+                                <?php foreach ($this->db->get('tabela_proced')->result_array() as $proced): ?>
                                     <option value="<?= $proced['nome'] ?>"><?= $proced['codigo'] ?></option>
                                 <?php endforeach ?>
                             </datalist>
-                            <input type="hidden" name="paciente_id" value="<?= segment('4') ?>">
+                            <input type="hidden" name="paciente_id" value="<?= segment('5') ?>">
                         </div>
                          <div class="form-group col-md-4">
                             <label for="street" class=" form-control-label">ESPECIALIDADE</label>

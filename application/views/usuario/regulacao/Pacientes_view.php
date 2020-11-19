@@ -52,7 +52,7 @@
                                                 </button>
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right">
                                                     <a class="small dropdown-item" href="historico-paciente/<?= $paciente['paciente_id'] ?>"><i class="fa fa-id-card-o"></i> Histórico</a>
-                                                    <a class="small dropdown-item" href="dados-paciente/<?= $paciente['paciente_id'] ?>"><i class="fa fa-plus-square"></i> Solicitar Procedimento</a>
+                                                    <a class="small dropdown-item" href="solicitar-procedimento/<?= $paciente['paciente_id'] ?>"><i class="fa fa-plus-square"></i> Solicitar Procedimento</a>
                                                     <a class="small dropdown-item" href="solicitacao-tfd/<?= $paciente['paciente_id'] ?>"><i class="fa fa-plus-square"></i> Solicitar TFD</a>
                                                     <a class="small dropdown-item" href="add-paciente-casa/<?= $paciente['paciente_id'] ?>"><i class="fa fa-home"></i> Adicionar na Casa de Apoio</a>
                                                     <a class="small dropdown-item" href="<?= base_url() ?>usuario/cadastros/editar-paciente/<?= $paciente['paciente_id'] ?>"><i class="fa fa-edit"></i> Editar Paciente</a>

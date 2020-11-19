@@ -211,21 +211,21 @@ class Dashboard_model extends CI_model
 
 
 
-    public function especialidades()
-    {
+    // public function especialidades()
+    // {
 
-        $this->db->select('*');
-        $query = $this->db->get('especialidades');
-        //echo $this->db->last_query();
-        return $query->result_array();
-    }
+    //     $this->db->select('*');
+    //     $query = $this->db->get('especialidades');
+    //     //echo $this->db->last_query();
+    //     return $query->result_array();
+    // }
 
-    public function salva_procedimentos($nome_procedimento, $especialidade, $estabelecimento_solicitante, $profissional_solicitante, $sintomas, $paciente_id, $data_solicitacao)
-    {
+    // public function salva_procedimentos($nome_procedimento, $especialidade, $estabelecimento_solicitante, $profissional_solicitante, $sintomas, $paciente_id, $data_solicitacao)
+    // {
 
-        $dados_usuario = array('nome_procedimento' => $nome_procedimento, 'especialidade' => $especialidade, 'estabelecimento_solicitante' => $estabelecimento_solicitante, 'profissional_solicitante' => $profissional_solicitante, 'sintomas' => $sintomas, 'paciente_id' => $paciente_id, 'data_solicitacao' => $data_solicitacao, 'profissional_regulacao' => @$_SESSION['nome']);
-        $this->db->insert('procedimentos', $dados_usuario);
-    }
+    //     $dados_usuario = array('nome_procedimento' => $nome_procedimento, 'especialidade' => $especialidade, 'estabelecimento_solicitante' => $estabelecimento_solicitante, 'profissional_solicitante' => $profissional_solicitante, 'sintomas' => $sintomas, 'paciente_id' => $paciente_id, 'data_solicitacao' => $data_solicitacao, 'profissional_regulacao' => @$_SESSION['nome']);
+    //     $this->db->insert('procedimentos', $dados_usuario);
+    // }
 
     public function atualiza_solicitacao($estabelecimento_prestador, $cidade_prestador, $cota, $profissional_agendamento, $data, $ponto_partida, $hora_viagem, $procedimentos_id)
     {

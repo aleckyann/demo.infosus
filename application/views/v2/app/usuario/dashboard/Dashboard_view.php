@@ -79,45 +79,36 @@
                                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-home"></span></span><span class="nav-link-text"> Página inicial</span></div>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link dropdown-indicator" href="#home" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="home">
-                                    <div class="d-flex align-items-center"><span class="nav-link-icon"><i class="fas fa-box-open"></i></span></span><span class="nav-link-text"> Módulos</span></div>
-                                </a>
-                                <ul class="nav collapse" id="home" data-parent="#navbarVerticalCollapse">
-                                    <li class="nav-item"><a class="nav-link" href="#">Regulação</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Atenção primária</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Transporte</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Almoxarifado</a></li>
-                                </ul>
-                            </li>
                         </ul>
                         <div class="navbar-vertical-divider">
                             <hr class="navbar-vertical-hr my-2" />
                         </div>
                         <ul class="navbar-nav flex-column">
                             <li class="nav-item">
+                                <a class="nav-link dropdown-indicator" href="#regulacao" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="regulacao">
+                                    <div class="d-flex align-items-center"><span class="nav-link-icon"><i class="fas fa-balance-scale"></i></span><span class="nav-link-text"> Regulação</span></div>
+                                </a>
+                                <ul class="nav collapse" id="regulacao" data-parent="#navbarVerticalCollapse">
+                                    <li class="nav-item"><a class="nav-link" href="#">Atalho 1</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Atalho 2</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link dropdown-indicator" href="#components" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="components">
-                                    <div class="d-flex align-items-center"><span class="nav-link-icon"><i class="fas fa-link"></i></span><span class="nav-link-text"> Atalhos</span></div>
+                                    <div class="d-flex align-items-center"><span class="nav-link-icon"><i class="fas fa-link"></i></span><span class="nav-link-text"> Módulo 2</span></div>
                                 </a>
                                 <ul class="nav collapse" id="components" data-parent="#navbarVerticalCollapse">
                                     <li class="nav-item"><a class="nav-link" href="#">Atalho 1</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#">Atalho 2</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Atalho 3</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Atalho 4</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Atalho 5</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Atalho 6</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Atalho 7</a></li>
-                                    
                                 </ul>
                             </li>
-
-
-                            <div class="settings">
-                                <div class="navbar-vertical-divider">
-                                    <hr class="navbar-vertical-hr my-3" />
-                                </div>
-                                <a class="btn btn-sm btn-block btn-primary mb-4" href="#" target="_blank">Suporte via whatsapp</a>
+                        </ul>
+                        <div class="settings">
+                            <div class="navbar-vertical-divider">
+                                <hr class="navbar-vertical-hr my-3" />
                             </div>
+                            <a class="btn btn-sm btn-block btn-primary mb-4 font-weight-light" href="#" target="_blank"><i class="fab fa-whatsapp"></i> Suporte técnico</a>
+                        </div>
                     </div>
                 </div>
             </nav>

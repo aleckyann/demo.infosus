@@ -68,7 +68,7 @@
                             <p>
                                 Se este erro persistir entre em contato com o nosso canal de suporte: <a href="#">Suporte pelo whatsapp</a>.
                             </p>
-                            <a class="btn btn-primary btn-sm mt-3" href="#">
+                            <a class="btn btn-primary btn-sm mt-3" href="<?=base_url('usuario/dashboard')?>">
                                 <span class="fas fa-home mr-2"></span>Voltar a página inicial
                             </a>
                         </div>

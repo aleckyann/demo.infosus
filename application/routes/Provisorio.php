@@ -6,18 +6,6 @@ $route['usuario/atualiza-url'] = 'usuario/atualizaurl_controller/index';
 #USUARIO
 $route['usuario/dashboard']['get'] = 'usuario/dashboard/Dashboard_controller/index';
 
-$route['usuario/agendamentos/consulta/(:num)'] = 'usuario/agendamentos/Consulta_controller/index/$1';
-$route['usuario/agendamentos/viagem/(:num)'] = 'usuario/agendamentos/Viagem_controller/index/$1';
-$route['usuario/agendamentos/exame/(:num)'] = 'usuario/agendamentos/Exame_controller/index/$1';
-
-
-$route['usuario/agendados/consulta'] = 'usuario/agendados/Consulta_controller/index';
-$route['usuario/agendados/viagem'] = 'usuario/agendados/Viagem_controller/index';
-$route['usuario/agendados/exame'] = 'usuario/agendados/Exame_controller/index';
-
-$route['usuario/pacientes'] = 'usuario/pacientes/Pacientes_controller/index';
-
-
 $route['usuario/transportes/inicial'] = 'usuario/transportes/Transportes_controller/index';
 $route['usuario/transportes/veiculos'] = 'usuario/transportes/Veiculos_controller/index';
 $route['usuario/transportes/criar-viagem/(:num)']['get'] = 'usuario/transportes/Criarviagem_controller/index/$1';

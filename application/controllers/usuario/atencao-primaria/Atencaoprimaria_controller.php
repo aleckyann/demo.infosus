@@ -6,7 +6,7 @@ class Atencaoprimaria_controller extends Sistema_Controller {
 
     public function index()
     {
-        $this->usuario_view('Atencaoprimaria_view', array());
+        $this->usuario_view('Atencaoprimaria_view', []);
     }
 
 }

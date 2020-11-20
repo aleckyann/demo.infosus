@@ -1,13 +1,15 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 
-class Baixapaciente_controller extends Sistema_Controller {
+class Baixapaciente_controller extends Sistema_Controller
+{
 
     /**
      * GET: usuario/regulacao/concluir-paciente/(:num)?
      */
-    public function index(){
+    public function index()
+    {
         $this->Procedimentos->update(
             [
                 'procedimentos_id' => segment(5)

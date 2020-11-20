@@ -1,8 +1,9 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 
-class Agendados_controller extends Sistema_Controller {
+class Agendados_controller extends Sistema_Controller
+{
 
     /**
      * GET: usuario/regulacao/agendados

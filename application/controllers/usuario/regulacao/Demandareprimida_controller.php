@@ -1,8 +1,9 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 
-class Demandareprimida_controller extends Sistema_Controller {
+class Demandareprimida_controller extends Sistema_Controller
+{
 
     /**
      * GET: usuario/regulacao/lista-demanda-reprimida
@@ -17,5 +18,4 @@ class Demandareprimida_controller extends Sistema_Controller {
         ]);
         $this->usuario_view('Demandareprimida_view', $data);
     }
-
 }

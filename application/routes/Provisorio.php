@@ -1,8 +1,5 @@
 <?php
 
-$route['usuario/url'] = 'usuario/Url_controller/index';
-$route['usuario/atualiza-url'] = 'usuario/atualizaurl_controller/index';
-
 #USUARIO
 $route['usuario/dashboard']['get'] = 'usuario/dashboard/Dashboard_controller/index';
 
@@ -19,11 +16,13 @@ $route['usuario/transportes/finalizar-viagem/(:num)'] = 'usuario/transportes/Fin
 //atenção primária
 
 $route['usuario/atencao-primaria'] = 'usuario/atencao-primaria/Atencaoprimaria_controller/index';
+
+
 $route['usuario/cadastros/cadastrar-paciente'] = 'usuario/cadastros/Cadastrarpaciente_controller/index';
 $route['usuario/cadastros/salva-paciente'] = 'usuario/cadastros/Salvapaciente_controller/index';
 $route['usuario/cadastros/edita-paciente/(:num)'] = 'usuario/cadastros/Editapaciente_controller/index/$1';
 $route['usuario/cadastros/editar-paciente/(:num)'] = 'usuario/cadastros/Editarpaciente_controller/index/$1';
-$route['usuario/excluir-paciente/(:num)']['get'] = 'usuario/Excluirpaciente_controller/index/$1';
+$route['usuario/cadastros/excluir-paciente/(:num)']['get'] = 'usuario/cadastros/Excluirpaciente_controller/index/$1';
 $route['usuario/cadastros/cadastrar-veiculo'] = 'usuario/cadastros/Cadastrarveiculo_controller/index';
 $route['usuario/cadastros/cadastrar-veiculo-save'] = 'usuario/cadastros/Cadastrarveiculosave_controller/index';
 $route['usuario/cadastros/atualizar-veiculo-save/(:num)'] = 'usuario/cadastros/Atualizarveiculosave_controller/index/$1';

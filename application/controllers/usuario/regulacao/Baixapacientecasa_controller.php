@@ -1,19 +1,21 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 
-class Baixapacientecasa_controller extends Sistema_Controller {
+class Baixapacientecasa_controller extends Sistema_Controller
+{
 
     /**
      * GET: usuario/regulacao/baixa-paciente-casa/(:num)
      */
-    public function index(){
+    public function index()
+    {
         $this->Casa_de_apoio->update(
             [
-                'apoio_id'=>segment(5)
+                'apoio_id' => segment(5)
             ],
             [
-                'saiu'=>1
+                'saiu' => 1
             ]
         );
         $this->session->set_flashdata('success', 'Baixa realizada com sucesso');

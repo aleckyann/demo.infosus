@@ -56,7 +56,7 @@
                                                     <a class="small dropdown-item" href="solicitacao-tfd/<?= $paciente['paciente_id'] ?>"><i class="fa fa-plus-square"></i> Solicitar TFD</a>
                                                     <a class="small dropdown-item" href="add-paciente-casa/<?= $paciente['paciente_id'] ?>"><i class="fa fa-home"></i> Adicionar na Casa de Apoio</a>
                                                     <a class="small dropdown-item" href="<?= base_url() ?>usuario/cadastros/editar-paciente/<?= $paciente['paciente_id'] ?>"><i class="fa fa-edit"></i> Editar Paciente</a>
-                                                    <a class="small dropdown-item text-danger" onclick="confirmThisAction('<?= base_url('usuario/excluir-paciente/'). $paciente['paciente_id'] ?>')" href="#">
+                                                    <a class="small dropdown-item text-danger" onclick="confirmThisAction('<?= base_url('usuario/cadastros/excluir-paciente/'). $paciente['paciente_id'] ?>')" href="#">
                                                         <i class="fa fa-close"></i> Excluir Pacientes
                                                     </a>
 

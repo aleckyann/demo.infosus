@@ -1,8 +1,9 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 
-class Veiculos_controller extends Sistema_Controller {
+class Veiculos_controller extends Sistema_Controller
+{
 
     /**
      * GET: usuario/transportes/veiculos
@@ -12,5 +13,4 @@ class Veiculos_controller extends Sistema_Controller {
         $data['veiculos'] = $this->Veiculos->getAll();
         $this->usuario_view('Veiculos_view', $data);
     }
-
 }

@@ -1,10 +1,11 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 
-class Demandareprimidatfd_controller extends Sistema_Controller {
+class Demandareprimidatfd_controller extends Sistema_Controller
+{
 
-    public function index():void
+    public function index(): void
     {
         $data_inicio = $this->input->post('data_inicio') ?? '0001-01-01';
         $data_fim = $this->input->post('data_fim') ?? '3000-01-01';
@@ -15,5 +16,4 @@ class Demandareprimidatfd_controller extends Sistema_Controller {
         ]);
         $this->usuario_view('Demandareprimidatfd_view', $data);
     }
-
 }

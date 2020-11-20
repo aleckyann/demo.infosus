@@ -1,8 +1,9 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 
-class Fila_controller extends Sistema_Controller {
+class Fila_controller extends Sistema_Controller
+{
 
     /**
      * GET usuario/regulacao/fila
@@ -12,5 +13,4 @@ class Fila_controller extends Sistema_Controller {
         $data['procedimentos'] = $this->Procedimentos->porPaciente(['realizado' => '']);
         $this->usuario_view('Fila_view', $data);
     }
-
 }

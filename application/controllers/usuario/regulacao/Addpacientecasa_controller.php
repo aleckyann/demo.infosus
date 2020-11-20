@@ -21,7 +21,7 @@ class Addpacientecasa_controller extends Sistema_Controller
     {
         $dados = $this->input->post();
         $this->Casa_de_apoio->insert($dados);
-        
+
         $this->session->set_flashdata('success', 'Paciente adicionado à casa de apoio.');
         redirect('usuario/regulacao/casa-de-apoio');
     }

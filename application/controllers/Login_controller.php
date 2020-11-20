@@ -14,7 +14,6 @@ class Login_controller extends CI_Controller
         // $this->load->view('usuario/includes/Data_view');
         // $this->load->view('Login_view');
         $this->load->view('v2/auth/AuthView');
-
     }
 
     /**

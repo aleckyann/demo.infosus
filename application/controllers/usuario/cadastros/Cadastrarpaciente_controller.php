@@ -1,12 +1,15 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 
-class Cadastrarpaciente_controller extends Sistema_Controller {
+class Cadastrarpaciente_controller extends Sistema_Controller
+{
 
+    /**
+     * GET: usuario/cadastros/cadastrar-paciente
+     */
     public function index()
     {
-        $this->usuario_view('Pacientes_view', array());
+        $this->usuario_view('Pacientes_view');
     }
-
 }

@@ -78,7 +78,7 @@
                                                 <h3>Faça login para continuar:</h3>
                                             </div>
                                         </div>
-                                        <form action="<?= base_url('login') ?>" method="post">
+                                        <form action="<?= base_url('auth') ?>" method="post">
                                             <div class="mb-3"><label class="form-label" for="card-email">Email</label>
                                             <input class="form-control" name="usuario_email" id="card-email" type="email" />
                                         </div>

@@ -41,3 +41,8 @@ $route['usuario/regulacao/casa-de-apoio'] = 'usuario/regulacao/Casaapoio_control
 $route['usuario/regulacao/concluir-paciente-tfd-manga/(:num)'] = 'usuario/regulacao/Baixapacientetfdmanga_controller/index/$1';
 $route['usuario/regulacao/cadastra-tfd-manga'] = 'usuario/regulacao/Cadastratfdmanga_controller/index';
 $route['usuario/regulacao/solicitacao-tfd-manga/(:num)'] = 'usuario/regulacao/Solicitacaotfdmanga_controller/index';
+
+
+/**
+ * ROTAS v2
+ */

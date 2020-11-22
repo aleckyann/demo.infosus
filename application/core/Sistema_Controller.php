@@ -24,4 +24,18 @@ class Sistema_Controller extends CI_Controller
             $this->load->view($this->uri->segment(1) . '/includes/Footer_view', $data);
         }
     }
+
+    /**
+     * Função que monta as views da v2
+     */
+    public function view(string $view, array $data = []): void
+    {
+        $data['csrf_input'] = '<input type="hidden" name="' . $this->security->get_csrf_token_name() . '" value="' . $this->security->get_csrf_hash() . '">';
+        $data['csrf_name'] = $this->security->get_csrf_token_name();
+        $data['csrf_value'] = $this->security->get_csrf_hash();
+
+        $this->load->view('v2/includes/Header_view', $data);
+        $this->load->view('v2/' . $view, $data);
+        $this->load->view('v2/includes/Footer_view', $data);
+    }
 }

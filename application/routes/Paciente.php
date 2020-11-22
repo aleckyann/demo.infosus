@@ -11,3 +11,7 @@ $route['usuario/cadastros/excluir-paciente/(:num)']['get'] = 'usuario/cadastros/
 /**
  * ROTAS v2
  */
+
+$route['v2/pacientes']['get'] = 'v2/pacientes/Pacientes_controller/index';
+$route['v2/pacientes']['post'] = 'v2/pacientes/Pacientes_controller/new';
+$route['v2/pacientes/(:num)']['post'] = 'v2/pacientes/Pacientes_controller/edit';

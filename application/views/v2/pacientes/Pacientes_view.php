@@ -14,9 +14,11 @@
     </div>
 </div>
 
+
 <div class="collapse mb-3" id="collapseExample">
     <div class="border p-card rounded">Nesta página você pode visualizar todos os pacientes, adicionar pacientes, ir para históricos e agendar novos procedimentos.</div>
 </div>
+
 
 <div class="card mb-3" id="recentPurchaseTable" data-list='{"valueNames":["name","email","product","payment","amount"],"page":10,"pagination":true}'>
     <div class="card-header">

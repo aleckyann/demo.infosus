@@ -76,7 +76,7 @@
                     <div class="navbar-vertical-content scrollbar">
                         <ul class="navbar-nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link active" href="#">
+                                <a class="nav-link" href="#">
                                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-home"></span></span><span class="nav-link-text"> Página inicial</span></div>
                                 </a>
                             </li>
@@ -85,6 +85,14 @@
                             <hr class="navbar-vertical-hr my-2" />
                         </div>
                         <ul class="navbar-nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="<?= base_url('v2/pacientes') ?>">
+                                    <div class="d-flex align-items-center">
+                                        <span class="nav-link-icon"><i class="fas fa-user-injured"></i></span>
+                                        <span class="nav-link-text"> Pacientes</span>
+                                    </div>
+                                </a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link dropdown-indicator" href="#regulacao" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="regulacao">
                                     <div class="d-flex align-items-center"><span class="nav-link-icon"><i class="fas fa-balance-scale"></i></span><span class="nav-link-text"> Regulação</span></div>

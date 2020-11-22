@@ -1,4 +1,4 @@
-<div class="d-flex mb-4">
+<div class="d-flex mb-2">
     <span class="fa-stack mr-2 ml-n1">
         <i class="fas fa-circle fa-stack-2x text-300"></i>
         <i class="fas fa-user-injured fa-inverse fa-stack-1x text-primary"></i>
@@ -8,8 +8,14 @@
             <span class="bg-200 pr-3">Pacientes</span>
             <span class="border position-absolute top-50 translate-middle-y w-100 left-0 z-index--1"></span>
         </h5>
-        <p class="mb-0">Nesta página você tem acesso a listagem de todos os pacientes cadastrados.</p>
+        <a class="float-right btn" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <i class="fas fa-question-circle"></i>
+        </a>
     </div>
+</div>
+
+<div class="collapse mb-3" id="collapseExample">
+    <div class="border p-card rounded">Nesta página você pode visualizar todos os pacientes, adicionar pacientes, ir para históricos e agendar novos procedimentos.</div>
 </div>
 
 <div class="card mb-3" id="recentPurchaseTable" data-list='{"valueNames":["name","email","product","payment","amount"],"page":10,"pagination":true}'>

@@ -18,5 +18,10 @@ class Pacientes_controller extends Sistema_Controller
 
     public function new(): void
     {
+        $paciente = $this->input->post();
+        $this->Pacientes->insert($paciente);
+
+        $this->session->set_flashdata('success', 'Paciente cadastrado com sucesso!');
+        redirect('v2/pacientes');
     }
 }

@@ -19,45 +19,50 @@ class Ui
     {
         if ($this->CI->session->flashdata('success')) {
             echo '
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    ' . $this->CI->session->flashdata('success') . '
-                    <button class="btn-close" type="button" data-dismiss="alert" aria-label="Close"></button>
+                <div class="toast hide notice bg-success" id="cookie-notice" role="alert" data-options=\'{"autoShow":true}\' data-autohide="false" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-body d-lg-flex justify-content-center align-items-center text-center px-5"><button class="btn-close position-absolute top-0 right-0 p-2 mr-2" type="button" data-dismiss="toast" aria-label="Close"></button>
+                        <p class="mb-2 mb-lg-0 text-white"> ' . $this->CI->session->flashdata('success') . '</p>
+                    </div>
                 </div>
             ';
         }
 
         if ($this->CI->session->flashdata('warning')) {
             echo '
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    ' . $this->CI->session->flashdata('warning') . '
-                    <button class="btn-close" type="button" data-dismiss="alert" aria-label="Close"></button>
+                <div class="toast hide notice bg-warning" id="cookie-notice" role="alert" data-options=\'{"autoShow":true}\' data-autohide="false" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-body d-lg-flex justify-content-center align-items-center text-center px-5"><button class="btn-close position-absolute top-0 right-0 p-2 mr-2" type="button" data-dismiss="toast" aria-label="Close"></button>
+                        <p class="mb-2 mb-lg-0 text-white"> ' . $this->CI->session->flashdata('warning') . '</p>
+                    </div>
                 </div>
             ';
         }
 
         if ($this->CI->session->flashdata('danger')) {
             echo '
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    '. $this->CI->session->flashdata('danger') .'
-                    <button class="btn-close" type="button" data-dismiss="alert" aria-label="Close"></button>
+                <div class="toast hide notice bg-danger" id="cookie-notice" role="alert" data-options=\'{"autoShow":true}\' data-autohide="false" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-body d-lg-flex justify-content-center align-items-center text-center px-5"><button class="btn-close position-absolute top-0 right-0 p-2 mr-2" type="button" data-dismiss="toast" aria-label="Close"></button>
+                        <p class="mb-2 mb-lg-0 text-white"> ' . $this->CI->session->flashdata('danger') . '</p>
+                    </div>
                 </div>
             ';
         }
 
         if ($this->CI->session->flashdata('info')) {
             echo '
-                <div class="alert alert-info alert-dismissible fade show" role="alert">
-                    ' . $this->CI->session->flashdata('info') . '
-                    <button class="btn-close" type="button" data-dismiss="alert" aria-label="Close"></button>
+                <div class="toast hide notice bg-info" id="cookie-notice" role="alert" data-options=\'{"autoShow":true}\' data-autohide="false" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-body d-lg-flex justify-content-center align-items-center text-center px-5"><button class="btn-close position-absolute top-0 right-0 p-2 mr-2" type="button" data-dismiss="toast" aria-label="Close"></button>
+                        <p class="mb-2 mb-lg-0 text-white"> ' . $this->CI->session->flashdata('info') . '</p>
+                    </div>
                 </div>
             ';
         }
 
         if ($this->CI->session->flashdata('help')) {
             echo '
-                <div class="alert alert-dark alert-dismissible fade show" role="alert">
-                    ' . $this->CI->session->flashdata('dark') . '
-                    <button class="btn-close" type="button" data-dismiss="alert" aria-label="Close"></button>
+                <div class="toast hide notice bg-dark" id="cookie-notice" role="alert" data-options=\'{"autoShow":true}\' data-autohide="false" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-body d-lg-flex justify-content-center align-items-center text-center px-5"><button class="btn-close position-absolute top-0 right-0 p-2 mr-2" type="button" data-dismiss="toast" aria-label="Close"></button>
+                        <p class="mb-2 mb-lg-0 text-white"> ' . $this->CI->session->flashdata('warning') . '</p>
+                    </div>
                 </div>
             ';
         }

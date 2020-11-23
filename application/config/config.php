@@ -95,7 +95,7 @@ $config['standardize_newlines'] = FALSE;
 $config['global_xss_filtering'] = TRUE;
 
 
-$config['csrf_protection'] = FALSE;
+$config['csrf_protection'] = TRUE;
 $config['csrf_token_name'] = "csrf";
 $config['csrf_cookie_name'] = "csrf";
 $config['csrf_expire'] = 7200;

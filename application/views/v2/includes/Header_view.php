@@ -28,6 +28,10 @@
     <!-- ===============================================-->
     <link href="<?= base_url() ?>/public/v2/assets/css/theme-rtl.min.css" rel="stylesheet" id="style-rtl" />
     <link href="<?= base_url() ?>/public/v2/assets/css/theme.min.css" rel="stylesheet" id="style-default" />
+    
+    <link rel="stylesheet" href="<?= base_url() ?>public/vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>public/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
+
     <script>
         var isRTL = JSON.parse(localStorage.getItem('isRTL'));
         if (isRTL) {
@@ -167,3 +171,5 @@
                         <li class="breadcrumb-item"><?= segment(3) ?></li>
                     </ol>
                 </nav> -->
+
+                <?= $this->ui->alert_flashdata() ?>

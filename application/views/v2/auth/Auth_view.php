@@ -79,15 +79,15 @@
                                             </div>
                                         </div>
                                         <form action="<?= base_url('auth') ?>" method="post">
-                                            <?=$crsf_input?>
+                                            <input type="hidden" name="<?= $this->security->get_csrf_token_name()?>" value="<?= $this->security->get_csrf_hash()?>">
                                             <div class="mb-3"><label class="form-label" for="card-email">Email</label>
-                                            <input class="form-control" name="usuario_email" id="card-email" type="email" required/>
-                                        </div>
+                                                <input class="form-control" name="usuario_email" id="card-email" type="email" required />
+                                            </div>
                                             <div class="mb-3">
                                                 <div class="d-flex justify-content-between">
                                                     <label class="form-label" for="card-password">Senha</label>
                                                 </div>
-                                                <input class="form-control" name="usuario_password" id="card-password" type="password" required/>
+                                                <input class="form-control" name="usuario_password" id="card-password" type="password" required />
                                             </div>
                                             <div class="form-check mb-0"><input class="form-check-input" type="checkbox" id="card-checkbox" checked="checked" /><label class="form-check-label" for="card-checkbox">Lembrar-me</label></div>
                                             <div class="mb-3"><button class="btn btn-primary btn-block mt-3" type="submit" name="submit">Autenticar</button></div>

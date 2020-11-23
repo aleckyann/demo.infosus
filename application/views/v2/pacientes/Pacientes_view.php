@@ -135,9 +135,9 @@
                                 <div class="btn-group mb-2">
                                     <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="atualizar-datas-casa/<?= $p['paciente_id'] ?>"><i class="fa fa-database"></i> Históricos</a>
+                                        <a class="dropdown-item" href="#"><i class="fa fa-database"></i> Históricos</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item text-warning" href="baixa-paciente-casa"><i class="fa fa-edit"></i> Editar</a>
+                                        <a class="dropdown-item text-warning" href="#"><i class="fa fa-edit"></i> Editar</a>
                                     </div>
                                 </div>
                             </div>

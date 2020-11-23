@@ -90,7 +90,7 @@
                                                 <input class="form-control" name="usuario_password" id="card-password" type="password" required />
                                             </div>
                                             <div class="form-check mb-0"><input class="form-check-input" type="checkbox" id="card-checkbox" checked="checked" /><label class="form-check-label" for="card-checkbox">Lembrar-me</label></div>
-                                            <div class="mb-3"><button class="btn btn-primary btn-block mt-3" type="submit" name="submit">Autenticar</button></div>
+                                            <div class="mb-3"><button class="btn btn-primary btn-block mt-3" type="submit">Autenticar</button></div>
                                         </form>
                                     </div>
                                 </div>

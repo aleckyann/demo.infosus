@@ -13,5 +13,7 @@ $route['usuario/cadastros/excluir-paciente/(:num)']['get'] = 'usuario/cadastros/
  */
 
 $route['v2/pacientes']['get'] = 'v2/pacientes/Pacientes_controller/index';
-$route['v2/pacientes']['post'] = 'v2/pacientes/Pacientes_controller/new';
-$route['v2/pacientes/(:num)']['post'] = 'v2/pacientes/Pacientes_controller/edit';
+$route['v2/pacientes/new']['post'] = 'v2/pacientes/Pacientes_controller/new';
+$route['v2/pacientes/edit']['post'] = 'v2/pacientes/Pacientes_controller/edit';
+$route['v2/pacientes/json']['post'] = 'v2/pacientes/Pacientes_controller/jsonAll';
+$route['v2/pacientes/json/(:num)']['post'] = 'v2/pacientes/Pacientes_controller/jsonOne/$1';

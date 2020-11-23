@@ -14,10 +14,12 @@ class Sistema_Controller extends CI_Controller
 
     public function usuario_view(string $view, array $data = []): void
     {
+        $data['csrf_input'] = '<input type="hidden" name="' . $this->security->get_csrf_token_name() . '" value="' . $this->security->get_csrf_hash() . '">';
+        $data['csrf_name'] = $this->security->get_csrf_token_name();
+        $data['csrf_value'] = $this->security->get_csrf_hash();
+
         if ($this->input->get('v2')) {
-            $this->load->view('v2/includes/Header_view', $data);
-            $this->load->view('v2/' . $this->uri->segment(2) . '/' . $view, $data);
-            $this->load->view('v2/includes/Footer_view', $data);
+            redirect('v2/pacientes');
         } else {
             $this->load->view($this->uri->segment(1) . '/includes/Header_view', $data);
             $this->load->view($this->uri->segment(1) . '/' . $this->uri->segment(2) . '/' . $view, $data);

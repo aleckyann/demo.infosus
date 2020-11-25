@@ -46,3 +46,13 @@ $route['usuario/regulacao/solicitacao-tfd-manga/(:num)'] = 'usuario/regulacao/So
 /**
  * ROTAS v2
  */
+
+
+$route['v2/regulacao/casa-de-apoio/listagem']['get'] = 'v2/regulacao/casa_de_apoio/Casa_de_apoio_controller/listagem';
+$route['v2/regulacao/casa-de-apoio/new']['post'] = 'v2/regulacao/casa_de_apoio/Casa_de_apoio_controller/new';
+
+$route['v2/regulacao/procedimentos/listagem']['get'] = 'v2/regulacao/procedimentos/Procedimentos_controller/listagem';
+$route['v2/regulacao/tfd/listagem']['get'] = 'v2/regulacao/tfd/TFD_controller/listagem';
+
+$route['v2/regulacao/']['get'] = 'v2/regulacao/';
+$route['v2/regulacao/']['get'] = 'v2/regulacao/';

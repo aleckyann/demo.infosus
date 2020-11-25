@@ -34,5 +34,18 @@ class Pacientes extends CI_model
         $this->db->insert($this->table, $dados);
     }
 
+
+    public function getAllApi(array $where = []): array
+    {
+        return $this->db->like($where)->select('paciente_id id, nome_paciente text')->get_where($this->table)->result_array();
+    }
+
+    public function getJsonDatatable(array $where = [])
+    {
+        $dados['results'] = $this->db->like($where)->select('paciente_id id, nome_paciente text')->get($this->table)->result_array();
+
+        return json_encode($dados);
+    }
+
 }
 

@@ -28,9 +28,15 @@
     <!-- ===============================================-->
     <link href="<?= base_url() ?>/public/v2/assets/css/theme-rtl.min.css" rel="stylesheet" id="style-rtl" />
     <link href="<?= base_url() ?>/public/v2/assets/css/theme.min.css" rel="stylesheet" id="style-default" />
-    
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- datatables -->
     <link rel="stylesheet" href="<?= base_url() ?>public/vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>public/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
+
+    <!-- select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
     <script>
         var isRTL = JSON.parse(localStorage.getItem('isRTL'));
@@ -90,29 +96,54 @@
                         </div>
                         <ul class="navbar-nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link active" href="<?= base_url('v2/pacientes') ?>">
+                                <a class="nav-link dropdown-indicator <?= (segment(3) == 'pacientes') ? 'active' : '' ?>" href="#pacientesNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="pacientesNav">
                                     <div class="d-flex align-items-center">
                                         <span class="nav-link-icon"><i class="fas fa-user-injured"></i></span>
                                         <span class="nav-link-text"> Pacientes</span>
                                     </div>
                                 </a>
+                                <ul class="nav collapse" id="pacientesNav" data-parent="#navbarVerticalCollapse">
+                                    <li class="nav-item"><a class="nav-link <?= (segment(4) == 'listagem') ? 'active' : '' ?>" href="<?= base_url('v2/pacientes/listagem') ?>"><i class="fas fa-clipboard-list mr-1"></i> Lista</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#novoPaciente"><i class=" fas fa-user-plus"></i> Novo paciente</a></li>
+                                </ul>
+
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link dropdown-indicator" href="#regulacao" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="regulacao">
+                            <li class=" nav-item">
+                                <a class="nav-link dropdown-indicator" href="#regulacaoNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="regulacaoNav">
                                     <div class="d-flex align-items-center"><span class="nav-link-icon"><i class="fas fa-balance-scale"></i></span><span class="nav-link-text"> Regulação</span></div>
                                 </a>
-                                <ul class="nav collapse" id="regulacao" data-parent="#navbarVerticalCollapse">
-                                    <li class="nav-item"><a class="nav-link" href="#">Atalho 1</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Atalho 2</a></li>
+                                <ul class="nav collapse" id="regulacaoNav" data-parent="#navbarVerticalCollapse">
+                                    <li class="nav-item">
+                                        <a class="nav-link dropdown-indicator" href="#casaDeApoioNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="casaDeApoioNav"><i class="fas fa-clinic-medical"></i> Casa de apoio</a>
+                                        <ul class="nav collapse" id="casaDeApoioNav" data-parent="#regulacaoNav">
+                                            <li class="nav-item"><a class="nav-link" href="<?= base_url('v2/regulacao/casa-de-apoio/listagem') ?>"><i class="fas fa-clipboard-list ml-1"></i> Lista</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#novoCasaDeApoio"><i class="fas fa-house-user"></i> Novo paciente</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link dropdown-indicator" href="#procedimentosNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="procedimentosNav"><i class="fas fa-file-medical ml-1"></i> Procedimentos</a>
+                                        <ul class="nav collapse" id="procedimentosNav" data-parent="#regulacaoNav">
+                                            <li class="nav-item"><a class="nav-link" href="<?= base_url('v2/regulacao/procedimentos/listagem') ?>"><i class="fas fa-clipboard-list"></i> Lista</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#modal"><i class="fas fa-notes-medical"></i> Novo procedimento</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link dropdown-indicator" href="#tfdNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="tfdNav"><i class="fas fa-file-medical ml-1"></i> TFD</a>
+                                        <ul class="nav collapse" id="tfdNav" data-parent="#regulacaoNav">
+                                            <li class="nav-item"><a class="nav-link" href="<?= base_url('v2/regulacao/tfd/listagem') ?>"><i class="fas fa-clipboard-list"></i> Lista</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#modal"><i class="fas fa-notes-medical"></i> Novo TFD</a></li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link dropdown-indicator" href="#components" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="components">
-                                    <div class="d-flex align-items-center"><span class="nav-link-icon"><i class="fas fa-link"></i></span><span class="nav-link-text"> Módulo 2</span></div>
+                                    <div class="d-flex align-items-center"><span class="nav-link-icon"><i class="fas fa-bus"></i></span><span class="nav-link-text"> Transportes</span></div>
                                 </a>
                                 <ul class="nav collapse" id="components" data-parent="#navbarVerticalCollapse">
-                                    <li class="nav-item"><a class="nav-link" href="#">Atalho 1</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Atalho 2</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-car-side"></i> Veiculos</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-route"></i> Viagens</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-calendar-plus"></i> Nova viagem</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -120,7 +151,7 @@
                             <div class="navbar-vertical-divider">
                                 <hr class="navbar-vertical-hr my-3" />
                             </div>
-                            <a class="btn btn-sm btn-block btn-primary mb-4 font-weight-light" href="#" target="_blank"><i class="fab fa-whatsapp"></i> Suporte técnico</a>
+                            <a class="btn btn-sm btn-block btn-primary mb-4 font-weight-light" href="https://web.whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i> Suporte</a>
                         </div>
                     </div>
                 </div>
@@ -145,7 +176,7 @@
                             <div class="dropdown-menu dropdown-menu-right py-0" aria-labelledby="navbarDropdownUser">
                                 <div class="bg-white rounded-lg py-2">
                                     <a class="dropdown-item" href="#">Configurações</a>
-                                    <a class="dropdown-item" href="<?= base_url('logout') ?>">Sair</a>
+                                    <a class="dropdown-item text-danger" href="<?= base_url('logout') ?>">Sair</a>
                                 </div>
                             </div>
                         </li>
@@ -171,5 +202,3 @@
                         <li class="breadcrumb-item"><?= segment(3) ?></li>
                     </ol>
                 </nav> -->
-
-                <?= $this->ui->alert_flashdata() ?>

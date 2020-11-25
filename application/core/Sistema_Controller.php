@@ -19,7 +19,7 @@ class Sistema_Controller extends CI_Controller
         $data['csrf_value'] = $this->security->get_csrf_hash();
 
         if ($this->input->get('v2')) {
-            redirect('v2/pacientes');
+            redirect('v2/pacientes/listagem');
         } else {
             $this->load->view($this->uri->segment(1) . '/includes/Header_view', $data);
             $this->load->view($this->uri->segment(1) . '/' . $this->uri->segment(2) . '/' . $view, $data);

@@ -20,94 +20,6 @@
 </div>
 
 
-<!-- <div class="card mb-3" id="recentPurchaseTable" data-list='{"valueNames":["name","email","product","payment","amount"],"page":10,"pagination":true}'>
-    <div class="card-header">
-        <div class="row flex-between-center">
-            <div class="col-6 col-sm-auto d-flex align-items-center pr-0">
-                <h5 class="fs-0 mb-0 text-nowrap py-2 py-xl-0">Pacientes</h5>
-            </div>
-            <div class="col-6 col-sm-auto ml-auto text-right pl-0">
-                <div class="d-none" id="table-purchases-actions">
-                    <div class="d-flex">
-                        <select class="form-select form-select-sm" aria-label="Bulk actions">
-                            <option selected="">Bulk actions</option>
-                            <option value="Refund">Refund</option>
-                            <option value="Delete">Delete</option>
-                            <option value="Archive">Archive</option>
-                        </select>
-                        <button class="btn btn-falcon-default btn-sm ml-2" type="button">Apply</button></div>
-                </div>
-                <div id="table-purchases-replace-element">
-                    <button class="btn btn-falcon-default btn-sm" type="button">
-                        <span class="fas fa-plus" data-fa-transform="shrink-3 down-2"></span>
-                        <span class="d-none d-sm-inline-block ml-1">Novo paciente</span>
-                    </button>
-                    <button class="btn btn-falcon-default btn-sm mx-2" type="button">
-                        <span class="fas fa-filter" data-fa-transform="shrink-3 down-2"></span>
-                        <span class="d-none d-sm-inline-block ml-1">Filtros</span>
-                    </button>
-                    <button class="btn btn-falcon-default btn-sm" type="button">
-                        <span class="fas fa-print" data-fa-transform="shrink-3 down-2"></span>
-                        <span class="d-none d-sm-inline-block ml-1">Imprimir</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card-body px-0 py-0">
-        <div class="table-responsive scrollbar">
-            <table class="table table-sm fs--1 mb-0">
-                <thead class="bg-200 text-900">
-                    <tr>
-
-                        <th class="sort pr-1 align-middle white-space-nowrap" data-sort="name">Nome</th>
-                        <th class="sort pr-1 align-middle white-space-nowrap" data-sort="email">CPF</th>
-                        <th class="sort pr-1 align-middle white-space-nowrap" data-sort="product">Telefone</th>
-                        <th class="no-sort pr-1 align-middle data-table-row-action"></th>
-                    </tr>
-                </thead>
-                <tbody class="list" id="table-purchase-body">
-                    <?php foreach ($pacientes as $p) : ?>
-                        <tr class="btn-reveal-trigger">
-                            <th class="align-middle white-space-nowrap name"><?= $p['nome_paciente'] ?></th>
-                            <td class="align-middle white-space-nowrap email"><?= $p['cpf'] ?></td>
-                            <td class="align-middle white-space-nowrap product"><?= $p['telefone_paciente'] ?></td>
-                            <td class="align-middle white-space-nowrap">
-                                <div class="dropdown font-sans-serif">
-                                    <button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal float-right" type="button" id="dropdown0" data-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false"><span class="fas fa-ellipsis-h fs--1"></span></button>
-                                    <div class="dropdown-menu dropdown-menu-right border py-2" aria-labelledby="dropdown0">
-                                        <a class="dropdown-item" href="#!">Históricos</a>
-                                        <a class="dropdown-item" href="#!">Agendar TFD</a>
-                                        <a class="dropdown-item" href="#!">Agendar Procedimento</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item text-primary" href="#!">Históricos</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item text-warning" href="#!">Editar</a>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="card-footer">
-        <div class="row align-items-center">
-            <div class="pagination d-none"></div>
-            <div class="col">
-                <p class="mb-0 fs--1">
-                    <span class="d-none d-sm-inline-block mr-2" data-list-info="data-list-info"> </span>
-                    <span class="d-none d-sm-inline-block mr-2">&mdash; </span>
-                    <a class="font-weight-semi-bold" href="#!" data-list-view="*">Visualizar todos<span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span></a>
-                </p>
-            </div>
-            <div class="col-auto d-flex"><button class="btn btn-sm" type="button" data-list-pagination="prev"><span>Anterior</span></button><button class="btn btn-sm px-4 ml-2" type="button" data-list-pagination="next"><span>Próximo</span></button></div>
-        </div>
-    </div>
-</div> -->
-
-
 <div class="card mb-3">
     <?= $this->ui->alert_flashdata() ?>
 
@@ -151,84 +63,9 @@
 </div>
 
 
-<!-- Modal novoPaciente-->
-<div class="modal fade" id="novoPaciente" tabindex="-1" role="dialog" aria-labelledby="novoPacienteLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-light">
-                <h5 class="modal-title font-weight-light" id="novoPacienteLabel"><i class="fas fa-user-injured"></i> Cadastrar novo paciente</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="<?= base_url('v2/pacientes/new') ?>" method="post">
-                <div class="modal-body">
-                    <?= $csrf_input ?>
-                    <div class="row">
-
-                        <div class="mb-2 col-8">
-                            <label class="form-label">Nome</label>
-                            <input class="form-control" name="nome_paciente" type="text" placeholder="Nome completo do paciente" />
-                        </div>
-                        <div class="mb-2 col-4">
-                            <label class="form-label">Data de nascimento</label>
-                            <input class="form-control" name="nascimento" type="date" />
-                        </div>
-                        <div class="mb-2 col-4">
-                            <label class="form-label">CPF</label>
-                            <input class="form-control" name="cpf" type="text" placeholder="000.000.000-00" />
-                        </div>
-                        <div class="mb-2 col-4">
-                            <label class="form-label">RG</label>
-                            <input class="form-control" name="identidade" type="text" placeholder="00.000.000" />
-                        </div>
-
-                        <div class="mb-2 col-4">
-                            <label class="form-label">Telefone</label>
-                            <input class="form-control" name="telefone_paciente" type="phone" placeholder="(00) 99999-9999" />
-                        </div>
-                        <div class="mb-2 col-6">
-                            <label class="form-label">Endereço</label>
-                            <input class="form-control" name="" type="text" placeholder="Endereço completo" />
-                        </div>
-                        <div class="mb-2 col-3">
-                            <label class="form-label">CEP</label>
-                            <input class="form-control" name="cep" type="search" placeholder="39999-999" />
-                        </div>
-                        <div class="mb-2 col-3">
-                            <label class="form-label">Bairro</label>
-                            <input class="form-control" name="bairro_paciente" type="text" placeholder="Nome do bairro" />
-                        </div>
-
-                        <div class="mb-2 col-3">
-                            <label class="form-label">CNS</label>
-                            <input class="form-control" name="cns_paciente" type="text" placeholder="Cartão do sus" />
-                        </div>
-                        <div class="mb-2 col-4">
-                            <label class="form-label">ACS ou referência</label>
-                            <input class="form-control" name="acs" type="text" placeholder="Agente de saúde" />
-                        </div>
-                        <div class="mb-2 col-5">
-                            <label class="form-label">Responsável</label>
-                            <input class="form-control" name="responsavel" type="text" placeholder="Responsável se houver" />
-                        </div>
-                        <div class="mb-2 col-4">
-                            <label class="form-label">Profissão</label>
-                            <input class="form-control" name="profissao" type="text" placeholder="Profissão" />
-                        </div>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Cancelar</button>
-                    <button class="btn btn-primary btn-sm" type="submit">Salvar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-
 
 <!-- Modal editarPaciente-->
-<div class="modal fade" id="editarPaciente" tabindex="-1" role="dialog" aria-labelledby="editarPacienteLabel" aria-hidden="true">
+<div class="modal fade" id="editarPacienteModal" tabindex="-1" role="dialog" aria-labelledby="editarPacienteLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-warning">
@@ -249,11 +86,11 @@
                         </div>
                         <div class="mb-2 col-4">
                             <label class="form-label">CPF</label>
-                            <input class="form-control" name="cpf" type="text" placeholder="000.000.000-00" />
+                            <input class="form-control" name="cpf" id="cpf" type="text" placeholder="000.000.000-00" />
                         </div>
                         <div class="mb-2 col-4">
                             <label class="form-label">RG</label>
-                            <input class="form-control" name="identidade" type="text" placeholder="00.000.000" />
+                            <input class="form-control" name="identidade" id="identidade" type="text" placeholder="00.000.000" />
                         </div>
 
                         <div class="mb-2 col-4">
@@ -266,7 +103,7 @@
                         </div>
                         <div class="mb-2 col-3">
                             <label class="form-label">CEP</label>
-                            <input class="form-control" name="cep" id="cep" type="search" placeholder="39999-999" />
+                            <input class="form-control" name="cep" id="cep" type="text" placeholder="39999-999" />
                         </div>
                         <div class="mb-2 col-3">
                             <label class="form-label">Bairro</label>
@@ -305,13 +142,9 @@
 
 <script>
     window.onload = function() {
-        //Cria modal para adição de pacientes
-        var novoPaciente = new bootstrap.Modal(document.getElementById('novoPaciente'), {
-            keyboard: false
-        })
 
         //Cria modal para editar paciente
-        var editarPacienteModal = new bootstrap.Modal(document.getElementById('editarPaciente'), {
+        var editarPacienteModal = new bootstrap.Modal(document.getElementById('editarPacienteModal'), {
             keyboard: false
         })
 
@@ -433,9 +266,9 @@
                 },
                 {
                     className: 'btn btn-falcon-default btn-sm rounded-pill font-weight-light m-1',
-                    text: '<span class="fas fa-plus"></span> Novo paciente',
+                    text: '<i class="fas fa-user-plus"></i> Novo paciente',
                     action: function() {
-                        novoPaciente.toggle()
+                        $('#novoPaciente').modal('show')
                     }
 
                 }

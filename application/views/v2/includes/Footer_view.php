@@ -45,7 +45,7 @@
 <script src="<?= base_url() ?>public/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
 <script src="<?= base_url() ?>public/vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
 <script src="<?= base_url() ?>public/assets/js/init-scripts/data-table/datatables-init.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <!-- ====== -->
 <!-- MODALS -->
 <!-- ====== -->
@@ -138,18 +138,31 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-light">
-                <h5 class="modal-title font-weight-light" id="novoCasaDeApoioLabel"><i class="fas fa-house-user"></i> Adicionar a casa de apoio</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title font-weight-light" id="novoCasaDeApoioLabel"><i class="fas fa-house-user"></i> Adicionar paciente na casa de apoio</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="<?= base_url('v2/regulacao/casa-de-apoio/new') ?>" method="post">
                 <div class="modal-body">
                     <?= $csrf_input ?>
                     <div class="row">
 
-                        <div class="mb-2 col-12 mb-5">
-                            <label for="">Paciente</label>
-                            <select class="js-data-example-ajax" style="width:100%" name="paciente_id">
-                            </select>
+                        <div class="mb-2 col-12">
+                            <label for="">Nome do paciente</label>
+                            <select class="js-data-example-ajax" style="width:100%" name="paciente_id" required></select>
                         </div>
+                        <div class="mb-2 col-6">
+                            <label for="">Data de entrada</label>
+                            <input type="date" name="data_entrada" class="form-control" required>
+                        </div>
+                        <div class="mb-2 col-6">
+                            <label for="">Previsão de saída</label>
+                            <input type="date" name="data_saida" class="form-control" required>
+                        </div>
+
+                        <div class="mb-2 col-12">
+                            <label for="">Observações ou justificativa</label>
+                            <textarea type="date" name="observacao" class="form-control"></textarea>
+                        </div>
+
 
                     </div>
 

@@ -16,7 +16,7 @@
 
 
 <div class="collapse mb-3" id="collapseExample">
-    <div class="border p-card rounded">Nesta página você pode visualizar todos os pacientes, adicionar pacientes, ir para históricos e agendar novos procedimentos.</div>
+    <div class="border p-card rounded">Nesta página você pode visualizar todos os pacientes que utilizaram a casa de apoio e seu periodo de utilização.</div>
 </div>
 
 
@@ -28,35 +28,53 @@
             <thead>
                 <th class="text-dark small text-left">PACIENTE</th>
                 <th class="text-dark small text-left">CPF</th>
+                <th class="text-dark small text-left">ENTRADA</th>
+                <th class="text-dark small text-left">SAÍDA</th>
                 <th class="text-dark small text-center align-middle">OPÇÕES</th>
             </thead>
             <tbody>
-                <?php foreach ($pacientes as $p) { ?>
-                    <tr>
+                <?php foreach ($apoio as $a) : ?>
+                    <tr class="<?= ($a['saiu'] == 1) ? 'text-success' : '' ?>">
                         <td class="small">
-                            <?= $p['nome_paciente'] ?>
+                            <?= $a['nome_paciente'] ?>
                         </td>
-                        <td class="small"><?= $p['cpf'] ?></td>
-
+                        <td class="small">
+                            <?= $a['cpf'] ?>
+                        </td>
+                        <td class="small">
+                            <?= date_format(date_create($a['data_entrada']), 'd/m/Y') ?>
+                        </td>
+                        <td class="small">
+                            <?= date_format(date_create($a['data_saida']), 'd/m/Y') ?>
+                        </td>
 
                         <td class="text-center p-1">
-                            <!-- Example single danger button -->
+                            <?php if ($a['saiu'] == 0) { ?>
+                                <div class="btn-group ">
 
-                            <div class="btn-group ">
-
-                                <div class="btn-group mb-2">
-                                    <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#"><i class="fa fa-database"></i> Históricos</a>
-                                        <div class="dropdown-divider"></div>
-                                        <button class="dropdown-item text-warning editarPacienteButton" data-id="<?= $p['paciente_id'] ?>"><i class="fa fa-edit"></i> Editar paciente</button>
+                                    <div class="btn-group mb-2">
+                                        <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
+                                        <div class="dropdown-menu">
+                                            <button class="dropdown-item text-warning editarRegistrosCasaDeApoioButton" data-apoio_id="<?= $a['apoio_id'] ?>"><i class="fa fa-edit"></i> Editar registro</button>
+                                            <div class="dropdown-divider"></div>
+                                            <button class="dropdown-item text-danger pacienteSaiuButton" data-apoio_id="<?= $a['apoio_id'] ?>"><i class="fa fa-check"></i> Paciente saiu</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            <?php } else { ?>
+                                <div class="btn-group">
+
+                                    <div class="btn-group mb-2">
+                                        <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary disabled" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
+                                        
+                                    </div>
+                                </div>
+                            <?php } ?>
+
 
                         </td>
                     </tr>
-                <?php } ?>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>
@@ -64,45 +82,81 @@
 
 
 
+<!-- Modal editarRegistrosCasaDeApoioModel-->
+<div class="modal fade" id="editarRegistrosCasaDeApoioModel" tabindex="-1" role="dialog" aria-labelledby="editarRegistrosCasaDeApoioLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-warning">
+                <h5 class="modal-title font-weight-light text-white" id="editarRegistrosCasaDeApoioLabel"><i class="fas fa-house-user"></i> Editar registros da casa de apoio</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="<?= base_url('v2/regulacao/casa-de-apoio/editar-registro') ?>" method="post">
+                <div class="modal-body">
+                    <?= $csrf_input ?>
+                    <div class="row">
+                        <input type="hidden" name="apoio_id" id="apoio_id">
+                        <div class="mb-2 col-12">
+                            <label for="#nome_paciente">Nome do paciente</label>
+                            <input type="text" class="form-control disabled" id="nome_paciente" readonly>
+                        </div>
+                        <div class="mb-2 col-6">
+                            <label for="">Data de entrada</label>
+                            <input type="date" name="data_entrada" id="data_entrada" class="form-control" required>
+                        </div>
+                        <div class="mb-2 col-6">
+                            <label for="">Previsão de saída</label>
+                            <input type="date" name="data_saida" id="data_saida" class="form-control" required>
+                        </div>
+
+                        <div class="mb-2 col-12">
+                            <label for="">Observações ou justificativa</label>
+                            <textarea type="date" name="observacao" id="observacao" class="form-control"></textarea>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-primary btn-sm" type="submit">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
 <script>
     window.onload = function() {
 
         //Cria modal para editar paciente
-        // var editarPacienteModal = new bootstrap.Modal(document.getElementById('editarPacienteModal'), {
-        //     keyboard: false
-        // })
+        var editarRegistrosCasaDeApoioModel = new bootstrap.Modal(document.getElementById('editarRegistrosCasaDeApoioModel'), {
+            keyboard: false
+        })
 
 
-        // $('.editarPacienteButton').on('click', function() {
-        //     var paciente_id = this.dataset.id;
-        //     $.ajax({
-        //             method: "POST",
-        //             url: "<?= base_url('v2/pacientes/json/') ?>" + paciente_id,
-        //             data: {
-        //                 <?= $csrf_name ?>: "<?= $csrf_value ?>"
-        //             }
-        //         })
-        //         .done(function(paciente) {
-        //             $('#paciente_id').val(paciente.paciente_id);
-        //             $('#acs').val(paciente.acs);
-        //             $('#bairro_paciente').val(paciente.bairro_paciente);
-        //             $('#cep').val(paciente.cep);
-        //             $('#cns_paciente').val(paciente.cns_paciente);
-        //             $('#cpf').val(paciente.cpf);
-        //             $('#endereco_paciente').val(paciente.endereco_paciente);
-        //             $('#identidade').val(paciente.identidade);
-        //             $('#nascimento').val(paciente.nascimento);
-        //             $('#nome_paciente').val(paciente.nome_paciente);
-        //             $('#profissao').val(paciente.profissao);
-        //             $('#responsavel').val(paciente.responsavel);
-        //             $('#telefone_paciente').val(paciente.telefone_paciente);
+        // ABRE MODAL DE EDITAR
+        $('.editarRegistrosCasaDeApoioButton').on('click', function() {
+            var apoio_id = this.dataset.apoio_id;
+            $.ajax({
+                    method: "POST",
+                    url: "<?= base_url('v2/regulacao/casa-de-apoio/json/') ?>" + apoio_id,
+                    data: {
+                        <?= $csrf_name ?>: "<?= $csrf_value ?>"
+                    }
+                })
+                .done(function(casa_de_apoio) {
+                    $('#apoio_id').val(casa_de_apoio.apoio_id);
+                    $('#nome_paciente').val(casa_de_apoio.nome_paciente);
+                    $('#data_entrada').val(casa_de_apoio.data_entrada);
+                    $('#data_saida').val(casa_de_apoio.data_saida);
+                    $('#observacao').val(casa_de_apoio.observacao);
 
-        //         });
-        //     editarPacienteModal.toggle()
-        // });
+                });
+            editarRegistrosCasaDeApoioModel.toggle()
+        });
 
 
-        //Add input de filtro às colunas
+        //ADICIONANDO FILTRO AS COLUNAS
         $('#casaDeApoioTable thead th').each(function() {
             let title = $(this).text();
             if (title == '' || title == 'OPÇÕES') {
@@ -166,6 +220,12 @@
                 },
                 {
                     "bSortable": false
+                },
+                {
+                    "bSortable": false
+                },
+                {
+                    "bSortable": false
                 }
             ],
             dom: 'Brtip',
@@ -174,7 +234,7 @@
                     extend: 'print',
                     text: '<i class="fa fa-print"></i> imprimir',
                     exportOptions: {
-                        columns: [0, 1, 2]
+                        columns: [0, 1, 2, 3, 4]
                     },
                     customize: function(win) {
                         $(win.document.body)
@@ -199,5 +259,25 @@
 
             ]
         });
+
+
+        //CONFIRMAR REMOÇÃO DO PACIENTE 
+        $('.pacienteSaiuButton').on('click', function() {
+            Swal.fire({
+                title: 'Confirma a saída do paciente?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: `Sim`,
+                icon: 'question',
+                showCancelButton: false,
+                denyButtonText: `Não, cancelar`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.replace("<?= base_url('v2/regulacao/casa-de-apoio/update-status/') ?>" + this.dataset.apoio_id);
+                } else if (result.isDenied) {
+                    Swal.fire('Alteração não foi realizada.', '', 'info')
+                }
+            })
+        })
     }
 </script>

@@ -1,15 +1,12 @@
 <!DOCTYPE html>
-<html lang="en-US" dir="ltr">
+<html lang="pt-BR" dir="ltr">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- ===============================================-->
-    <!--    Document Title-->
-    <!-- ===============================================-->
-    <title>INFOSUS | Dashboard</title>
+    <title>INFOSUS | <?= $title ?? '' ?></title>
 
     <!-- ===============================================-->
     <!--    Favicons-->

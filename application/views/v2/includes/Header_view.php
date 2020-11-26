@@ -150,10 +150,23 @@
                                         </ul>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link dropdown-indicator <?= (segment(3) == 'tfd') ? 'active collapsed' : '' ?>" href="#tfdNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="tfdNav"><i class="fas fa-file-medical ml-1"></i> TFD</a>
-                                        <ul class="nav collapse <?= (segment(2) == 'tfd') ? 'show' : '' ?>" id="tfdNav" data-parent="#regulacaoNav">
-                                            <li class="nav-item"><a class="nav-link" href="<?= base_url('v2/regulacao/tfd/listagem') ?>"><i class="fas fa-clipboard-list"></i> Lista</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#modal"><i class="fas fa-notes-medical"></i> Novo TFD</a></li>
+                                        <a class="nav-link dropdown-indicator <?= (segment(3) == 'tfd') ? 'active collapsed' : '' ?>" href="#TfdNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="TfdNav"><i class="fas fa-file-medical ml-1"></i> Tfd</a>
+                                        <ul class="nav collapse <?= (segment(2) == 'tfd') ? 'show' : '' ?>" id="TfdNav" data-parent="#regulacaoNav">
+                                            <li class="nav-item">
+                                                <a class="nav-link <?= (segment(4) == 'fila') ? 'active' : '' ?>" href="#"><i class="fas fa-sort-amount-down"></i> Fila</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link <?= (segment(4) == 'agendados') ? 'active' : '' ?>" href="#"><i class="far fa-calendar-alt"></i> Agendados</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link <?= (segment(4) == 'realizados') ? 'active' : '' ?>" href="#"><i class="far fa-calendar-check text-success"></i> Realizados</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link <?= (segment(4) == 'reprimidos') ? 'active' : '' ?>" href="#"><i class="far fa-calendar-times text-danger"></i> Reprimidos</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#modal"><i class="far fa-calendar-plus"></i> Novo procedimento</a>
+                                            </li>
                                         </ul>
                                     </li>
                                 </ul>

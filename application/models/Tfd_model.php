@@ -1,15 +1,14 @@
 <?php
 
 /**
- * Classe para manipulação da tabela casa_de_apoio
+ * Classe para manipulação da tabela tfd
  */
-class Casa_de_apoio extends CI_model
+class Tfd_model extends CI_model
 {
-
-    protected $table = 'casa_de_apoio';
+    protected $table = 'tfd';
 
     /**
-     * Busca todas os casa_de_apoio
+     * Busca todas os Tfd
      * Recebe um array(opcional)
      */
     public function getAll(array $where = []): array
@@ -18,7 +17,7 @@ class Casa_de_apoio extends CI_model
     }
 
     /**
-     * Atualiza um casa_de_apoio
+     * Atualiza um tfd
      * Recebe um array
      */
     public function update(array $where, array $dados): void
@@ -27,7 +26,7 @@ class Casa_de_apoio extends CI_model
     }
 
     /**
-     * Insere um registro em casa_de_apoio
+     * Insere um registro em tfd
      * Recebe um array
      */
     public function insert(array $dados): void
@@ -38,10 +37,9 @@ class Casa_de_apoio extends CI_model
     /**
      * 
      */
-    public function porPaciente(array $where = [])
+    public function porPaciente(array $where = []): array
     {
-        $this->db->join('pacientes', 'casa_de_apoio.paciente_id =  pacientes.paciente_id');
-        return $this->db->get_where($this->table, $where)->result_array();
+        $this->db->join('pacientes', 'tfd.paciente_id =  pacientes.paciente_id');
+        return $this->db->get_where('tfd', $where)->result_array();
     }
-    
 }

@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Classe para manipulação da tabela tfd
+ * Classe para manipulação da tabela especialidades
  */
-class Tfd extends CI_model
+class Especialidades_model extends CI_model
 {
-    protected $table = 'tfd';
+    protected $table = 'especialidades';
 
     /**
-     * Busca todas os Tfd
+     * Busca todas as especialidades
      * Recebe um array(opcional)
      */
     public function getAll(array $where = []): array
@@ -16,8 +16,9 @@ class Tfd extends CI_model
         return $this->db->get_where($this->table, $where)->result_array();
     }
 
+
     /**
-     * Atualiza um tfd
+     * Atualiza uma especialidades
      * Recebe um array
      */
     public function update(array $where, array $dados): void
@@ -26,20 +27,11 @@ class Tfd extends CI_model
     }
 
     /**
-     * Insere um registro em tfd
+     * Insere um registro em especialidades
      * Recebe um array
      */
     public function insert(array $dados): void
     {
         $this->db->insert($this->table, $dados);
-    }
-
-    /**
-     * 
-     */
-    public function porPaciente(array $where = []): array
-    {
-        $this->db->join('pacientes', 'tfd.paciente_id =  pacientes.paciente_id');
-        return $this->db->get_where('tfd', $where)->result_array();
     }
 }

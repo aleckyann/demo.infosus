@@ -36,15 +36,15 @@ $autoload['language'] = array();
 
 
 $autoload['model'] = array(
-    'Especialidades',
-    'Auth',
-    'Casa_de_apoio',
-    'Dashboard_model',
-    'Pacientes',
-    'Procedimentos',
-    'Tabela_proced',
-    'Tfd',
-    'Usuarios',
-    'Veiculos',
-    'Viagens'
+    'Especialidades_model' => 'Especialidades',
+    'Auth_model' => 'Auth',
+    'CasaDeApoio_model' => 'Casa_de_apoio',
+    'Dashboard_model' => 'Dashboard',
+    'Pacientes_model' => 'Pacientes',
+    'Procedimentos_model' => 'Procedimentos',
+    'TabelaProced_model' => 'Tabela_proced',
+    'Tfd_model' => 'Tfd',
+    'Usuarios_model' => 'Usuarios',
+    'Veiculos_model' => 'Veiculos',
+    'Viagens_model' => 'Viagens'
 );

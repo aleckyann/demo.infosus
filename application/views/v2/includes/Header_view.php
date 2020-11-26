@@ -93,31 +93,31 @@
                         </div>
                         <ul class="navbar-nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link dropdown-indicator <?= (segment(3) == 'pacientes') ? 'active' : '' ?>" href="#pacientesNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="pacientesNav">
+                                <a class="nav-link dropdown-indicator <?= (segment(2) == 'pacientes') ? 'active' : '' ?>" href="#pacientesNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="pacientesNav">
                                     <div class="d-flex align-items-center">
                                         <span class="nav-link-icon"><i class="fas fa-user-injured"></i></span>
                                         <span class="nav-link-text"> Pacientes</span>
                                     </div>
                                 </a>
-                                <ul class="nav collapse <?= (segment(3) == 'pacientes') ? 'show' : '' ?>" id="pacientesNav" data-parent="#navbarVerticalCollapse">
-                                    <li class="nav-item"><a class="nav-link <?= (segment(4) == 'listagem') ? 'active' : '' ?>" href="<?= base_url('v2/pacientes/listagem') ?>"><i class="fas fa-clipboard-list mr-1"></i> Lista</a></li>
+                                <ul class="nav collapse <?= (segment(2) == 'pacientes') ? 'show' : '' ?>" id="pacientesNav" data-parent="#navbarVerticalCollapse">
+                                    <li class="nav-item"><a class="nav-link <?= (segment(3) == 'listagem') ? 'active' : '' ?>" href="<?= base_url('v2/pacientes/listagem') ?>"><i class="fas fa-clipboard-list mr-1"></i> Lista</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#novoPaciente"><i class=" fas fa-user-plus"></i> Novo paciente</a></li>
                                 </ul>
 
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link dropdown-indicator <?= (segment(3) == 'regulacao') ? 'active' : '' ?>" href="#regulacaoNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="regulacaoNav">
+                                <a class="nav-link dropdown-indicator <?= (segment(2) == 'regulacao') ? 'active' : '' ?>" href="#regulacaoNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="regulacaoNav">
                                     <div class="d-flex align-items-center"><span class="nav-link-icon"><i class="fas fa-balance-scale"></i></span><span class="nav-link-text"> Regulação</span></div>
                                 </a>
-                                <ul class="nav collapse <?= (segment(3) == 'regulacao') ? 'show' : '' ?>" id="regulacaoNav" data-parent="#navbarVerticalCollapse">
+                                <ul class="nav collapse <?= (segment(2) == 'regulacao') ? 'show' : '' ?>" id="regulacaoNav" data-parent="#navbarVerticalCollapse">
                                     <li class="nav-item">
-                                        <a class="nav-link dropdown-indicator <?= (segment(4) == 'casa-de-apoio') ? 'active collapsed' : '' ?>" href="#casaDeApoioNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="casaDeApoioNav"><i class="fas fa-house-user"></i> Casa de apoio</a>
-                                        <ul class="nav collapse <?= (segment(4) == 'casa-de-apoio') ? 'show' : '' ?>" id="casaDeApoioNav" data-parent="#regulacaoNav">
+                                        <a class="nav-link dropdown-indicator <?= (segment(3) == 'casa-de-apoio') ? 'active collapsed' : '' ?>" href="#casaDeApoioNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="casaDeApoioNav"><i class="fas fa-house-user"></i> Casa de apoio</a>
+                                        <ul class="nav collapse <?= (segment(3) == 'casa-de-apoio') ? 'show' : '' ?>" id="casaDeApoioNav" data-parent="#regulacaoNav">
                                             <li class="nav-item">
-                                                <a class="nav-link <?= (segment(5) == 'agendados') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/casa-de-apoio/agendados') ?>"><i class="far fa-calendar-alt"></i> Agendados</a>
+                                                <a class="nav-link <?= (segment(4) == 'agendados') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/casa-de-apoio/agendados') ?>"><i class="far fa-calendar-alt"></i> Agendados</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link <?= (segment(5) == 'historico') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/casa-de-apoio/historico') ?>"><i class="fas fa-history"></i> Histórico de uso</a>
+                                                <a class="nav-link <?= (segment(4) == 'historico') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/casa-de-apoio/historico') ?>"><i class="fas fa-history"></i> Histórico de uso</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" href="#" data-toggle="modal" data-target="#novoCasaDeApoio"><i class="fas fa-clinic-medical"></i> Novo paciente</a>
@@ -126,14 +126,27 @@
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link dropdown-indicator" href="#procedimentosNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="procedimentosNav"><i class="fas fa-file-medical ml-1"></i> Procedimentos</a>
-                                        <ul class="nav collapse" id="procedimentosNav" data-parent="#regulacaoNav">
-                                            <li class="nav-item"><a class="nav-link" href="<?= base_url('v2/regulacao/procedimentos/listagem') ?>"><i class="fas fa-clipboard-list"></i> Lista</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#modal"><i class="fas fa-notes-medical"></i> Novo procedimento</a></li>
+                                        <ul class="nav  <?= (segment(2) == 'regulacao') ? 'show' : '' ?>" id="procedimentosNav" data-parent="#regulacaoNav">
+                                            <li class="nav-item">
+                                                <a class="nav-link <?= (segment(4) == 'fila') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/procedimentos/fila') ?>"><i class="fas fa-sort-amount-down"></i> Fila</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link <?= (segment(4) == 'agendados') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/procedimentos/agendados') ?>"><i class="far fa-calendar-alt"></i> Agendados</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link <?= (segment(4) == 'realizados') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/procedimentos/realizados') ?>"><i class="far fa-calendar-check text-success"></i> Realizados</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link <?= (segment(4) == 'reprimidos') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/procedimentos/reprimidos') ?>"><i class="far fa-calendar-times text-danger"></i> Reprimidos</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#modal"><i class="far fa-calendar-plus"></i> Novo procedimento</a>
+                                            </li>
                                         </ul>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link dropdown-indicator" href="#tfdNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="tfdNav"><i class="fas fa-file-medical ml-1"></i> TFD</a>
-                                        <ul class="nav collapse" id="tfdNav" data-parent="#regulacaoNav">
+                                        <ul class="nav collapse <?= (segment(2) == 'regulacao') ? 'show' : '' ?>" id="tfdNav" data-parent="#regulacaoNav">
                                             <li class="nav-item"><a class="nav-link" href="<?= base_url('v2/regulacao/tfd/listagem') ?>"><i class="fas fa-clipboard-list"></i> Lista</a></li>
                                             <li class="nav-item"><a class="nav-link" href="#modal"><i class="fas fa-notes-medical"></i> Novo TFD</a></li>
                                         </ul>
@@ -203,6 +216,6 @@
                 <!-- <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="<?= base_url('v2/inicio') ?>">Página inicial</a></li>
-                        <li class="breadcrumb-item"><?= segment(3) ?></li>
+                        <li class="breadcrumb-item"><?= segment(2) ?></li>
                     </ol>
                 </nav> -->

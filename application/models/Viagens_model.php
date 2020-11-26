@@ -3,7 +3,7 @@
 /**
  * Classe para manipulação da tabela viagens
  */
-class Viagens extends CI_model
+class Viagens_model extends CI_model
 {
     protected $table = 'viagens';
 

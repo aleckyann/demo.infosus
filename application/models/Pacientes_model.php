@@ -3,7 +3,7 @@
 /**
  * Classe para manipulação da tabela pacientes
  */
-class Pacientes extends CI_model
+class Pacientes_model extends CI_model
 {
     protected $table = 'pacientes';
 

@@ -1,11 +1,11 @@
 <div class="d-flex mb-2">
     <span class="fa-stack mr-2 ml-n1">
         <i class="fas fa-circle fa-stack-2x text-300"></i>
-        <i class="far fa-calendar-times fa-inverse fa-stack-1x text-primary"></i>
+        <i class="far fa-calendar-check fa-inverse fa-stack-1x text-primary"></i>
     </span>
     <div class="flex-1 mt-1">
         <h5 class="mb-0 text-primary position-relative">
-            <span class="bg-200 pr-3">Procedimentos reprimidos</span>
+            <span class="bg-200 pr-3">Procedimentos realizados</span>
             <span class="border position-absolute top-50 translate-middle-y w-100 left-0 z-index--1"></span>
         </h5>
         <a class="float-right btn" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">

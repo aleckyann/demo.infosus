@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Classe para manipulação da tabela especialidades
+ * Classe para manipulação da tabela usuarios
  */
-class Especialidades extends CI_model
+class Usuarios_model extends CI_model
 {
-    protected $table = 'especialidades';
+    protected $table = 'usuarios';
 
     /**
-     * Busca todas as especialidades
+     * Busca todas os usuarios
      * Recebe um array(opcional)
      */
     public function getAll(array $where = []): array
@@ -16,9 +16,8 @@ class Especialidades extends CI_model
         return $this->db->get_where($this->table, $where)->result_array();
     }
 
-
     /**
-     * Atualiza uma especialidades
+     * Atualiza um usuarios
      * Recebe um array
      */
     public function update(array $where, array $dados): void
@@ -27,7 +26,7 @@ class Especialidades extends CI_model
     }
 
     /**
-     * Insere um registro em especialidades
+     * Insere um registro em usuarios
      * Recebe um array
      */
     public function insert(array $dados): void

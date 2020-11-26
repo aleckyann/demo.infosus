@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Classe para manipulação da tabela usuarios
+ * Classe para manipulação da tabela veiculos
  */
-class Usuarios extends CI_model
+class Veiculos_model extends CI_model
 {
-    protected $table = 'usuarios';
+    protected $table = 'veiculos';
 
     /**
-     * Busca todas os usuarios
+     * Busca todas os veiculos
      * Recebe um array(opcional)
      */
     public function getAll(array $where = []): array
@@ -17,7 +17,7 @@ class Usuarios extends CI_model
     }
 
     /**
-     * Atualiza um usuarios
+     * Atualiza um veiculos
      * Recebe um array
      */
     public function update(array $where, array $dados): void
@@ -26,7 +26,7 @@ class Usuarios extends CI_model
     }
 
     /**
-     * Insere um registro em usuarios
+     * Insere um registro em veiculos
      * Recebe um array
      */
     public function insert(array $dados): void

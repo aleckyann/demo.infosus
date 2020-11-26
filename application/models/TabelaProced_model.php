@@ -3,7 +3,7 @@
 /**
  * Classe para manipulação da tabela tabela_proced
  */
-class Tabela_proced extends CI_model
+class TabelaProced_model extends CI_model
 {
     protected $table = 'tabela_proced';
 

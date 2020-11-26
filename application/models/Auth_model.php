@@ -3,7 +3,7 @@
 /**
  * Classe para autenticação de usuario
  */
-class Auth extends CI_model
+class Auth_model extends CI_model
 {
 
     /**

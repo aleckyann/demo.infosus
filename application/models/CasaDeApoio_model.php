@@ -1,14 +1,15 @@
 <?php
 
 /**
- * Classe para manipulação da tabela veiculos
+ * Classe para manipulação da tabela casa_de_apoio
  */
-class Veiculos extends CI_model
+class CasaDeApoio_model extends CI_model
 {
-    protected $table = 'veiculos';
+
+    protected $table = 'casa_de_apoio';
 
     /**
-     * Busca todas os veiculos
+     * Busca todas os casa_de_apoio
      * Recebe um array(opcional)
      */
     public function getAll(array $where = []): array
@@ -17,7 +18,7 @@ class Veiculos extends CI_model
     }
 
     /**
-     * Atualiza um veiculos
+     * Atualiza um casa_de_apoio
      * Recebe um array
      */
     public function update(array $where, array $dados): void
@@ -26,11 +27,21 @@ class Veiculos extends CI_model
     }
 
     /**
-     * Insere um registro em veiculos
+     * Insere um registro em casa_de_apoio
      * Recebe um array
      */
     public function insert(array $dados): void
     {
         $this->db->insert($this->table, $dados);
     }
+
+    /**
+     * 
+     */
+    public function porPaciente(array $where = [])
+    {
+        $this->db->join('pacientes', 'casa_de_apoio.paciente_id =  pacientes.paciente_id');
+        return $this->db->get_where($this->table, $where)->result_array();
+    }
+    
 }

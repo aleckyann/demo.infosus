@@ -102,22 +102,29 @@
                                         <span class="nav-link-text"> Pacientes</span>
                                     </div>
                                 </a>
-                                <ul class="nav collapse" id="pacientesNav" data-parent="#navbarVerticalCollapse">
+                                <ul class="nav collapse <?= (segment(3) == 'pacientes') ? 'show' : '' ?>" id="pacientesNav" data-parent="#navbarVerticalCollapse">
                                     <li class="nav-item"><a class="nav-link <?= (segment(4) == 'listagem') ? 'active' : '' ?>" href="<?= base_url('v2/pacientes/listagem') ?>"><i class="fas fa-clipboard-list mr-1"></i> Lista</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#novoPaciente"><i class=" fas fa-user-plus"></i> Novo paciente</a></li>
                                 </ul>
 
                             </li>
-                            <li class=" nav-item">
-                                <a class="nav-link dropdown-indicator" href="#regulacaoNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="regulacaoNav">
+                            <li class="nav-item">
+                                <a class="nav-link dropdown-indicator <?= (segment(3) == 'regulacao') ? 'active' : '' ?>" href="#regulacaoNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="regulacaoNav">
                                     <div class="d-flex align-items-center"><span class="nav-link-icon"><i class="fas fa-balance-scale"></i></span><span class="nav-link-text"> Regulação</span></div>
                                 </a>
-                                <ul class="nav collapse" id="regulacaoNav" data-parent="#navbarVerticalCollapse">
+                                <ul class="nav collapse <?= (segment(3) == 'regulacao') ? 'show' : '' ?>" id="regulacaoNav" data-parent="#navbarVerticalCollapse">
                                     <li class="nav-item">
-                                        <a class="nav-link dropdown-indicator" href="#casaDeApoioNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="casaDeApoioNav"><i class="fas fa-clinic-medical"></i> Casa de apoio</a>
-                                        <ul class="nav collapse" id="casaDeApoioNav" data-parent="#regulacaoNav">
-                                            <li class="nav-item"><a class="nav-link" href="<?= base_url('v2/regulacao/casa-de-apoio/listagem') ?>"><i class="fas fa-clipboard-list ml-1"></i> Lista</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#novoCasaDeApoio"><i class="fas fa-house-user"></i> Novo paciente</a></li>
+                                        <a class="nav-link dropdown-indicator <?= (segment(4) == 'casa-de-apoio') ? 'active collapsed' : '' ?>" href="#casaDeApoioNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="casaDeApoioNav"><i class="fas fa-house-user"></i> Casa de apoio</a>
+                                        <ul class="nav collapse <?= (segment(4) == 'casa-de-apoio') ? 'show' : '' ?>" id="casaDeApoioNav" data-parent="#regulacaoNav">
+                                            <li class="nav-item">
+                                                <a class="nav-link <?= (segment(5) == 'agendados') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/casa-de-apoio/agendados') ?>"><i class="far fa-calendar-alt"></i> Agendados</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link <?= (segment(5) == 'historico') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/casa-de-apoio/historico') ?>"><i class="fas fa-history"></i> Histórico de uso</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#" data-toggle="modal" data-target="#novoCasaDeApoio"><i class="fas fa-clinic-medical"></i> Novo paciente</a>
+                                            </li>
                                         </ul>
                                     </li>
                                     <li class="nav-item">

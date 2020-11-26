@@ -5,7 +5,7 @@
     </span>
     <div class="flex-1 mt-1">
         <h5 class="mb-0 text-primary position-relative">
-            <span class="bg-200 pr-3">Casa de apoio</span>
+            <span class="bg-200 pr-3">Utilizações agendadas</span>
             <span class="border position-absolute top-50 translate-middle-y w-100 left-0 z-index--1"></span>
         </h5>
         <a class="float-right btn" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -16,7 +16,7 @@
 
 
 <div class="collapse mb-3" id="collapseExample">
-    <div class="border p-card rounded">Nesta página você pode visualizar todos os pacientes que utilizaram a casa de apoio e seu periodo de utilização.</div>
+    <div class="border p-card rounded">Nesta página você pode visualizar todos os agendamentos de utilização da <b>casa de apoio.</b></div>
 </div>
 
 
@@ -24,59 +24,48 @@
     <?= $this->ui->alert_flashdata() ?>
 
     <div class="card-body">
-        <table id="casaDeApoioTable" class="table table-striped">
-            <thead>
-                <th class="text-dark small text-left">PACIENTE</th>
-                <th class="text-dark small text-left">CPF</th>
-                <th class="text-dark small text-left">ENTRADA</th>
-                <th class="text-dark small text-left">SAÍDA</th>
-                <th class="text-dark small text-center align-middle">OPÇÕES</th>
-            </thead>
-            <tbody>
-                <?php foreach ($apoio as $a) : ?>
-                    <tr class="<?= ($a['saiu'] == 1) ? 'text-success' : '' ?>">
-                        <td class="small">
-                            <?= $a['nome_paciente'] ?>
-                        </td>
-                        <td class="small">
-                            <?= $a['cpf'] ?>
-                        </td>
-                        <td class="small">
-                            <?= date_format(date_create($a['data_entrada']), 'd/m/Y') ?>
-                        </td>
-                        <td class="small">
-                            <?= date_format(date_create($a['data_saida']), 'd/m/Y') ?>
-                        </td>
 
-                        <td class="text-center p-1">
-                            <?php if ($a['saiu'] == 0) { ?>
-                                <div class="btn-group ">
+                <table id="casaDeApoioAgendadosTable" class="table table-striped table-hover">
+                    <thead>
+                        <th class="text-dark small text-left">PACIENTE</th>
+                        <th class="text-dark small text-left">CPF</th>
+                        <th class="text-dark small text-left">ENTRADA</th>
+                        <th class="text-dark small text-left">SAÍDA</th>
+                        <th class="text-dark small text-center align-middle">OPÇÕES</th>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($apoio as $a) : ?>
+                            <tr>
+                                <td class="small">
+                                    <?= $a['nome_paciente'] ?>
+                                </td>
+                                <td class="small">
+                                    <?= $a['cpf'] ?>
+                                </td>
+                                <td class="small">
+                                    <?= date_format(date_create($a['data_entrada']), 'd/m/Y') ?>
+                                </td>
+                                <td class="small">
+                                    <?= date_format(date_create($a['data_saida']), 'd/m/Y') ?>
+                                </td>
 
-                                    <div class="btn-group mb-2">
-                                        <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
-                                        <div class="dropdown-menu">
-                                            <button class="dropdown-item text-warning editarRegistrosCasaDeApoioButton" data-apoio_id="<?= $a['apoio_id'] ?>"><i class="fa fa-edit"></i> Editar registro</button>
-                                            <div class="dropdown-divider"></div>
-                                            <button class="dropdown-item text-danger pacienteSaiuButton" data-apoio_id="<?= $a['apoio_id'] ?>"><i class="fa fa-check"></i> Paciente saiu</button>
+                                <td class="text-center p-1">
+                                    <div class="btn-group">
+                                        <div class="btn-group mb-2">
+                                            <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
+                                            <div class="dropdown-menu">
+                                                <button class="dropdown-item text-warning editarRegistrosCasaDeApoioButton" data-apoio_id="<?= $a['apoio_id'] ?>"><i class="fa fa-edit"></i> Editar registro</button>
+                                                <div class="dropdown-divider"></div>
+                                                <button class="dropdown-item text-danger pacienteSaiuButton" data-apoio_id="<?= $a['apoio_id'] ?>"><i class="fa fa-check"></i> Paciente saiu</button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            <?php } else { ?>
-                                <div class="btn-group">
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
 
-                                    <div class="btn-group mb-2">
-                                        <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary disabled" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
-                                        
-                                    </div>
-                                </div>
-                            <?php } ?>
-
-
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
     </div>
 </div>
 
@@ -157,7 +146,7 @@
 
 
         //ADICIONANDO FILTRO AS COLUNAS
-        $('#casaDeApoioTable thead th').each(function() {
+        $('#casaDeApoioAgendadosTable thead th').each(function() {
             let title = $(this).text();
             if (title == '' || title == 'OPÇÕES') {
 
@@ -177,8 +166,7 @@
         });
 
 
-
-        $('#casaDeApoioTable').DataTable({
+        $('#casaDeApoioAgendadosTable').DataTable({
             initComplete: function() {
                 this.api().columns().every(function() {
                     let that = this;
@@ -259,6 +247,9 @@
 
             ]
         });
+
+
+        
 
 
         //CONFIRMAR REMOÇÃO DO PACIENTE 

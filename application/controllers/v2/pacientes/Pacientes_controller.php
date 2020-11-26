@@ -11,6 +11,7 @@ class Pacientes_controller extends Sistema_Controller
         $data['pacientes'] = $this->Pacientes->getAll();
         $this->view('pacientes/Listagem_view', $data);
     }
+    
 
     public function edit(): void
     {

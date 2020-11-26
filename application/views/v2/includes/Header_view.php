@@ -125,7 +125,7 @@
                                         </ul>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link dropdown-indicator" href="#procedimentosNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="procedimentosNav"><i class="fas fa-file-medical ml-1"></i> Procedimentos</a>
+                                        <a class="nav-link dropdown-indicator <?= (segment(3) == 'procedimentos') ? 'active collapsed' : '' ?>" href="#procedimentosNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="procedimentosNav"><i class="fas fa-file-medical ml-1"></i> Procedimentos</a>
                                         <ul class="nav  <?= (segment(2) == 'regulacao') ? 'show' : '' ?>" id="procedimentosNav" data-parent="#regulacaoNav">
                                             <li class="nav-item">
                                                 <a class="nav-link <?= (segment(4) == 'fila') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/procedimentos/fila') ?>"><i class="fas fa-sort-amount-down"></i> Fila</a>

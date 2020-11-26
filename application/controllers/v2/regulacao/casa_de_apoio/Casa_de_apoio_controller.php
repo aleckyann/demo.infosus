@@ -51,7 +51,7 @@ class Casa_de_apoio_controller extends Sistema_Controller
             ['saiu'=>1]
         );
         $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> Registro alterado com sucesso');
-        redirect('v2/regulacao/casa-de-apoio/listagem');
+        redirect('v2/regulacao/casa-de-apoio/agendados');
     }
 
 

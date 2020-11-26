@@ -151,7 +151,7 @@
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link dropdown-indicator" href="#tfdNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="tfdNav"><i class="fas fa-file-medical ml-1"></i> TFD</a>
-                                        <ul class="nav collapse <?= (segment(2) == 'regulacao') ? 'show' : '' ?>" id="tfdNav" data-parent="#regulacaoNav">
+                                        <ul class="nav collapse <?= (segment(2) == 'tfd') ? 'show' : '' ?>" id="tfdNav" data-parent="#regulacaoNav">
                                             <li class="nav-item"><a class="nav-link" href="<?= base_url('v2/regulacao/tfd/listagem') ?>"><i class="fas fa-clipboard-list"></i> Lista</a></li>
                                             <li class="nav-item"><a class="nav-link" href="#modal"><i class="fas fa-notes-medical"></i> Novo TFD</a></li>
                                         </ul>

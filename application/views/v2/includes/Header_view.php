@@ -119,7 +119,7 @@
                                 <ul class="nav collapse <?= (segment(2) == 'regulacao') ? 'show' : '' ?>" id="regulacaoNav" data-parent="#navbarVerticalCollapse">
                                     <li class="nav-item">
                                         <a class="nav-link dropdown-indicator <?= (segment(3) == 'casa-de-apoio') ? 'active collapsed' : '' ?>" href="#casaDeApoioNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="casaDeApoioNav"><i class="fas fa-house-user"></i> Casa de apoio</a>
-                                        <ul class="nav collapse <?= (segment(2) == 'casa-de-apoio') ? 'show' : '' ?>" id="casaDeApoioNav" data-parent="#regulacaoNav">
+                                        <ul class="nav collapse <?= (segment(3) == 'casa-de-apoio') ? 'show' : '' ?>" id="casaDeApoioNav" data-parent="#regulacaoNav">
                                             <li class="nav-item">
                                                 <a class="nav-link <?= (segment(4) == 'agendados') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/casa-de-apoio/agendados') ?>"><i class="far fa-calendar-alt"></i> Agendados</a>
                                             </li>
@@ -133,7 +133,7 @@
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link dropdown-indicator <?= (segment(3) == 'procedimentos') ? 'active collapsed' : '' ?>" href="#procedimentosNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="procedimentosNav"><i class="fas fa-file-medical ml-1"></i> Procedimentos</a>
-                                        <ul class="nav collapse <?= (segment(2) == 'procedimentos') ? 'show' : '' ?>" id="procedimentosNav" data-parent="#regulacaoNav">
+                                        <ul class="nav collapse <?= (segment(3) == 'procedimentos') ? 'show' : '' ?>" id="procedimentosNav" data-parent="#regulacaoNav">
                                             <li class="nav-item">
                                                 <a class="nav-link <?= (segment(4) == 'fila') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/procedimentos/fila') ?>"><i class="fas fa-sort-amount-down"></i> Fila</a>
                                             </li>
@@ -153,7 +153,7 @@
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link dropdown-indicator <?= (segment(3) == 'tfd') ? 'active collapsed' : '' ?>" href="#TfdNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="TfdNav"><i class="fas fa-file-medical ml-1"></i> Tfd</a>
-                                        <ul class="nav collapse <?= (segment(2) == 'tfd') ? 'show' : '' ?>" id="TfdNav" data-parent="#regulacaoNav">
+                                        <ul class="nav collapse <?= (segment(3) == 'tfd') ? 'show' : '' ?>" id="TfdNav" data-parent="#regulacaoNav">
                                             <li class="nav-item">
                                                 <a class="nav-link <?= (segment(4) == 'fila') ? 'active' : '' ?>" href="#"><i class="fas fa-sort-amount-down"></i> Fila</a>
                                             </li>

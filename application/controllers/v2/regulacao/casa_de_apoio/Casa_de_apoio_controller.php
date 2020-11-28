@@ -8,6 +8,7 @@ class Casa_de_apoio_controller extends Sistema_Controller
 
     public function agendados(): void
     {
+        $data['title'] = 'Lista de pacientes agendados'; 
         $dados['apoio'] = $this->Casa_de_apoio->porPaciente(['saiu'=>0]);
         $this->view('regulacao/casa_de_apoio/Agendados_view', $dados);
     }
@@ -15,6 +16,7 @@ class Casa_de_apoio_controller extends Sistema_Controller
     
     public function historico(): void
     {
+        $data['title'] = 'Histórico de utilização da casa de apoio'; 
         $dados['apoio'] = $this->Casa_de_apoio->porPaciente(['saiu'=>1]);
         $this->view('regulacao/casa_de_apoio/Historico_view', $dados);
     }

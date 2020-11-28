@@ -24,7 +24,6 @@ class Procedimentos_controller extends Sistema_Controller
     public function novo(): void
     {
         $dados = $this->input->post();
-        pre($dados);
         $this->Procedimentos->insert($dados);
 
         $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> Procedimento adicionado À fila com sucesso');
@@ -38,7 +37,6 @@ class Procedimentos_controller extends Sistema_Controller
     public function agendar(): void
     {
         $dados = $this->input->post();
-        pre($dados);
         // $this->Procedimentos->insert($dados);
 
         // $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> Procedimento agendado com sucesso');

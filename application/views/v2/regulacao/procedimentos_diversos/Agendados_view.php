@@ -216,9 +216,9 @@
 
 
         //CONFIRMAR REMOÇÃO DO PACIENTE 
-        $('.removerProcedimento_button').on('click', function() {
+        $("#procedimentosAgendados_datatable").on("click", ".removerProcedimento_button", function() {
             Swal.fire({
-                title: 'Confirma a saída do paciente?',
+                title: 'Quer realmente reprimir esse procedimento?',
                 showDenyButton: true,
                 showCancelButton: true,
                 confirmButtonText: `Sim`,
@@ -227,11 +227,11 @@
                 denyButtonText: `Não, cancelar`,
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.replace("<?= base_url('v2/regulacao/casa-de-apoio/update-status/') ?>" + this.dataset.procedimento_id);
+                    window.location.replace("<?= base_url('v2/regulacao/procedimentos/reprimir/') ?>" + this.dataset.procedimento_id);
                 } else if (result.isDenied) {
                     Swal.fire('Alteração não foi realizada.', '', 'info')
                 }
             })
-        })
+        });
     }
 </script>

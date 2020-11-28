@@ -40,7 +40,11 @@ class Pacientes_model extends CI_model
         return $this->db->like($where)->select('paciente_id id, nome_paciente text')->get_where($this->table)->result_array();
     }
 
-    public function getJsonDatatable(array $where = [])
+    
+    /**
+     * Retorna no formato para utilização no plugin select2
+     */
+    public function getJsonSelect2(array $where = [])
     {
         $dados['results'] = $this->db->like($where)->select('paciente_id id, nome_paciente text')->get($this->table)->result_array();
 

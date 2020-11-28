@@ -49,10 +49,14 @@ class Pacientes_controller extends Sistema_Controller
             ->set_output(json_encode($this->Pacientes->getAll(['paciente_id' => $paciente_id])[0]));
     }
 
-    public function jsonDatatable()
+    /**
+     * POST: v2/pacientes/json/select2
+     * Retorna pacientes para o plugin select2
+     */
+    public function select2()
     {
         $dados = $this->input->post();
-        $resultado = $this->Pacientes->getJsonDatatable($dados);
+        $resultado = $this->Pacientes->getJsonSelect2($dados);
         $this->output
             ->set_content_type('application/json')
             ->set_output($resultado);

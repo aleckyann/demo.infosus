@@ -18,6 +18,7 @@
     <link rel="manifest" href="<?= base_url() ?>/public/v2/assets/img/favicons/manifest.json">
     <meta name="msapplication-TileImage" content="<?= base_url() ?>/public/v2/assets/img/favicons/mstile-150x150.png">
     <meta name="theme-color" content="#ffffff">
+
     <script src="<?= base_url() ?>/public/v2/assets/js/config.navbar-vertical.js"></script>
 
     <!-- ===============================================-->
@@ -25,6 +26,7 @@
     <!-- ===============================================-->
     <link href="<?= base_url() ?>/public/v2/assets/css/theme-rtl.min.css" rel="stylesheet" id="style-rtl" />
     <link href="<?= base_url() ?>/public/v2/assets/css/theme.min.css" rel="stylesheet" id="style-default" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:100,200,300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
     <!-- datatables -->
@@ -145,7 +147,7 @@
                                                 <a class="nav-link <?= (segment(4) == 'reprimidos') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/procedimentos/reprimidos') ?>"><i class="far fa-calendar-times text-danger"></i> Reprimidos</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#modal"><i class="far fa-calendar-plus"></i> Novo procedimento</a>
+                                                <a class="nav-link" href="#" data-toggle="modal" data-target="#AddProcedimento_modal"><i class="far fa-calendar-plus"></i> Novo procedimento</a>
                                             </li>
                                         </ul>
                                     </li>

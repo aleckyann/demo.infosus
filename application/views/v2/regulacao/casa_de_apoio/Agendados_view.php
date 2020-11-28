@@ -25,46 +25,46 @@
 
     <div class="card-body">
 
-                <table id="casaDeApoioAgendadosTable" class="table table-striped table-hover">
-                    <thead>
-                        <th class="text-dark small text-left">PACIENTE</th>
-                        <th class="text-dark small text-left">CPF</th>
-                        <th class="text-dark small text-left">ENTRADA</th>
-                        <th class="text-dark small text-left">SAÍDA</th>
-                        <th class="text-dark small text-center align-middle">OPÇÕES</th>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($apoio as $a) : ?>
-                            <tr>
-                                <td class="small">
-                                    <?= $a['nome_paciente'] ?>
-                                </td>
-                                <td class="small">
-                                    <?= $a['cpf'] ?>
-                                </td>
-                                <td class="small">
-                                    <?= date_format(date_create($a['data_entrada']), 'd/m/Y') ?>
-                                </td>
-                                <td class="small">
-                                    <?= date_format(date_create($a['data_saida']), 'd/m/Y') ?>
-                                </td>
+        <table id="casaDeApoioAgendados_datatable" class="table table-striped table-hover">
+            <thead>
+                <th class="text-dark small text-left">PACIENTE</th>
+                <th class="text-dark small text-left">CPF</th>
+                <th class="text-dark small text-left">ENTRADA</th>
+                <th class="text-dark small text-left">SAÍDA</th>
+                <th class="text-dark small text-center align-middle">OPÇÕES</th>
+            </thead>
+            <tbody>
+                <?php foreach ($apoio as $a) : ?>
+                    <tr>
+                        <td class="small">
+                            <?= $a['nome_paciente'] ?>
+                        </td>
+                        <td class="small">
+                            <?= $a['cpf'] ?>
+                        </td>
+                        <td class="small">
+                            <?= date_format(date_create($a['data_entrada']), 'd/m/Y') ?>
+                        </td>
+                        <td class="small">
+                            <?= date_format(date_create($a['data_saida']), 'd/m/Y') ?>
+                        </td>
 
-                                <td class="text-center p-1">
-                                    <div class="btn-group">
-                                        <div class="btn-group mb-2">
-                                            <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
-                                            <div class="dropdown-menu">
-                                                <button class="dropdown-item text-warning editarRegistrosCasaDeApoioButton" data-apoio_id="<?= $a['apoio_id'] ?>"><i class="fa fa-edit"></i> Editar registro</button>
-                                                <div class="dropdown-divider"></div>
-                                                <button class="dropdown-item text-danger pacienteSaiuButton" data-apoio_id="<?= $a['apoio_id'] ?>"><i class="fa fa-check"></i> Paciente saiu</button>
-                                            </div>
-                                        </div>
+                        <td class="text-center p-1">
+                            <div class="btn-group">
+                                <div class="btn-group mb-2">
+                                    <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
+                                    <div class="dropdown-menu">
+                                        <button class="dropdown-item text-warning editarRegistrosCasaDeApoioButton" data-apoio_id="<?= $a['apoio_id'] ?>"><i class="fa fa-edit"></i> Editar registro</button>
+                                        <div class="dropdown-divider"></div>
+                                        <button class="dropdown-item text-danger pacienteSaiu_button" data-apoio_id="<?= $a['apoio_id'] ?>"><i class="fa fa-check"></i> Paciente saiu</button>
                                     </div>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
 
     </div>
 </div>
@@ -146,7 +146,7 @@
 
 
         //ADICIONANDO FILTRO AS COLUNAS
-        $('#casaDeApoioAgendadosTable thead th').each(function() {
+        $('#casaDeApoioAgendados_datatable thead th').each(function() {
             let title = $(this).text();
             if (title == '' || title == 'OPÇÕES') {
 
@@ -166,7 +166,7 @@
         });
 
 
-        $('#casaDeApoioAgendadosTable').DataTable({
+        $('#casaDeApoioAgendados_datatable').DataTable({
             initComplete: function() {
                 this.api().columns().every(function() {
                     let that = this;
@@ -249,11 +249,9 @@
         });
 
 
-        
-
 
         //CONFIRMAR REMOÇÃO DO PACIENTE 
-        $('.pacienteSaiuButton').on('click', function() {
+        $("#casaDeApoioAgendados_datatable").on("click", ".pacienteSaiu_button", function() {
             Swal.fire({
                 title: 'Confirma a saída do paciente?',
                 showDenyButton: true,
@@ -270,5 +268,6 @@
                 }
             })
         })
+
     }
 </script>

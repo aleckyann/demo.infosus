@@ -15,11 +15,11 @@
                         </div>
                         <div class="mb-2 col-6">
                             <label for="">Nome do procedimento</label>
-                            <input type="text" name="nome_procedimento" id="nome_procedimento" class="form-control" required>
+                            <input type="text" name="nome_procedimento" class="form-control" required>
                         </div>
                         <div class="mb-2 col-6">
                             <label for="">Especialidade</label>
-                            <select name="especialidade" id="especialidade" class="form-select" required>
+                            <select name="especialidade" class="form-select" required>
                                 <option selected disabled>Selecione uma especialidade</option>
                                 <?php foreach ($this->Especialidades->getAll() as $e) : ?>
                                     <option value="<?= $e['especialidade_nome'] ?>"><?= $e['especialidade_nome'] ?></option>
@@ -29,20 +29,20 @@
                         </div>
                         <div class="mb-2 col-4">
                             <label for="">Estabelecimento solicitante</label>
-                            <input type="text" name="especialidade" id="especialidade" class="form-control" required>
+                            <input type="text" name="estabelecimento_soliticante" class="form-control" required>
                         </div>
                         <div class="mb-2 col-4">
                             <label for="">Profissional solicitante</label>
-                            <input type="text" name="profissional_solicitante" id="profissional_solicitante" class="form-control" required>
+                            <input type="text" name="profissional_solicitante" class="form-control" required>
                         </div>
                         <div class="mb-2 col-4">
                             <label for="">Data de entrada</label>
-                            <input type="date" name="data_solicitacao" id="data_solicitacao" class="form-control" required>
+                            <input type="date" name="data_solicitacao" class="form-control" required>
                         </div>
 
                         <div class="mb-2 col-12">
                             <label for="">Principais sintomas clínicos</label>
-                            <textarea type="date" name="sintomas" id="sintomas" class="form-control"></textarea>
+                            <textarea type="date" name="sintomas"  class="form-control"></textarea>
                         </div>
 
                     </div>

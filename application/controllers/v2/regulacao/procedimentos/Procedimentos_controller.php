@@ -12,9 +12,9 @@ class Procedimentos_controller extends Sistema_Controller
     public function fila(): void
     {
         $dados['title'] = 'Procedimentos na fila';
-        $dados['procedimentos'] = $this->Procedimentos->porPaciente(['realizado' => '']);
+        $dados['procedimentos'] = $this->Procedimentos->porPaciente(['realizado' => '', 'data <'=>'0001-01-01']);
 
-        $this->view('regulacao/procedimentos_diversos/Fila_view', $dados);
+        $this->view('regulacao/procedimentos/Fila_view', $dados);
     }
 
 
@@ -37,10 +37,15 @@ class Procedimentos_controller extends Sistema_Controller
     public function agendar(): void
     {
         $dados = $this->input->post();
-        // $this->Procedimentos->insert($dados);
+        $this->Procedimentos->update(
+            [
+                'procedimentos_id' => $dados['procedimentos_id']
+            ],
+            $dados
+        );
 
-        // $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> Procedimento agendado com sucesso');
-        // redirect('v2/regulacao/procedimentos/fila');
+        $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> Procedimento agendado com sucesso');
+        redirect('v2/regulacao/procedimentos/fila');
     }
 
 
@@ -61,6 +66,23 @@ class Procedimentos_controller extends Sistema_Controller
         $this->session->set_flashdata('danger', '<i class="far fa-check-circle"></i> Procedimento reprimido com sucesso');
         redirect('v2/regulacao/procedimentos/fila');
     }
+
+    /**
+     * GET: v2/regulacao/procedimentos/editar/
+     */
+    public function editar(): void
+    {
+        $dados = $this->input->post();
+        $this->Procedimentos->update(
+            [
+                'procedimentos_id' => $dados['procedimentos_id']
+            ],
+            $dados
+        );
+
+        $this->session->set_flashdata('warning', '<i class="far fa-check-circle"></i> Procedimento atualizado com sucesso');
+        redirect('v2/regulacao/procedimentos/fila');
+    }
     
 
     /**
@@ -70,9 +92,9 @@ class Procedimentos_controller extends Sistema_Controller
     public function agendados(): void
     {
         $dados['title'] = 'Procedimentos agendados';
-        $dados['procedimentos'] = $this->Procedimentos->porPaciente(['realizado' => 'sim']);
+        $dados['procedimentos'] = $this->Procedimentos->porPaciente(['realizado'=>'', 'data >' => '0001-01-01']);
 
-        $this->view('regulacao/procedimentos_diversos/Agendados_view', $dados);
+        $this->view('regulacao/procedimentos/Agendados_view', $dados);
     }
 
 
@@ -85,7 +107,7 @@ class Procedimentos_controller extends Sistema_Controller
         $dados['title'] = 'Procedimentos reprimidos';
         $dados['procedimentos'] = $this->Procedimentos->porPaciente(['realizado' => 'nao']);
 
-        $this->view('regulacao/procedimentos_diversos/Reprimidos_view', $dados);
+        $this->view('regulacao/procedimentos/Reprimidos_view', $dados);
     }
 
 
@@ -98,7 +120,14 @@ class Procedimentos_controller extends Sistema_Controller
         $dados['title'] = 'Procedimentos realizados';
         $dados['procedimentos'] = $this->Procedimentos->porPaciente(['estabelecimento_prestador !=' => '']);
 
-        $this->view('regulacao/procedimentos_diversos/Realizados_view', $dados);
+        $this->view('regulacao/procedimentos/Realizados_view', $dados);
+    }
+
+    public function jsonOne(int $procedimentos_id): void
+    {
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($this->Procedimentos->porPaciente(['procedimentos_id' => $procedimentos_id])[0]));
     }
 
     

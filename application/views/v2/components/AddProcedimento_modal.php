@@ -29,7 +29,7 @@
                         </div>
                         <div class="mb-2 col-4">
                             <label for="">Estabelecimento solicitante</label>
-                            <input type="text" name="estabelecimento_soliticante" class="form-control" required>
+                            <input type="text" name="estabelecimento_solicitante" class="form-control" required>
                         </div>
                         <div class="mb-2 col-4">
                             <label for="">Profissional solicitante</label>

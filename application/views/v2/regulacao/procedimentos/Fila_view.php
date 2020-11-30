@@ -62,7 +62,7 @@
                                         <button class="dropdown-item agendarProcedimento_button" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-calendar-alt"></i> Agendar procedimento</button>
                                         <button class="dropdown-item text-warning editarProcedimento_button" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-edit"></i> Editar procedimento</button>
                                         <div class="dropdown-divider"></div>
-                                        <button class="dropdown-item text-danger removerProcedimento_button" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-times"></i> Reprimir procedimento</button>
+                                        <button class="dropdown-item text-danger reprimirProcedimento_button" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-times"></i> Reprimir procedimento</button>
                                     </div>
                                 </div>
                             </div>
@@ -221,6 +221,34 @@
     </div>
 </div>
 
+
+<!-- Modal reprimirProcedimento_modal-->
+<div class="modal fade" id="reprimirProcedimento_modal" tabindex="-1" role="dialog" aria-labelledby="reprimirProcedimento_label" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-danger">
+                <h5 class="modal-title font-weight-light text-white" id="reprimirProcedimento_label"><i class="fas fa-calendar-times"></i> Reprimir procedimento</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="<?= base_url('v2/regulacao/procedimentos/reprimir') ?>" method="post">
+                <div class="modal-body">
+                    <?= $csrf_input ?>
+                    <input type="hidden" name="procedimentos_id" id="reprimir_procedimentos_id">
+                    <div class="row">
+                        <div class="mb-2 col-12">
+                            <label for="">Motivo ou justificativa</label>
+                            <textarea class="form-control" name="reprimido_por" required></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-primary btn-sm" type="submit">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <script>
     window.onload = function() {
 
@@ -255,6 +283,8 @@
             editarProcedimento_model.toggle()
         });
 
+        // ==================================
+
         //Cria modal para agendar procedimento
         var agendarProcedimento_modal = new bootstrap.Modal(document.getElementById('agendarProcedimento_modal'), {
             keyboard: false
@@ -288,6 +318,8 @@
                 });
             agendarProcedimento_modal.toggle()
         });
+
+        // ================================
 
 
         //ADICIONANDO FILTRO AS COLUNAS
@@ -396,23 +428,36 @@
             ]
         });
 
-        $("#procedimentosFila_datatable").on("click", ".removerProcedimento_button", function() {
-            Swal.fire({
-                title: 'Quer realmente reprimir esse procedimento?',
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: `Sim`,
-                icon: 'question',
-                showCancelButton: false,
-                denyButtonText: `Não, cancelar`,
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.replace("<?= base_url('v2/regulacao/procedimentos/reprimir/') ?>" + this.dataset.procedimento_id);
-                } else if (result.isDenied) {
-                    Swal.fire('Alteração não foi realizada.', '', 'info')
-                }
-            })
+        // ============================
+
+        //Cria modal para editar procedimento
+        var reprimirProcedimento_modal = new bootstrap.Modal(document.getElementById('reprimirProcedimento_modal'), {
+            keyboard: false
+        })
+
+        // ABRE MODAL DE EDITAR
+        $('.reprimirProcedimento_button').on('click', function() {
+            $('#reprimir_procedimentos_id').val(this.dataset.procedimento_id);
+            reprimirProcedimento_modal.toggle()
         });
+
+        // $("#procedimentosFila_datatable").on("click", ".removerProcedimento_button", function() {
+        //     Swal.fire({
+        //         title: 'Quer realmente reprimir esse procedimento?',
+        //         showDenyButton: true,
+        //         showCancelButton: true,
+        //         confirmButtonText: `Sim`,
+        //         icon: 'question',
+        //         showCancelButton: false,
+        //         denyButtonText: `Não, cancelar`,
+        //     }).then((result) => {
+        //         if (result.isConfirmed) {
+        //             window.location.replace("<?= base_url('v2/regulacao/procedimentos/reprimir/') ?>" + this.dataset.procedimento_id);
+        //         } else if (result.isDenied) {
+        //             Swal.fire('Alteração não foi realizada.', '', 'info')
+        //         }
+        //     })
+        // });
 
 
     }

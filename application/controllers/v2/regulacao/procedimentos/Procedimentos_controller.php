@@ -12,7 +12,7 @@ class Procedimentos_controller extends Sistema_Controller
     public function fila(): void
     {
         $dados['title'] = 'Procedimentos na fila';
-        $dados['procedimentos'] = $this->Procedimentos->porPaciente(['realizado' => '', 'data <'=>'0001-01-01']);
+        $dados['procedimentos'] = $this->Procedimentos->porPaciente(['realizado' => '', 'data'=>NULL]);
 
         $this->view('regulacao/procedimentos/Fila_view', $dados);
     }
@@ -50,19 +50,20 @@ class Procedimentos_controller extends Sistema_Controller
 
 
     /**
-     * GET: v2/regulacao/procedimentos/reprimir/(:num)
+     * POST: v2/regulacao/procedimentos/reprimir
      */
-    public function reprimir(int $procedimento_id): void
+    public function reprimir(): void
     {
+        $dados = $this->input->post();
         $this->Procedimentos->update(
             [
-                'procedimentos_id' => $procedimento_id
+                'procedimentos_id' => $dados['procedimentos_id']
             ],
             [
-                'realizado'=>'nao'
+                'realizado'=> 'nao',
+                'reprimido_por' => $dados['reprimido_por'] 
             ],
         );
-
         $this->session->set_flashdata('danger', '<i class="far fa-check-circle"></i> Procedimento reprimido com sucesso');
         redirect('v2/regulacao/procedimentos/fila');
     }
@@ -92,7 +93,7 @@ class Procedimentos_controller extends Sistema_Controller
     public function agendados(): void
     {
         $dados['title'] = 'Procedimentos agendados';
-        $dados['procedimentos'] = $this->Procedimentos->porPaciente(['realizado'=>'', 'data >' => '0001-01-01']);
+        $dados['procedimentos'] = $this->Procedimentos->porPaciente(['realizado'=>'', 'data !=' => NULL]);
 
         $this->view('regulacao/procedimentos/Agendados_view', $dados);
     }

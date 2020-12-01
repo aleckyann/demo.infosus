@@ -25,8 +25,9 @@
 
     <div class="card-body">
 
-        <table id="procedimentosFila_datatable" class="table table-striped table-hover">
+        <table id="procedimentosFila_datatable" class="table table-striped table-hover" style="min-height: 200px;">
             <thead>
+                <th class="text-dark small text-left">RISCO</th>
                 <th class="text-dark small text-left">PACIENTE</th>
                 <th class="text-dark small text-left">CPF</th>
                 <th class="text-dark small text-left">PROCEDIMENTO</th>
@@ -37,6 +38,22 @@
             <tbody>
                 <?php foreach ($procedimentos as $p) : ?>
                     <tr>
+                        <td class="text-center">
+                            <?php switch ($p['procedimento_risco']) {
+                                case '1':
+                                    echo ('<span class="badge bg-info badge-pill px-2">1</span>');
+                                    break;
+                                case '2':
+                                    echo ('<span class="badge bg-success badge-pill px-2">2</span>');
+                                    break;
+                                case '3':
+                                    echo ('<span class="badge bg-warning badge-pill px-2">3</span>');
+                                    break;
+                                case '3':
+                                    echo ('<span class="badge bg-danger badge-pill px-2">4</span');
+                                    break;
+                            } ?>
+                        </td>
                         <td class="small">
                             <?= $p['nome_paciente'] ?>
                         </td>
@@ -334,7 +351,7 @@
                     <div class="input-group-text">
                         <span data-toggle="tooltip" data-placement="top" title="Filtrar por ${title} específico">🔎</span>
                     </div>
-                    <input type="text" class="form-control form-control-sm px-0 pl-1" placeholder="FILTAR POR ${title}">
+                    <input type="text" class="form-control form-control-sm px-0 pl-1" placeholder="FILTRAR POR ${title}">
                 </div>
                 
                 `);
@@ -378,6 +395,9 @@
             },
 
             "aoColumns": [{
+                    "bSortable": false
+                },
+                {
                     "bSortable": false
                 },
                 {
@@ -440,25 +460,6 @@
             $('#reprimir_procedimentos_id').val(this.dataset.procedimento_id);
             reprimirProcedimento_modal.toggle()
         });
-
-        // $("#procedimentosFila_datatable").on("click", ".removerProcedimento_button", function() {
-        //     Swal.fire({
-        //         title: 'Quer realmente reprimir esse procedimento?',
-        //         showDenyButton: true,
-        //         showCancelButton: true,
-        //         confirmButtonText: `Sim`,
-        //         icon: 'question',
-        //         showCancelButton: false,
-        //         denyButtonText: `Não, cancelar`,
-        //     }).then((result) => {
-        //         if (result.isConfirmed) {
-        //             window.location.replace("<?= base_url('v2/regulacao/procedimentos/reprimir/') ?>" + this.dataset.procedimento_id);
-        //         } else if (result.isDenied) {
-        //             Swal.fire('Alteração não foi realizada.', '', 'info')
-        //         }
-        //     })
-        // });
-
 
     }
 </script>

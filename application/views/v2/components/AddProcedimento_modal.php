@@ -50,7 +50,7 @@
                         </div>
                         <div class="my-2 col-3 text-center">
                             <input type="radio" class="btn-check" name="procedimento_risco" value="1" id="btn-check-outlined" autocomplete="off" required>
-                            <label class="btn btn-outline-primary" for="btn-check-outlined"><span class="m-2">1</span></label><br>
+                            <label class="btn btn-outline-info" for="btn-check-outlined"><span class="m-2">1</span></label><br>
                             Não agudo
                         </div>
                         <div class="my-2 col-3 text-center">

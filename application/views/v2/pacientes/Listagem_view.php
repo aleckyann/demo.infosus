@@ -24,7 +24,7 @@
     <?= $this->ui->alert_flashdata() ?>
 
     <div class="card-body">
-        <table id="pacientes" class="table table-striped">
+        <table id="pacientes" class="table table-striped" style="min-height: 200px;">
             <thead>
                 <th class="text-dark small text-left">PACIENTE</th>
                 <th class="text-dark small text-left">CPF</th>

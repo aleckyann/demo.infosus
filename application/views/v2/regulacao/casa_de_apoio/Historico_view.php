@@ -25,7 +25,7 @@
 
     <div class="card-body">
 
-        <table id="casaDeApoioHistoricoTable" class="table table-striped table-hover">
+        <table id="casaDeApoioHistoricoTable" class="table table-striped table-hover" style="min-height: 200px;">
             <thead>
                 <th class="text-dark small text-left">PACIENTE</th>
                 <th class="text-dark small text-left">CPF</th>
@@ -47,7 +47,7 @@
                         <td class="small">
                             <?= date_format(date_create($a['data_saida']), 'd/m/Y') ?>
                         </td>
-                        
+
                     </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -71,7 +71,7 @@
                     <div class="input-group-text">
                         <span data-toggle="tooltip" data-placement="top" title="Filtrar por ${title} específico">🔎</span>
                     </div>
-                    <input type="text" class="form-control form-control-sm px-0 pl-1" placeholder="FILTAR POR ${title}">
+                    <input type="text" class="form-control form-control-sm px-0 pl-1" placeholder="FILTRAR POR ${title}">
                 </div>
                 
                 `);

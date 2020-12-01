@@ -64,7 +64,7 @@ class Procedimentos_controller extends Sistema_Controller
                 'reprimido_por' => $dados['reprimido_por'] 
             ],
         );
-        $this->session->set_flashdata('danger', '<i class="far fa-check-circle"></i> Procedimento reprimido com sucesso');
+        $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> Procedimento reprimido com sucesso');
         redirect('v2/regulacao/procedimentos/fila');
     }
 
@@ -81,7 +81,7 @@ class Procedimentos_controller extends Sistema_Controller
             $dados
         );
 
-        $this->session->set_flashdata('warning', '<i class="far fa-check-circle"></i> Procedimento atualizado com sucesso');
+        $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> Procedimento atualizado com sucesso');
         redirect('v2/regulacao/procedimentos/fila');
     }
     

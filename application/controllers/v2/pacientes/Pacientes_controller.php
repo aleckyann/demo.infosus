@@ -21,7 +21,7 @@ class Pacientes_controller extends Sistema_Controller
             ['paciente_id' => $dados['paciente_id']],
             $dados
         );
-        $this->session->set_flashdata('warning', '<i class="far fa-check-circle"></i> Paciente atualizado com sucesso.');
+        $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> Paciente atualizado com sucesso.');
         redirect('v2/pacientes/listagem');
     }
 

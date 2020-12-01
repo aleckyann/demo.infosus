@@ -41,7 +41,7 @@ class Casa_de_apoio_controller extends Sistema_Controller
             $dados
         );
 
-        $this->session->set_flashdata('warning', '<i class="far fa-check-circle"></i> Registro de casa de apoio editado com sucesso');
+        $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> Registro de casa de apoio editado com sucesso');
         redirect('v2/regulacao/casa-de-apoio/listagem');
     }
 

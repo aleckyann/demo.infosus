@@ -28,6 +28,7 @@
             <thead>
                 <th class="text-dark small text-left">PACIENTE</th>
                 <th class="text-dark small text-left">CPF</th>
+                <th class="text-dark small text-left">TELEFONE</th>
                 <th class="text-dark small text-center align-middle">OPÇÕES</th>
             </thead>
             <tbody>
@@ -37,6 +38,7 @@
                             <?= $p['nome_paciente'] ?>
                         </td>
                         <td class="small"><?= $p['cpf'] ?></td>
+                        <td class="small"><?= $p['telefone_paciente'] ?></td>
 
 
                         <td class="text-center p-1">
@@ -185,14 +187,8 @@
 
             } else {
                 $(this).html(`
-                <span class="text-dark font-weight-bold">${title}</span>
-                <div class="input-group">
-                    <div class="input-group-text">
-                        <span data-toggle="tooltip" data-placement="top" title="Filtrar por ${title} específico">🔎</span>
-                    </div>
-                    <input type="text" class="form-control form-control-sm px-0 pl-1" placeholder="FILTAR POR ${title}">
-                </div>
-                
+                    <span class="text-dark font-weight-bold">${title}</span>
+                    <input type="text" class="form-control form-control-sm pl-1" placeholder="🔎 Filtrar ${title.toLocaleLowerCase()}">
                 `);
 
             }

@@ -114,14 +114,8 @@
 
             } else {
                 $(this).html(`
-                <span class="text-dark font-weight-bold">${title}</span>
-                <div class="input-group">
-                    <div class="input-group-text">
-                        <span data-toggle="tooltip" data-placement="top" title="Filtrar por ${title} específico">🔎</span>
-                    </div>
-                    <input type="text" class="form-control form-control-sm px-0 pl-1" placeholder="FILTRAR POR ${title}">
-                </div>
-                
+                    <span class="text-dark font-weight-bold">${title}</span>
+                    <input type="text" class="form-control form-control-sm pl-1" placeholder="🔎 Filtrar ${title.toLocaleLowerCase()}">
                 `);
 
             }

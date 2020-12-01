@@ -25,37 +25,35 @@
 
     <div class="card-body">
 
-        <table id="procedimentosFila_datatable" class="table table-striped table-hover" style="min-height: 200px;">
+        <table id="procedimentosFila_datatable" class="table table-striped" style="min-height: 200px;">
             <thead>
-                <th class="text-dark small text-left">RISCO</th>
                 <th class="text-dark small text-left">PACIENTE</th>
                 <th class="text-dark small text-left">CPF</th>
                 <th class="text-dark small text-left">PROCEDIMENTO</th>
                 <th class="text-dark small text-left">DATA</th>
-                <th class="text-dark small text-left">TELEFONE</th>
-                <th class="text-dark small text-center align-middle">OPÇÕES</th>
+                <th class="text-dark small text-center align-top">OPÇÕES</th>
             </thead>
             <tbody>
                 <?php foreach ($procedimentos as $p) : ?>
                     <tr>
-                        <td class="text-center">
+                        <td>
                             <?php switch ($p['procedimento_risco']) {
                                 case '1':
-                                    echo ('<span class="badge bg-info badge-pill px-2">1</span>');
+                                    echo ('<span class="mr-2 fas fa-user-injured text-info" style="font-size:20px"></span>');
                                     break;
                                 case '2':
-                                    echo ('<span class="badge bg-success badge-pill px-2">2</span>');
+                                    echo ('<span class="mr-2 fas fa-user-injured text-success" style="font-size:20px"></span>');
                                     break;
                                 case '3':
-                                    echo ('<span class="badge bg-warning badge-pill px-2">3</span>');
+                                    echo ('<span class="mr-2 fas fa-user-injured text-warning" style="font-size:20px"></span>');
                                     break;
-                                case '3':
-                                    echo ('<span class="badge bg-danger badge-pill px-2">4</span');
+                                case '4':
+                                    echo ('<span class="mr-2 fas fa-user-injured text-danger" style="font-size:20px"></span>');
                                     break;
                             } ?>
-                        </td>
-                        <td class="small">
-                            <?= $p['nome_paciente'] ?>
+                            <span class="small align-middle">
+                                <?= $p['nome_paciente'] ?>
+                            </span>
                         </td>
                         <td class="small">
                             <?= $p['cpf'] ?>
@@ -66,9 +64,6 @@
                         <td class="small">
 
                             <?= date_format(date_create($p['data_solicitacao']), 'd/m/Y') ?>
-                        </td>
-                        <td class="small">
-                            <?= $p['telefone_paciente'] ?>
                         </td>
 
                         <td class="text-center p-1">
@@ -345,15 +340,19 @@
             if (title == '' || title == 'OPÇÕES') {
 
             } else {
+                // $(this).html(`
+                // <span class="text-dark font-weight-bold">${title}</span>
+                // <div class="input-group d-print-none">
+                //     <div class="input-group-text">
+                //         <span data-toggle="tooltip" data-placement="top" title="Filtrar por ${title} específico">🔎</span>
+                //     </div>
+                //     <input type="text" class="form-control form-control-sm px-0 pl-1" placeholder="FILTRAR POR ${title}">
+                // </div>
+
+                // `);
                 $(this).html(`
-                <span class="text-dark font-weight-bold">${title}</span>
-                <div class="input-group d-print-none">
-                    <div class="input-group-text">
-                        <span data-toggle="tooltip" data-placement="top" title="Filtrar por ${title} específico">🔎</span>
-                    </div>
-                    <input type="text" class="form-control form-control-sm px-0 pl-1" placeholder="FILTRAR POR ${title}">
-                </div>
-                
+                    <span class="text-dark font-weight-bold">${title}</span>
+                    <input type="text" class="form-control form-control-sm pl-1" placeholder="🔎 Filtrar ${title.toLocaleLowerCase()}">
                 `);
 
             }
@@ -408,12 +407,6 @@
                 },
                 {
                     "bSortable": false
-                },
-                {
-                    "bSortable": false
-                },
-                {
-                    "bSortable": false
                 }
             ],
             dom: 'Brtip',
@@ -422,7 +415,7 @@
                     extend: 'print',
                     text: '<i class="fa fa-print"></i> imprimir',
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4, 5]
+                        columns: [0, 1, 2, 3]
                     },
                     customize: function(win) {
                         $(win.document.body)

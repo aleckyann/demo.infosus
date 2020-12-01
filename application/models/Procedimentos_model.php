@@ -13,7 +13,7 @@ class Procedimentos_model extends CI_model
      */
     public function getAll(array $where = []): array
     {
-        return $this->db->get_where($this->table, $where)->result_array();
+        return $this->db->order_by('procedimento_risco', 'DESC')->get_where($this->table, $where)->result_array();
     }
 
     /**
@@ -40,7 +40,7 @@ class Procedimentos_model extends CI_model
     public function porPaciente(array $where = []): array
     {
         $this->db->join('pacientes', 'procedimentos.paciente_id =  pacientes.paciente_id');
-        return $this->db->get_where('procedimentos', $where)->result_array();
+        return $this->db->order_by('procedimento_risco', 'DESC')->get_where('procedimentos', $where)->result_array();
     }
 
     /**

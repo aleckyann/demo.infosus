@@ -8,5 +8,6 @@ class Atencao_primaria_controller extends Sistema_Controller
 
     public function index(): void
     {
+        
     }
 }

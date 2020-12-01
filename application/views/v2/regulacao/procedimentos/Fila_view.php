@@ -50,6 +50,10 @@
                                 case '4':
                                     echo ('<span class="mr-2 fas fa-user-injured text-danger" style="font-size:20px"></span>');
                                     break;
+                                case '':
+                                    echo ('<span class="mr-2 fas fa-user-injured text-muted" style="font-size:20px"></span>');
+                                    break;
+                                       
                             } ?>
                             <span class="small align-middle">
                                 <?= $p['nome_paciente'] ?>
@@ -340,16 +344,6 @@
             if (title == '' || title == 'OPÇÕES') {
 
             } else {
-                // $(this).html(`
-                // <span class="text-dark font-weight-bold">${title}</span>
-                // <div class="input-group d-print-none">
-                //     <div class="input-group-text">
-                //         <span data-toggle="tooltip" data-placement="top" title="Filtrar por ${title} específico">🔎</span>
-                //     </div>
-                //     <input type="text" class="form-control form-control-sm px-0 pl-1" placeholder="FILTRAR POR ${title}">
-                // </div>
-
-                // `);
                 $(this).html(`
                     <span class="text-dark font-weight-bold">${title}</span>
                     <input type="text" class="form-control form-control-sm pl-1" placeholder="🔎 Filtrar ${title.toLocaleLowerCase()}">

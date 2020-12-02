@@ -27,7 +27,7 @@ class Procedimentos_controller extends Sistema_Controller
         $this->Procedimentos->insert($dados);
 
         $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> Procedimento adicionado À fila com sucesso');
-        redirect('v2/regulacao/procedimentos/fila');
+        redirect($this->agent->referrer());
     }
 
 
@@ -45,7 +45,7 @@ class Procedimentos_controller extends Sistema_Controller
         );
 
         $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> Procedimento agendado com sucesso');
-        redirect('v2/regulacao/procedimentos/fila');
+        redirect($this->agent->referrer());
     }
 
 
@@ -65,7 +65,24 @@ class Procedimentos_controller extends Sistema_Controller
             ],
         );
         $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> Procedimento reprimido com sucesso');
-        redirect('v2/regulacao/procedimentos/fila');
+        redirect($this->agent->referrer());
+    }
+
+    /**
+     * GET: v2/regulacao/procedimentos/concluir/(:num)
+     */
+    public function concluir(int $procedimento_id): void
+    {
+        $this->Procedimentos->update(
+            [
+                'procedimentos_id' => $procedimento_id
+            ],
+            [
+                'realizado' => 'sim'
+            ],
+        );
+        $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> Procedimento concluido com sucesso');
+        redirect($this->agent->referrer());
     }
 
     /**
@@ -85,7 +102,7 @@ class Procedimentos_controller extends Sistema_Controller
         );
 
         $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> Procedimento atualizado com sucesso');
-        redirect('v2/regulacao/procedimentos/fila');
+        redirect($this->agent->referrer());
     }
     
 

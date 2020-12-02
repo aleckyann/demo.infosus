@@ -25,33 +25,48 @@
 
     <div class="card-body">
 
-        <table id="procedimentosAgendados_datatable" class="table table-striped table-hover" style="min-height: 200px;">
+        <table id="procedimentosFila_datatable" class="table table-striped" style="min-height: 200px;">
             <thead>
                 <th class="text-dark small text-left">PACIENTE</th>
-                <th class="text-dark small text-left">CPF</th>
+                <th class="text-dark small text-left">TELEFONE</th>
                 <th class="text-dark small text-left">PROCEDIMENTO</th>
                 <th class="text-dark small text-left">DATA</th>
-                <th class="text-dark small text-left">TELEFONE</th>
-                <th class="text-dark small text-center align-middle">OPÇÕES</th>
+                <th class="text-dark small text-center align-top">OPÇÕES</th>
             </thead>
             <tbody>
                 <?php foreach ($procedimentos as $p) : ?>
                     <tr>
-                        <td class="small">
-                            <?= $p['nome_paciente'] ?>
+                        <td>
+                            <?php switch ($p['procedimento_risco']) {
+                                case '1':
+                                    echo ('<span class="mr-2 fas fa-user-injured text-info" style="font-size:20px"></span>');
+                                    break;
+                                case '2':
+                                    echo ('<span class="mr-2 fas fa-user-injured text-success" style="font-size:20px"></span>');
+                                    break;
+                                case '3':
+                                    echo ('<span class="mr-2 fas fa-user-injured text-warning" style="font-size:20px"></span>');
+                                    break;
+                                case '4':
+                                    echo ('<span class="mr-2 fas fa-user-injured text-danger" style="font-size:20px"></span>');
+                                    break;
+                                case '':
+                                    echo ('<span class="mr-2 fas fa-user-injured text-muted" style="font-size:20px"></span>');
+                                    break;
+                            } ?>
+                            <span class="small align-middle">
+                                <?= $p['nome_paciente'] ?>
+                            </span>
                         </td>
                         <td class="small">
-                            <?= $p['cpf'] ?>
+                            <?= $p['telefone_paciente'] ?>
                         </td>
                         <td class="small">
                             <?= $p['nome_procedimento'] ?>
                         </td>
                         <td class="small">
 
-                            <?= date_format(date_create($p['data_solicitacao']), 'd/m/Y') ?>
-                        </td>
-                        <td class="small">
-                            <?= $p['telefone_paciente'] ?>
+                            <?= date_format(date_create($p['data']), 'd/m/Y') ?>
                         </td>
 
                         <td class="text-center p-1">
@@ -59,9 +74,10 @@
                                 <div class="btn-group mb-2">
                                     <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
                                     <div class="dropdown-menu">
+                                        <button class="dropdown-item text-success finalizarProcedimento_button" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-check"></i> Concluir procedimento</button>
                                         <button class="dropdown-item text-warning editarProcedimento_button" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-edit"></i> Editar procedimento</button>
                                         <div class="dropdown-divider"></div>
-                                        <button class="dropdown-item text-danger removerProcedimento_button" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-times"></i> Cancelar procedimento</button>
+                                        <button class="dropdown-item text-danger reprimirProcedimento_button" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-times"></i> Reprimir procedimento</button>
                                     </div>
                                 </div>
                             </div>
@@ -74,16 +90,123 @@
     </div>
 </div>
 
+<!-- Modal editarProcedimento_model-->
+<div class="modal fade" id="editarProcedimento_model" tabindex="-1" role="dialog" aria-labelledby="editarProcedimento_label" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-warning">
+                <h5 class="modal-title font-weight-light text-white" id="editarProcedimento_label"><i class="fas fa-edit"></i> Editar procedimento</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="<?= base_url('v2/regulacao/procedimentos/editar') ?>" method="post">
+                <div class="modal-body">
+                    <?= $csrf_input ?>
+                    <input type="hidden" name="procedimentos_id" id="procedimentos_id">
+                    <div class="row">
+                        <div class="mb-4 col-12">
+                            <label for="">Nome do paciente</label>
+                            <input type="text" class="form-control" id="nome_paciente" readonly>
+                        </div>
+                        <div class="mb-2 col-6">
+                            <label for="">Nome do procedimento</label>
+                            <input type="text" name="nome_procedimento" id="nome_procedimento" class="form-control" required>
+                        </div>
+                        <div class="mb-2 col-6">
+                            <label for="">Especialidade</label>
+                            <select name="especialidade" id="especialidade" class="form-select" required>
+                                <option selected disabled>Selecione uma especialidade</option>
+                                <?php foreach ($this->Especialidades->getAll() as $e) : ?>
+                                    <option value="<?= $e['especialidade_nome'] ?>"><?= $e['especialidade_nome'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
 
+                        </div>
+                        <div class="mb-2 col-4">
+                            <label for="">Estabelecimento solicitante</label>
+                            <input type="text" name="estabelecimento_solicitante" id="estabelecimento_solicitante" class="form-control" required>
+                        </div>
+                        <div class="mb-2 col-4">
+                            <label for="">Profissional solicitante</label>
+                            <input type="text" name="profissional_solicitante" id="profissional_solicitante" class="form-control" required>
+                        </div>
+                        <div class="mb-2 col-4">
+                            <label for="">Data do procedimento</label>
+                            <input type="date" name="data" id="data" class="form-control" required>
+                        </div>
+
+                        <div class="mb-2 col-12">
+                            <label for="">Principais sintomas clínicos</label>
+                            <textarea type="date" name="sintomas" id="sintomas" class="form-control"></textarea>
+                        </div>
+
+                        <div class="col-12 mt-1">
+                            <label>Classificação de risco / vunerabilidade:</label>
+                        </div>
+                        <div class="my-2 col-3 text-center">
+                            <input type="radio" class="btn-check editarProcedimentoButton" name="editar_procedimento_risco" value="1" id="editarProcedimentoButton1" autocomplete="off" required>
+                            <label class="btn btn-outline-info" for="editarProcedimentoButton1"><span class="m-2">1</span></label><br>
+                            Não agudo
+                        </div>
+                        <div class="my-2 col-3 text-center">
+                            <input type="radio" class="btn-check editarProcedimentoButton" name="editar_procedimento_risco" value="2" id="editarProcedimentoButton2" autocomplete="off" required>
+                            <label class="btn btn-outline-success" for="editarProcedimentoButton2"><span class="m-2">2</span></label><br>
+                            Baixa
+                        </div>
+                        <div class="my-2 col-3 text-center">
+                            <input type="radio" class="btn-check editarProcedimentoButton" name="editar_procedimento_risco" value="3" id="editarProcedimentoButton3" autocomplete="off" required>
+                            <label class="btn btn-outline-warning" for="editarProcedimentoButton3"><span class="m-2">3</span></label><br>
+                            Intermediária
+                        </div>
+                        <div class="my-2 col-3 text-center">
+                            <input type="radio" class="btn-check editarProcedimentoButton" name="editar_procedimento_risco" value="4" id="editarProcedimentoButton4" autocomplete="off" required>
+                            <label class="btn btn-outline-danger" for="editarProcedimentoButton4"><span class="m-2">4</span></label><br>Alta
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-primary btn-sm" type="submit">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal reprimirProcedimento_modal-->
+<div class="modal fade" id="reprimirProcedimento_modal" tabindex="-1" role="dialog" aria-labelledby="reprimirProcedimento_label" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-danger">
+                <h5 class="modal-title font-weight-light text-white" id="reprimirProcedimento_label"><i class="fas fa-calendar-times"></i> Reprimir procedimento</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="<?= base_url('v2/regulacao/procedimentos/reprimir') ?>" method="post">
+                <div class="modal-body">
+                    <?= $csrf_input ?>
+                    <input type="hidden" name="procedimentos_id" id="reprimir_procedimentos_id">
+                    <div class="row">
+                        <div class="mb-2 col-12">
+                            <label for="">Motivo ou justificativa</label>
+                            <textarea class="form-control" name="reprimido_por" required></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-primary btn-sm" type="submit">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <script>
     window.onload = function() {
 
-        //Cria modal para editar paciente
-        // var editarRegistrosCasaDeApoioModel = new bootstrap.Modal(document.getElementById('editarRegistrosCasaDeApoioModel'), {
-        //     keyboard: false
-        // })
-
+        //Cria modal para editar procedimento
+        var editarProcedimento_model = new bootstrap.Modal(document.getElementById('editarProcedimento_model'), {
+            keyboard: false
+        })
 
         // ABRE MODAL DE EDITAR
         $('.editarProcedimento_button').on('click', function() {
@@ -95,20 +218,26 @@
                         <?= $csrf_name ?>: "<?= $csrf_value ?>"
                     }
                 })
-                .done(function(casa_de_apoio) {
-                    $('#procedimento_id').val(casa_de_apoio.procedimento_id);
-                    $('#nome_paciente').val(casa_de_apoio.nome_paciente);
-                    $('#data_entrada').val(casa_de_apoio.data_entrada);
-                    $('#data_saida').val(casa_de_apoio.data_saida);
-                    $('#observacao').val(casa_de_apoio.observacao);
+                .done(function(procedimento) {
+                    $('#procedimentos_id').val(procedimento.procedimentos_id);
+                    $('#nome_paciente').val(procedimento.nome_paciente);
+                    $('#nome_procedimento').val(procedimento.nome_procedimento);
+                    $("#especialidade").val(procedimento.especialidade);
+                    $('#profissional_solicitante').val(procedimento.profissional_solicitante);
+                    $('#estabelecimento_solicitante').val(procedimento.estabelecimento_solicitante);
+                    $('#nome_paciente').val(procedimento.nome_paciente);
+                    $(".editarProcedimentoButton[value='" + procedimento.procedimento_risco + "']").prop("checked", true);
+                    $('#data').val(procedimento.data);
+                    $('#sintomas').val(procedimento.sintomas);
 
                 });
-            editarRegistrosCasaDeApoioModel.toggle()
+            editarProcedimento_model.toggle()
         });
 
+        // ==================================
 
         //ADICIONANDO FILTRO AS COLUNAS
-        $('#procedimentosAgendados_datatable thead th').each(function() {
+        $('#procedimentosFila_datatable thead th').each(function() {
             let title = $(this).text();
             if (title == '' || title == 'OPÇÕES') {
 
@@ -122,7 +251,7 @@
         });
 
 
-        $('#procedimentosAgendados_datatable').DataTable({
+        $('#procedimentosFila_datatable').DataTable({
             initComplete: function() {
                 this.api().columns().every(function() {
                     let that = this;
@@ -170,9 +299,6 @@
                 },
                 {
                     "bSortable": false
-                },
-                {
-                    "bSortable": false
                 }
             ],
             dom: 'Brtip',
@@ -181,7 +307,7 @@
                     extend: 'print',
                     text: '<i class="fa fa-print"></i> imprimir',
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4, 5]
+                        columns: [0, 1, 2, 3]
                     },
                     customize: function(win) {
                         $(win.document.body)
@@ -207,12 +333,24 @@
             ]
         });
 
+        // ============================
+
+        //Cria modal para editar procedimento
+        var reprimirProcedimento_modal = new bootstrap.Modal(document.getElementById('reprimirProcedimento_modal'), {
+            keyboard: false
+        })
+
+        // ABRE MODAL DE EDITAR
+        $('.reprimirProcedimento_button').on('click', function() {
+            $('#reprimir_procedimentos_id').val(this.dataset.procedimento_id);
+            reprimirProcedimento_modal.toggle()
+        });
 
 
-        //CONFIRMAR REMOÇÃO DO PACIENTE 
-        $("#procedimentosAgendados_datatable").on("click", ".removerProcedimento_button", function() {
+        //CONFIRMAR FINALIZAÇÃO DO PACIENTE 
+        $('.finalizarProcedimento_button').on('click', function() {
             Swal.fire({
-                title: 'Quer realmente reprimir esse procedimento?',
+                title: 'Confirma conclusão desse procedimento?',
                 showDenyButton: true,
                 showCancelButton: true,
                 confirmButtonText: `Sim`,
@@ -221,11 +359,12 @@
                 denyButtonText: `Não, cancelar`,
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.replace("<?= base_url('v2/regulacao/procedimentos/reprimir/') ?>" + this.dataset.procedimento_id);
+                    window.location.replace("<?= base_url('v2/regulacao/procedimentos/concluir/') ?>" + this.dataset.procedimento_id);
                 } else if (result.isDenied) {
                     Swal.fire('Alteração não foi realizada.', '', 'info')
                 }
             })
-        });
+        })
+
     }
 </script>

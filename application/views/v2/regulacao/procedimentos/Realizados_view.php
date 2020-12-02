@@ -38,7 +38,26 @@
                 <?php foreach ($procedimentos as $p) : ?>
                     <tr>
                         <td class="small">
-                            <?= $p['nome_paciente'] ?>
+                            <?php switch ($p['procedimento_risco']) {
+                                case '1':
+                                    echo ('<span class="mr-2 fas fa-user-injured text-info" style="font-size:20px"></span>');
+                                    break;
+                                case '2':
+                                    echo ('<span class="mr-2 fas fa-user-injured text-success" style="font-size:20px"></span>');
+                                    break;
+                                case '3':
+                                    echo ('<span class="mr-2 fas fa-user-injured text-warning" style="font-size:20px"></span>');
+                                    break;
+                                case '4':
+                                    echo ('<span class="mr-2 fas fa-user-injured text-danger" style="font-size:20px"></span>');
+                                    break;
+                                case '':
+                                    echo ('<span class="mr-2 fas fa-user-injured text-muted" style="font-size:20px"></span>');
+                                    break;
+                            } ?>
+                            <span class="small align-middle">
+                                <?= $p['nome_paciente'] ?>
+                            </span>
                         </td>
                         <td class="small">
                             <?= $p['cpf'] ?>

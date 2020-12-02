@@ -1,23 +1,34 @@
 <div class="d-flex mb-2">
-    <span class="fa-stack mr-2 ml-n1">
-        <i class="fas fa-circle fa-stack-2x text-300"></i>
-        <i class="fas fa-sort-amount-down fa-inverse fa-stack-1x text-primary"></i>
-    </span>
-    <div class="flex-1 mt-1">
-        <h5 class="mb-0 text-primary position-relative">
-            <span class="bg-200 pr-3">Procedimentos na fila</span>
-            <span class="border position-absolute top-50 translate-middle-y w-100 left-0 z-index--1"></span>
-        </h5>
-        <a class="float-right btn" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            <i class="fas fa-question-circle"></i>
-        </a>
+    <div class="card overflow-hidden flex-1">
+        <div class="bg-holder bg-card" style="background-image:url(<?= base_url('public/v2/assets/img/illustrations/corner-4.png') ?>);"></div>
+        <!--/.bg-holder-->
+        <div class="card-body position-relative">
+            <a class="float-right btn" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <i class="fas fa-question-circle"></i>
+            </a>
+            <h3 class="font-weight-light">
+
+                <i class="fas fa-sort-amount-down"></i> Fila de procedimentos
+                <!-- <span class="badge badge-soft-warning rounded-pill ml-2">-0.23%</span> -->
+            </h3>
+            <div class="collapse" id="collapseExample">
+                <div class="p-card">
+                    <p class="mb-2">
+                        Nesta página você pode visualizar a fila de procedimentos ordenados por urgência:<br>
+                    </p>
+                    <span class="fas fa-user-injured text-info" style="font-size:20px"></span> Não agudo
+                    <span class="ml-3 fas fa-user-injured text-success" style="font-size:20px"></span> Baixa
+                    <span class="ml-3 fas fa-user-injured text-warning" style="font-size:20px"></span>Intermediária
+                    <span class="ml-3 fas fa-user-injured text-danger" style="font-size:20px"></span> Alta
+
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
 
-<div class="collapse mb-3" id="collapseExample">
-    <div class="border p-card rounded">Nesta página você pode visualizar todo o histórico de utilização da casa de apoio.</div>
-</div>
+
 
 
 <div class="card mb-3">
@@ -313,7 +324,7 @@
                     $('#profissional_solicitante').val(procedimento.profissional_solicitante);
                     $('#estabelecimento_solicitante').val(procedimento.estabelecimento_solicitante);
                     $('#nome_paciente').val(procedimento.nome_paciente);
-                    $(".editarProcedimentoButton[value='"+procedimento.procedimento_risco+"']").prop("checked", true);
+                    $(".editarProcedimentoButton[value='" + procedimento.procedimento_risco + "']").prop("checked", true);
                     $('#data_solicitacao').val(procedimento.data_solicitacao);
                     $('#data').val(procedimento.data);
                     $('#sintomas').val(procedimento.sintomas);

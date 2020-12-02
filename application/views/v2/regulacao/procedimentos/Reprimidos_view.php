@@ -28,31 +28,41 @@
         <table id="procedimentosReprimidos_datatable" class="table table-striped table-hover" style="min-height: 200px;">
             <thead>
                 <th class="text-dark small text-left">PACIENTE</th>
-                <th class="text-dark small text-left">CPF</th>
+                <th class="text-dark small text-left">MOTIVO</th>
                 <th class="text-dark small text-left">PROCEDIMENTO</th>
-                <th class="text-dark small text-left">DATA</th>
-                <th class="text-dark small text-left">TELEFONE</th>
             </thead>
             <tbody>
                 <?php foreach ($procedimentos as $p) : ?>
                     <tr>
                         <td class="small">
-                            <?= $p['nome_paciente'] ?>
+                            <?php switch ($p['procedimento_risco']) {
+                                case '1':
+                                    echo ('<span class="mr-2 fas fa-user-injured text-info" style="font-size:20px"></span>');
+                                    break;
+                                case '2':
+                                    echo ('<span class="mr-2 fas fa-user-injured text-success" style="font-size:20px"></span>');
+                                    break;
+                                case '3':
+                                    echo ('<span class="mr-2 fas fa-user-injured text-warning" style="font-size:20px"></span>');
+                                    break;
+                                case '4':
+                                    echo ('<span class="mr-2 fas fa-user-injured text-danger" style="font-size:20px"></span>');
+                                    break;
+                                case '':
+                                    echo ('<span class="mr-2 fas fa-user-injured text-muted" style="font-size:20px"></span>');
+                                    break;
+                            } ?>
+                            <span class="small align-middle">
+                                <?= $p['nome_paciente'] ?>
+                            </span>
                         </td>
                         <td class="small">
-                            <?= $p['cpf'] ?>
+                            <?= $p['reprimido_por'] ?>
                         </td>
                         <td class="small">
                             <?= $p['nome_procedimento'] ?>
                         </td>
-                        <td class="small">
-
-                            <?= date_format(date_create($p['data_solicitacao']), 'd/m/Y') ?>
-                        </td>
-                        <td class="small">
-                            <?= $p['telefone_paciente'] ?>
-                        </td>
-
+                        
                     </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -65,12 +75,6 @@
 
 <script>
     window.onload = function() {
-
-        //Cria modal para editar paciente
-        // var editarRegistrosCasaDeApoioModel = new bootstrap.Modal(document.getElementById('editarRegistrosCasaDeApoioModel'), {
-        //     keyboard: false
-        // })
-
 
         // ABRE MODAL DE EDITAR
         $('.editarProcedimento_button').on('click', function() {
@@ -194,25 +198,5 @@
             ]
         });
 
-
-
-        //CONFIRMAR REMOÇÃO DO PACIENTE 
-        $('.removerProcedimento_button').on('click', function() {
-            Swal.fire({
-                title: 'Confirma a saída do paciente?',
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: `Sim`,
-                icon: 'question',
-                showCancelButton: false,
-                denyButtonText: `Não, cancelar`,
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.replace("<?= base_url('v2/regulacao/casa-de-apoio/update-status/') ?>" + this.dataset.procedimento_id);
-                } else if (result.isDenied) {
-                    Swal.fire('Alteração não foi realizada.', '', 'info')
-                }
-            })
-        })
     }
 </script>

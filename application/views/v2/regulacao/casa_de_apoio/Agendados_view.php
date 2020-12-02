@@ -30,7 +30,6 @@
         <table id="casaDeApoioAgendados_datatable" class="table table-striped table-hover" style="min-height: 200px;">
             <thead>
                 <th class="text-dark small text-left">PACIENTE</th>
-                <th class="text-dark small text-left">CPF</th>
                 <th class="text-dark small text-left">ENTRADA</th>
                 <th class="text-dark small text-left">SAÍDA</th>
                 <th class="text-dark small text-center align-middle">OPÇÕES</th>
@@ -40,9 +39,6 @@
                     <tr>
                         <td class="small">
                             <a class="loadPaciente_button" href="#" data-paciente_id="<?= $a['paciente_id'] ?>"><?= $a['nome_paciente'] ?></a>
-                        </td>
-                        <td class="small">
-                            <?= $a['cpf'] ?>
                         </td>
                         <td class="small">
                             <?= date_format(date_create($a['data_entrada']), 'd/m/Y') ?>
@@ -207,9 +203,6 @@
                 },
                 {
                     "bSortable": false
-                },
-                {
-                    "bSortable": false
                 }
             ],
             dom: 'Brtip',
@@ -218,7 +211,7 @@
                     extend: 'print',
                     text: '<i class="fa fa-print"></i> imprimir',
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4]
+                        columns: [0, 1, 2, 3]
                     },
                     customize: function(win) {
                         $(win.document.body)

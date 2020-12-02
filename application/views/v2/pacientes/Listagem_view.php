@@ -1,22 +1,25 @@
 <div class="d-flex mb-2">
-    <span class="fa-stack mr-2 ml-n1">
-        <i class="fas fa-circle fa-stack-2x text-300"></i>
-        <i class="fas fa-user-injured fa-inverse fa-stack-1x text-primary"></i>
-    </span>
-    <div class="flex-1 mt-1">
-        <h5 class="mb-0 text-primary position-relative">
-            <span class="bg-200 pr-3">Pacientes</span>
-            <span class="border position-absolute top-50 translate-middle-y w-100 left-0 z-index--1"></span>
-        </h5>
-        <a class="float-right btn" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            <i class="fas fa-question-circle"></i>
-        </a>
+    <div class="card overflow-hidden flex-1">
+        <div class="bg-holder bg-card" style="background-image:url(<?= base_url('public/v2/assets/img/illustrations/corner-2.png') ?>);"></div>
+        <!--/.bg-holder-->
+        <div class="card-body position-relative">
+            <a class="float-right btn" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <i class="fas fa-question-circle"></i>
+            </a>
+            <h3 class="font-weight-light">
+
+                <i class="fas fa-user-injured"></i> Pacientes
+                <!-- <span class="badge badge-soft-warning rounded-pill ml-2">-0.23%</span> -->
+            </h3>
+            <div class="collapse" id="collapseExample">
+                <div class="p-card">
+                    <p class="mb-2">
+                        Nesta página você pode visualizar todos os pacientes cadastrados.
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-
-
-<div class="collapse mb-3" id="collapseExample">
-    <div class="border p-card rounded">Nesta página você pode visualizar todos os pacientes, adicionar pacientes, ir para históricos e agendar novos procedimentos.</div>
 </div>
 
 
@@ -35,7 +38,7 @@
                 <?php foreach ($pacientes as $p) { ?>
                     <tr>
                         <td class="small">
-                            <?= $p['nome_paciente'] ?>
+                            <a class="loadPaciente_button" href="#" data-paciente_id="<?= $p['paciente_id'] ?>"><?= $p['nome_paciente'] ?></a>
                         </td>
                         <td class="small">
                             <?= $p['cpf'] ?>
@@ -157,9 +160,10 @@
             var paciente_id = this.dataset.id;
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url('v2/pacientes/json/') ?>" + paciente_id,
+                    url: "<?= base_url('v2/pacientes/jsonOne/') ?>",
                     data: {
-                        <?= $csrf_name ?>: "<?= $csrf_value ?>"
+                        <?= $csrf_name ?>: "<?= $csrf_value ?>",
+                        paciente_id: paciente_id
                     }
                 })
                 .done(function(paciente) {
@@ -176,7 +180,6 @@
                     $('#profissao').val(paciente.profissao);
                     $('#responsavel').val(paciente.responsavel);
                     $('#telefone_paciente').val(paciente.telefone_paciente);
-
                 });
             editarPacienteModal.toggle()
         });

@@ -1,24 +1,26 @@
 <div class="d-flex mb-2">
-    <span class="fa-stack mr-2 ml-n1">
-        <i class="fas fa-circle fa-stack-2x text-300"></i>
-        <i class="fas fa-calendar-alt fa-inverse fa-stack-1x text-primary"></i>
-    </span>
-    <div class="flex-1 mt-1">
-        <h5 class="mb-0 text-primary position-relative">
-            <span class="bg-200 pr-3">Procedimentos agendados</span>
-            <span class="border position-absolute top-50 translate-middle-y w-100 left-0 z-index--1"></span>
-        </h5>
-        <a class="float-right btn" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            <i class="fas fa-question-circle"></i>
-        </a>
+    <div class="card overflow-hidden flex-1">
+        <div class="bg-holder bg-card" style="background-image:url(<?= base_url('public/v2/assets/img/illustrations/corner-2.png') ?>);"></div>
+        <!--/.bg-holder-->
+        <div class="card-body position-relative">
+            <a class="float-right btn" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <i class="fas fa-question-circle"></i>
+            </a>
+            <h3 class="font-weight-light">
+
+                <i class="fas fa-calendar-alt text-warning"></i> Procedimentos agendados
+                <!-- <span class="badge badge-soft-warning rounded-pill ml-2">-0.23%</span> -->
+            </h3>
+            <div class="collapse" id="collapseExample">
+                <div class="p-card">
+                    <p class="mb-2">
+                        Nesta página você pode visualizar a fila de procedimentos ordenados por urgência:<br>
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
-
-<div class="collapse mb-3" id="collapseExample">
-    <div class="border p-card rounded">Nesta página você pode visualizar todo o histórico de utilização da casa de apoio.</div>
-</div>
-
 
 <div class="card mb-3">
     <?= $this->ui->alert_flashdata() ?>
@@ -55,7 +57,7 @@
                                     break;
                             } ?>
                             <span class="small align-middle">
-                                <?= $p['nome_paciente'] ?>
+                                <a class="loadPaciente_button" href="#" data-paciente_id="<?= $p['paciente_id'] ?>"><?= $p['nome_paciente'] ?></a>
                             </span>
                         </td>
                         <td class="small">

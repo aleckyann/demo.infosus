@@ -121,10 +121,10 @@
                                         <a class="nav-link dropdown-indicator <?= (segment(3) == 'casa-de-apoio') ? 'active collapsed' : '' ?>" href="#casaDeApoioNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="casaDeApoioNav"><i class="fas fa-house-user"></i> Casa de apoio</a>
                                         <ul class="nav collapse <?= (segment(3) == 'casa-de-apoio') ? 'show' : '' ?>" id="casaDeApoioNav" data-parent="#regulacaoNav">
                                             <li class="nav-item">
-                                                <a class="nav-link <?= (segment(4) == 'agendados') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/casa-de-apoio/agendados') ?>"><i class="far fa-calendar-alt"></i> Agendados</a>
+                                                <a class="nav-link <?= (segment(4) == 'agendados') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/casa-de-apoio/agendados') ?>"><i class="far fa-calendar-alt text-warning"></i> Agendados</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link <?= (segment(4) == 'historico') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/casa-de-apoio/historico') ?>"><i class="fas fa-history"></i> Histórico de uso</a>
+                                                <a class="nav-link <?= (segment(4) == 'historico') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/casa-de-apoio/historico') ?>"><i class="fas fa-history text-success"></i> Histórico de uso</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" href="#" data-toggle="modal" data-target="#novoCasaDeApoio"><i class="fas fa-clinic-medical"></i> Novo paciente</a>
@@ -138,7 +138,7 @@
                                                 <a class="nav-link <?= (segment(4) == 'fila') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/procedimentos/fila') ?>"><i class="fas fa-sort-amount-down"></i> Fila</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link <?= (segment(4) == 'agendados') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/procedimentos/agendados') ?>"><i class="far fa-calendar-alt"></i> Agendados</a>
+                                                <a class="nav-link <?= (segment(4) == 'agendados') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/procedimentos/agendados') ?>"><i class="far fa-calendar-alt text-warning"></i> Agendados</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link <?= (segment(4) == 'realizados') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/procedimentos/realizados') ?>"><i class="far fa-calendar-check text-success"></i> Realizados</a>
@@ -227,15 +227,7 @@
                     var navbarTop = document.querySelector('[data-layout] .navbar-top');
                     var navbarTopCombo = document.querySelector('.content [data-navbar-top="combo"]');
 
-
                     navbarVertical.removeAttribute('style');
                     navbarTopVertical.removeAttribute('style');
                     navbarTop.remove(navbarTop);
                 </script>
-
-                <!-- <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="<?= base_url('v2/inicio') ?>">Página inicial</a></li>
-                        <li class="breadcrumb-item"><?= segment(2) ?></li>
-                    </ol>
-                </nav> -->

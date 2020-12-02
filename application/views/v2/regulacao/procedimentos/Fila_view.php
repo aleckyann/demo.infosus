@@ -28,9 +28,6 @@
 </div>
 
 
-
-
-
 <div class="card mb-3">
     <?= $this->ui->alert_flashdata() ?>
 
@@ -66,7 +63,7 @@
                                     break;
                             } ?>
                             <span class="small align-middle">
-                                <?= $p['nome_paciente'] ?>
+                                <a class="loadPaciente_button" href="#" data-paciente_id="<?= $p['paciente_id'] ?>"><?= $p['nome_paciente'] ?></a>
                             </span>
                         </td>
                         <td class="small">

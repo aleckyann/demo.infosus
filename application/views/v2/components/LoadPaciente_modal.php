@@ -1,0 +1,101 @@
+<!-- Modal loadPaciente_modal-->
+<div class="modal fade" id="loadPaciente_modal" role="dialog" aria-labelledby="loadPacienteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title font-weight-light" id="loadPacienteLabel"><i class="fas fa-house-user"></i> Visualizar paciente</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="mb-2 col-8">
+                        <label class="form-label">Nome</label>
+                        <input class="form-control" id="Load_nome_paciente" type="text" disabled />
+                    </div>
+                    <div class="mb-2 col-4">
+                        <label class="form-label">Data de nascimento</label>
+                        <input class="form-control" id="Load_nascimento" type="date" disabled />
+                    </div>
+                    <div class="mb-2 col-4">
+                        <label class="form-label">CPF</label>
+                        <input class="form-control" id="Load_cpf" type="text" disabled />
+                    </div>
+                    <div class="mb-2 col-4">
+                        <label class="form-label">RG</label>
+                        <input class="form-control" id="Load_identidade" type="text" disabled />
+                    </div>
+
+                    <div class="mb-2 col-4">
+                        <label class="form-label">Telefone</label>
+                        <input class="form-control" id="Load_telefone_paciente" type="phone" disabled />
+                    </div>
+                    <div class="mb-2 col-6">
+                        <label class="form-label">Endereço</label>
+                        <input class="form-control" id="Load_endereco" type="text" disabled />
+                    </div>
+                    <div class="mb-2 col-3">
+                        <label class="form-label">CEP</label>
+                        <input class="form-control" id="Load_cep" type="search" disabled />
+                    </div>
+                    <div class="mb-2 col-3">
+                        <label class="form-label">Bairro</label>
+                        <input class="form-control" id="Load_bairro_paciente" type="text" disabled />
+                    </div>
+
+                    <div class="mb-2 col-3">
+                        <label class="form-label">CNS</label>
+                        <input class="form-control" id="Load_cns_paciente" type="text" disabled />
+                    </div>
+                    <div class="mb-2 col-4">
+                        <label class="form-label">ACS ou referência</label>
+                        <input class="form-control" id="Load_acs" type="text" disabled />
+                    </div>
+                    <div class="mb-2 col-5">
+                        <label class="form-label">Responsável</label>
+                        <input class="form-control" id="Load_responsavel" type="text" disabled />
+                    </div>
+                    <div class="mb-2 col-4">
+                        <label class="form-label">Profissão</label>
+                        <input class="form-control" id="Load_profissao" type="text" disabled />
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    //Cria modal para adição de pacientes na casa de apoio
+    var loadPaciente_modal = new bootstrap.Modal(document.getElementById('loadPaciente_modal'), {
+        keyboard: false
+    })
+    $('.loadPaciente_button').on('click', function() {
+
+        $.ajax({
+                method: "POST",
+                url: "<?= base_url('v2/pacientes/jsonOne') ?>",
+                data: {
+                    <?= $csrf_name ?>: "<?= $csrf_value ?>",
+                    paciente_id: this.dataset.paciente_id
+                }
+            })
+            .done(function(paciente) {
+                $('#Load_nome_paciente').val(paciente.nome_paciente)
+                $('#Load_nascimento').val(paciente.nascimento)
+                $('#Load_cpf').val(paciente.cpf)
+                $('#Load_identidade').val(paciente.identidade)
+                $('#Load_telefone_paciente').val(paciente.telefone_paciente)
+                $('#Load_endereco').val(paciente.endereco)
+                $('#Load_cep').val(paciente.cep)
+                $('#Load_bairro_paciente').val(paciente.bairro_paciente)
+                $('#Load_cns_paciente').val(paciente.cns_paciente)
+                $('#Load_acs').val(paciente.acs)
+                $('#Load_responsavel').val(paciente.responsavel)
+                $('#Load_profissao').val(paciente.profissao)
+                loadPaciente_modal.show();
+            });
+    })
+</script>

@@ -2,8 +2,8 @@
 <div class="modal fade" id="loadPaciente_modal" role="dialog" aria-labelledby="loadPacienteLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header bg-light">
-                <h5 class="modal-title font-weight-light" id="loadPacienteLabel"><i class="fas fa-house-user"></i> Visualizar paciente</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title font-weight-light text-white" id="loadPacienteLabel"><i class="fas fa-user-injured"></i> Ficha do paciente</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="row">

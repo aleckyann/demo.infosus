@@ -31,10 +31,8 @@
         <table id="procedimentosRealizados_datatable" class="table table-striped table-hover" style="min-height: 200px;">
             <thead>
                 <th class="text-dark small text-left">PACIENTE</th>
-                <th class="text-dark small text-left">CPF</th>
                 <th class="text-dark small text-left">POCEDIMENTO</th>
                 <th class="text-dark small text-left">DATA</th>
-                <th class="text-dark small text-left">TELEFONE</th>
                 <th class="text-dark small text-center align-middle">OPÇÕES</th>
             </thead>
             <tbody>
@@ -63,17 +61,10 @@
                             </span>
                         </td>
                         <td class="small">
-                            <?= $p['cpf'] ?>
-                        </td>
-                        <td class="small">
                             <?= $p['nome_procedimento'] ?>
                         </td>
                         <td class="small">
-
                             <?= date_format(date_create($p['data_solicitacao']), 'd/m/Y') ?>
-                        </td>
-                        <td class="small">
-                            <?= $p['telefone_paciente'] ?>
                         </td>
 
                         <td class="text-center p-1">
@@ -189,12 +180,6 @@
                 },
                 {
                     "bSortable": false
-                },
-                {
-                    "bSortable": false
-                },
-                {
-                    "bSortable": false
                 }
             ],
             dom: 'Brtip',
@@ -203,7 +188,7 @@
                     extend: 'print',
                     text: '<i class="fa fa-print"></i> imprimir',
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4, 5]
+                        columns: [0, 1, 2, 3]
                     },
                     customize: function(win) {
                         $(win.document.body)

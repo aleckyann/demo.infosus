@@ -36,7 +36,6 @@
         <table id="procedimentosFila_datatable" class="table table-striped" style="min-height: 200px;">
             <thead>
                 <th class="text-dark small text-left">PACIENTE</th>
-                <th class="text-dark small text-left">CPF</th>
                 <th class="text-dark small text-left">PROCEDIMENTO</th>
                 <th class="text-dark small text-left">DATA</th>
                 <th class="text-dark small text-center align-top">OPÇÕES</th>
@@ -65,9 +64,6 @@
                             <span class="small align-middle">
                                 <a class="loadPaciente_button" href="#" data-paciente_id="<?= $p['paciente_id'] ?>"><?= $p['nome_paciente'] ?></a>
                             </span>
-                        </td>
-                        <td class="small">
-                            <?= $p['cpf'] ?>
                         </td>
                         <td class="small">
                             <?= $p['nome_procedimento'] ?>
@@ -429,9 +425,6 @@
                 },
                 {
                     "bSortable": false
-                },
-                {
-                    "bSortable": false
                 }
             ],
             dom: 'Brtip',
@@ -440,7 +433,7 @@
                     extend: 'print',
                     text: '<i class="fa fa-print"></i> imprimir',
                     exportOptions: {
-                        columns: [0, 1, 2, 3]
+                        columns: [0, 1, 2]
                     },
                     customize: function(win) {
                         $(win.document.body)

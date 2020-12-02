@@ -37,10 +37,12 @@
                         <td class="small">
                             <?= $p['nome_paciente'] ?>
                         </td>
-                        <td class="small"><?= $p['cpf'] ?></td>
-                        <td class="small"><?= $p['telefone_paciente'] ?></td>
-
-
+                        <td class="small">
+                            <?= $p['cpf'] ?>
+                        </td>
+                        <td class="small">
+                            <?= $p['telefone_paciente'] ?>
+                        </td>
                         <td class="text-center p-1">
                             <!-- Example single danger button -->
 

@@ -53,7 +53,6 @@
                                 case '':
                                     echo ('<span class="mr-2 fas fa-user-injured text-muted" style="font-size:20px"></span>');
                                     break;
-                                       
                             } ?>
                             <span class="small align-middle">
                                 <?= $p['nome_paciente'] ?>
@@ -137,6 +136,29 @@
                         <div class="mb-2 col-12">
                             <label for="">Principais sintomas clínicos</label>
                             <textarea type="date" name="sintomas" id="sintomas" class="form-control"></textarea>
+                        </div>
+
+                        <div class="col-12 mt-1">
+                            <label>Classificação de risco / vunerabilidade:</label>
+                        </div>
+                        <div class="my-2 col-3 text-center">
+                            <input type="radio" class="btn-check editarProcedimentoButton" name="editar_procedimento_risco" value="1" id="editarProcedimentoButton1" autocomplete="off" required>
+                            <label class="btn btn-outline-info" for="editarProcedimentoButton1"><span class="m-2">1</span></label><br>
+                            Não agudo
+                        </div>
+                        <div class="my-2 col-3 text-center">
+                            <input type="radio" class="btn-check editarProcedimentoButton" name="editar_procedimento_risco" value="2" id="editarProcedimentoButton2" autocomplete="off" required>
+                            <label class="btn btn-outline-success" for="editarProcedimentoButton2"><span class="m-2">2</span></label><br>
+                            Baixa
+                        </div>
+                        <div class="my-2 col-3 text-center">
+                            <input type="radio" class="btn-check editarProcedimentoButton" name="editar_procedimento_risco" value="3" id="editarProcedimentoButton3" autocomplete="off" required>
+                            <label class="btn btn-outline-warning" for="editarProcedimentoButton3"><span class="m-2">3</span></label><br>
+                            Intermediária
+                        </div>
+                        <div class="my-2 col-3 text-center">
+                            <input type="radio" class="btn-check editarProcedimentoButton" name="editar_procedimento_risco" value="4" id="editarProcedimentoButton4" autocomplete="off" required>
+                            <label class="btn btn-outline-danger" for="editarProcedimentoButton4"><span class="m-2">4</span></label><br>Alta
                         </div>
 
                     </div>
@@ -291,6 +313,7 @@
                     $('#profissional_solicitante').val(procedimento.profissional_solicitante);
                     $('#estabelecimento_solicitante').val(procedimento.estabelecimento_solicitante);
                     $('#nome_paciente').val(procedimento.nome_paciente);
+                    $(".editarProcedimentoButton[value='"+procedimento.procedimento_risco+"']").prop("checked", true);
                     $('#data_solicitacao').val(procedimento.data_solicitacao);
                     $('#data').val(procedimento.data);
                     $('#sintomas').val(procedimento.sintomas);

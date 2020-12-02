@@ -74,6 +74,9 @@ class Procedimentos_controller extends Sistema_Controller
     public function editar(): void
     {
         $dados = $this->input->post();
+        $dados['procedimento_risco'] = $dados['editar_procedimento_risco'];
+        unset($dados['editar_procedimento_risco']);
+
         $this->Procedimentos->update(
             [
                 'procedimentos_id' => $dados['procedimentos_id']

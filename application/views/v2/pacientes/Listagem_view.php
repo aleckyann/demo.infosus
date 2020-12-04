@@ -146,7 +146,6 @@
 </div>
 
 
-
 <script>
     window.onload = function() {
 
@@ -236,6 +235,9 @@
             },
 
             "aoColumns": [{
+                    "bSortable": false
+                },
+                {
                     "bSortable": false
                 },
                 {

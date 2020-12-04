@@ -26,7 +26,7 @@ class Auth_controller extends CI_Controller
         if (!empty($usuario_autenticado)) {
             $this->session->set_userdata($usuario_autenticado);
             $this->session->set_flashdata('success', 'Seja bem vindo.');
-            redirect('usuario/dashboard');
+            redirect('v2/pacientes/listagem');
         } else {
             $this->session->set_flashdata('danger', 'Login ou senha incorretos.');
             redirect();

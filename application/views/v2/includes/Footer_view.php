@@ -53,6 +53,7 @@
 <?php $this->load->view('v2/components/AddNovoPaciente_modal') ?>
 <?php $this->load->view('v2/components/AddPacienteCasaDeApoio_modal') ?>
 <?php $this->load->view('v2/components/AddProcedimento_modal') ?>
+<?php $this->load->view('v2/components/AddTfd_modal') ?>
 <?php $this->load->view('v2/components/LoadPaciente_modal') ?>
 
 </body>

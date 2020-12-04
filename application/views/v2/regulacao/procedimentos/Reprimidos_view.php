@@ -158,15 +158,6 @@
                 },
                 {
                     "bSortable": false
-                },
-                {
-                    "bSortable": false
-                },
-                {
-                    "bSortable": false
-                },
-                {
-                    "bSortable": false
                 }
             ],
             dom: 'Brtip',
@@ -175,7 +166,7 @@
                     extend: 'print',
                     text: '<i class="fa fa-print"></i> imprimir',
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4, 5]
+                        columns: [0, 1, 2]
                     },
                     customize: function(win) {
                         $(win.document.body)

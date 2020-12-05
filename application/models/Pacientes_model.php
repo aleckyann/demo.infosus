@@ -43,12 +43,11 @@ class Pacientes_model extends CI_model
     
     /**
      * Retorna no formato para utilização no plugin select2
+     * plugin precisa de um campo 'id' e outro text para criar as options
      */
     public function getJsonSelect2(array $where = [])
     {
-        $dados['results'] = $this->db->like($where)->select('paciente_id id, nome_paciente text')->get($this->table)->result_array();
-
-        return json_encode($dados);
+        return json_encode($this->db->like($where)->select('paciente_id id, nome_paciente text, cpf, nascimento')->get($this->table)->result_array());
     }
 
 }

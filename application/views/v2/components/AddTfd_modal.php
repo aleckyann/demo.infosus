@@ -1,6 +1,6 @@
 <!-- Modal addTfd_modal-->
 <div class="modal fade" id="addTfd_modal" role="dialog" aria-labelledby="AddTfd_label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
+    <div class="modal-dialog  modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header bg-light">
                 <h5 class="modal-title font-weight-light text-dark" id="AddTfd_label"><i class="far fa-calendar-plus"></i> Adicionar novo TFD</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
@@ -9,9 +9,17 @@
                 <?= $csrf_input ?>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="mb-3 col-12">
+                        <div class="mb-3 col-8">
                             <label for="">Nome do paciente:</label>
                             <select name="paciente_id" id="addTfdSelect2" style="width: 100%;" required></select>
+                        </div>
+                        <div class="mb-2 col-2">
+                            <label for="">Nascimento</label>
+                            <input type="date" id="disabledTfdPacienteNascimento" class="form-control p-0" disabled>
+                        </div>
+                        <div class="mb-2 col-2">
+                            <label for="">CPF</label>
+                            <input type="text" id="disabledTfdPacienteCpf" class="form-control" disabled>
                         </div>
                         <div class="mb-2 col-4">
                             <label for="">Procedimento</label>
@@ -98,7 +106,7 @@
         keyboard: false
     })
     $(document).ready(function() {
-        var casaDeApoioSelect2 = $('#addTfdSelect2').select2({
+        var tfdSelect2 = $('#addTfdSelect2').select2({
             ajax: {
                 url: '<?= base_url('v2/pacientes/json/select2') ?>',
                 method: 'POST',
@@ -109,15 +117,22 @@
                     }
                     return query;
                 },
+                processResults: function(data, params) {
+                    return {
+                        results: data
+                    }
+                },
                 dataType: 'json',
                 placeholder: "Selecione um paciente",
-            }
+            },
+            delay: 250,
+            minimumInputLength: 1,
         });
-        casaDeApoioSelect2.on('select2:select', function(e) {
-            console.log(e)
-            // -------
-            // VER COMO INSERIR INFORMAÇÕES DO PACIENTE NO MODAL
-            // --------
+
+        // Preenche Telefone e cpf
+        tfdSelect2.on('select2:select', function(e) {
+            $('#disabledTfdPacienteCpf').val(e.params.data.cpf)
+            $('#disabledTfdPacienteNascimento').val(e.params.data.nascimento)
         });
     });
 </script>

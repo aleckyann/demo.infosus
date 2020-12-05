@@ -40,7 +40,7 @@ class Pacientes_controller extends Sistema_Controller
         $dados = $this->input->post();
         $this->output
             ->set_content_type('application/json')
-            ->set_output(json_encode($dados));
+            ->set_output(json_encode($this->Pacientes->getAll($dados)));
     }
 
     public function jsonOne()

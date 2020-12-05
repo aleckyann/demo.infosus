@@ -1,6 +1,6 @@
 <!-- Modal AddProcedimento_modal-->
 <div class="modal fade" id="AddProcedimento_modal" role="dialog" aria-labelledby="AddProcedimento_label" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header bg-light">
                 <h5 class="modal-title font-weight-light text-dark" id="AddProcedimento_label"><i class="far fa-calendar-plus"></i> Adicionar novo procedimento</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
@@ -9,10 +9,19 @@
                 <div class="modal-body">
                     <?= $csrf_input ?>
                     <div class="row">
-                        <div class="mb-3 col-12">
+                        <div class="mb-3 col-7">
                             <label for="">Nome do paciente:</label>
                             <select name="paciente_id" id="addProcedimentoSelect2" style="width: 100%;" required></select>
                         </div>
+                        <div class="mb-2 col-3">
+                            <label for="">Nascimento:</label>
+                            <input type="date" id="disabledProcedimentoNascimento" class="form-control p-0" disabled>
+                        </div>
+                        <div class="mb-2 col-2">
+                            <label for="">CPF:</label>
+                            <input type="text" id="disabledProcedimentoCpf" class="form-control" disabled>
+                        </div>
+                        <hr>
                         <div class="mb-2 col-6">
                             <label for="">Nome do procedimento:</label>
                             <input type="text" name="nome_procedimento" class="form-control" required>
@@ -44,7 +53,7 @@
                             <label for="">Principais sintomas clínicos:</label>
                             <textarea type="date" name="sintomas" class="form-control"></textarea>
                         </div>
-                        
+
                         <div class="col-12 mt-1">
                             <label>Classificação de risco / vunerabilidade:</label>
                         </div>
@@ -84,8 +93,9 @@
     var AddProcedimento_modal = new bootstrap.Modal(document.getElementById('AddProcedimento_modal'), {
         keyboard: false
     })
+
     $(document).ready(function() {
-        var casaDeApoioSelect2 = $('#addProcedimentoSelect2').select2({
+        var procedimentoSelect2 = $('#addProcedimentoSelect2').select2({
             ajax: {
                 url: '<?= base_url('v2/pacientes/json/select2') ?>',
                 method: 'POST',
@@ -94,20 +104,24 @@
                         nome_paciente: params.term,
                         <?= $csrf_name ?>: '<?= $csrf_value ?>'
                     }
-
-                    // Query parameters will be ?search=[term]&type=public
                     return query;
+                },
+                processResults: function(data, params) {
+                    return {
+                        results: data
+                    }
                 },
                 dataType: 'json',
                 placeholder: "Selecione um paciente",
-                // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
-            }
+            },
+            delay: 250,
+            minimumInputLength: 1,
         });
-        casaDeApoioSelect2.on('select2:select', function(e) {
-            console.log(e)
-            // -------
-            // VER COMO INSERIR INFORMAÇÕES DO PACIENTE NO MODAL
-            // --------
+
+        // Preenche Telefone e cpf
+        procedimentoSelect2.on('select2:select', function(e) {
+            $('#disabledProcedimentoCpf').val(e.params.data.cpf)
+            $('#disabledProcedimentoNascimento').val(e.params.data.nascimento)
         });
     });
 </script>

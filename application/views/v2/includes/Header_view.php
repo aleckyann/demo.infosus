@@ -167,7 +167,7 @@
                                                 <a class="nav-link <?= (segment(4) == 'reprimidos') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/tfd/reprimidos') ?>"><i class="far fa-calendar-times text-danger"></i> Reprimidos</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#" data-toggle="modal" data-target="#AddTfd_modal"><i class="far fa-calendar-plus"></i> Novo Tfd</a>
+                                                <a class="nav-link" href="#" data-toggle="modal" data-target="#addTfd_modal"><i class="far fa-calendar-plus"></i> Novo Tfd</a>
                                             </li>
                                         </ul>
                                     </li>

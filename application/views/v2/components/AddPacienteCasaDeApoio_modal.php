@@ -1,6 +1,6 @@
 <!-- Modal novoCasaDeApoio-->
 <div class="modal fade" id="novoCasaDeApoio" role="dialog" aria-labelledby="novoCasaDeApoioLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header bg-light">
                 <h5 class="modal-title font-weight-light" id="novoCasaDeApoioLabel"><i class="fas fa-house-user"></i> Adicionar paciente na casa de apoio</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
@@ -10,10 +10,19 @@
                     <?= $csrf_input ?>
                     <div class="row">
 
-                        <div class="mb-2 col-12">
+                        <div class="mb-2 col-7">
                             <label for="">Nome do paciente</label>
-                            <select id="AddPacientesSelect2" style="width:100%" name="paciente_id" required></select>
+                            <select id="pacientesCasaDeApoio_select2" style="width:100%" name="paciente_id" required></select>
                         </div>
+                        <div class="mb-2 col-3">
+                            <label for="">Nascimento:</label>
+                            <input type="date" id="disabledCasaDeApoioNascimento" class="form-control p-0" disabled>
+                        </div>
+                        <div class="mb-2 col-2">
+                            <label for="">CPF:</label>
+                            <input type="text" id="disabledCasaDeApoioCpf" class="form-control" disabled>
+                        </div>
+                        <hr>
                         <div class="mb-2 col-6">
                             <label for="">Data de entrada</label>
                             <input type="date" name="data_entrada" class="form-control" required>
@@ -47,29 +56,33 @@
         keyboard: false
     })
     $(document).ready(function() {
-        var casaDeApoioSelect2 = $('#AddPacientesSelect2').select2({
+        var casaDeApoio_select2 = $('#pacientesCasaDeApoio_select2').select2({
             ajax: {
-                url: '<?= base_url('v2/pacientes/json/Select2') ?>',
+                url: '<?= base_url('v2/pacientes/json/select2') ?>',
                 method: 'POST',
                 data: function(params) {
                     var query = {
                         nome_paciente: params.term,
                         <?= $csrf_name ?>: '<?= $csrf_value ?>'
                     }
-
-                    // Query parameters will be ?search=[term]&type=public
                     return query;
+                },
+                processResults: function(data, params) {
+                    return {
+                        results: data
+                    }
                 },
                 dataType: 'json',
                 placeholder: "Selecione um paciente",
-                // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
-            }
+            },
+            delay: 250,
+            minimumInputLength: 1,
         });
-        casaDeApoioSelect2.on('select2:select', function(e) {
-            console.log(e)
-            // -------
-            // VER COMO INSERIR INFORMAÇÕES DO PACIENTE NO MODAL
-            // --------
+
+        // Preenche Telefone e cpf
+        casaDeApoio_select2.on('select2:select', function(e) {
+            $('#disabledCasaDeApoioCpf').val(e.params.data.cpf)
+            $('#disabledCasaDeApoioNascimento').val(e.params.data.nascimento)
         });
     });
 </script>

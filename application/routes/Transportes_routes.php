@@ -17,3 +17,7 @@ $route['usuario/cadastros/editar-veiculo/(:num)'] = 'usuario/cadastros/Atualizar
 /**
  * ROTAS v2
  */
+
+ $route['v2/transportes/veiculos'] = 'v2/transportes/';
+ $route['v2/transportes/viagens'] = 'v2/transportes/';
+ $route['v2/transportes/nova-viagem  '] = 'v2/transportes/';

@@ -10,7 +10,8 @@ $autoload['libraries'] = array(
     'database',
     'upload',
     'user_agent',
-    'ui'
+    'ui',
+    'upload'
 );
 
 

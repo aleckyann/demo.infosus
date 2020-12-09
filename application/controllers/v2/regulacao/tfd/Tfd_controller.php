@@ -12,7 +12,7 @@ class Tfd_controller extends Sistema_Controller
     public function fila(): void
     {
         $dados['title'] = 'Tfd na fila';
-        $dados['tfd'] = $this->Tfd->porPaciente(['realizado' => '', 'data' => NULL]);
+        $dados['tfd'] = $this->Tfd->porPaciente(['tfd_data_atendimento' => NULL, 'tfd_realizado' => NULL]);
 
         $this->view('regulacao/tfd/Fila_view', $dados);
     }
@@ -24,9 +24,27 @@ class Tfd_controller extends Sistema_Controller
     public function novo(): void
     {
         $dados = $this->input->post();
-        $this->Tfd->insert($dados);
 
-        $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> Procedimento adicionado À fila com sucesso');
+        $tfd_id = $this->Tfd->insert($dados);
+
+        $config['upload_path']          = realpath(APPPATH . '../public/v2/anexos/tfd');
+        $config['allowed_types']        = 'jpeg|jpg|png|pdf|doc|docx';
+        $config['file_name']            = $tfd_id;
+
+        $this->upload->initialize($config);
+
+        if (!$this->upload->do_upload('tfd_anexo')) {
+            $error = array('error' => $this->upload->display_errors());
+            $this->session->set_flashdata('danger', 'Não foi salvar o anexo deste TFD, envie arquivos: .jpeg .jpg .png .pdf .doc ou .docx');
+        } else {
+            $data = $this->upload->data();
+            $this->Tfd->update(
+                ['tfd_anexo' => $data['orig_name']],
+                ['tfd_id' => $tfd_id]
+            );
+        }
+
+        $this->session->set_flashdata('success', 'TFD criado com sucesso');
         redirect($this->agent->referrer());
     }
 
@@ -60,7 +78,7 @@ class Tfd_controller extends Sistema_Controller
                 'tfd_id' => $dados['tfd_id']
             ],
             [
-                'realizado' => 'nao',
+                'tfd_realizado' => 'nao',
                 'reprimido_por' => $dados['reprimido_por']
             ],
         );
@@ -78,7 +96,7 @@ class Tfd_controller extends Sistema_Controller
                 'tfd_id' => $procedimento_id
             ],
             [
-                'realizado' => 'sim'
+                'tfd_realizado' => 'sim'
             ],
         );
         $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> Procedimento concluido com sucesso');
@@ -91,8 +109,8 @@ class Tfd_controller extends Sistema_Controller
     public function editar(): void
     {
         $dados = $this->input->post();
-        $dados['procedimento_risco'] = $dados['editar_procedimento_risco'];
-        unset($dados['editar_procedimento_risco']);
+        $dados['tfd_risco'] = $dados['editar_tfd_risco'];
+        unset($dados['editar_tfd_risco']);
 
         $this->Tfd->update(
             [
@@ -113,7 +131,7 @@ class Tfd_controller extends Sistema_Controller
     public function agendados(): void
     {
         $dados['title'] = 'Tfd agendados';
-        $dados['tfd'] = $this->Tfd->porPaciente(['realizado' => '', 'data !=' => NULL]);
+        $dados['tfd'] = $this->Tfd->porPaciente(['tfd_data_atendimento !=' => NULL, 'tfd_realizado' => NULL]);
 
         $this->view('regulacao/tfd/Agendados_view', $dados);
     }
@@ -126,7 +144,7 @@ class Tfd_controller extends Sistema_Controller
     public function reprimidos(): void
     {
         $dados['title'] = 'Tfd reprimidos';
-        $dados['tfd'] = $this->Tfd->porPaciente(['realizado' => 'nao']);
+        $dados['tfd'] = $this->Tfd->porPaciente(['tfd_realizado' => 'nao']);
 
         $this->view('regulacao/tfd/Reprimidos_view', $dados);
     }
@@ -139,7 +157,7 @@ class Tfd_controller extends Sistema_Controller
     public function realizados(): void
     {
         $dados['title'] = 'Tfd realizados';
-        $dados['tfd'] = $this->Tfd->porPaciente(['estabelecimento_prestador !=' => '']);
+        $dados['tfd'] = $this->Tfd->porPaciente(['tfd_realizado' => 'sim']);
 
         $this->view('regulacao/tfd/Realizados_view', $dados);
     }

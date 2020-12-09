@@ -29,9 +29,10 @@ class Tfd_model extends CI_model
      * Insere um registro em tfd
      * Recebe um array
      */
-    public function insert(array $dados): void
+    public function insert(array $dados): int
     {
         $this->db->insert($this->table, $dados);
+        return $this->db->insert_id();
     }
 
     /**

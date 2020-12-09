@@ -33,18 +33,17 @@
 
     <div class="card-body">
 
-        <table id="procedimentosFila_datatable" class="table table-striped" style="min-height: 200px;">
+        <table id="tfdFila_datatable" class="table table-striped" style="min-height: 200px;">
             <thead>
                 <th class="text-dark small text-left">PACIENTE</th>
-                <th class="text-dark small text-left">PROCEDIMENTO</th>
-                <th class="text-dark small text-left">DATA</th>
+                <th class="text-dark small text-left">DATA DA SOLICITAÇÃO</th>
                 <th class="text-dark small text-center align-top">OPÇÕES</th>
             </thead>
             <tbody>
                 <?php foreach ($tfd as $t) : ?>
                     <tr>
                         <td>
-                            <?php switch ($t['procedimento_risco']) {
+                            <?php switch ($t['tfd_risco']) {
                                 case '1':
                                     echo ('<span class="mr-2 fas fa-user-injured text-info" style="font-size:20px"></span>');
                                     break;
@@ -65,12 +64,9 @@
                                 <a class="loadPaciente_button" href="#" data-paciente_id="<?= $t['paciente_id'] ?>"><?= $t['nome_paciente'] ?></a>
                             </span>
                         </td>
-                        <td class="small">
-                            <?= $t['nome_procedimento'] ?>
-                        </td>
-                        <td class="small">
 
-                            <?= date_format(date_create($t['data_solicitacao']), 'd/m/Y') ?>
+                        <td class="small">
+                            <?= date_format(date_create($t['tfd_data_solicitacao']), 'd/m/Y') ?>
                         </td>
 
                         <td class="text-center p-1">
@@ -78,10 +74,10 @@
                                 <div class="btn-group mb-2">
                                     <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
                                     <div class="dropdown-menu">
-                                        <button class="dropdown-item agendarProcedimento_button" data-tfd_id="<?= $t['procedimentos_id'] ?>"><i class="fa fa-calendar-alt"></i> Agendar procedimento</button>
-                                        <button class="dropdown-item text-warning editarProcedimento_button" data-tfd_id="<?= $t['procedimentos_id'] ?>"><i class="fa fa-edit"></i> Editar procedimento</button>
+                                        <button class="dropdown-item agendarTfd_button" data-tfd_id="<?= $t['tfd_id'] ?>"><i class="fa fa-calendar-alt"></i> Agendar TFD</button>
+                                        <button class="dropdown-item text-warning editarTfd_button" data-tfd_id="<?= $t['tfd_id'] ?>"><i class="fa fa-edit"></i> Editar TFD</button>
                                         <div class="dropdown-divider"></div>
-                                        <button class="dropdown-item text-danger reprimirTfd_button" data-tfd_id="<?= $t['procedimentos_id'] ?>"><i class="fa fa-times"></i> Reprimir procedimento</button>
+                                        <button class="dropdown-item text-danger reprimirTfd_button" data-tfd_id="<?= $t['tfd_id'] ?>"><i class="fa fa-times"></i> Reprimir TFD</button>
                                     </div>
                                 </div>
                             </div>
@@ -94,8 +90,8 @@
     </div>
 </div>
 
-<!-- Modal editarProcedimento_model-->
-<div class="modal fade" id="editarProcedimento_model" tabindex="-1" role="dialog" aria-labelledby="editarProcedimento_label" aria-hidden="true">
+<!-- Modal editarTfd_model-->
+<div class="modal fade" id="editarTfd_model" tabindex="-1" role="dialog" aria-labelledby="editarProcedimento_label" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-warning">
@@ -104,153 +100,293 @@
             <form action="<?= base_url('v2/regulacao/procedimentos/editar') ?>" method="post">
                 <div class="modal-body">
                     <?= $csrf_input ?>
-                    <input type="hidden" name="procedimentos_id" id="procedimentos_id">
+                    <input type="hidden" name="tfd_id" id="editar_tfd_id">
                     <div class="row">
-                        <div class="mb-4 col-12">
-                            <label for="">Nome do paciente</label>
-                            <input type="text" class="form-control" id="nome_paciente" readonly>
+                        <div class="mb-3 col-6">
+                            <label for="">Nome do paciente:</label>
+                            <input type="text" class="form-control" id="editar_tfd_paciente_nome" disabled>
                         </div>
-                        <div class="mb-2 col-6">
-                            <label for="">Nome do procedimento</label>
-                            <input type="text" name="nome_procedimento" id="nome_procedimento" class="form-control" required>
+                        <div class="mb-2 col-3">
+                            <label for="">Nascimento</label>
+                            <input type="date" id="editar_tfd_nascimento" class="form-control" disabled>
                         </div>
-                        <div class="mb-2 col-6">
-                            <label for="">Especialidade</label>
-                            <select name="especialidade" id="especialidade" class="form-select" required>
-                                <option selected disabled>Selecione uma especialidade</option>
-                                <?php foreach ($this->Especialidades->getAll() as $e) : ?>
-                                    <option value="<?= $e['especialidade_nome'] ?>"><?= $e['especialidade_nome'] ?></option>
-                                <?php endforeach; ?>
-                            </select>
+                        <div class="mb-2 col-3">
+                            <label for="">CPF</label>
+                            <input type="text" id="editar_tfd_cpf" class="form-control" disabled>
+                        </div>
 
+                        <hr>
+
+                        <div class="mb-2 col-4">
+                            <label for="">Data da solicitação <i class="fa fa-question-circle text-muted" data-toggle="tooltip" title="Data da solicitação do TFD."></i></label>
+                            <input type="date" name="tfd_data_solicitacao" id="editar_tfd_data_solicitacao" class="form-control" required>
                         </div>
                         <div class="mb-2 col-4">
+                            <label for="">Data do atendimento <i class="fa fa-question-circle text-muted" data-toggle="tooltip" title="Data agendada para o atendimento do paciente."></i></label>
+                            <input type="date" name="tfd_data_atendimento" id="editar_tfd_data_atendimento" class="form-control" required>
+                        </div>
+                        <div class="mb-2 col-4">
+                            <label for="">Cidade do atendimento <i class="fa fa-question-circle text-muted" data-toggle="tooltip" title="Cidade em que paciente vai realizar o atendimento."></i></label>
+                            <input type="text" name="tfd_cidade_destino" id="editar_tfd_cidade_destino" class="form-control" required>
+                        </div>
+
+                        <div class="mb-2 col-3">
+                            <label for="">Tipo de deslocamento</label>
+                            <select name="tfd_veiculo" id="editar_tfd_veiculo" class="form-control" id="" required>
+                                <option value="" disabled selected>Selecione</option>
+                                <option value="Ambulância">Ambulância</option>
+                                <option value="Carro de passeio">Carro de passeio</option>
+                                <option value="Transporte sanitário">Transporte sanitário</option>
+                                <option value="Ônibus">Ônibus</option>
+                                <option value="Carro próprio">Carro próprio</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-2 col-3">
+                            <label for="">cota</label>
+                            <input type="text" name="tfd_cota" id="editar_tfd_cota" class="form-control" required>
+                        </div>
+                        <div class="mb-2 col-3">
                             <label for="">Estabelecimento solicitante</label>
-                            <input type="text" name="estabelecimento_solicitante" id="estabelecimento_solicitante" class="form-control" required>
+                            <input type="text" name="tfd_estabelecimento_solicitante" id="editar_tfd_estabelecimento_solicitante" class="form-control" required>
                         </div>
-                        <div class="mb-2 col-4">
-                            <label for="">Profissional solicitante</label>
-                            <input type="text" name="profissional_solicitante" id="profissional_solicitante" class="form-control" required>
+                        <div class="mb-2 col-3">
+                            <label for="">Estabelecimento prestador</label>
+                            <input type="text" name="tfd_estabelecimento_prestador" id="editar_tfd_estabelecimento_prestador" class="form-control" required>
                         </div>
-                        <div class="mb-2 col-4">
-                            <label for="">Data de entrada</label>
-                            <input type="date" name="data_solicitacao" id="data_solicitacao" class="form-control" required>
+
+                        <hr>
+
+                        <div class="col-3">
+                            <label for="tfd_alimentacao" name="tfd_alimentacao"> Necessidade de alimentação? <i class="fa fa-question-circle text-muted" data-toggle="tooltip" data-placement="top" title="Este paciente precisa de ajuda de custo para alimentação?"></i></label>
+                            <select name="tfd_alimentacao" class="form-control" id="editar_tfd_alimentacao" required>
+                                <option value="" selected disabled>Selecione</option>
+                                <option value="Não">Não</option>
+                                <option value="Sim">Sim</option>
+                            </select>
+                        </div>
+                        <div class="col-3">
+                            <label for="tfd_passagem" name="tfd_passagem"> Necessidade de Passagem? <i class="fa fa-question-circle text-muted" data-toggle="tooltip" data-placement="top" title="Este paciente precisa de ajuda de custo com passagem?"></i></label>
+                            <select name="tfd_passagem" class="form-control" id="editar_tfd_passagem" required>
+                                <option value="" selected disabled>Selecione</option>
+                                <option value="Não">Não</option>
+                                <option value="Sim">Sim</option>
+                            </select>
+                        </div>
+                        <div class="col-3">
+                            <label for="tfd_hospedagem" name="tfd_hospedagem"> Necessidade de Hospedagem? <i class="fa fa-question-circle text-muted" data-toggle="tooltip" data-placement="top" title="Este paciente precisa de ajuda de custo com hospedagem?"></i></label>
+                            <select name="tfd_hospedagem" class="form-control" id="editar_tfd_hospedagem" required>
+                                <option value="" selected disabled>Selecione</option>
+                                <option value="Não">Não</option>
+                                <option value="Sim">Sim</option>
+                            </select>
+                        </div>
+                        <div class="col-3">
+                            <label for="tfd_acompanhante" name="tfd_acompanhante"> Necessidade de acompanhante? <i class="fa fa-question-circle text-muted" data-toggle="tooltip" data-placement="top" title="Este paciente precisa de um acompanhante?"></i></label>
+                            <select name="tfd_acompanhante" class="form-control" id="editar_tfd_acompanhante" required>
+                                <option value="" selected disabled>Selecione</option>
+                                <option value="Não">Não</option>
+                                <option value="Sim">Sim</option>
+                            </select>
+                        </div>
+
+                        <hr class="mt-3">
+
+
+                        <div class="mb-2 col-12">
+                            <label for="">Descrição</label>
+                            <textarea name="tfd_descricao" id="editar_tfd_descricao" rows="2" class="form-control"></textarea>
                         </div>
 
                         <div class="mb-2 col-12">
-                            <label for="">Principais sintomas clínicos</label>
-                            <textarea type="date" name="sintomas" id="sintomas" class="form-control"></textarea>
+                            <label for="">Anexo <small class="text-muted">(.jpeg .jpg .png pdf .doc .docx)</small> </label>
+                            <div class="form-file">
+                                <input class="form-file-input" id="customFile" name="tfd_anexo" type="file" />
+                                <label class="form-file-label" name="tfd_anexo" for="customFile">
+                                    <span class="form-file-text">Escolha um arquivo...</span>
+                                    <span class="form-file-button"><i class="fas fa-file-medical"></i> Procurar arquivo</span>
+                                </label>
+                            </div>
                         </div>
 
                         <div class="col-12 mt-1">
                             <label>Classificação de risco / vunerabilidade:</label>
                         </div>
                         <div class="my-2 col-3 text-center">
-                            <input type="radio" class="btn-check editarProcedimentoButton" name="editar_procedimento_risco" value="1" id="editarProcedimentoButton1" autocomplete="off" required>
-                            <label class="btn btn-outline-info" for="editarProcedimentoButton1"><span class="m-2">1</span></label><br>
+                            <input type="radio" class="btn-check editar_tfd_risco" name="tfd_risco" value="1" id="novoTfd1" autocomplete="off" required>
+                            <label class="btn btn-outline-info" for="novoTfd1"><span class="m-2">1</span></label><br>
                             Não agudo
                         </div>
                         <div class="my-2 col-3 text-center">
-                            <input type="radio" class="btn-check editarProcedimentoButton" name="editar_procedimento_risco" value="2" id="editarProcedimentoButton2" autocomplete="off" required>
-                            <label class="btn btn-outline-success" for="editarProcedimentoButton2"><span class="m-2">2</span></label><br>
+                            <input type="radio" class="btn-check editar_tfd_risco" name="tfd_risco" value="2" id="novoTfd2" autocomplete="off" required>
+                            <label class="btn btn-outline-success" for="novoTfd2"><span class="m-2">2</span></label><br>
                             Baixa
                         </div>
                         <div class="my-2 col-3 text-center">
-                            <input type="radio" class="btn-check editarProcedimentoButton" name="editar_procedimento_risco" value="3" id="editarProcedimentoButton3" autocomplete="off" required>
-                            <label class="btn btn-outline-warning" for="editarProcedimentoButton3"><span class="m-2">3</span></label><br>
+                            <input type="radio" class="btn-check editar_tfd_risco" name="tfd_risco" value="3" id="novoTfd3" autocomplete="off" required>
+                            <label class="btn btn-outline-warning" for="novoTfd3"><span class="m-2">3</span></label><br>
                             Intermediária
                         </div>
                         <div class="my-2 col-3 text-center">
-                            <input type="radio" class="btn-check editarProcedimentoButton" name="editar_procedimento_risco" value="4" id="editarProcedimentoButton4" autocomplete="off" required>
-                            <label class="btn btn-outline-danger" for="editarProcedimentoButton4"><span class="m-2">4</span></label><br>Alta
+                            <input type="radio" class="btn-check editar_tfd_risco" name="tfd_risco" value="4" id="novoTfd4" autocomplete="off" required>
+                            <label class="btn btn-outline-danger" for="btn-check-outlined3"><span class="m-2">4</span></label><br>Alta
                         </div>
-
                     </div>
 
                 </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Cancelar</button>
-                    <button class="btn btn-primary btn-sm" type="submit">Salvar</button>
-                </div>
-            </form>
+
         </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Cancelar</button>
+            <button class="btn btn-primary btn-sm" type="submit">Salvar</button>
+        </div>
+        </form>
     </div>
+</div>
 </div>
 
 
-<!-- Modal agendaTfd_model-->
-<div class="modal fade" id="agendaTfd_model" tabindex="-1" role="dialog" aria-labelledby="agendarTfd_label" aria-hidden="true">
+<!-- Modal agendarTfd_model-->
+<div class="modal fade" id="agendarTfd_model" tabindex="-1" role="dialog" aria-labelledby="agendarTfd_label" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-light">
                 <h5 class="modal-title font-weight-light text-dark" id="agendarTfd_label"><i class="fas fa-calendar-alt"></i> Agendar TFD</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= base_url('v2/regulacao/procedimentos/agendar') ?>" method="post">
+            <form action="<?= base_url('v2/regulacao/tfd/agendar') ?>" method="post">
                 <div class="modal-body">
                     <?= $csrf_input ?>
-                    <input type="hidden" name="procedimentos_id" id="agendar_procedimentos_id">
+                    <input type="hidden" name="tfd_id" id="agendar_tfd_id">
                     <div class="row">
-                        <div class="mb-2 col-6">
-                            <label for="">Nome do paciente</label>
-                            <input class="form-control" type="text" id="agendar_nome_paciente" disabled>
+                        <div class="mb-3 col-6">
+                            <label for="">Nome do paciente:</label>
+                            <input type="text" class="form-control" id="agendar_tfd_paciente_nome" disabled>
                         </div>
                         <div class="mb-2 col-3">
-                            <label for="">Telefone</label>
-                            <input class="form-control" type="text" id="agendar_telefone_paciente" disabled>
+                            <label for="">Nascimento</label>
+                            <input type="date" id="agendar_tfd_paciente_nascimento" class="form-control" disabled>
                         </div>
                         <div class="mb-2 col-3">
-                            <label for="">CNS</label>
-                            <input class="form-control" type="text" id="agendar_cns_paciente" disabled>
+                            <label for="">CPF</label>
+                            <input type="text" id="agendar_tfd_paciente_cpf" class="form-control" disabled>
                         </div>
-                        <div class="mb-2 col-6">
-                            <label for="">Nome do procedimento</label>
-                            <input type="text" id="agendar_nome_procedimento" class="form-control" disabled>
-                        </div>
-                        <div class="mb-2 col-6">
-                            <label for="">Especialidade</label>
-                            <select id="agendar_especialidade" class="form-select" disabled>
-                                <option selected disabled>Selecione uma especialidade</option>
-                                <?php foreach ($this->Especialidades->getAll() as $e) : ?>
-                                    <option value="<?= $e['especialidade_nome'] ?>"><?= $e['especialidade_nome'] ?></option>
-                                <?php endforeach; ?>
-                            </select>
 
+                        <hr>
+
+                        <div class="mb-2 col-4">
+                            <label for="">Data da solicitação <i class="fa fa-question-circle text-muted" data-toggle="tooltip" title="Data da solicitação do TFD."></i></label>
+                            <input type="date" name="tfd_data_solicitacao" id="agendar_tfd_data_solicitacao" class="form-control" required>
                         </div>
                         <div class="mb-2 col-4">
+                            <label for="">Data do atendimento <i class="fa fa-question-circle text-muted" data-toggle="tooltip" title="Data agendada para o atendimento do paciente."></i></label>
+                            <input type="date" name="tfd_data_atendimento" id="agendar_tfd_data_atendimento" class="form-control" required>
+                        </div>
+                        <div class="mb-2 col-4">
+                            <label for="">Cidade do atendimento <i class="fa fa-question-circle text-muted" data-toggle="tooltip" title="Cidade em que paciente vai realizar o atendimento."></i></label>
+                            <input type="text" name="tfd_cidade_destino" id="agendar_tfd_cidade_destino" class="form-control" required>
+                        </div>
+
+                        <div class="mb-2 col-3">
+                            <label for="">Tipo de deslocamento</label>
+                            <select name="tfd_veiculo" id="agendar_tfd_veiculo" class="form-control" id="" required>
+                                <option value="" disabled selected>Selecione</option>
+                                <option value="Ambulância">Ambulância</option>
+                                <option value="Carro de passeio">Carro de passeio</option>
+                                <option value="Transporte sanitário">Transporte sanitário</option>
+                                <option value="Ônibus">Ônibus</option>
+                                <option value="Carro próprio">Carro próprio</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-2 col-3">
+                            <label for="">cota</label>
+                            <input type="text" name="tfd_cota" id="agendar_tfd_cota" class="form-control" required>
+                        </div>
+                        <div class="mb-2 col-3">
                             <label for="">Estabelecimento solicitante</label>
-                            <input type="text" id="agendar_estabelecimento_solicitante" class="form-control" disabled>
+                            <input type="text" name="tfd_estabelecimento_solicitante" id="agendar_tfd_estabelecimento_solicitante" class="form-control" required>
                         </div>
-                        <div class="mb-2 col-4">
-                            <label for="">Profissional solicitante</label>
-                            <input type="text" id="agendar_profissional_solicitante" class="form-control" disabled>
+                        <div class="mb-2 col-3">
+                            <label for="">Estabelecimento prestador</label>
+                            <input type="text" name="tfd_estabelecimento_prestador" id="agendar_tfd_estabelecimento_prestador" class="form-control" required>
                         </div>
-                        <div class="mb-2 col-4">
-                            <label for="">Data de entrada</label>
-                            <input type="date" id="agendar_data_solicitacao" class="form-control" disabled>
+
+                        <hr>
+
+                        <div class="col-3">
+                            <label for="tfd_alimentacao" name="tfd_alimentacao"> Necessidade de alimentação? <i class="fa fa-question-circle text-muted" data-toggle="tooltip" data-placement="top" title="Este paciente precisa de ajuda de custo para alimentação?"></i></label>
+                            <select name="tfd_alimentacao" class="form-control" id="agendar_tfd_alimentacao" required>
+                                <option value="" selected disabled>Selecione</option>
+                                <option value="Não">Não</option>
+                                <option value="Sim">Sim</option>
+                            </select>
+                        </div>
+                        <div class="col-3">
+                            <label for="tfd_passagem" name="tfd_passagem"> Necessidade de Passagem? <i class="fa fa-question-circle text-muted" data-toggle="tooltip" data-placement="top" title="Este paciente precisa de ajuda de custo com passagem?"></i></label>
+                            <select name="tfd_passagem" class="form-control" id="agendar_tfd_passagem" required>
+                                <option value="" selected disabled>Selecione</option>
+                                <option value="Não">Não</option>
+                                <option value="Sim">Sim</option>
+                            </select>
+                        </div>
+                        <div class="col-3">
+                            <label for="tfd_hospedagem" name="tfd_hospedagem"> Necessidade de Hospedagem? <i class="fa fa-question-circle text-muted" data-toggle="tooltip" data-placement="top" title="Este paciente precisa de ajuda de custo com hospedagem?"></i></label>
+                            <select name="tfd_hospedagem" class="form-control" id="agendar_tfd_hospedagem" required>
+                                <option value="" selected disabled>Selecione</option>
+                                <option value="Não">Não</option>
+                                <option value="Sim">Sim</option>
+                            </select>
+                        </div>
+                        <div class="col-3">
+                            <label for="tfd_acompanhante" name="tfd_acompanhante"> Necessidade de acompanhante? <i class="fa fa-question-circle text-muted" data-toggle="tooltip" data-placement="top" title="Este paciente precisa de um acompanhante?"></i></label>
+                            <select name="tfd_acompanhante" class="form-control" id="agendar_tfd_acompanhante" required>
+                                <option value="" selected disabled>Selecione</option>
+                                <option value="Não">Não</option>
+                                <option value="Sim">Sim</option>
+                            </select>
+                        </div>
+
+                        <hr class="mt-3">
+
+
+                        <div class="mb-2 col-12">
+                            <label for="">Descrição</label>
+                            <textarea name="tfd_descricao" id="agendar_tfd_descricao" rows="2" class="form-control"></textarea>
                         </div>
 
                         <div class="mb-2 col-12">
-                            <label for="">Principais sintomas clínicos</label>
-                            <textarea type="date" name="sintomas" id="agendar_sintomas" class="form-control" disabled></textarea>
-                        </div>
-                        <hr>
-                        <div class="mb-2 col-3">
-                            <label for="">Estabelecimento</label>
-                            <input type="text" class="form-control" name="estabelecimento_prestador" required>
-                        </div>
-                        <div class="mb-2 col-3">
-                            <label for="">Cidade</label>
-                            <input type="text" class="form-control" name="cidade_prestador" required>
-                        </div>
-                        <div class="mb-2 col-3">
-                            <label for="">Cota</label>
-                            <input type="text" class="form-control" name="cota" required>
-                        </div>
-                        <div class="mb-2 col-3">
-                            <label for="">Data agendada</label>
-                            <input type="date" class="form-control" name="data" required>
+                            <label for="">Anexo <small class="text-muted">(.jpeg .jpg .png pdf .doc .docx)</small> </label>
+                            <div class="form-file">
+                                <input class="form-file-input" id="customFile" name="tfd_anexo" type="file" />
+                                <label class="form-file-label" name="tfd_anexo" for="customFile">
+                                    <span class="form-file-text">Escolha um arquivo...</span>
+                                    <span class="form-file-button"><i class="fas fa-file-medical"></i> Procurar arquivo</span>
+                                </label>
+                            </div>
                         </div>
 
+                        <div class="col-12 mt-1">
+                            <label>Classificação de risco / vunerabilidade:</label>
+                        </div>
+                        <div class="my-2 col-3 text-center">
+                            <input type="radio" class="btn-check agendar_tfd_risco" name="tfd_risco" value="1" id="novoTfd1" autocomplete="off" required>
+                            <label class="btn btn-outline-info" for="novoTfd1"><span class="m-2">1</span></label><br>
+                            Não agudo
+                        </div>
+                        <div class="my-2 col-3 text-center">
+                            <input type="radio" class="btn-check agendar_tfd_risco" name="tfd_risco" value="2" id="novoTfd2" autocomplete="off" required>
+                            <label class="btn btn-outline-success" for="novoTfd2"><span class="m-2">2</span></label><br>
+                            Baixa
+                        </div>
+                        <div class="my-2 col-3 text-center">
+                            <input type="radio" class="btn-check agendar_tfd_risco" name="tfd_risco" value="3" id="novoTfd3" autocomplete="off" required>
+                            <label class="btn btn-outline-warning" for="novoTfd3"><span class="m-2">3</span></label><br>
+                            Intermediária
+                        </div>
+                        <div class="my-2 col-3 text-center">
+                            <input type="radio" class="btn-check agendar_tfd_risco" name="tfd_risco" value="4" id="novoTfd4" autocomplete="off" required>
+                            <label class="btn btn-outline-danger" for="btn-check-outlined3"><span class="m-2">4</span></label><br>Alta
+                        </div>
                     </div>
 
                 </div>
@@ -274,7 +410,7 @@
             <form action="<?= base_url('v2/regulacao/procedimentos/reprimir') ?>" method="post">
                 <div class="modal-body">
                     <?= $csrf_input ?>
-                    <input type="hidden" name="procedimentos_id" id="reprimir_tfd_id">
+                    <input type="hidden" name="tfd_id" id="reprimir_tfd_id">
                     <div class="row">
                         <div class="mb-2 col-12">
                             <label for="">Motivo ou justificativa</label>
@@ -294,79 +430,90 @@
 <script>
     window.onload = function() {
 
-        //Cria modal para editar procedimento
-        var editarProcedimento_model = new bootstrap.Modal(document.getElementById('editarProcedimento_model'), {
+        //Cria modal para editar tfd
+        var editarTfd_model = new bootstrap.Modal(document.getElementById('editarTfd_model'), {
             keyboard: false
         })
 
         // ABRE MODAL DE EDITAR
-        $('.editarProcedimento_button').on('click', function() {
+        $('.editarTfd_button').on('click', function() {
             var tfd_id = this.dataset.tfd_id;
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url('v2/regulacao/procedimentos/json/') ?>" + tfd_id,
+                    url: "<?= base_url('v2/regulacao/tfd/json/') ?>" + tfd_id,
                     data: {
                         <?= $csrf_name ?>: "<?= $csrf_value ?>"
                     }
                 })
-                .done(function(procedimento) {
-                    $('#procedimentos_id').val(procedimento.procedimentos_id);
-                    $('#nome_paciente').val(procedimento.nome_paciente);
-                    $('#nome_procedimento').val(procedimento.nome_procedimento);
-                    $("#especialidade").val(procedimento.especialidade);
-                    $('#profissional_solicitante').val(procedimento.profissional_solicitante);
-                    $('#estabelecimento_solicitante').val(procedimento.estabelecimento_solicitante);
-                    $('#nome_paciente').val(procedimento.nome_paciente);
-                    $(".editarProcedimentoButton[value='" + procedimento.procedimento_risco + "']").prop("checked", true);
-                    $('#data_solicitacao').val(procedimento.data_solicitacao);
-                    $('#data').val(procedimento.data);
-                    $('#sintomas').val(procedimento.sintomas);
-
+                .done(function(tfd) {
+                    console.log(tfd)
+                    $('#editar_tfd_paciente_nome').val(tfd.nome_paciente);
+                    $('#editar_tfd_paciente_nascimento').val(tfd.nascimento);
+                    $('#editar_tfd_paciente_cpf').val(tfd.cpf);
+                    $('#editar_tfd_id').val(tfd.tfd_id);
+                    $('#editar_tfd_data_solicitacao').val(tfd.tfd_data_solicitacao);
+                    $('#editar_tfd_data_atendimento').val(tfd.tfd_data_atendimento);
+                    $('#editar_tfd_cidade_destino').val(tfd.tfd_cidade_destino);
+                    $('#editar_tfd_cota').val(tfd.tfd_cota);
+                    $('#editar_tfd_estabelecimento_solicitante').val(tfd.tfd_estabelecimento_solicitante);
+                    $('#editar_tfd_estabelecimento_prestador').val(tfd.tfd_estabelecimento_prestador);
+                    $('#editar_tfd_alimentacao').val(tfd.tfd_alimentacao);
+                    $('#editar_tfd_passagem').val(tfd.tfd_passagem);
+                    $('#editar_tfd_hospedagem').val(tfd.tfd_hospedagem);
+                    $('#editar_tfd_veiculo').val(tfd.tfd_veiculo);
+                    $('#editar_tfd_acompanhante').val(tfd.tfd_acompanhante);
+                    $(".editar_tfd_risco[value='" + tfd.tfd_risco + "']").prop("checked", true);
+                    $('#editar_tfd_descricao').val(tfd.tfd_descricao);
                 });
-            editarProcedimento_model.toggle()
+            editarTfd_model.toggle()
         });
 
         // ==================================
 
-        //Cria modal para agendar procedimento
-        var agendaTfd_model = new bootstrap.Modal(document.getElementById('agendaTfd_model'), {
+        //Cria modal para agendar tfd
+        var agendarTfd_model = new bootstrap.Modal(document.getElementById('agendarTfd_model'), {
             keyboard: false
         })
 
 
         // ABRE MODAL DE AGENDAR
-        $('.agendarProcedimento_button').on('click', function() {
+        $('.agendarTfd_button').on('click', function() {
             var tfd_id = this.dataset.tfd_id;
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url('v2/regulacao/procedimentos/json/') ?>" + tfd_id,
+                    url: "<?= base_url('v2/regulacao/tfd/json/') ?>" + tfd_id,
                     data: {
                         <?= $csrf_name ?>: "<?= $csrf_value ?>"
                     }
                 })
-                .done(function(procedimento) {
-                    $('#agendar_procedimentos_id').val(procedimento.procedimentos_id);
-                    $('#agendar_nome_paciente').val(procedimento.nome_paciente);
-                    $('#agendar_nome_procedimento').val(procedimento.nome_procedimento);
-                    $("#agendar_especialidade").val(procedimento.especialidade);
-                    $('#agendar_profissional_solicitante').val(procedimento.profissional_solicitante);
-                    $('#agendar_estabelecimento_solicitante').val(procedimento.estabelecimento_solicitante);
-                    $('#agendar_nome_paciente').val(procedimento.nome_paciente);
-                    $('#agendar_telefone_paciente').val(procedimento.telefone_paciente);
-                    $('#agendar_cns_paciente').val(procedimento.cns_paciente);
-                    $('#agendar_data_solicitacao').val(procedimento.data_solicitacao);
-                    $('#agendar_data').val(procedimento.data);
-                    $('#agendar_sintomas').val(procedimento.sintomas);
-
+                .done(function(tfd) {
+                    console.log(tfd)
+                    $('#agendar_tfd_paciente_nome').val(tfd.nome_paciente);
+                    $('#agendar_tfd_paciente_nascimento').val(tfd.nascimento);
+                    $('#agendar_tfd_paciente_cpf').val(tfd.cpf);
+                    $('#agendar_tfd_id').val(tfd.tfd_id);
+                    $('#agendar_tfd_data_solicitacao').val(tfd.tfd_data_solicitacao);
+                    $('#agendar_tfd_data_atendimento').val(tfd.tfd_data_atendimento);
+                    $('#agendar_tfd_cidade_destino').val(tfd.tfd_cidade_destino);
+                    $('#agendar_tfd_cota').val(tfd.tfd_cota);
+                    $('#agendar_tfd_estabelecimento_solicitante').val(tfd.tfd_estabelecimento_solicitante);
+                    $('#agendar_tfd_estabelecimento_prestador').val(tfd.tfd_estabelecimento_prestador);
+                    $('#agendar_tfd_alimentacao').val(tfd.tfd_alimentacao);
+                    $('#agendar_tfd_passagem').val(tfd.tfd_passagem);
+                    $('#agendar_tfd_hospedagem').val(tfd.tfd_hospedagem);
+                    $('#agendar_tfd_veiculo').val(tfd.tfd_veiculo);
+                    $('#agendar_tfd_acompanhante').val(tfd.tfd_acompanhante);
+                    $(".agendar_tfd_risco[value='" + tfd.tfd_risco + "']").prop("checked", true);
+                    $('#agendar_tfd_descricao').val(tfd.tfd_descricao);
                 });
-            agendaTfd_model.toggle()
+            agendarTfd_model.toggle()
         });
 
         // ================================
 
 
         //ADICIONANDO FILTRO AS COLUNAS
-        $('#procedimentosFila_datatable thead th').each(function() {
+        $('#tfdFila_datatable thead th').each(function() {
             let title = $(this).text();
             if (title == '' || title == 'OPÇÕES') {
 
@@ -380,7 +527,7 @@
         });
 
 
-        $('#procedimentosFila_datatable').DataTable({
+        $('#tfdFila_datatable').DataTable({
             initComplete: function() {
                 this.api().columns().every(function() {
                     let that = this;
@@ -422,9 +569,6 @@
                 },
                 {
                     "bSortable": false
-                },
-                {
-                    "bSortable": false
                 }
             ],
             dom: 'Brtip',
@@ -433,7 +577,7 @@
                     extend: 'print',
                     text: '<i class="fa fa-print"></i> imprimir',
                     exportOptions: {
-                        columns: [0, 1, 2]
+                        columns: [0, 1]
                     },
                     customize: function(win) {
                         $(win.document.body)

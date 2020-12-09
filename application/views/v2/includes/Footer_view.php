@@ -46,7 +46,11 @@
 <script src="<?= base_url() ?>public/assets/js/init-scripts/data-table/datatables-init.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-
+<script>
+    $(function() {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
 <!-- ================ -->
 <!-- FIXED COMPONENTS -->
 <!-- ================ -->

@@ -1,13 +1,13 @@
-<!-- Modal addTfd_modal-->
-<div class="modal fade" id="addTfd_modal" role="dialog" aria-labelledby="AddTfd_label" aria-hidden="true">
+<!-- Modal add_tfd_modal-->
+<div class="modal fade" id="add_tfd_modal" role="dialog" aria-labelledby="add_tfd_label" aria-hidden="true">
     <div class="modal-dialog  modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header bg-light">
-                <h5 class="modal-title font-weight-light text-dark" id="AddTfd_label"><i class="far fa-calendar-plus"></i> Adicionar novo TFD</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title font-weight-light text-dark" id="add_tfd_label"><i class="far fa-calendar-plus"></i> Adicionar novo TFD</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="<?= base_url('v2/regulacao/tfd/novo') ?>" method="post" enctype="multipart/form-data">
                 <?= $csrf_input ?>
-                <div class="modal-body">
+                <div class="modal-body modal-scroll">
                     <div class="row">
                         <div class="mb-3 col-6">
                             <label for="">Nome do paciente:</label>
@@ -120,23 +120,23 @@
                             <label>Classificação de risco / vunerabilidade:</label>
                         </div>
                         <div class="my-2 col-3 text-center">
-                            <input type="radio" class="btn-check" name="tfd_risco" value="1" id="novoTfd1" autocomplete="off" required>
-                            <label class="btn btn-outline-info" for="novoTfd1"><span class="m-2">1</span></label><br>
+                            <input type="radio" class="btn-check" name="tfd_risco" value="1" id="add_tfd1" autocomplete="off" required>
+                            <label class="btn btn-outline-info" for="add_tfd1"><span class="m-2">1</span></label><br>
                             Não agudo
                         </div>
                         <div class="my-2 col-3 text-center">
-                            <input type="radio" class="btn-check" name="tfd_risco" value="2" id="novoTfd2" autocomplete="off" required>
-                            <label class="btn btn-outline-success" for="novoTfd2"><span class="m-2">2</span></label><br>
+                            <input type="radio" class="btn-check" name="tfd_risco" value="2" id="add_tfd2" autocomplete="off" required>
+                            <label class="btn btn-outline-success" for="add_tfd2"><span class="m-2">2</span></label><br>
                             Baixa
                         </div>
                         <div class="my-2 col-3 text-center">
-                            <input type="radio" class="btn-check" name="tfd_risco" value="3" id="novoTfd3" autocomplete="off" required>
-                            <label class="btn btn-outline-warning" for="novoTfd3"><span class="m-2">3</span></label><br>
+                            <input type="radio" class="btn-check" name="tfd_risco" value="3" id="add_tfd3" autocomplete="off" required>
+                            <label class="btn btn-outline-warning" for="add_tfd3"><span class="m-2">3</span></label><br>
                             Intermediária
                         </div>
                         <div class="my-2 col-3 text-center">
-                            <input type="radio" class="btn-check" name="tfd_risco" value="4" id="novoTfd4" autocomplete="off" required>
-                            <label class="btn btn-outline-danger" for="btn-check-outlined3"><span class="m-2">4</span></label><br>Alta
+                            <input type="radio" class="btn-check" name="tfd_risco" value="4" id="add_tfd4" autocomplete="off" required>
+                            <label class="btn btn-outline-danger" for="add_tfd4"><span class="m-2">4</span></label><br>Alta
                         </div>
 
                     </div>
@@ -152,7 +152,7 @@
 </div>
 <script>
     //Cria modal para editar paciente
-    var addTfd_modal = new bootstrap.Modal(document.getElementById('addTfd_modal'), {
+    var add_tfd_modal = new bootstrap.Modal(document.getElementById('add_tfd_modal'), {
         keyboard: false
     })
     $(document).ready(function() {

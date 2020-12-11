@@ -38,7 +38,7 @@
                 <?php foreach ($pacientes as $p) { ?>
                     <tr>
                         <td class="small">
-                            <a class="loadPaciente_button" href="#" data-paciente_id="<?= $p['paciente_id'] ?>"><?= $p['nome_paciente'] ?></a>
+                            <a class="load_paciente_button" href="#" data-paciente_id="<?= $p['paciente_id'] ?>"><?= $p['nome_paciente'] ?></a>
                         </td>
                         <td class="small">
                             <?= $p['cpf'] ?>
@@ -271,7 +271,7 @@
                     className: 'btn btn-falcon-default btn-sm rounded-pill font-weight-light m-1',
                     text: '<i class="fas fa-user-plus"></i> Novo paciente',
                     action: function() {
-                        $('#novoPaciente').modal('show')
+                        $('#add_paciente_modal').modal('show')
                     }
 
                 }

@@ -62,7 +62,7 @@ class Tfd_controller extends Sistema_Controller
             $dados
         );
 
-        $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> Procedimento agendado com sucesso');
+        $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> TFD agendado com sucesso');
         redirect($this->agent->referrer());
     }
 
@@ -82,24 +82,24 @@ class Tfd_controller extends Sistema_Controller
                 'reprimido_por' => $dados['reprimido_por']
             ],
         );
-        $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> Procedimento reprimido com sucesso');
+        $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> TFD reprimido com sucesso');
         redirect($this->agent->referrer());
     }
 
     /**
      * GET: v2/regulacao/tfd/concluir/(:num)
      */
-    public function concluir(int $procedimento_id): void
+    public function concluir(int $tfd_id): void
     {
         $this->Tfd->update(
             [
-                'tfd_id' => $procedimento_id
+                'tfd_id' => $tfd_id
             ],
             [
                 'tfd_realizado' => 'sim'
             ],
         );
-        $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> Procedimento concluido com sucesso');
+        $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> TFD concluido com sucesso');
         redirect($this->agent->referrer());
     }
 
@@ -119,7 +119,7 @@ class Tfd_controller extends Sistema_Controller
             $dados
         );
 
-        $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> Procedimento atualizado com sucesso');
+        $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> TFD atualizado com sucesso');
         redirect($this->agent->referrer());
     }
 

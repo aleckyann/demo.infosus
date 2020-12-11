@@ -56,7 +56,7 @@
                                     break;
                             } ?>
                             <span class="small align-middle">
-                                <a class="loadPaciente_button" href="#" data-paciente_id="<?= $p['paciente_id'] ?>"><?= $p['nome_paciente'] ?></a>
+                                <a class="load_paciente_button" href="#" data-paciente_id="<?= $p['paciente_id'] ?>"><?= $p['nome_paciente'] ?></a>
                             </span>
                         </td>
                         <td class="small">
@@ -319,7 +319,7 @@
                     className: 'btn btn-falcon-default btn-sm rounded-pill font-weight-light m-1',
                     text: '<i class="far fa-calendar-plus"></i> Novo procedimento',
                     action: function() {
-                        $('#AddProcedimento_modal').modal('show')
+                        $('#add_procedimento_modal').modal('show')
                     }
 
                 }

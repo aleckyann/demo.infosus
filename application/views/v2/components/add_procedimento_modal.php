@@ -1,12 +1,12 @@
-<!-- Modal AddProcedimento_modal-->
-<div class="modal fade" id="AddProcedimento_modal" role="dialog" aria-labelledby="AddProcedimento_label" aria-hidden="true">
+<!-- Modal add_procedimento_modal-->
+<div class="modal fade" id="add_procedimento_modal" role="dialog" aria-labelledby="add_procedimento_label" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header bg-light">
-                <h5 class="modal-title font-weight-light text-dark" id="AddProcedimento_label"><i class="far fa-calendar-plus"></i> Adicionar novo procedimento</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title font-weight-light text-dark" id="add_procedimento_label"><i class="far fa-calendar-plus"></i> Adicionar novo procedimento</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="<?= base_url('v2/regulacao/procedimentos/novo') ?>" method="post">
-                <div class="modal-body">
+                <div class="modal-body modal-scroll">
                     <?= $csrf_input ?>
                     <div class="row">
                         <div class="mb-3 col-7">
@@ -90,7 +90,7 @@
 </div>
 <script>
     //Cria modal para editar paciente
-    var AddProcedimento_modal = new bootstrap.Modal(document.getElementById('AddProcedimento_modal'), {
+    var add_procedimento_modal = new bootstrap.Modal(document.getElementById('add_procedimento_modal'), {
         keyboard: false
     })
 

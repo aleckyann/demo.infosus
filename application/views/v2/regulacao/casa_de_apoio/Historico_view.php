@@ -38,7 +38,7 @@
                 <?php foreach ($apoio as $a) : ?>
                     <tr>
                         <td class="small">
-                            <a class="loadPaciente_button" href="#" data-paciente_id="<?= $a['paciente_id'] ?>"><?= $a['nome_paciente'] ?></a>
+                            <a class="load_paciente_button" href="#" data-paciente_id="<?= $a['paciente_id'] ?>"><?= $a['nome_paciente'] ?></a>
                         </td>
                         <td class="small">
                             <?= date_format(date_create($a['data_entrada']), 'd/m/Y') ?>
@@ -141,7 +141,7 @@
                     className: 'btn btn-falcon-default btn-sm rounded-pill font-weight-light m-1',
                     text: '<i class="fas fa-house-user"></i> Novo paciente',
                     action: function() {
-                        $('#novoCasaDeApoio').modal('show')
+                        $('#add_casa_de_apoio_modal').modal('show')
                     }
 
                 }

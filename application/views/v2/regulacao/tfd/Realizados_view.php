@@ -8,13 +8,13 @@
             </a>
             <h3 class="font-weight-light">
 
-                <i class="fas fa-calendar-check text-success"></i> Procedimentos realizados
+                <i class="fas fa-calendar-check text-success"></i> TFD realizados
                 <!-- <span class="badge badge-soft-warning rounded-pill ml-2">-0.23%</span> -->
             </h3>
             <div class="collapse" id="collapseExample">
                 <div class="p-card">
                     <p class="mb-2">
-                        Nesta página você pode visualizar todos os procedimentos que foram realizados.<br>
+                        Nesta página você pode visualizar todos os TFD que foram realizados.<br>
                     </p>
                 </div>
             </div>
@@ -28,18 +28,17 @@
 
     <div class="card-body">
 
-        <table id="procedimentosRealizados_datatable" class="table table-striped table-hover" style="min-height: 200px;">
+        <table id="tfd_realizados_datatable" class="table table-striped table-hover" style="min-height: 200px;">
             <thead>
                 <th class="text-dark small text-left">PACIENTE</th>
-                <th class="text-dark small text-left">POCEDIMENTO</th>
                 <th class="text-dark small text-left">DATA</th>
                 <th class="text-dark small text-center align-middle">OPÇÕES</th>
             </thead>
             <tbody>
-                <?php foreach ($procedimentos as $p) : ?>
+                <?php foreach ($tfd as $t) : ?>
                     <tr>
                         <td class="small">
-                            <?php switch ($p['procedimento_risco']) {
+                            <?php switch ($t['tfd_risco']) {
                                 case '1':
                                     echo ('<span class="mr-2 fas fa-user-injured text-info" style="font-size:20px"></span>');
                                     break;
@@ -57,14 +56,11 @@
                                     break;
                             } ?>
                             <span class="small align-middle">
-                                <a class="loadPaciente_button" href="#" data-paciente_id="<?= $p['paciente_id'] ?>"><?= $p['nome_paciente'] ?></a>
+                                <a class="load_paciente_button" href="#" data-paciente_id="<?= $t['paciente_id'] ?>"><?= $t['nome_paciente'] ?></a>
                             </span>
                         </td>
+                        
                         <td class="small">
-                            <?= $p['nome_procedimento'] ?>
-                        </td>
-                        <td class="small">
-                            <?= date_format(date_create($p['data_solicitacao']), 'd/m/Y') ?>
                         </td>
 
                         <td class="text-center p-1">
@@ -72,9 +68,9 @@
                                 <div class="btn-group mb-2">
                                     <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
                                     <div class="dropdown-menu">
-                                        <button class="dropdown-item text-warning editarProcedimento_button" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-edit"></i> Editar procedimento</button>
+                                        <button class="dropdown-item text-warning editar_tfd_button" data-procedimento_id="<?= $t['tfd_id'] ?>"><i class="fa fa-edit"></i> Editar procedimento</button>
                                         <div class="dropdown-divider"></div>
-                                        <button class="dropdown-item text-danger removerProcedimento_button" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-times"></i> Cancelar procedimento</button>
+                                        <button class="dropdown-item text-danger remover_tfd_button" data-procedimento_id="<?= $t['tfd_id'] ?>"><i class="fa fa-times"></i> Cancelar procedimento</button>
                                     </div>
                                 </div>
                             </div>
@@ -92,14 +88,9 @@
 <script>
     window.onload = function() {
 
-        //Cria modal para editar paciente
-        // var editarRegistrosCasaDeApoioModel = new bootstrap.Modal(document.getElementById('editarRegistrosCasaDeApoioModel'), {
-        //     keyboard: false
-        // })
-
 
         // ABRE MODAL DE EDITAR
-        $('.editarProcedimento_button').on('click', function() {
+        $('.editar_tfd_button').on('click', function() {
             var procedimento_id = this.dataset.procedimento_id;
             $.ajax({
                     method: "POST",
@@ -121,7 +112,7 @@
 
 
         //ADICIONANDO FILTRO AS COLUNAS
-        $('#procedimentosRealizados_datatable thead th').each(function() {
+        $('#tfd_realizados_datatable thead th').each(function() {
             let title = $(this).text();
             if (title == '' || title == 'OPÇÕES') {
 
@@ -135,7 +126,7 @@
         });
 
 
-        $('#procedimentosRealizados_datatable').DataTable({
+        $('#tfd_realizados_datatable').DataTable({
             initComplete: function() {
                 this.api().columns().every(function() {
                     let that = this;
@@ -206,7 +197,7 @@
                     className: 'btn btn-falcon-default btn-sm rounded-pill font-weight-light m-1',
                     text: '<i class="far fa-calendar-plus"></i> Novo procedimento',
                     action: function() {
-                        $('#AddProcedimento_modal').modal('show')
+                        $('#add_tfd_modal').modal('show')
                     }
 
                 }
@@ -217,7 +208,7 @@
 
 
         //CONFIRMAR REMOÇÃO DO PACIENTE 
-        $('.removerProcedimento_button').on('click', function() {
+        $('.remover_tfd_button').on('click', function() {
             Swal.fire({
                 title: 'Confirma a saída do paciente?',
                 showDenyButton: true,

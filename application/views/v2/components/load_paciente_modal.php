@@ -1,11 +1,11 @@
-<!-- Modal loadPaciente_modal-->
-<div class="modal fade" id="loadPaciente_modal" role="dialog" aria-labelledby="loadPacienteLabel" aria-hidden="true">
+<!-- Modal load_paciente_modal-->
+<div class="modal fade" id="load_paciente_modal" role="dialog" aria-labelledby="load_paciente_label" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary">
-                <h5 class="modal-title font-weight-light text-white" id="loadPacienteLabel"><i class="fas fa-user-injured"></i> Ficha do paciente</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title font-weight-light text-white" id="load_paciente_label"><i class="fas fa-user-injured"></i> Ficha do paciente</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body modal-scroll">
                 <div class="row">
                     <div class="mb-2 col-8">
                         <label class="form-label">Nome</label>
@@ -69,10 +69,10 @@
 
 <script>
     //Cria modal para adição de pacientes na casa de apoio
-    var loadPaciente_modal = new bootstrap.Modal(document.getElementById('loadPaciente_modal'), {
+    var load_paciente_modal = new bootstrap.Modal(document.getElementById('load_paciente_modal'), {
         keyboard: false
     })
-    $('.loadPaciente_button').on('click', function() {
+    $('.load_paciente_button').on('click', function() {
 
         $.ajax({
                 method: "POST",
@@ -95,7 +95,7 @@
                 $('#Load_acs').val(paciente.acs)
                 $('#Load_responsavel').val(paciente.responsavel)
                 $('#Load_profissao').val(paciente.profissao)
-                loadPaciente_modal.show();
+                load_paciente_modal.show();
             });
     })
 </script>

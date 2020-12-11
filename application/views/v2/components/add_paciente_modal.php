@@ -1,12 +1,12 @@
-<!-- Modal novoPaciente-->
-<div class="modal fade" id="novoPaciente" tabindex="-1" role="dialog" aria-labelledby="novoPacienteLabel" aria-hidden="true">
+<!-- Modal add_paciente_modal-->
+<div class="modal fade" id="add_paciente_modal" tabindex="-1" role="dialog" aria-labelledby="add_paciente_label" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-light">
-                <h5 class="modal-title font-weight-light" id="novoPacienteLabel"><i class="fas fa-user-injured"></i> Cadastrar novo paciente</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title font-weight-light" id="add_paciente_label"><i class="fas fa-user-injured"></i> Cadastrar novo paciente</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="<?= base_url('v2/pacientes/new') ?>" method="post">
-                <div class="modal-body">
+                <div class="modal-body modal-scroll">
                     <?= $csrf_input ?>
                     <div class="row">
                         <div class="mb-2 col-8">
@@ -73,7 +73,7 @@
 
 <script>
     //Cria modal para adição de pacientes
-    var novoPaciente = new bootstrap.Modal(document.getElementById('novoPaciente'), {
+    var add_paciente_modal = new bootstrap.Modal(document.getElementById('add_paciente_modal'), {
         keyboard: false
     })
 </script>

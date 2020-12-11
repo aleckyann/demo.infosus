@@ -103,7 +103,7 @@
                                 </a>
                                 <ul class="nav collapse <?= (segment(2) == 'pacientes') ? 'show' : '' ?>" id="pacientesNav" data-parent="#navbarVerticalCollapse">
                                     <li class="nav-item"><a class="nav-link <?= (segment(3) == 'listagem') ? 'active' : '' ?>" href="<?= base_url('v2/pacientes/listagem') ?>"><i class="fas fa-clipboard-list mr-1"></i> Lista</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#novoPaciente"><i class=" fas fa-user-plus"></i> Novo paciente</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#add_paciente_modal"><i class=" fas fa-user-plus"></i> Novo paciente</a></li>
                                 </ul>
 
                             </li>
@@ -127,7 +127,7 @@
                                                 <a class="nav-link <?= (segment(4) == 'historico') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/casa-de-apoio/historico') ?>"><i class="fas fa-history text-success"></i> Histórico de uso</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#" data-toggle="modal" data-target="#novoCasaDeApoio"><i class="fas fa-clinic-medical"></i> Novo paciente</a>
+                                                <a class="nav-link" href="#" data-toggle="modal" data-target="#add_casa_de_apoio_modal"><i class="fas fa-clinic-medical"></i> Novo paciente</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -147,7 +147,7 @@
                                                 <a class="nav-link <?= (segment(4) == 'reprimidos') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/procedimentos/reprimidos') ?>"><i class="far fa-calendar-times text-danger"></i> Reprimidos</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#" data-toggle="modal" data-target="#AddProcedimento_modal"><i class="far fa-calendar-plus"></i> Novo procedimento</a>
+                                                <a class="nav-link" href="#" data-toggle="modal" data-target="#add_procedimento_modal"><i class="far fa-calendar-plus"></i> Novo procedimento</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -167,7 +167,7 @@
                                                 <a class="nav-link <?= (segment(4) == 'reprimidos') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/tfd/reprimidos') ?>"><i class="far fa-calendar-times text-danger"></i> Reprimidos</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#" data-toggle="modal" data-target="#addTfd_modal"><i class="far fa-calendar-plus"></i> Novo Tfd</a>
+                                                <a class="nav-link" href="#" data-toggle="modal" data-target="#add_tfd_modal"><i class="far fa-calendar-plus"></i> Novo Tfd</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -201,7 +201,7 @@
                 <nav class="navbar navbar-light navbar-glass navbar-top navbar-expand" style="display: none;">
                     <button class="btn navbar-toggler-humburger-icon navbar-toggler mr-1 mr-sm-3" type="button" data-toggle="collapse" data-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
                     <a class="navbar-brand mr-1 mr-sm-3" href="#">
-                        <div class="d-flex align-items-center"><img class="mr-2" src="<?= base_url() ?>/public/v2/assets/img/illustrations/falcon.png" alt="" width="40" /><span class="font-sans-serif">falcon</span></div>
+                        <div class="d-flex align-items-center"><span class="font-sans-serif">Infosus</span></div>
                     </a>
                     <ul class="navbar-nav navbar-nav-icons ml-auto flex-row align-items-center">
                         <li class="nav-item dropdown">

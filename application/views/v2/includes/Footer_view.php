@@ -54,11 +54,11 @@
 <!-- ================ -->
 <!-- FIXED COMPONENTS -->
 <!-- ================ -->
-<?php $this->load->view('v2/components/AddNovoPaciente_modal') ?>
-<?php $this->load->view('v2/components/AddPacienteCasaDeApoio_modal') ?>
-<?php $this->load->view('v2/components/AddProcedimento_modal') ?>
-<?php $this->load->view('v2/components/AddTfd_modal') ?>
-<?php $this->load->view('v2/components/LoadPaciente_modal') ?>
+<?php $this->load->view('v2/components/add_paciente_modal') ?>
+<?php $this->load->view('v2/components/add_casa_de_apoio_modal') ?>
+<?php $this->load->view('v2/components/add_procedimento_modal') ?>
+<?php $this->load->view('v2/components/add_tfd_modal') ?>
+<?php $this->load->view('v2/components/load_paciente_modal') ?>
 
 </body>
 

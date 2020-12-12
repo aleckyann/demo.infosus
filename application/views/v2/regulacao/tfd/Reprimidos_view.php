@@ -8,13 +8,13 @@
             </a>
             <h3 class="font-weight-light">
 
-                <i class="fas fa-calendar-times text-danger"></i> Procedimentos reprimidos
+                <i class="fas fa-calendar-times text-danger"></i> TFD reprimidos
                 <!-- <span class="badge badge-soft-warning rounded-pill ml-2">-0.23%</span> -->
             </h3>
             <div class="collapse" id="collapseExample">
                 <div class="p-card">
                     <p class="mb-2">
-                        Nesta página você pode visualizar todos os procedimentos que foram reprimidos.<br>
+                        Nesta página você pode visualizar todos os TFD que foram reprimidos.<br>
                     </p>
                 </div>
             </div>
@@ -32,7 +32,6 @@
             <thead>
                 <th class="text-dark small text-left">PACIENTE</th>
                 <th class="text-dark small text-left">MOTIVO</th>
-                <th class="text-dark small text-left">PROCEDIMENTO</th>
             </thead>
             <tbody>
                 <?php foreach ($tfd as $t) : ?>
@@ -60,10 +59,7 @@
                             </span>
                         </td>
                         <td class="small">
-                            <?= $t['reprimido_por'] ?>
-                        </td>
-                        <td class="small">
-                            <?= $t['nome_procedimento'] ?>
+                            <?= $t['tfd_reprimido_por'] ?>
                         </td>
 
                     </tr>
@@ -78,28 +74,6 @@
 
 <script>
     window.onload = function() {
-
-        // ABRE MODAL DE EDITAR
-        $('.editar_procedimento_button').on('click', function() {
-            var procedimento_id = this.dataset.procedimento_id;
-            $.ajax({
-                    method: "POST",
-                    url: "<?= base_url('v2/regulacao/procedimentos/json/') ?>" + procedimento_id,
-                    data: {
-                        <?= $csrf_name ?>: "<?= $csrf_value ?>"
-                    }
-                })
-                .done(function(casa_de_apoio) {
-                    $('#procedimento_id').val(casa_de_apoio.procedimento_id);
-                    $('#nome_paciente').val(casa_de_apoio.nome_paciente);
-                    $('#data_entrada').val(casa_de_apoio.data_entrada);
-                    $('#data_saida').val(casa_de_apoio.data_saida);
-                    $('#observacao').val(casa_de_apoio.observacao);
-
-                });
-            editarRegistrosCasaDeApoioModel.toggle()
-        });
-
 
         //ADICIONANDO FILTRO AS COLUNAS
         $('#tfd_reprimidos_datatable thead th').each(function() {
@@ -155,18 +129,6 @@
                 },
                 {
                     "bSortable": false
-                },
-                {
-                    "bSortable": false
-                },
-                {
-                    "bSortable": false
-                },
-                {
-                    "bSortable": false
-                },
-                {
-                    "bSortable": false
                 }
             ],
             dom: 'Brtip',
@@ -175,7 +137,7 @@
                     extend: 'print',
                     text: '<i class="fa fa-print"></i> imprimir',
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4, 5]
+                        columns: [0, 1]
                     },
                     customize: function(win) {
                         $(win.document.body)
@@ -191,7 +153,7 @@
                 },
                 {
                     className: 'btn btn-falcon-default btn-sm rounded-pill font-weight-light m-1',
-                    text: '<i class="far fa-calendar-plus"></i> Novo procedimento',
+                    text: '<i class="far fa-calendar-plus"></i> Novo TFD',
                     action: function() {
                         $('#add_tfd_modal').modal('show')
                     }

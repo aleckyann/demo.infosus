@@ -366,13 +366,13 @@
                 <h5 class="modal-title font-weight-light text-white" id="reprimir_tfd_label"><i class="fas fa-calendar-times"></i> Reprimir TFD</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="<?= base_url('v2/regulacao/tfd/reprimir') ?>" method="post">
+                <?= $csrf_input ?>
                 <div class="modal-body">
-                    <?= $csrf_input ?>
                     <input type="hidden" name="tfd_id" id="reprimir_tfd_id">
                     <div class="row">
                         <div class="mb-2 col-12">
                             <label for="">Motivo ou justificativa</label>
-                            <textarea class="form-control" name="reprimido_por" required></textarea>
+                            <textarea class="form-control" name="tfd_reprimido_por" required></textarea>
                         </div>
                     </div>
                 </div>

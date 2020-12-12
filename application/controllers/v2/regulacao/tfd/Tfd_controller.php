@@ -79,7 +79,7 @@ class Tfd_controller extends Sistema_Controller
             ],
             [
                 'tfd_realizado' => 'nao',
-                'reprimido_por' => $dados['reprimido_por']
+                'tfd_reprimido_por' => $dados['reprimido_por']
             ],
         );
         $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> TFD reprimido com sucesso');

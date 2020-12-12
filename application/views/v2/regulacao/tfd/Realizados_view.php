@@ -31,7 +31,8 @@
         <table id="tfd_realizados_datatable" class="table table-striped table-hover" style="min-height: 200px;">
             <thead>
                 <th class="text-dark small text-left">PACIENTE</th>
-                <th class="text-dark small text-left">DATA</th>
+                <th class="text-dark small text-left">DATA DO ATENDIMENTO</th>
+                <th class="text-dark small text-center align-middle">ANEXO</th>
                 <th class="text-dark small text-center align-middle">OPÇÕES</th>
             </thead>
             <tbody>
@@ -59,8 +60,13 @@
                                 <a class="load_paciente_button" href="#" data-paciente_id="<?= $t['paciente_id'] ?>"><?= $t['nome_paciente'] ?></a>
                             </span>
                         </td>
-                        
+
                         <td class="small">
+                            <?= date_format(date_create($t['tfd_data_atendimento']), 'd/m/Y') ?>
+                        </td>
+
+                        <td class="small text-center">
+                            <a target="_new" href="<?= base_url('public/v2/anexos/tfd/' . $t['tfd_anexo']) ?>" data-toggle="tooltip" title="Clique para fazer download"><i class="fas fa-download"></i></a>
                         </td>
 
                         <td class="text-center p-1">
@@ -68,9 +74,7 @@
                                 <div class="btn-group mb-2">
                                     <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
                                     <div class="dropdown-menu">
-                                        <button class="dropdown-item text-warning editar_tfd_button" data-procedimento_id="<?= $t['tfd_id'] ?>"><i class="fa fa-edit"></i> Editar procedimento</button>
-                                        <div class="dropdown-divider"></div>
-                                        <button class="dropdown-item text-danger remover_tfd_button" data-procedimento_id="<?= $t['tfd_id'] ?>"><i class="fa fa-times"></i> Cancelar procedimento</button>
+                                        <button class="dropdown-item editar_tfd_button" data-procedimento_id="<?= $t['tfd_id'] ?>"><i class="fa fa-file"></i> Visualizar TFD</button>
                                     </div>
                                 </div>
                             </div>
@@ -88,33 +92,10 @@
 <script>
     window.onload = function() {
 
-
-        // ABRE MODAL DE EDITAR
-        $('.editar_tfd_button').on('click', function() {
-            var procedimento_id = this.dataset.procedimento_id;
-            $.ajax({
-                    method: "POST",
-                    url: "<?= base_url('v2/regulacao/procedimentos/json/') ?>" + procedimento_id,
-                    data: {
-                        <?= $csrf_name ?>: "<?= $csrf_value ?>"
-                    }
-                })
-                .done(function(casa_de_apoio) {
-                    $('#procedimento_id').val(casa_de_apoio.procedimento_id);
-                    $('#nome_paciente').val(casa_de_apoio.nome_paciente);
-                    $('#data_entrada').val(casa_de_apoio.data_entrada);
-                    $('#data_saida').val(casa_de_apoio.data_saida);
-                    $('#observacao').val(casa_de_apoio.observacao);
-
-                });
-            editarRegistrosCasaDeApoioModel.toggle()
-        });
-
-
         //ADICIONANDO FILTRO AS COLUNAS
         $('#tfd_realizados_datatable thead th').each(function() {
             let title = $(this).text();
-            if (title == '' || title == 'OPÇÕES') {
+            if (title == '' || title == 'OPÇÕES' || title == "ANEXO") {
 
             } else {
                 $(this).html(`
@@ -195,7 +176,7 @@
                 },
                 {
                     className: 'btn btn-falcon-default btn-sm rounded-pill font-weight-light m-1',
-                    text: '<i class="far fa-calendar-plus"></i> Novo procedimento',
+                    text: '<i class="far fa-calendar-plus"></i> Novo TFD',
                     action: function() {
                         $('#add_tfd_modal').modal('show')
                     }
@@ -205,25 +186,5 @@
             ]
         });
 
-
-
-        //CONFIRMAR REMOÇÃO DO PACIENTE 
-        $('.remover_tfd_button').on('click', function() {
-            Swal.fire({
-                title: 'Confirma a saída do paciente?',
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: `Sim`,
-                icon: 'question',
-                showCancelButton: false,
-                denyButtonText: `Não, cancelar`,
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.replace("<?= base_url('v2/regulacao/casa-de-apoio/update-status/') ?>" + this.dataset.procedimento_id);
-                } else if (result.isDenied) {
-                    Swal.fire('Alteração não foi realizada.', '', 'info')
-                }
-            })
-        })
     }
 </script>

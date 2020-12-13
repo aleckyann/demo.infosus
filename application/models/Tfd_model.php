@@ -25,6 +25,16 @@ class Tfd_model extends CI_model
         $this->db->update($this->table, $dados, $where);
     }
 
+
+    /**
+     * negar um tfd
+     * Recebe um id do tfd e motivo
+     */
+    public function negar(int $tfd_id, string $tfd_negado_por): void
+    {
+        $this->db->update($this->table, ['tfd_negado_por'=>$tfd_negado_por], ['tfd_id'=>$tfd_id]);
+    }
+
     /**
      * Insere um registro em tfd
      * Recebe um array

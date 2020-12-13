@@ -8,13 +8,13 @@
             </a>
             <h3 class="font-weight-light">
 
-                <i class="fas fa-calendar-times text-danger"></i> Procedimentos reprimidos
+                <i class="fas fa-calendar-times text-danger"></i> Procedimentos negados
                 <!-- <span class="badge badge-soft-warning rounded-pill ml-2">-0.23%</span> -->
             </h3>
             <div class="collapse" id="collapseExample">
                 <div class="p-card">
                     <p class="mb-2">
-                        Nesta página você pode visualizar todos os procedimentos que foram reprimidos.<br>
+                        Nesta página você pode visualizar todos os procedimentos que foram negados.<br>
                     </p>
                 </div>
             </div>
@@ -28,7 +28,7 @@
 
     <div class="card-body">
 
-        <table id="procedimentosReprimidos_datatable" class="table table-striped table-hover" style="min-height: 200px;">
+        <table id="procedimentos_negados_datatable" class="table table-striped table-hover" style="min-height: 200px;">
             <thead>
                 <th class="text-dark small text-left">PACIENTE</th>
                 <th class="text-dark small text-left">MOTIVO</th>
@@ -60,7 +60,7 @@
                             </span>
                         </td>
                         <td class="small">
-                            <?= $p['reprimido_por'] ?>
+                            <?= $p['negado_por'] ?>
                         </td>
                         <td class="small">
                             <?= $p['nome_procedimento'] ?>
@@ -79,30 +79,8 @@
 <script>
     window.onload = function() {
 
-        // ABRE MODAL DE EDITAR
-        $('.editarProcedimento_button').on('click', function() {
-            var procedimento_id = this.dataset.procedimento_id;
-            $.ajax({
-                    method: "POST",
-                    url: "<?= base_url('v2/regulacao/procedimentos/json/') ?>" + procedimento_id,
-                    data: {
-                        <?= $csrf_name ?>: "<?= $csrf_value ?>"
-                    }
-                })
-                .done(function(casa_de_apoio) {
-                    $('#procedimento_id').val(casa_de_apoio.procedimento_id);
-                    $('#nome_paciente').val(casa_de_apoio.nome_paciente);
-                    $('#data_entrada').val(casa_de_apoio.data_entrada);
-                    $('#data_saida').val(casa_de_apoio.data_saida);
-                    $('#observacao').val(casa_de_apoio.observacao);
-
-                });
-            editarRegistrosCasaDeApoioModel.toggle()
-        });
-
-
         //ADICIONANDO FILTRO AS COLUNAS
-        $('#procedimentosReprimidos_datatable thead th').each(function() {
+        $('#procedimentos_negados_datatable thead th').each(function() {
             let title = $(this).text();
             if (title == '' || title == 'OPÇÕES') {
 
@@ -116,7 +94,7 @@
         });
 
 
-        $('#procedimentosReprimidos_datatable').DataTable({
+        $('#procedimentos_negados_datatable').DataTable({
             initComplete: function() {
                 this.api().columns().every(function() {
                     let that = this;

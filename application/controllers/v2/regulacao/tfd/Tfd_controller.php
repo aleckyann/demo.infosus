@@ -12,7 +12,7 @@ class Tfd_controller extends Sistema_Controller
     public function fila(): void
     {
         $dados['title'] = 'Tfd na fila';
-        $dados['tfd'] = $this->Tfd->porPaciente(['tfd_data_atendimento' => NULL, 'tfd_realizado' => NULL]);
+        $dados['tfd'] = $this->Tfd->porPaciente(['tfd_data_atendimento' => NULL, 'tfd_realizado' => NULL, 'tfd_negado_por'=>NULL]);
 
         $this->view('regulacao/tfd/Fila_view', $dados);
     }
@@ -68,21 +68,14 @@ class Tfd_controller extends Sistema_Controller
 
 
     /**
-     * POST: v2/regulacao/tfd/reprimir
+     * POST: v2/regulacao/tfd/negar
      */
-    public function reprimir(): void
+    public function negar(): void
     {
         $dados = $this->input->post();
-        $this->Tfd->update(
-            [
-                'tfd_id' => $dados['tfd_id']
-            ],
-            [
-                'tfd_realizado' => 'nao',
-                'tfd_reprimido_por' => $dados['reprimido_por']
-            ],
-        );
-        $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> TFD reprimido com sucesso');
+        $this->Tfd->negar($dados['tfd_id'], $dados['tfd_negado_por']);
+
+        $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> TFD negado com sucesso');
         redirect($this->agent->referrer());
     }
 
@@ -131,22 +124,22 @@ class Tfd_controller extends Sistema_Controller
     public function agendados(): void
     {
         $dados['title'] = 'Tfd agendados';
-        $dados['tfd'] = $this->Tfd->porPaciente(['tfd_data_atendimento !=' => NULL, 'tfd_realizado' => NULL]);
+        $dados['tfd'] = $this->Tfd->porPaciente(['tfd_data_atendimento !=' => NULL, 'tfd_realizado' => NULL, 'tfd_negado_por' => NULL]);
 
         $this->view('regulacao/tfd/Agendados_view', $dados);
     }
 
 
     /**
-     * GET: v2/regulacao/tfd/reprimidos
+     * GET: v2/regulacao/tfd/negados
      * DB: tfd.realizado = 'nao'
      */
-    public function reprimidos(): void
+    public function negados(): void
     {
-        $dados['title'] = 'Tfd reprimidos';
-        $dados['tfd'] = $this->Tfd->porPaciente(['tfd_realizado' => 'nao']);
+        $dados['title'] = 'Tfd negados';
+        $dados['tfd'] = $this->Tfd->porPaciente(['tfd_negado_por !=' => NULL]);
 
-        $this->view('regulacao/tfd/Reprimidos_view', $dados);
+        $this->view('regulacao/tfd/Negados_view', $dados);
     }
 
 

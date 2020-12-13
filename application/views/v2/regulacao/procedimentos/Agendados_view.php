@@ -74,7 +74,7 @@
                                         <button class="dropdown-item text-success finalizarProcedimento_button" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-check"></i> Concluir procedimento</button>
                                         <button class="dropdown-item text-warning editarProcedimento_button" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-edit"></i> Editar procedimento</button>
                                         <div class="dropdown-divider"></div>
-                                        <button class="dropdown-item text-danger reprimirProcedimento_button" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-times"></i> Reprimir procedimento</button>
+                                        <button class="dropdown-item text-danger negar_procedimento_button" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-times"></i> Negar procedimento</button>
                                     </div>
                                 </div>
                             </div>
@@ -170,21 +170,21 @@
     </div>
 </div>
 
-<!-- Modal reprimirProcedimento_modal-->
-<div class="modal fade" id="reprimirProcedimento_modal" tabindex="-1" role="dialog" aria-labelledby="reprimirProcedimento_label" aria-hidden="true">
+<!-- Modal negar_procedimento_modal-->
+<div class="modal fade" id="negar_procedimento_modal" tabindex="-1" role="dialog" aria-labelledby="negar_procedimento_label" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-danger">
-                <h5 class="modal-title font-weight-light text-white" id="reprimirProcedimento_label"><i class="fas fa-calendar-times"></i> Reprimir procedimento</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title font-weight-light text-white" id="negar_procedimento_label"><i class="fas fa-calendar-times"></i> Negar procedimento</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= base_url('v2/regulacao/procedimentos/reprimir') ?>" method="post">
+            <form action="<?= base_url('v2/regulacao/procedimentos/negar') ?>" method="post">
                 <div class="modal-body">
                     <?= $csrf_input ?>
-                    <input type="hidden" name="procedimentos_id" id="reprimir_procedimentos_id">
+                    <input type="hidden" name="procedimentos_id" id="negar_procedimentos_id">
                     <div class="row">
                         <div class="mb-2 col-12">
                             <label for="">Motivo ou justificativa</label>
-                            <textarea class="form-control" name="reprimido_por" required></textarea>
+                            <textarea class="form-control" name="negado_por" required></textarea>
                         </div>
                     </div>
                 </div>
@@ -330,14 +330,14 @@
         // ============================
 
         //Cria modal para editar procedimento
-        var reprimirProcedimento_modal = new bootstrap.Modal(document.getElementById('reprimirProcedimento_modal'), {
+        var negar_procedimento_modal = new bootstrap.Modal(document.getElementById('negar_procedimento_modal'), {
             keyboard: false
         })
 
         // ABRE MODAL DE EDITAR
-        $('.reprimirProcedimento_button').on('click', function() {
-            $('#reprimir_procedimentos_id').val(this.dataset.procedimento_id);
-            reprimirProcedimento_modal.toggle()
+        $('.negar_procedimento_button').on('click', function() {
+            $('#negar_procedimentos_id').val(this.dataset.procedimento_id);
+            negar_procedimento_modal.toggle()
         });
 
 

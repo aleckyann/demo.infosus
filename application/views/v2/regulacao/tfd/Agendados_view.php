@@ -81,7 +81,7 @@
                                         <button class="dropdown-item text-success finalizar_tfd_button" data-tfd_id="<?= $t['tfd_id'] ?>"><i class="fa fa-check"></i> Concluir tfd</button>
                                         <button class="dropdown-item text-warning editar_tfd_button" data-tfd_id="<?= $t['tfd_id'] ?>"><i class="fa fa-edit"></i> Editar tfd</button>
                                         <div class="dropdown-divider"></div>
-                                        <button class="dropdown-item text-danger reprimir_tfd_button" data-tfd_id="<?= $t['tfd_id'] ?>"><i class="fa fa-times"></i> Reprimir tfd</button>
+                                        <button class="dropdown-item text-danger negar_tfd_button" data-tfd_id="<?= $t['tfd_id'] ?>"><i class="fa fa-times"></i> Negar tfd</button>
                                     </div>
                                 </div>
                             </div>
@@ -247,21 +247,21 @@
 
 
 
-<!-- Modal reprimir_tfd_modal-->
-<div class="modal fade" id="reprimir_tfd_modal" tabindex="-1" role="dialog" aria-labelledby="reprimirtfd_label" aria-hidden="true">
+<!-- Modal negar_tfd_modal-->
+<div class="modal fade" id="negar_tfd_modal" tabindex="-1" role="dialog" aria-labelledby="negar_tfd_label" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-danger">
-                <h5 class="modal-title font-weight-light text-white" id="reprimirtfd_label"><i class="fas fa-calendar-times"></i> Reprimir TFD</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title font-weight-light text-white" id="negar_tfd_label"><i class="fas fa-calendar-times"></i> Negar TFD</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= base_url('v2/regulacao/tfd/reprimir') ?>" method="post">
+            <form action="<?= base_url('v2/regulacao/tfd/negar') ?>" method="post">
                 <div class="modal-body">
                     <?= $csrf_input ?>
-                    <input type="hidden" name="tfd_id" id="reprimir_tfd_id">
+                    <input type="hidden" name="tfd_id" id="negar_tfd_id">
                     <div class="row">
                         <div class="mb-2 col-12">
                             <label for="">Motivo ou justificativa</label>
-                            <textarea class="form-control" name="tfd_reprimido_por" required></textarea>
+                            <textarea class="form-control" name="tfd_negado_por" required></textarea>
                         </div>
                     </div>
                 </div>
@@ -416,15 +416,15 @@
 
         // ============================
 
-        //Cria modal para reprimir tfd
-        var reprimir_tfd_modal = new bootstrap.Modal(document.getElementById('reprimir_tfd_modal'), {
+        //Cria modal para negar tfd
+        var negar_tfd_modal = new bootstrap.Modal(document.getElementById('negar_tfd_modal'), {
             keyboard: false
         })
 
-        // ABRE MODAL DE REPRIMIR TFD
-        $('.reprimir_tfd_button').on('click', function() {
-            $('#reprimir_tfd_id').val(this.dataset.tfd_id);
-            reprimir_tfd_modal.toggle()
+        // ABRE MODAL DE negar TFD
+        $('.negar_tfd_button').on('click', function() {
+            $('#negar_tfd_id').val(this.dataset.tfd_id);
+            negar_tfd_modal.toggle()
         });
 
 

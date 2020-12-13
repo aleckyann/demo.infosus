@@ -8,13 +8,13 @@
             </a>
             <h3 class="font-weight-light">
 
-                <i class="fas fa-calendar-times text-danger"></i> TFD reprimidos
+                <i class="fas fa-calendar-times text-danger"></i> TFD negados
                 <!-- <span class="badge badge-soft-warning rounded-pill ml-2">-0.23%</span> -->
             </h3>
             <div class="collapse" id="collapseExample">
                 <div class="p-card">
                     <p class="mb-2">
-                        Nesta página você pode visualizar todos os TFD que foram reprimidos.<br>
+                        Nesta página você pode visualizar todos os TFD que foram negados.<br>
                     </p>
                 </div>
             </div>
@@ -28,7 +28,7 @@
 
     <div class="card-body">
 
-        <table id="tfd_reprimidos_datatable" class="table table-striped table-hover" style="min-height: 200px;">
+        <table id="tfd_negados_datatable" class="table table-striped table-hover" style="min-height: 200px;">
             <thead>
                 <th class="text-dark small text-left">PACIENTE</th>
                 <th class="text-dark small text-left">MOTIVO</th>
@@ -59,7 +59,7 @@
                             </span>
                         </td>
                         <td class="small">
-                            <?= $t['tfd_reprimido_por'] ?>
+                            <?= $t['tfd_negado_por'] ?>
                         </td>
 
                     </tr>
@@ -76,7 +76,7 @@
     window.onload = function() {
 
         //ADICIONANDO FILTRO AS COLUNAS
-        $('#tfd_reprimidos_datatable thead th').each(function() {
+        $('#tfd_negados_datatable thead th').each(function() {
             let title = $(this).text();
             if (title == '' || title == 'OPÇÕES') {
 
@@ -90,7 +90,7 @@
         });
 
 
-        $('#tfd_reprimidos_datatable').DataTable({
+        $('#tfd_negados_datatable').DataTable({
             initComplete: function() {
                 this.api().columns().every(function() {
                     let that = this;

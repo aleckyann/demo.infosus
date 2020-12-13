@@ -28,7 +28,7 @@
 
     <div class="card-body">
 
-        <table id="procedimentosRealizados_datatable" class="table table-striped table-hover" style="min-height: 200px;">
+        <table id="procedimentos_realizados_datatable" class="table table-striped table-hover" style="min-height: 200px;">
             <thead>
                 <th class="text-dark small text-left">PACIENTE</th>
                 <th class="text-dark small text-left">POCEDIMENTO</th>
@@ -72,9 +72,8 @@
                                 <div class="btn-group mb-2">
                                     <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
                                     <div class="dropdown-menu">
-                                        <button class="dropdown-item text-warning editarProcedimento_button" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-edit"></i> Editar procedimento</button>
+                                        <button class="dropdown-item text-warning visualizar_procedimento_button" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-edit"></i> Editar procedimento</button>
                                         <div class="dropdown-divider"></div>
-                                        <button class="dropdown-item text-danger removerProcedimento_button" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-times"></i> Cancelar procedimento</button>
                                     </div>
                                 </div>
                             </div>
@@ -89,17 +88,19 @@
 
 
 
+
+
 <script>
     window.onload = function() {
 
         //Cria modal para editar paciente
-        // var editarRegistrosCasaDeApoioModel = new bootstrap.Modal(document.getElementById('editarRegistrosCasaDeApoioModel'), {
+        // var visualizar_procedimento_model = new bootstrap.Modal(document.getElementById('visualizar_procedimento_model'), {
         //     keyboard: false
         // })
 
 
-        // ABRE MODAL DE EDITAR
-        $('.editarProcedimento_button').on('click', function() {
+        // ABRE MODAL DE VISUALIZAR PROCEDIMENTO
+        $('.visualizar_procedimento_button').on('click', function() {
             var procedimento_id = this.dataset.procedimento_id;
             $.ajax({
                     method: "POST",
@@ -114,14 +115,14 @@
                     $('#data_entrada').val(casa_de_apoio.data_entrada);
                     $('#data_saida').val(casa_de_apoio.data_saida);
                     $('#observacao').val(casa_de_apoio.observacao);
-
                 });
-            editarRegistrosCasaDeApoioModel.toggle()
+            alert('Implementar modal com dados do procedimento.')
+            // visualizar_procedimento_model.toggle()
         });
 
 
         //ADICIONANDO FILTRO AS COLUNAS
-        $('#procedimentosRealizados_datatable thead th').each(function() {
+        $('#procedimentos_realizados_datatable thead th').each(function() {
             let title = $(this).text();
             if (title == '' || title == 'OPÇÕES') {
 
@@ -135,7 +136,7 @@
         });
 
 
-        $('#procedimentosRealizados_datatable').DataTable({
+        $('#procedimentos_realizados_datatable').DataTable({
             initComplete: function() {
                 this.api().columns().every(function() {
                     let that = this;
@@ -214,25 +215,5 @@
             ]
         });
 
-
-
-        //CONFIRMAR REMOÇÃO DO PACIENTE 
-        $('.removerProcedimento_button').on('click', function() {
-            Swal.fire({
-                title: 'Confirma a saída do paciente?',
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: `Sim`,
-                icon: 'question',
-                showCancelButton: false,
-                denyButtonText: `Não, cancelar`,
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.replace("<?= base_url('v2/regulacao/casa-de-apoio/update-status/') ?>" + this.dataset.procedimento_id);
-                } else if (result.isDenied) {
-                    Swal.fire('Alteração não foi realizada.', '', 'info')
-                }
-            })
-        })
     }
 </script>

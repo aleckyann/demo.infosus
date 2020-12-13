@@ -25,6 +25,20 @@ class Procedimentos_model extends CI_model
         $this->db->update($this->table, $dados, $where);
     }
 
+
+    /**
+     * Nega um procedimento
+     * Recebe o id do procedimento e o motivo
+     */
+    public function negar(int $procedimento_id, string $negado_por): void
+    {
+        $this->db->update(
+            $this->table,
+            ['negado_por' => $negado_por],
+            ['procedimentos_id' => $procedimento_id]
+        );
+    }
+
     /**
      * Insere um registro em procedimentos
      * Recebe um array

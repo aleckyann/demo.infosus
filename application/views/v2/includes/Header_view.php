@@ -118,16 +118,22 @@
                                 </a>
                                 <ul class="nav collapse <?= (segment(2) == 'regulacao') ? 'show' : '' ?>" id="regulacaoNav" data-parent="#navbarVerticalCollapse">
                                     <li class="nav-item">
-                                        <a class="nav-link dropdown-indicator <?= (segment(3) == 'casa-de-apoio') ? 'active collapsed' : '' ?>" href="#casaDeApoioNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="casaDeApoioNav"><i class="fas fa-house-user"></i> Casa de apoio</a>
-                                        <ul class="nav collapse <?= (segment(3) == 'casa-de-apoio') ? 'show' : '' ?>" id="casaDeApoioNav" data-parent="#regulacaoNav">
+                                        <a class="nav-link dropdown-indicator <?= (segment(3) == 'tfd') ? 'active collapsed' : '' ?>" href="#TfdNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="TfdNav"><i class="fas fa-file-medical ml-1"></i> Tfd</a>
+                                        <ul class="nav collapse <?= (segment(3) == 'tfd') ? 'show' : '' ?>" id="TfdNav" data-parent="#regulacaoNav">
                                             <li class="nav-item">
-                                                <a class="nav-link <?= (segment(4) == 'agendados') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/casa-de-apoio/agendados') ?>"><i class="far fa-calendar-alt text-warning"></i> Agendados</a>
+                                                <a class="nav-link <?= (segment(4) == 'fila') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/tfd/fila') ?>"><i class="fas fa-sort-amount-down"></i> Fila</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link <?= (segment(4) == 'historico') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/casa-de-apoio/historico') ?>"><i class="fas fa-history text-success"></i> Histórico de uso</a>
+                                                <a class="nav-link <?= (segment(4) == 'agendados') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/tfd/agendados') ?>"><i class="far fa-calendar-alt"></i> Agendados</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#" data-toggle="modal" data-target="#add_casa_de_apoio_modal"><i class="fas fa-clinic-medical"></i> Novo paciente</a>
+                                                <a class="nav-link <?= (segment(4) == 'realizados') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/tfd/realizados') ?>"><i class="far fa-calendar-check text-success"></i> Realizados</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link <?= (segment(4) == 'negados') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/tfd/negados') ?>"><i class="far fa-calendar-times text-danger"></i> Negados</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#" data-toggle="modal" data-target="#add_tfd_modal"><i class="far fa-calendar-plus"></i> Novo Tfd</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -144,30 +150,25 @@
                                                 <a class="nav-link <?= (segment(4) == 'realizados') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/procedimentos/realizados') ?>"><i class="far fa-calendar-check text-success"></i> Realizados</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link <?= (segment(4) == 'reprimidos') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/procedimentos/reprimidos') ?>"><i class="far fa-calendar-times text-danger"></i> Reprimidos</a>
+                                                <a class="nav-link <?= (segment(4) == 'negados') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/procedimentos/negados') ?>"><i class="far fa-calendar-times text-danger"></i> Negados</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" href="#" data-toggle="modal" data-target="#add_procedimento_modal"><i class="far fa-calendar-plus"></i> Novo procedimento</a>
                                             </li>
                                         </ul>
                                     </li>
+
                                     <li class="nav-item">
-                                        <a class="nav-link dropdown-indicator <?= (segment(3) == 'tfd') ? 'active collapsed' : '' ?>" href="#TfdNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="TfdNav"><i class="fas fa-file-medical ml-1"></i> Tfd</a>
-                                        <ul class="nav collapse <?= (segment(3) == 'tfd') ? 'show' : '' ?>" id="TfdNav" data-parent="#regulacaoNav">
+                                        <a class="nav-link dropdown-indicator <?= (segment(3) == 'casa-de-apoio') ? 'active collapsed' : '' ?>" href="#casaDeApoioNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="casaDeApoioNav"><i class="fas fa-house-user"></i> Casa de apoio</a>
+                                        <ul class="nav collapse <?= (segment(3) == 'casa-de-apoio') ? 'show' : '' ?>" id="casaDeApoioNav" data-parent="#regulacaoNav">
                                             <li class="nav-item">
-                                                <a class="nav-link <?= (segment(4) == 'fila') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/tfd/fila') ?>"><i class="fas fa-sort-amount-down"></i> Fila</a>
+                                                <a class="nav-link <?= (segment(4) == 'agendados') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/casa-de-apoio/agendados') ?>"><i class="far fa-calendar-alt text-warning"></i> Agendados</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link <?= (segment(4) == 'agendados') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/tfd/agendados') ?>"><i class="far fa-calendar-alt"></i> Agendados</a>
+                                                <a class="nav-link <?= (segment(4) == 'historico') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/casa-de-apoio/historico') ?>"><i class="fas fa-history text-success"></i> Histórico de uso</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link <?= (segment(4) == 'realizados') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/tfd/realizados') ?>"><i class="far fa-calendar-check text-success"></i> Realizados</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link <?= (segment(4) == 'reprimidos') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/tfd/reprimidos') ?>"><i class="far fa-calendar-times text-danger"></i> Reprimidos</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="#" data-toggle="modal" data-target="#add_tfd_modal"><i class="far fa-calendar-plus"></i> Novo Tfd</a>
+                                                <a class="nav-link" href="#" data-toggle="modal" data-target="#add_casa_de_apoio_modal"><i class="fas fa-clinic-medical"></i> Novo paciente</a>
                                             </li>
                                         </ul>
                                     </li>

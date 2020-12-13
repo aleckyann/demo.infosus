@@ -12,7 +12,7 @@ class Procedimentos_controller extends Sistema_Controller
     public function fila(): void
     {
         $dados['title'] = 'Procedimentos na fila';
-        $dados['procedimentos'] = $this->Procedimentos->porPaciente(['realizado' => '', 'data'=>NULL]);
+        $dados['procedimentos'] = $this->Procedimentos->porPaciente(['realizado' => '', 'data' => NULL]);
 
         $this->view('regulacao/procedimentos/Fila_view', $dados);
     }
@@ -50,21 +50,14 @@ class Procedimentos_controller extends Sistema_Controller
 
 
     /**
-     * POST: v2/regulacao/procedimentos/reprimir
+     * POST: v2/regulacao/procedimentos/negar
      */
-    public function reprimir(): void
+    public function negar(): void
     {
         $dados = $this->input->post();
-        $this->Procedimentos->update(
-            [
-                'procedimentos_id' => $dados['procedimentos_id']
-            ],
-            [
-                'realizado'=> 'nao',
-                'reprimido_por' => $dados['reprimido_por'] 
-            ],
-        );
-        $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> Procedimento reprimido com sucesso');
+        $this->Procedimentos->negar($dados['procedimentos_id'], $dados['negado_por']);
+        
+        $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> Procedimento negado com sucesso');
         redirect($this->agent->referrer());
     }
 
@@ -104,7 +97,7 @@ class Procedimentos_controller extends Sistema_Controller
         $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> Procedimento atualizado com sucesso');
         redirect($this->agent->referrer());
     }
-    
+
 
     /**
      * GET: v2/regulacao/procedimentos/agendados
@@ -113,22 +106,22 @@ class Procedimentos_controller extends Sistema_Controller
     public function agendados(): void
     {
         $dados['title'] = 'Procedimentos agendados';
-        $dados['procedimentos'] = $this->Procedimentos->porPaciente(['realizado'=>'', 'data !=' => NULL]);
+        $dados['procedimentos'] = $this->Procedimentos->porPaciente(['realizado' => '', 'data !=' => NULL]);
 
         $this->view('regulacao/procedimentos/Agendados_view', $dados);
     }
 
 
     /**
-     * GET: v2/regulacao/procedimentos/reprimidos
+     * GET: v2/regulacao/procedimentos/negados
      * DB: procedimentos.realizado = 'nao'
      */
-    public function reprimidos(): void
+    public function negados(): void
     {
-        $dados['title'] = 'Procedimentos reprimidos';
-        $dados['procedimentos'] = $this->Procedimentos->porPaciente(['realizado' => 'nao']);
+        $dados['title'] = 'Procedimentos negados';
+        $dados['procedimentos'] = $this->Procedimentos->porPaciente(['negado_por !=' => NULL]);
 
-        $this->view('regulacao/procedimentos/Reprimidos_view', $dados);
+        $this->view('regulacao/procedimentos/Negados_view', $dados);
     }
 
 
@@ -150,6 +143,4 @@ class Procedimentos_controller extends Sistema_Controller
             ->set_content_type('application/json')
             ->set_output(json_encode($this->Procedimentos->porPaciente(['procedimentos_id' => $procedimentos_id])[0]));
     }
-
-    
 }

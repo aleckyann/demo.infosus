@@ -25,23 +25,30 @@ class Tfd_controller extends Sistema_Controller
     {
         $dados = $this->input->post();
 
+        //Se não houver 'tfd_data_atendimento' insere NULL no DB
+        if($dados['tfd_data_atendimento'] == '') unset($dados['tfd_data_atendimento']) ;
+
+        //Salva o TFD
         $tfd_id = $this->Tfd->insert($dados);
-
-        $config['upload_path']          = realpath(APPPATH . '../public/v2/anexos/tfd');
-        $config['allowed_types']        = 'jpeg|jpg|png|pdf|doc|docx';
-        $config['file_name']            = $tfd_id;
-
-        $this->upload->initialize($config);
-
-        if (!$this->upload->do_upload('tfd_anexo')) {
-            $error = array('error' => $this->upload->display_errors());
-            $this->session->set_flashdata('danger', 'Não foi salvar o anexo deste TFD, envie arquivos: .jpeg .jpg .png .pdf .doc ou .docx');
-        } else {
-            $data = $this->upload->data();
-            $this->Tfd->update(
-                ['tfd_anexo' => $data['orig_name']],
-                ['tfd_id' => $tfd_id]
-            );
+        
+        //Verifica se há upload e faz as configurações do upload
+        if($_FILES['tfd_anexo']) {
+            $config['upload_path']          = realpath(APPPATH . '../public/v2/anexos/tfd');
+            $config['allowed_types']        = 'jpeg|jpg|png|pdf|doc|docx';
+            $config['file_name']            = $tfd_id;
+            // $config['overwrite'] = TRUE;
+            $this->upload->initialize($config);
+    
+            //Se upload der certo, atualiza no DB
+            if (!$this->upload->do_upload('tfd_anexo')) {
+                $error = array('error' => $this->upload->display_errors());
+            } else {
+                $data = $this->upload->data();
+                $this->Tfd->update(
+                    ['tfd_anexo' => $data['orig_name']],
+                    ['tfd_id' => $tfd_id]
+                );
+            }
         }
 
         $this->session->set_flashdata('success', 'TFD criado com sucesso');
@@ -56,10 +63,10 @@ class Tfd_controller extends Sistema_Controller
     {
         $dados = $this->input->post();
         $this->Tfd->update(
+            $dados,
             [
                 'tfd_id' => $dados['tfd_id']
-            ],
-            $dados
+            ]
         );
 
         $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> TFD agendado com sucesso');
@@ -86,11 +93,11 @@ class Tfd_controller extends Sistema_Controller
     {
         $this->Tfd->update(
             [
-                'tfd_id' => $tfd_id
-            ],
-            [
                 'tfd_realizado' => 'sim'
             ],
+            [
+                'tfd_id' => $tfd_id
+            ]
         );
         $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> TFD concluido com sucesso');
         redirect($this->agent->referrer());
@@ -104,13 +111,17 @@ class Tfd_controller extends Sistema_Controller
         $dados = $this->input->post();
         $dados['tfd_risco'] = $dados['editar_tfd_risco'];
         unset($dados['editar_tfd_risco']);
+        //Se não houver 'tfd_data_atendimento' insere NULL no DB
+        if ($dados['tfd_data_atendimento'] == '') unset($dados['tfd_data_atendimento']);
 
         $this->Tfd->update(
+            $dados,
             [
                 'tfd_id' => $dados['tfd_id']
-            ],
-            $dados
+            ]
         );
+
+
 
         $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> TFD atualizado com sucesso');
         redirect($this->agent->referrer());

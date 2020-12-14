@@ -70,7 +70,11 @@
                             <?= date_format(date_create($t['tfd_data_solicitacao']), 'd/m/Y') ?>
                         </td>
                         <td class="small text-center">
-                            <a target="_new" href="<?= base_url('public/v2/anexos/tfd/' . $t['tfd_anexo']) ?>" data-toggle="tooltip" title="Clique para fazer download"><i class="fas fa-download"></i></a>
+                            <?php if ($t['tfd_anexo']) { ?>
+                                <a target="_new" href="<?= base_url('public/v2/anexos/tfd/' . $t['tfd_anexo']) ?>" data-toggle="tooltip" title="Clique para fazer download"><i class="fas fa-download"></i></a>
+                            <?php } else { ?>
+                                <i class="fas fa-download text-muted"></i>
+                            <?php } ?>
                         </td>
 
                         <td class="text-center p-1">

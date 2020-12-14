@@ -191,7 +191,7 @@
                                         <span class="nav-link-text"> Atenção primária</span>
                                     </div>
                                 </a>
-                                <ul class="nav collapse <?= (segment(2) == 'pacientes') ? 'show' : '' ?>" id="atencaoNav" data-parent="#navbarVerticalCollapse">
+                                <ul class="nav collapse <?= (segment(2) == '...') ? 'show' : '' ?>" id="atencaoNav" data-parent="#navbarVerticalCollapse">
                                     <li class="nav-item"><a class="nav-link <?= (segment(3) == '') ? 'active' : '' ?>" href="<?= base_url('v2/pacientes/listagem') ?>"><i class="fas fa-clipboard-list mr-1"></i> ...</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#add_paciente_modal"><i class=" fas fa-user-plus"></i> ...</a></li>
                                 </ul>
@@ -203,7 +203,7 @@
                                         <span class="nav-link-text"> Almoxarifado</span>
                                     </div>
                                 </a>
-                                <ul class="nav collapse <?= (segment(2) == 'pacientes') ? 'show' : '' ?>" id="almoxarifadoNav" data-parent="#navbarVerticalCollapse">
+                                <ul class="nav collapse <?= (segment(2) == '...') ? 'show' : '' ?>" id="almoxarifadoNav" data-parent="#navbarVerticalCollapse">
                                     <li class="nav-item"><a class="nav-link <?= (segment(3) == '') ? 'active' : '' ?>" href="<?= base_url('v2/pacientes/listagem') ?>"><i class="fas fa-clipboard-list mr-1"></i> ...</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#add_paciente_modal"><i class=" fas fa-user-plus"></i> ...</a></li>
                                 </ul>

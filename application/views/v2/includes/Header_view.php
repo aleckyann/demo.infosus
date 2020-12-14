@@ -185,27 +185,27 @@
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link dropdown-indicator <?= (segment(2) == 'atencao-primaria') ? 'active' : '' ?>" href="#atencaoNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="atencaoNav">
+                                <a class="nav-link dropdown-indicator" href="#atencaoNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="atencaoNav">
                                     <div class="d-flex align-items-center">
                                         <span class="nav-link-icon"><i class="fas fa-hand-holding-medical"></i></span>
                                         <span class="nav-link-text"> Atenção primária</span>
                                     </div>
                                 </a>
-                                <ul class="nav collapse <?= (segment(2) == 'exemploDePagina') ? 'show' : '' ?>" id="atencaoNav" data-parent="#navbarVerticalCollapse">
-                                    <li class="nav-item"><a class="nav-link <?= (segment(3) == 'exemplo') ? 'active' : '' ?>" href="<?= base_url('v2/pacientes/listagem') ?>"><i class="fas fa-clipboard-list mr-1"></i> ...</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#add_paciente_modal"><i class=" fas fa-user-plus"></i> ...</a></li>
+                                <ul class="nav collapse" id="atencaoNav" data-parent="#navbarVerticalCollapse">
+                                    <li class="nav-item"><a class="nav-link" href="#"><i>BETA</i></a></li>
+                                    <li class="nav-item"><a><i>BETA</i></a></li>
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link dropdown-indicator <?= (segment(2) == 'almoxarifado') ? 'active' : '' ?>" href="#almoxarifadoNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="almoxarifadoNav">
+                                <a class="nav-link dropdown-indicator" href="#almoxarifadoNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="almoxarifadoNav">
                                     <div class="d-flex align-items-center">
                                         <span class="nav-link-icon"><i class="fas fa-cubes"></i></span>
                                         <span class="nav-link-text"> Almoxarifado</span>
                                     </div>
                                 </a>
-                                <ul class="nav collapse <?= (segment(2) == 'exemploDePagina2') ? 'show' : '' ?>" id="almoxarifadoNav" data-parent="#navbarVerticalCollapse">
-                                    <li class="nav-item"><a class="nav-link <?= (segment(3) == 'exemplo') ? 'active' : '' ?>" href="<?= base_url('v2/pacientes/listagem') ?>"><i class="fas fa-clipboard-list mr-1"></i> ...</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#add_paciente_modal"><i class=" fas fa-user-plus"></i> ...</a></li>
+                                <ul class="nav collapse" id="almoxarifadoNav" data-parent="#navbarVerticalCollapse">
+                                    <li class="nav-item"><a class="nav-link" href="#"><i>BETA</i></a></li>
+                                    <li class="nav-item"><a><i>BETA</i></a></li>
                                 </ul>
                             </li>
                         </ul>

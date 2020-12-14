@@ -193,7 +193,7 @@
                                 </a>
                                 <ul class="nav collapse" id="atencaoNav" data-parent="#navbarVerticalCollapse">
                                     <li class="nav-item"><a class="nav-link" href="#"><i>BETA</i></a></li>
-                                    <li class="nav-item"><a><i>BETA</i></a></li>
+                                    <li class="nav-item"><a class="nav-link"><i>BETA</i></a></li>
                                 </ul>
                             </li>
                             <li class="nav-item">
@@ -205,7 +205,7 @@
                                 </a>
                                 <ul class="nav collapse" id="almoxarifadoNav" data-parent="#navbarVerticalCollapse">
                                     <li class="nav-item"><a class="nav-link" href="#"><i>BETA</i></a></li>
-                                    <li class="nav-item"><a><i>BETA</i></a></li>
+                                    <li class="nav-item"><a class="nav-link"><i>BETA</i></a></li>
                                 </ul>
                             </li>
                         </ul>

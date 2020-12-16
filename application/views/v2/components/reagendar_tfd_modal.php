@@ -12,35 +12,35 @@
                 </div>
                 <div class="modal-body modal-scroll">
                     <div class="row">
-                        <div class="mb-3 col-6">
+                        <div class="mb-3 col-lg-6">
                             <label for="">Nome do paciente:</label>
                             <input type="text" class="form-control" id="reagendar_tfd_paciente_nome" disabled>
                         </div>
-                        <div class="mb-2 col-3">
+                        <div class="mb-2 col-lg-3">
                             <label for="">Nascimento</label>
                             <input type="date" id="reagendar_tfd_nascimento" class="form-control" disabled>
                         </div>
-                        <div class="mb-2 col-3">
+                        <div class="mb-2 col-lg-3">
                             <label for="">CPF</label>
                             <input type="text" id="reagendar_tfd_cpf" class="form-control" disabled>
                         </div>
 
                         <hr>
 
-                        <div class="mb-2 col-4">
+                        <div class="mb-2 col-lg-4">
                             <label for="">Data da solicitação <i class="fa fa-question-circle text-primary" data-toggle="tooltip" title="Data da solicitação do TFD."></i></label>
                             <input type="date" name="tfd_data_solicitacao" id="reagendar_tfd_data_solicitacao" class="form-control" required>
                         </div>
-                        <div class="mb-2 col-4">
+                        <div class="mb-2 col-lg-4">
                             <label for="">Data da agendamento <i class="fa fa-question-circle text-primary" data-toggle="tooltip" title="Data da agendamento do TFD."></i></label>
                             <input type="date" name="tfd_data_atendimento" id="reagendar_tfd_data_agendamento" class="form-control" required>
                         </div>
-                        <div class="mb-2 col-4">
+                        <div class="mb-2 col-lg-4">
                             <label for="">Cidade do atendimento <i class="fa fa-question-circle text-primary" data-toggle="tooltip" title="Cidade em que paciente vai realizar o atendimento."></i></label>
                             <input type="text" name="tfd_cidade_destino" id="reagendar_tfd_cidade_destino" class="form-control" required>
                         </div>
 
-                        <div class="mb-2 col-4">
+                        <div class="mb-2 col-lg-4">
                             <label for="">Tipo de deslocamento</label>
                             <select name="tfd_veiculo" id="reagendar_tfd_veiculo" class="form-control" id="" required>
                                 <option value="" disabled selected>Selecione</option>
@@ -52,15 +52,15 @@
                             </select>
                         </div>
 
-                        <div class="mb-2 col-4">
+                        <div class="mb-2 col-lg-4">
                             <label for="">cota</label>
                             <input type="text" name="tfd_cota" id="reagendar_tfd_cota" class="form-control" required>
                         </div>
-                        <div class="mb-2 col-4">
+                        <div class="mb-2 col-lg-4">
                             <label for="">Estabelecimento solicitante</label>
                             <input type="text" name="tfd_estabelecimento_solicitante" id="reagendar_tfd_estabelecimento_solicitante" class="form-control" required>
                         </div>
-                        <div class="mb-2 col-4">
+                        <div class="mb-2 col-lg-4">
                             <label for="">Estabelecimento prestador</label>
                             <input type="text" name="tfd_estabelecimento_prestador" id="reagendar_tfd_estabelecimento_prestador" class="form-control" required>
                         </div>
@@ -103,12 +103,12 @@
                         <hr class="mt-3">
 
 
-                        <div class="mb-2 col-12">
+                        <div class="mb-2 col-lg-12">
                             <label for="">Descrição</label>
                             <textarea name="tfd_descricao" id="reagendar_tfd_descricao" rows="1" class="form-control"></textarea>
                         </div>
 
-                        <div class="mb-2 col-12">
+                        <div class="mb-2 col-lg-12">
                             <label for="">Anexo <small class="text-muted">(.jpeg .jpg .png pdf .doc .docx)</small> <br><small class="badge bg-warning font-weight-light">Será copiado o anexo do TFD reagendado, selecione outro anexo para substituílo.</small></label>
                             <div class="form-file">
                                 <input class="form-file-input" id="customFile" name="tfd_anexo" type="file" />

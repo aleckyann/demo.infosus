@@ -14,11 +14,11 @@
                             <label for="">Nome do paciente:</label>
                             <input type="text" class="form-control" id="editar_tfd_paciente_nome" disabled>
                         </div>
-                        <div class="mb-2 col-3">
+                        <div class="mb-2 col-lg-3">
                             <label for="">Nascimento</label>
                             <input type="date" id="editar_tfd_nascimento" class="form-control" disabled>
                         </div>
-                        <div class="mb-2 col-3">
+                        <div class="mb-2 col-lg-3">
                             <label for="">CPF</label>
                             <input type="text" id="editar_tfd_cpf" class="form-control" disabled>
                         </div>
@@ -34,7 +34,7 @@
                             <input type="text" name="tfd_cidade_destino" id="editar_tfd_cidade_destino" class="form-control" required>
                         </div>
 
-                        <div class="mb-2 col-3">
+                        <div class="mb-2 col-lg-3">
                             <label for="">Tipo de deslocamento</label>
                             <select name="tfd_veiculo" id="editar_tfd_veiculo" class="form-control" id="" required>
                                 <option value="" disabled selected>Selecione</option>
@@ -61,7 +61,7 @@
 
                         <hr>
 
-                        <div class="col-3">
+                        <div class="col-lg-3">
                             <label for="tfd_alimentacao" name="tfd_alimentacao"> Necessidade de alimentação? <i class="fa fa-question-circle text-primary" data-toggle="tooltip" data-placement="top" title="Este paciente precisa de ajuda de custo para alimentação?"></i></label>
                             <select name="tfd_alimentacao" class="form-control" id="editar_tfd_alimentacao" required>
                                 <option value="" selected disabled>Selecione</option>
@@ -69,7 +69,7 @@
                                 <option value="Sim">Sim</option>
                             </select>
                         </div>
-                        <div class="col-3">
+                        <div class="col-lg-3">
                             <label for="tfd_passagem" name="tfd_passagem"> Necessidade de Passagem? <i class="fa fa-question-circle text-primary" data-toggle="tooltip" data-placement="top" title="Este paciente precisa de ajuda de custo com passagem?"></i></label>
                             <select name="tfd_passagem" class="form-control" id="editar_tfd_passagem" required>
                                 <option value="" selected disabled>Selecione</option>
@@ -77,7 +77,7 @@
                                 <option value="Sim">Sim</option>
                             </select>
                         </div>
-                        <div class="col-3">
+                        <div class="col-lg-3">
                             <label for="tfd_hospedagem" name="tfd_hospedagem"> Necessidade de Hospedagem? <i class="fa fa-question-circle text-primary" data-toggle="tooltip" data-placement="top" title="Este paciente precisa de ajuda de custo com hospedagem?"></i></label>
                             <select name="tfd_hospedagem" class="form-control" id="editar_tfd_hospedagem" required>
                                 <option value="" selected disabled>Selecione</option>
@@ -85,7 +85,7 @@
                                 <option value="Sim">Sim</option>
                             </select>
                         </div>
-                        <div class="col-3">
+                        <div class="col-lg-3">
                             <label for="tfd_acompanhante" name="tfd_acompanhante"> Necessidade de acompanhante? <i class="fa fa-question-circle text-primary" data-toggle="tooltip" data-placement="top" title="Este paciente precisa de um acompanhante?"></i></label>
                             <select name="tfd_acompanhante" class="form-control" id="editar_tfd_acompanhante" required>
                                 <option value="" selected disabled>Selecione</option>

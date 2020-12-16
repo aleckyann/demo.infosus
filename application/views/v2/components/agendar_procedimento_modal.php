@@ -10,23 +10,23 @@
                     <?= $csrf_input ?>
                     <input type="hidden" name="procedimentos_id" id="agendar_procedimentos_id">
                     <div class="row">
-                        <div class="mb-2 col-6">
+                        <div class="mb-2 col-lg-6">
                             <label for="">Nome do paciente</label>
                             <input class="form-control" type="text" id="agendar_nome_paciente" disabled>
                         </div>
-                        <div class="mb-2 col-3">
+                        <div class="mb-2 col-lg-3">
                             <label for="">Telefone</label>
                             <input class="form-control" type="text" id="agendar_telefone_paciente" disabled>
                         </div>
-                        <div class="mb-2 col-3">
+                        <div class="mb-2 col-lg-3">
                             <label for="">CNS</label>
                             <input class="form-control" type="text" id="agendar_cns_paciente" disabled>
                         </div>
-                        <div class="mb-2 col-6">
+                        <div class="mb-2 col-lg-6">
                             <label for="">Nome do procedimento</label>
                             <input type="text" id="agendar_nome_procedimento" class="form-control" disabled>
                         </div>
-                        <div class="mb-2 col-6">
+                        <div class="mb-2 col-lg-6">
                             <label for="">Especialidade</label>
                             <select id="agendar_especialidade" class="form-select" disabled>
                                 <option selected disabled>Selecione uma especialidade</option>
@@ -36,37 +36,37 @@
                             </select>
 
                         </div>
-                        <div class="mb-2 col-4">
+                        <div class="mb-2 col-lg-4">
                             <label for="">Estabelecimento solicitante</label>
                             <input type="text" id="agendar_estabelecimento_solicitante" class="form-control" disabled>
                         </div>
-                        <div class="mb-2 col-4">
+                        <div class="mb-2 col-lg-4">
                             <label for="">Profissional solicitante</label>
                             <input type="text" id="agendar_profissional_solicitante" class="form-control" disabled>
                         </div>
-                        <div class="mb-2 col-4">
+                        <div class="mb-2 col-lg-4">
                             <label for="">Data de entrada</label>
                             <input type="date" id="agendar_data_solicitacao" class="form-control" disabled>
                         </div>
 
-                        <div class="mb-2 col-12">
+                        <div class="mb-2 col-lg-12">
                             <label for="">Principais sintomas clínicos</label>
                             <textarea type="date" name="sintomas" id="agendar_sintomas" class="form-control" disabled></textarea>
                         </div>
                         <hr>
-                        <div class="mb-2 col-3">
+                        <div class="mb-2 col-lg-3">
                             <label for="">Estabelecimento</label>
                             <input type="text" class="form-control" name="estabelecimento_prestador" required>
                         </div>
-                        <div class="mb-2 col-3">
+                        <div class="mb-2 col-lg-3">
                             <label for="">Cidade</label>
                             <input type="text" class="form-control" name="cidade_prestador" required>
                         </div>
-                        <div class="mb-2 col-3">
+                        <div class="mb-2 col-lg-3">
                             <label for="">Cota</label>
                             <input type="text" class="form-control" name="cota" required>
                         </div>
-                        <div class="mb-2 col-3">
+                        <div class="mb-2 col-lg-3">
                             <label for="">Data agendada</label>
                             <input type="date" class="form-control" name="data" required>
                         </div>

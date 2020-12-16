@@ -9,33 +9,33 @@
                 <?= $csrf_input ?>
                 <div class="modal-body modal-scroll">
                     <div class="row">
-                        <div class="mb-3 col-6">
+                        <div class="mb-3 col-lg-6">
                             <label for="">Nome do paciente:</label>
                             <select name="paciente_id" id="addTfdSelect2" name="paciente_id" style="width: 100%;" required></select>
                         </div>
-                        <div class="mb-2 col-3">
+                        <div class="mb-2 col-lg-3">
                             <label for="">Nascimento</label>
                             <input type="date" id="disabled_paciente_nascimento_tfd" class="form-control" disabled>
                         </div>
-                        <div class="mb-2 col-3">
+                        <div class="mb-2 col-lg-3">
                             <label for="">CPF</label>
                             <input type="text" id="disabled_paciente_cpf_tfd" class="form-control" disabled>
                         </div>
 
                         <hr>
 
-                        <div class="mb-2 col-3">
+                        <div class="mb-2 col-lg-3">
                             <label for="">Data da solicitação <i class="fa fa-question-circle text-muted" data-toggle="tooltip" title="Data da solicitação do TFD."></i></label>
                             <input type="date" name="tfd_data_solicitacao" class="form-control" required>
                         </div>
 
 
-                        <div class="mb-2 col-3">
+                        <div class="mb-2 col-lg-3">
                             <label for="">Estabelecimento solicitante <i class="fa fa-question-circle text-muted" data-toggle="tooltip" title="Qual estabelecimento solicitou o TFD"></i></label>
                             <input type="text" name="tfd_estabelecimento_solicitante" class="form-control" required>
                         </div>
 
-                        <div class="mb-2 col-6">
+                        <div class="mb-2 col-lg-6">
                             <label for="">Anexo <i class="fa fa-question-circle text-muted" data-toggle="tooltip" title="Arquivos do tipo .jpeg .jpg .png pdf .doc ou .docx"></i> </label>
                             <div class="form-file">
                                 <input class="form-file-input" id="customFile" name="tfd_anexo" type="file" />
@@ -46,12 +46,12 @@
                             </div>
                         </div>
 
-                        <div class="mb-2 col-12">
+                        <div class="mb-2 col-lg-12">
                             <label for="">Descrição / Observações</label>
                             <textarea name="tfd_descricao" id="" rows="2" class="form-control"></textarea>
                         </div>
 
-                        <div class="col-12 mt-1">
+                        <div class="col-lg-12 mt-1">
                             <label>Classificação de risco / vunerabilidade:</label>
                         </div>
                         <div class="my-2 col-3 text-center">

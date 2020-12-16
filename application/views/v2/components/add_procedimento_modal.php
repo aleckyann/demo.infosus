@@ -9,24 +9,24 @@
                 <div class="modal-body modal-scroll">
                     <?= $csrf_input ?>
                     <div class="row">
-                        <div class="mb-3 col-7">
+                        <div class="mb-3 col-lg-7">
                             <label for="">Nome do paciente:</label>
                             <select name="paciente_id" id="add_procedimentos_select2" style="width: 100%;" required></select>
                         </div>
-                        <div class="mb-2 col-3">
+                        <div class="mb-2 col-lg-3">
                             <label for="">Nascimento:</label>
                             <input type="date" id="disabledProcedimentoNascimento" class="form-control p-0" disabled>
                         </div>
-                        <div class="mb-2 col-2">
+                        <div class="mb-2 col-lg-2">
                             <label for="">CPF:</label>
                             <input type="text" id="disabledProcedimentoCpf" class="form-control" disabled>
                         </div>
                         <hr>
-                        <div class="mb-2 col-12">
+                        <div class="mb-2 col-lg-12">
                             <label for="">Nome do procedimento:</label>
                             <select name="nome_procedimento" style="width:100%" id="tabela_procedimentos_select2" required></select>
                         </div>
-                        <div class="mb-2 col-4">
+                        <div class="mb-2 col-lg-4">
                             <label for="">Especialidade:</label>
                             <select name="especialidade" class="form-select" required>
                                 <option selected disabled>Selecione uma especialidade</option>
@@ -36,25 +36,25 @@
                             </select>
 
                         </div>
-                        <div class="mb-2 col-4">
+                        <div class="mb-2 col-lg-4">
                             <label for="">Estabelecimento solicitante:</label>
                             <input type="text" name="estabelecimento_solicitante" class="form-control" required>
                         </div>
-                        <div class="mb-2 col-4">
+                        <div class="mb-2 col-lg-4">
                             <label for="">Profissional solicitante:</label>
                             <input type="text" name="profissional_solicitante" class="form-control" required>
                         </div>
-                        <div class="mb-2 col-4">
+                        <div class="mb-2 col-lg-4">
                             <label for="">Data de entrada:</label>
                             <input type="date" name="data_solicitacao" class="form-control" required>
                         </div>
 
-                        <div class="mb-2 col-12">
+                        <div class="mb-2 col-lg-12">
                             <label for="">Principais sintomas clínicos:</label>
                             <textarea type="date" name="sintomas" class="form-control"></textarea>
                         </div>
 
-                        <div class="col-12 mt-1">
+                        <div class="col-lg-12 mt-1">
                             <label>Classificação de risco / vunerabilidade:</label>
                         </div>
                         <div class="my-2 col-3 text-center">

@@ -14,20 +14,20 @@
                             <label class="form-label">Nome</label>
                             <input class="form-control" name="nome_paciente" id="nome_paciente" type="text" placeholder="Nome completo do paciente" />
                         </div>
-                        <div class="mb-2 col-4">
+                        <div class="mb-2 col-lg-4">
                             <label class="form-label">Data de nascimento</label>
                             <input class="form-control" name="nascimento" id="nascimento" type="date" />
                         </div>
-                        <div class="mb-2 col-4">
+                        <div class="mb-2 col-lg-4">
                             <label class="form-label">CPF</label>
                             <input class="form-control" name="cpf" id="cpf" type="text" placeholder="000.000.000-00" />
                         </div>
-                        <div class="mb-2 col-4">
+                        <div class="mb-2 col-lg-4">
                             <label class="form-label">RG</label>
                             <input class="form-control" name="identidade" id="identidade" type="text" placeholder="00.000.000" />
                         </div>
 
-                        <div class="mb-2 col-4">
+                        <div class="mb-2 col-lg-4">
                             <label class="form-label">Telefone</label>
                             <input class="form-control" name="telefone_paciente" id="telefone_paciente" type="phone" placeholder="(00) 99999-9999" />
                         </div>
@@ -48,7 +48,7 @@
                             <label class="form-label">CNS</label>
                             <input class="form-control" name="cns_paciente" id="cns_paciente" type="text" placeholder="Cartão do sus" />
                         </div>
-                        <div class="mb-2 col-4">
+                        <div class="mb-2 col-lg-4">
                             <label class="form-label">ACS ou referência</label>
                             <input class="form-control" name="acs" id="acs" type="text" placeholder="Agente de saúde" />
                         </div>
@@ -56,7 +56,7 @@
                             <label class="form-label">Responsável</label>
                             <input class="form-control" name="responsavel" id="responsavel" type="text" placeholder="Responsável se houver" />
                         </div>
-                        <div class="mb-2 col-4">
+                        <div class="mb-2 col-lg-4">
                             <label class="form-label">Profissão</label>
                             <input class="form-control" name="profissao" id="profissao" type="text" placeholder="Profissão" />
                         </div>

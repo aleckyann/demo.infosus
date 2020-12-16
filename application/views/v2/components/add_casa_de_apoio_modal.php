@@ -10,24 +10,24 @@
                     <?= $csrf_input ?>
                     <div class="row">
 
-                        <div class="mb-2 col-7">
+                        <div class="mb-2 col-lg-7">
                             <label for="">Nome do paciente</label>
                             <select id="pacientesCasaDeApoio_select2" style="width:100%" name="paciente_id" required></select>
                         </div>
-                        <div class="mb-2 col-3">
+                        <div class="mb-2 col-lg-3">
                             <label for="">Nascimento:</label>
                             <input type="date" id="disabledCasaDeApoioNascimento" class="form-control p-0" disabled>
                         </div>
-                        <div class="mb-2 col-2">
+                        <div class="mb-2 col-lg-2">
                             <label for="">CPF:</label>
                             <input type="text" id="disabledCasaDeApoioCpf" class="form-control" disabled>
                         </div>
                         <hr>
-                        <div class="mb-2 col-6">
+                        <div class="mb-2 col-6lg-">
                             <label for="">Data de entrada</label>
                             <input type="date" name="data_entrada" class="form-control" required>
                         </div>
-                        <div class="mb-2 col-6">
+                        <div class="mb-2 col-lg-6">
                             <label for="">Previsão de saída</label>
                             <input type="date" name="data_saida" class="form-control" required>
                         </div>

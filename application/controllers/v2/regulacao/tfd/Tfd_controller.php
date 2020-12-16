@@ -172,6 +172,7 @@ class Tfd_controller extends Sistema_Controller
         $dados = $this->input->post();
         $dados['tfd_risco'] = $dados['editar_tfd_risco'];
         unset($dados['editar_tfd_risco']);
+
         //Se não houver 'tfd_data_atendimento' insere NULL no DB
         if ($dados['tfd_data_atendimento'] == '') unset($dados['tfd_data_atendimento']);
 

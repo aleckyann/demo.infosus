@@ -90,6 +90,13 @@
                                 </a>
                             </li>
                         </ul>
+                        <ul class="navbar-nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <div class="d-flex align-items-center"><span class="nav-link-icon"><i class="fas fa-sliders-h"></i></span><span class="nav-link-text"> Configurações</span></div>
+                                </a>
+                            </li>
+                        </ul>
                         <div class="navbar-vertical-divider">
                             <hr class="navbar-vertical-hr my-2" />
                         </div>
@@ -228,7 +235,7 @@
                     <a class="navbar-brand mr-1 mr-sm-3" href="#">
                         <div class="d-flex align-items-center"><span class="font-sans-serif">Infosus</span></div>
                     </a>
-                    <ul class="navbar-nav navbar-nav-icons ml-auto flex-row align-items-center">
+                    <!-- <ul class="navbar-nav navbar-nav-icons ml-auto flex-row align-items-center">
                         <li class="nav-item dropdown">
                             <a class="nav-link pr-0" id="navbarDropdownUser" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <div class="avatar avatar-xl">
@@ -242,7 +249,7 @@
                                 </div>
                             </div>
                         </li>
-                    </ul>
+                    </ul> -->
                 </nav>
 
                 <script>

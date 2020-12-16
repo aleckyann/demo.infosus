@@ -7,8 +7,7 @@
                 <i class="fas fa-question-circle"></i>
             </a>
             <h3 class="font-weight-light">
-
-                <i class="fas fa-calendar-check text-success"></i> TFD realizados
+                <i class="fas fa-calendar-check text-success"></i> <?= $title ?>
                 <!-- <span class="badge badge-soft-warning rounded-pill ml-2">-0.23%</span> -->
             </h3>
             <div class="collapse" id="collapseExample">
@@ -27,7 +26,6 @@
     <?= $this->ui->alert_flashdata() ?>
 
     <div class="card-body">
-
         <table id="tfd_realizados_datatable" class="table table-striped table-hover" style="min-height: 200px;">
             <thead>
                 <th class="text-dark small text-left">PACIENTE</th>
@@ -74,7 +72,9 @@
                                 <div class="btn-group mb-2">
                                     <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
                                     <div class="dropdown-menu">
-                                        <button class="dropdown-item editar_tfd_button" data-procedimento_id="<?= $t['tfd_id'] ?>"><i class="fa fa-file"></i> Visualizar TFD</button>
+                                        <button class="dropdown-item reagendar_tfd_button text-warning" data-tfd_id="<?= $t['tfd_id'] ?>"><i class="fas fa-retweet"></i> Reagendar TFD</button>
+                                        <div class="dropdown-divider"></div>
+                                        <button class="dropdown-item reagendar_tfd_button" data-tfd_id="<?= $t['tfd_id'] ?>"><i class="fa fa-file"></i> Visualizar TFD</button>
                                     </div>
                                 </div>
                             </div>
@@ -83,14 +83,54 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
-
     </div>
 </div>
 
 
+<!-- CARREGAR COMPONENTES -->
+<?php $this->load->view('v2/components/reagendar_tfd_modal') ?>
+
 
 <script>
     window.onload = function() {
+
+        //Cria modal para reagendar tfd
+        var reagendar_tfd_modal = new bootstrap.Modal(document.getElementById('reagendar_tfd_modal'))
+
+        // ABRE MODAL DE reagendar
+        $('.reagendar_tfd_button').on('click', function() {
+            var tfd_id = this.dataset.tfd_id;
+            $.ajax({
+                    method: "POST",
+                    url: "<?= base_url('v2/regulacao/tfd/json/') ?>" + tfd_id,
+                    data: {
+                        <?= $csrf_name ?>: "<?= $csrf_value ?>"
+                    }
+                })
+                .done(function(tfd) {
+                    console.log(tfd)
+                    $('#reagendar_tfd_tfd_id').val(tfd.tfd_id);
+                    $('#reagendar_tfd_paciente_id').val(tfd.paciente_id);
+                    $('#reagendar_tfd_paciente_nome').val(tfd.nome_paciente);
+                    $('#reagendar_tfd_paciente_nascimento').val(tfd.nascimento);
+                    $('#reagendar_tfd_paciente_cpf').val(tfd.cpf);
+                    $('#reagendar_tfd_data_atendimento').val(tfd.tfd_data_atendimento);
+                    $('#reagendar_tfd_data_solicitacao').val(tfd.tfd_data_solicitacao);
+                    $('#reagendar_tfd_cidade_destino').val(tfd.tfd_cidade_destino);
+                    $('#reagendar_tfd_cota').val(tfd.tfd_cota);
+                    $('#reagendar_tfd_estabelecimento_solicitante').val(tfd.tfd_estabelecimento_solicitante);
+                    $('#reagendar_tfd_estabelecimento_prestador').val(tfd.tfd_estabelecimento_prestador);
+                    $('#reagendar_tfd_alimentacao').val(tfd.tfd_alimentacao);
+                    $('#reagendar_tfd_passagem').val(tfd.tfd_passagem);
+                    $('#reagendar_tfd_hospedagem').val(tfd.tfd_hospedagem);
+                    $('#reagendar_tfd_veiculo').val(tfd.tfd_veiculo);
+                    $('#reagendar_tfd_acompanhante').val(tfd.tfd_acompanhante);
+                    $(".reagendar_tfd_risco[value='" + tfd.tfd_risco + "']").prop("checked", true);
+                    $('#reagendar_tfd_descricao').val(tfd.tfd_descricao);
+                    $('#reagendar_tfd_anexo').val(tfd.tfd_anexo);
+                });
+            reagendar_tfd_modal.toggle()
+        });
 
         //ADICIONANDO FILTRO AS COLUNAS
         $('#tfd_realizados_datatable thead th').each(function() {

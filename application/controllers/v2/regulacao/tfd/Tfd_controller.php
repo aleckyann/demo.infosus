@@ -11,8 +11,8 @@ class Tfd_controller extends Sistema_Controller
      */
     public function fila(): void
     {
-        $dados['title'] = 'Tfd na fila';
-        $dados['tfd'] = $this->Tfd->porPaciente(['tfd_data_atendimento' => NULL, 'tfd_realizado' => NULL, 'tfd_negado_por'=>NULL]);
+        $dados['title'] = 'Fila de TFD';
+        $dados['tfd'] = $this->Tfd->porPaciente(['tfd_data_atendimento' => NULL, 'tfd_realizado' => NULL, 'tfd_negado_por' => NULL]);
 
         $this->view('regulacao/tfd/Fila_view', $dados);
     }
@@ -26,19 +26,19 @@ class Tfd_controller extends Sistema_Controller
         $dados = $this->input->post();
 
         //Se não houver 'tfd_data_atendimento' insere NULL no DB
-        if($dados['tfd_data_atendimento'] == '') unset($dados['tfd_data_atendimento']) ;
+        if ($dados['tfd_data_atendimento'] == '') unset($dados['tfd_data_atendimento']);
 
         //Salva o TFD
         $tfd_id = $this->Tfd->insert($dados);
-        
+
         //Verifica se há upload e faz as configurações do upload
-        if($_FILES['tfd_anexo']) {
+        if ($_FILES['tfd_anexo']) {
             $config['upload_path']          = realpath(APPPATH . '../public/v2/anexos/tfd');
             $config['allowed_types']        = 'jpeg|jpg|png|pdf|doc|docx';
             $config['file_name']            = $tfd_id;
             // $config['overwrite'] = TRUE;
             $this->upload->initialize($config);
-    
+
             //Se upload der certo, atualiza no DB
             if (!$this->upload->do_upload('tfd_anexo')) {
                 $error = array('error' => $this->upload->display_errors());
@@ -52,6 +52,47 @@ class Tfd_controller extends Sistema_Controller
         }
 
         $this->session->set_flashdata('success', 'TFD criado com sucesso');
+        redirect($this->agent->referrer());
+    }
+
+
+    /**
+     * POST: v2/regulacao/tfd/reagendar
+     */
+    public function reagendar(): void
+    {
+        $dados = $this->input->post();
+
+        //Vê se houve atualização do anexo
+        if ($dados['novo_tfd_anexo']) {
+            $dados['tfd_anexo'] = $dados['novo_tfd_anexo'];
+            unset($dados['novo_tfd_anexo']);
+        }
+
+        //Salva o TFD
+        $tfd_id = $this->Tfd->insert($dados);
+
+        //Verifica se há upload e faz as configurações do upload
+        if ($_FILES['tfd_anexo']) {
+            $config['upload_path']          = realpath(APPPATH . '../public/v2/anexos/tfd');
+            $config['allowed_types']        = 'jpeg|jpg|png|pdf|doc|docx';
+            $config['file_name']            = $tfd_id;
+            // $config['overwrite'] = TRUE;
+            $this->upload->initialize($config);
+
+            //Se upload der certo, atualiza no DB
+            if (!$this->upload->do_upload('tfd_anexo')) {
+                $error = array('error' => $this->upload->display_errors());
+            } else {
+                $data = $this->upload->data();
+                $this->Tfd->update(
+                    ['tfd_anexo' => $data['orig_name']],
+                    ['tfd_id' => $tfd_id]
+                );
+            }
+        }
+
+        $this->session->set_flashdata('success', 'TFD REAGENDADO COM SUCESSO!');
         redirect($this->agent->referrer());
     }
 
@@ -134,7 +175,7 @@ class Tfd_controller extends Sistema_Controller
      */
     public function agendados(): void
     {
-        $dados['title'] = 'Tfd agendados';
+        $dados['title'] = 'TFD agendados';
         $dados['tfd'] = $this->Tfd->porPaciente(['tfd_data_atendimento !=' => NULL, 'tfd_realizado' => NULL, 'tfd_negado_por' => NULL]);
 
         $this->view('regulacao/tfd/Agendados_view', $dados);
@@ -147,7 +188,7 @@ class Tfd_controller extends Sistema_Controller
      */
     public function negados(): void
     {
-        $dados['title'] = 'Tfd negados';
+        $dados['title'] = 'TFD negados';
         $dados['tfd'] = $this->Tfd->porPaciente(['tfd_negado_por !=' => NULL]);
 
         $this->view('regulacao/tfd/Negados_view', $dados);
@@ -160,7 +201,7 @@ class Tfd_controller extends Sistema_Controller
      */
     public function realizados(): void
     {
-        $dados['title'] = 'Tfd realizados';
+        $dados['title'] = 'TFD realizados';
         $dados['tfd'] = $this->Tfd->porPaciente(['tfd_realizado' => 'sim']);
 
         $this->view('regulacao/tfd/Realizados_view', $dados);

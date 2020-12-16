@@ -27,7 +27,7 @@
 
     <div class="card-body">
 
-        <table id="procedimentosFila_datatable" class="table table-striped" style="min-height: 200px;">
+        <table id="procedimentos_agendados_datatable" class="table table-striped" style="min-height: 200px;">
             <thead>
                 <th class="text-dark small text-left">PACIENTE</th>
                 <th class="text-dark small text-left">PROCEDIMENTO</th>
@@ -71,8 +71,8 @@
                                 <div class="btn-group mb-2">
                                     <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
                                     <div class="dropdown-menu">
-                                        <button class="dropdown-item text-success finalizarProcedimento_button" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-check"></i> Concluir procedimento</button>
-                                        <button class="dropdown-item text-warning editarProcedimento_button" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-edit"></i> Editar procedimento</button>
+                                        <button class="dropdown-item text-success finalizar_procedimento_button" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-check"></i> Concluir procedimento</button>
+                                        <button class="dropdown-item text-warning editar_procedimento_button" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-edit"></i> Editar procedimento</button>
                                         <div class="dropdown-divider"></div>
                                         <button class="dropdown-item text-danger negar_procedimento_button" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-times"></i> Negar procedimento</button>
                                     </div>
@@ -87,126 +87,18 @@
     </div>
 </div>
 
-<!-- Modal editarProcedimento_model-->
-<div class="modal fade" id="editarProcedimento_model" tabindex="-1" role="dialog" aria-labelledby="editarProcedimento_label" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-warning">
-                <h5 class="modal-title font-weight-light text-white" id="editarProcedimento_label"><i class="fas fa-edit"></i> Editar procedimento</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="<?= base_url('v2/regulacao/procedimentos/editar') ?>" method="post">
-                <div class="modal-body">
-                    <?= $csrf_input ?>
-                    <input type="hidden" name="procedimentos_id" id="procedimentos_id">
-                    <div class="row">
-                        <div class="mb-4 col-12">
-                            <label for="">Nome do paciente</label>
-                            <input type="text" class="form-control" id="nome_paciente" readonly>
-                        </div>
-                        <div class="mb-2 col-6">
-                            <label for="">Nome do procedimento</label>
-                            <input type="text" name="nome_procedimento" id="nome_procedimento" class="form-control" required>
-                        </div>
-                        <div class="mb-2 col-6">
-                            <label for="">Especialidade</label>
-                            <select name="especialidade" id="especialidade" class="form-select" required>
-                                <option selected disabled>Selecione uma especialidade</option>
-                                <?php foreach ($this->Especialidades->getAll() as $e) : ?>
-                                    <option value="<?= $e['especialidade_nome'] ?>"><?= $e['especialidade_nome'] ?></option>
-                                <?php endforeach; ?>
-                            </select>
-
-                        </div>
-                        <div class="mb-2 col-4">
-                            <label for="">Estabelecimento solicitante</label>
-                            <input type="text" name="estabelecimento_solicitante" id="estabelecimento_solicitante" class="form-control" required>
-                        </div>
-                        <div class="mb-2 col-4">
-                            <label for="">Profissional solicitante</label>
-                            <input type="text" name="profissional_solicitante" id="profissional_solicitante" class="form-control" required>
-                        </div>
-                        <div class="mb-2 col-4">
-                            <label for="">Data do procedimento</label>
-                            <input type="date" name="data" id="data" class="form-control" required>
-                        </div>
-
-                        <div class="mb-2 col-12">
-                            <label for="">Principais sintomas clínicos</label>
-                            <textarea type="date" name="sintomas" id="sintomas" class="form-control"></textarea>
-                        </div>
-
-                        <div class="col-12 mt-1">
-                            <label>Classificação de risco / vunerabilidade:</label>
-                        </div>
-                        <div class="my-2 col-3 text-center">
-                            <input type="radio" class="btn-check editarProcedimentoButton" name="editar_procedimento_risco" value="1" id="editarProcedimentoButton1" autocomplete="off" required>
-                            <label class="btn btn-outline-info" for="editarProcedimentoButton1"><span class="m-2">1</span></label><br>
-                            Não agudo
-                        </div>
-                        <div class="my-2 col-3 text-center">
-                            <input type="radio" class="btn-check editarProcedimentoButton" name="editar_procedimento_risco" value="2" id="editarProcedimentoButton2" autocomplete="off" required>
-                            <label class="btn btn-outline-success" for="editarProcedimentoButton2"><span class="m-2">2</span></label><br>
-                            Baixa
-                        </div>
-                        <div class="my-2 col-3 text-center">
-                            <input type="radio" class="btn-check editarProcedimentoButton" name="editar_procedimento_risco" value="3" id="editarProcedimentoButton3" autocomplete="off" required>
-                            <label class="btn btn-outline-warning" for="editarProcedimentoButton3"><span class="m-2">3</span></label><br>
-                            Intermediária
-                        </div>
-                        <div class="my-2 col-3 text-center">
-                            <input type="radio" class="btn-check editarProcedimentoButton" name="editar_procedimento_risco" value="4" id="editarProcedimentoButton4" autocomplete="off" required>
-                            <label class="btn btn-outline-danger" for="editarProcedimentoButton4"><span class="m-2">4</span></label><br>Alta
-                        </div>
-
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Cancelar</button>
-                    <button class="btn btn-primary btn-sm" type="submit">Salvar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- Modal negar_procedimento_modal-->
-<div class="modal fade" id="negar_procedimento_modal" tabindex="-1" role="dialog" aria-labelledby="negar_procedimento_label" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-danger">
-                <h5 class="modal-title font-weight-light text-white" id="negar_procedimento_label"><i class="fas fa-calendar-times"></i> Negar procedimento</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="<?= base_url('v2/regulacao/procedimentos/negar') ?>" method="post">
-                <div class="modal-body">
-                    <?= $csrf_input ?>
-                    <input type="hidden" name="procedimentos_id" id="negar_procedimentos_id">
-                    <div class="row">
-                        <div class="mb-2 col-12">
-                            <label for="">Motivo ou justificativa</label>
-                            <textarea class="form-control" name="negado_por" required></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Cancelar</button>
-                    <button class="btn btn-primary btn-sm" type="submit">Salvar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+<!-- CARREGAR COMPONENTES -->
+<?php $this->load->view('v2/components/editar_procedimento_modal') ?>
+<?php $this->load->view('v2/components/negar_procedimento_modal') ?>
 
 <script>
     window.onload = function() {
 
         //Cria modal para editar procedimento
-        var editarProcedimento_model = new bootstrap.Modal(document.getElementById('editarProcedimento_model'), {
-            keyboard: false
-        })
+        var editar_procedimento_modal = new bootstrap.Modal(document.getElementById('editar_procedimento_modal'))
 
         // ABRE MODAL DE EDITAR
-        $('.editarProcedimento_button').on('click', function() {
+        $('.editar_procedimento_button').on('click', function() {
             var procedimento_id = this.dataset.procedimento_id;
             $.ajax({
                     method: "POST",
@@ -228,13 +120,13 @@
                     $('#sintomas').val(procedimento.sintomas);
 
                 });
-            editarProcedimento_model.toggle()
+            editar_procedimento_modal.toggle()
         });
 
         // ==================================
 
         //ADICIONANDO FILTRO AS COLUNAS
-        $('#procedimentosFila_datatable thead th').each(function() {
+        $('#procedimentos_agendados_datatable thead th').each(function() {
             let title = $(this).text();
             if (title == '' || title == 'OPÇÕES') {
 
@@ -248,7 +140,7 @@
         });
 
 
-        $('#procedimentosFila_datatable').DataTable({
+        $('#procedimentos_agendados_datatable').DataTable({
             initComplete: function() {
                 this.api().columns().every(function() {
                     let that = this;
@@ -330,9 +222,7 @@
         // ============================
 
         //Cria modal para editar procedimento
-        var negar_procedimento_modal = new bootstrap.Modal(document.getElementById('negar_procedimento_modal'), {
-            keyboard: false
-        })
+        var negar_procedimento_modal = new bootstrap.Modal(document.getElementById('negar_procedimento_modal'))
 
         // ABRE MODAL DE EDITAR
         $('.negar_procedimento_button').on('click', function() {
@@ -342,7 +232,7 @@
 
 
         //CONFIRMAR FINALIZAÇÃO DO PACIENTE 
-        $('.finalizarProcedimento_button').on('click', function() {
+        $('.finalizar_procedimento_button').on('click', function() {
             Swal.fire({
                 title: 'Confirma conclusão desse procedimento?',
                 showDenyButton: true,

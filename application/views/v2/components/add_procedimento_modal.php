@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="mb-3 col-7">
                             <label for="">Nome do paciente:</label>
-                            <select name="paciente_id" id="addProcedimentoSelect2" style="width: 100%;" required></select>
+                            <select name="paciente_id" id="add_procedimentos_select2" style="width: 100%;" required></select>
                         </div>
                         <div class="mb-2 col-3">
                             <label for="">Nascimento:</label>
@@ -22,11 +22,11 @@
                             <input type="text" id="disabledProcedimentoCpf" class="form-control" disabled>
                         </div>
                         <hr>
-                        <div class="mb-2 col-6">
+                        <div class="mb-2 col-12">
                             <label for="">Nome do procedimento:</label>
-                            <input type="text" name="nome_procedimento" class="form-control" required>
+                            <select name="nome_procedimento" style="width:100%" id="tabela_procedimentos_select2" required></select>
                         </div>
-                        <div class="mb-2 col-6">
+                        <div class="mb-2 col-4">
                             <label for="">Especialidade:</label>
                             <select name="especialidade" class="form-select" required>
                                 <option selected disabled>Selecione uma especialidade</option>
@@ -95,7 +95,7 @@
     })
 
     $(document).ready(function() {
-        var procedimentoSelect2 = $('#addProcedimentoSelect2').select2({
+        var procedimentoSelect2 = $('#add_procedimentos_select2').select2({
             ajax: {
                 url: '<?= base_url('v2/pacientes/json/select2') ?>',
                 method: 'POST',
@@ -122,6 +122,29 @@
         procedimentoSelect2.on('select2:select', function(e) {
             $('#disabledProcedimentoCpf').val(e.params.data.cpf)
             $('#disabledProcedimentoNascimento').val(e.params.data.nascimento)
+        });
+
+        var tabela_procedimentos = $('#tabela_procedimentos_select2').select2({
+            ajax: {
+                url: '<?= base_url('v2/api/tabela_proced/select2') ?>',
+                method: 'POST',
+                data: function(params) {
+                    var query = {
+                        nome: params.term,
+                        <?= $csrf_name ?>: '<?= $csrf_value ?>'
+                    }
+                    return query;
+                },
+                processResults: function(data, params) {
+                    return {
+                        results: data
+                    }
+                },
+                dataType: 'json',
+                placeholder: "Selecione um procedimento",
+            },
+            delay: 250,
+            minimumInputLength: 1,
         });
     });
 </script>

@@ -11,11 +11,11 @@
                     <div class="row">
                         <div class="mb-2 col-lg-8">
                             <label class="form-label">Nome</label>
-                            <input class="form-control" name="nome_paciente" type="text" placeholder="Nome completo do paciente" />
+                            <input class="form-control" name="nome_paciente" type="text" placeholder="Nome completo do paciente" required>
                         </div>
                         <div class="mb-2 col-lg-4">
                             <label class="form-label">Data de nascimento</label>
-                            <input class="form-control" name="nascimento" type="date" />
+                            <input class="form-control" name="nascimento" type="date" required>
                         </div>
                         <div class="mb-2 col-lg-4">
                             <label class="form-label">CPF</label>
@@ -32,7 +32,7 @@
                         </div>
                         <div class="mb-2 col-lg-6">
                             <label class="form-label">Endereço</label>
-                            <input class="form-control" name="endereco" type="text" placeholder="Endereço completo" />
+                            <input class="form-control" name="endereco_paciente" type="text" placeholder="Endereço completo" />
                         </div>
                         <div class="mb-2 col-lg-3">
                             <label class="form-label">CEP</label>

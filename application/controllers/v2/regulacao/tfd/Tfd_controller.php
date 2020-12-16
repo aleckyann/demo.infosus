@@ -64,12 +64,12 @@ class Tfd_controller extends Sistema_Controller
         $dados = $this->input->post();
 
         //Vê se houve atualização do anexo
-        if ($dados['novo_tfd_anexo']) {
+        if ($_FILES['tfd_anexo']['error'] != 0) {
             $dados['tfd_anexo'] = $dados['novo_tfd_anexo'];
-            unset($dados['novo_tfd_anexo']);
         }
+        unset($dados['novo_tfd_anexo']);
 
-        //Salva o TFD
+        // Salva o TFD
         $tfd_id = $this->Tfd->insert($dados);
 
         //Verifica se há upload e faz as configurações do upload

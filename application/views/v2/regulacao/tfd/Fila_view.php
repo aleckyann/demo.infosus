@@ -122,7 +122,6 @@
                     $('#editar_tfd_paciente_nome').val(tfd.nome_paciente);
                     $('#editar_tfd_paciente_nascimento').val(tfd.nascimento);
                     $('#editar_tfd_paciente_cpf').val(tfd.cpf);
-                    $('#editar_tfd_id').val(tfd.tfd_id);
                     $('#editar_tfd_data_solicitacao').val(tfd.tfd_data_solicitacao);
                     $('#editar_tfd_data_atendimento').val(tfd.tfd_data_atendimento);
                     $('#editar_tfd_cidade_destino').val(tfd.tfd_cidade_destino);
@@ -136,6 +135,8 @@
                     $('#editar_tfd_acompanhante').val(tfd.tfd_acompanhante);
                     $(".editar_tfd_risco[value='" + tfd.tfd_risco + "']").prop("checked", true);
                     $('#editar_tfd_descricao').val(tfd.tfd_descricao);
+                    $('#editar_tfd_anexo').val(tfd.tfd_anexo);
+                    $('#editar_tfd_id').val(tfd.tfd_id);
                 });
             editar_tfd_modal.toggle()
         });

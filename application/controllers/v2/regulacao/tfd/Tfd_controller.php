@@ -73,11 +73,11 @@ class Tfd_controller extends Sistema_Controller
         $tfd_id = $this->Tfd->insert($dados);
 
         //Verifica se há upload e faz as configurações do upload
-        if ($_FILES['tfd_anexo']['error'] != 0) {
+        if ($_FILES['tfd_anexo']['error'] == 0) {
             $config['upload_path']          = realpath(APPPATH . '../public/v2/anexos/tfd');
             $config['allowed_types']        = 'jpeg|jpg|png|pdf|doc|docx';
             $config['file_name']            = $tfd_id;
-            // $config['overwrite'] = TRUE;
+            $config['overwrite'] = TRUE;
             $this->upload->initialize($config);
 
             //Se upload der certo, atualiza no DB
@@ -170,22 +170,41 @@ class Tfd_controller extends Sistema_Controller
     public function editar(): void
     {
         $dados = $this->input->post();
+
+        //RECEBE O NOVO VALOR DE RISCO DO TFD
         $dados['tfd_risco'] = $dados['editar_tfd_risco'];
         unset($dados['editar_tfd_risco']);
 
-        //Se não houver 'tfd_data_atendimento' insere NULL no DB
-        if ($dados['tfd_data_atendimento'] == '') unset($dados['tfd_data_atendimento']);
+        //VERIFICA SE HOUVE ATUALIZAÇÃO DO ANEXO
+        if ($_FILES['tfd_anexo']['error'] !=0) {
+            $dados['tfd_anexo'] = $dados['editar_tfd_anexo'];
+        }
+        unset($dados['editar_tfd_anexo']);
 
-        $this->Tfd->update(
-            $dados,
-            [
-                'tfd_id' => $dados['tfd_id']
-            ]
-        );
+        // ATUALIZA AS INFORMAÇÕES DO TFD
+        $this->Tfd->update($dados, ['tfd_id' => $dados['tfd_id']]);
 
+        //VERIFICA SE HÁ ARQUIVO E FAZ UPLOAD
+        if ($_FILES['tfd_anexo']['error'] == 0) {
+            $config['upload_path']          = realpath(APPPATH . '../public/v2/anexos/tfd');
+            $config['allowed_types']        = 'jpeg|jpg|png|pdf|doc|docx';
+            $config['file_name']            = $dados['tfd_id'];
+            $config['overwrite'] = TRUE;
+            $this->upload->initialize($config);
 
+            //Se upload der certo, atualiza no DB
+            if (!$this->upload->do_upload('tfd_anexo')) {
+                $error = array('error' => $this->upload->display_errors());
+            } else {
+                $data = $this->upload->data();
+                $this->Tfd->update(
+                    ['tfd_anexo' => $data['orig_name']],
+                    ['tfd_id' => $dados['tfd_id']]
+                );
+            }
+        }
 
-        $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> TFD atualizado com sucesso');
+        $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> TFD ATUALIZADO COM SUCESSO.');
         redirect($this->agent->referrer());
     }
 

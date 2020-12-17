@@ -2,13 +2,14 @@
 <div class="modal fade" id="editar_tfd_modal" tabindex="-1" role="dialog" aria-labelledby="editar_tfd_label" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
-            <form action="<?= base_url('v2/regulacao/tfd/editar') ?>" method="post">
+            <form action="<?= base_url('v2/regulacao/tfd/editar') ?>" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="tfd_id" id="editar_tfd_id">
+                <input type="hidden" name="editar_tfd_anexo" id="editar_tfd_anexo">
                 <div class="modal-header bg-warning">
                     <h5 class="modal-title font-weight-light text-white" id="editar_tfd_label"><i class="fas fa-edit"></i> Editar procedimento</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body modal-scroll">
                     <?= $csrf_input ?>
-                    <input type="hidden" name="tfd_id" id="editar_tfd_id">
                     <div class="row">
                         <div class="mb-3 col-6">
                             <label for="">Nome do paciente:</label>
@@ -31,12 +32,12 @@
                         </div>
                         <div class="mb-2 col-4">
                             <label for="">Cidade do atendimento <i class="fa fa-question-circle text-primary" data-toggle="tooltip" title="Cidade em que paciente vai realizar o atendimento."></i></label>
-                            <input type="text" name="tfd_cidade_destino" id="editar_tfd_cidade_destino" class="form-control" required>
+                            <input type="text" name="tfd_cidade_destino" id="editar_tfd_cidade_destino" class="form-control">
                         </div>
 
-                        <div class="mb-2 col-lg-3">
+                        <div class="mb-2 col-lg-4">
                             <label for="">Tipo de deslocamento</label>
-                            <select name="tfd_veiculo" id="editar_tfd_veiculo" class="form-control" id="" required>
+                            <select name="tfd_veiculo" id="editar_tfd_veiculo" class="form-control" id="">
                                 <option value="" disabled selected>Selecione</option>
                                 <option value="Ambulância">Ambulância</option>
                                 <option value="Carro de passeio">Carro de passeio</option>
@@ -48,22 +49,22 @@
 
                         <div class="mb-2 col-4">
                             <label for="">cota</label>
-                            <input type="text" name="tfd_cota" id="editar_tfd_cota" class="form-control" required>
+                            <input type="text" name="tfd_cota" id="editar_tfd_cota" class="form-control">
                         </div>
                         <div class="mb-2 col-4">
                             <label for="">Estabelecimento solicitante</label>
-                            <input type="text" name="tfd_estabelecimento_solicitante" id="editar_tfd_estabelecimento_solicitante" class="form-control" required>
+                            <input type="text" name="tfd_estabelecimento_solicitante" id="editar_tfd_estabelecimento_solicitante" class="form-control">
                         </div>
                         <div class="mb-2 col-4">
                             <label for="">Estabelecimento prestador</label>
-                            <input type="text" name="tfd_estabelecimento_prestador" id="editar_tfd_estabelecimento_prestador" class="form-control" required>
+                            <input type="text" name="tfd_estabelecimento_prestador" id="editar_tfd_estabelecimento_prestador" class="form-control">
                         </div>
 
                         <hr>
 
                         <div class="col-lg-3">
                             <label for="tfd_alimentacao" name="tfd_alimentacao"> Necessidade de alimentação? <i class="fa fa-question-circle text-primary" data-toggle="tooltip" data-placement="top" title="Este paciente precisa de ajuda de custo para alimentação?"></i></label>
-                            <select name="tfd_alimentacao" class="form-control" id="editar_tfd_alimentacao" required>
+                            <select name="tfd_alimentacao" class="form-control" id="editar_tfd_alimentacao">
                                 <option value="" selected disabled>Selecione</option>
                                 <option value="Não">Não</option>
                                 <option value="Sim">Sim</option>
@@ -71,7 +72,7 @@
                         </div>
                         <div class="col-lg-3">
                             <label for="tfd_passagem" name="tfd_passagem"> Necessidade de Passagem? <i class="fa fa-question-circle text-primary" data-toggle="tooltip" data-placement="top" title="Este paciente precisa de ajuda de custo com passagem?"></i></label>
-                            <select name="tfd_passagem" class="form-control" id="editar_tfd_passagem" required>
+                            <select name="tfd_passagem" class="form-control" id="editar_tfd_passagem">
                                 <option value="" selected disabled>Selecione</option>
                                 <option value="Não">Não</option>
                                 <option value="Sim">Sim</option>
@@ -79,7 +80,7 @@
                         </div>
                         <div class="col-lg-3">
                             <label for="tfd_hospedagem" name="tfd_hospedagem"> Necessidade de Hospedagem? <i class="fa fa-question-circle text-primary" data-toggle="tooltip" data-placement="top" title="Este paciente precisa de ajuda de custo com hospedagem?"></i></label>
-                            <select name="tfd_hospedagem" class="form-control" id="editar_tfd_hospedagem" required>
+                            <select name="tfd_hospedagem" class="form-control" id="editar_tfd_hospedagem">
                                 <option value="" selected disabled>Selecione</option>
                                 <option value="Não">Não</option>
                                 <option value="Sim">Sim</option>
@@ -87,7 +88,7 @@
                         </div>
                         <div class="col-lg-3">
                             <label for="tfd_acompanhante" name="tfd_acompanhante"> Necessidade de acompanhante? <i class="fa fa-question-circle text-primary" data-toggle="tooltip" data-placement="top" title="Este paciente precisa de um acompanhante?"></i></label>
-                            <select name="tfd_acompanhante" class="form-control" id="editar_tfd_acompanhante" required>
+                            <select name="tfd_acompanhante" class="form-control" id="editar_tfd_acompanhante">
                                 <option value="" selected disabled>Selecione</option>
                                 <option value="Não">Não</option>
                                 <option value="Sim">Sim</option>
@@ -105,8 +106,8 @@
                         <div class="mb-2 col-12">
                             <label for="">Anexo <small class="text-muted">(.jpeg .jpg .png pdf .doc .docx)</small> </label>
                             <div class="form-file">
-                                <input class="form-file-input" id="customFile" name="tfd_anexo" type="file" />
-                                <label class="form-file-label" name="tfd_anexo" for="customFile">
+                                <input class="form-file-input" id="editar_tfd_anexo_file" name="tfd_anexo" type="file" />
+                                <label class="form-file-label" name="tfd_anexo" for="editar_tfd_anexo_file">
                                     <span class="form-file-text">Escolha um arquivo...</span>
                                     <span class="form-file-button"><i class="fas fa-file-medical"></i> Procurar arquivo</span>
                                 </label>

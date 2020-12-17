@@ -11,7 +11,8 @@ $autoload['libraries'] = array(
     'upload',
     'user_agent',
     'ui',
-    'upload'
+    'upload',
+    'sms'
 );
 
 

@@ -26,7 +26,12 @@ class Procedimentos_controller extends Sistema_Controller
         $dados = $this->input->post();
         $this->Procedimentos->insert($dados);
 
-        $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> Procedimento adicionado À fila com sucesso');
+        $paciente = $this->Pacientes->getAll(['paciente_id'=>$dados['paciente_id']])[0];
+        $this->sms->enviar(
+            $paciente['telefone_paciente'], 
+            'SECRETARIA DE SAUDE: '. explode(' ', $paciente['nome_paciente'])[0] .', ACABAMOS DE ADICIONAR A SUA SOLICITACAO DE PROCEDIMENTO EM NOSSA FILA.'
+        );
+        $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> PROCEDIMENTO ADICIONADO A FILA COM SUCESSO.');
         redirect($this->agent->referrer());
     }
 
@@ -43,8 +48,15 @@ class Procedimentos_controller extends Sistema_Controller
             ],
             $dados
         );
+        
+        $paciente_id = $this->db->get_where('procedimentos', ['procedimentos_id'=>$dados['procedimentos_id']])->row_array()['paciente_id'];
+        $paciente = $this->Pacientes->getAll(['paciente_id' => $paciente_id])[0];
+        $this->sms->enviar(
+            $paciente['telefone_paciente'],
+            'SECRETARIA DE SAUDE: ' . explode(' ', $paciente['nome_paciente'])[0] . ', ACABAMOS DE AGENDAR O SEU PROCEDIMENTO PARA O DIA: '. date_format(date_create($dados['data']), 'd/m/Y')
+        );
 
-        $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> Procedimento agendado com sucesso');
+        $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> PROCEDIMENTO AGENDADO COM SUCESSO');
         redirect($this->agent->referrer());
     }
 
@@ -56,8 +68,8 @@ class Procedimentos_controller extends Sistema_Controller
     {
         $dados = $this->input->post();
         $this->Procedimentos->negar($dados['procedimentos_id'], $dados['negado_por']);
-        
-        $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> Procedimento negado com sucesso');
+
+        $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> PROCEDIMENTO NEGADO COM SUCESSO.');
         redirect($this->agent->referrer());
     }
 
@@ -74,7 +86,7 @@ class Procedimentos_controller extends Sistema_Controller
                 'realizado' => 'sim'
             ],
         );
-        $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> Procedimento concluido com sucesso');
+        $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> PROCEDIMENTO CONCLUÍDO COM SUCESSO.');
         redirect($this->agent->referrer());
     }
 
@@ -94,7 +106,7 @@ class Procedimentos_controller extends Sistema_Controller
             $dados
         );
 
-        $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> Procedimento atualizado com sucesso');
+        $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> PROCEDIMENTO ATUALIZADO COM SUCESSO.');
         redirect($this->agent->referrer());
     }
 
@@ -106,7 +118,7 @@ class Procedimentos_controller extends Sistema_Controller
     public function agendados(): void
     {
         $dados['title'] = 'Procedimentos agendados';
-        $dados['procedimentos'] = $this->Procedimentos->porPaciente(['realizado' => '', 'data !=' => NULL, 'negado_por'=>NULL]);
+        $dados['procedimentos'] = $this->Procedimentos->porPaciente(['realizado' => '', 'data !=' => NULL, 'negado_por' => NULL]);
 
         $this->view('regulacao/procedimentos/Agendados_view', $dados);
     }

@@ -147,6 +147,7 @@ class Tfd_controller extends Sistema_Controller
         redirect($this->agent->referrer());
     }
 
+    
     /**
      * GET: v2/regulacao/tfd/concluir/(:num)
      */
@@ -164,6 +165,7 @@ class Tfd_controller extends Sistema_Controller
         redirect($this->agent->referrer());
     }
 
+
     /**
      * GET: v2/regulacao/tfd/editar/
      */
@@ -176,7 +178,7 @@ class Tfd_controller extends Sistema_Controller
         unset($dados['editar_tfd_risco']);
 
         //VERIFICA SE HOUVE ATUALIZAÇÃO DO ANEXO
-        if ($_FILES['tfd_anexo']['error'] !=0) {
+        if ($_FILES['tfd_anexo']['error'] != 0) {
             $dados['tfd_anexo'] = $dados['editar_tfd_anexo'];
         }
         unset($dados['editar_tfd_anexo']);

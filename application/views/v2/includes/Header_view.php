@@ -92,9 +92,18 @@
                         </ul>
                         <ul class="navbar-nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <div class="d-flex align-items-center"><span class="nav-link-icon"><i class="fas fa-sliders-h"></i></span><span class="nav-link-text"> Configurações</span></div>
+                                <a class="nav-link dropdown-indicator <?= (segment(2) == 'configuracoes') ? 'active' : '' ?>" href="#configuracoesNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="configuracoesNav">
+                                    <div class="d-flex align-items-center">
+                                        <span class="nav-link-icon"><i class="fas fa-sliders-h"></i></span>
+                                        <span class="nav-link-text"> Configurações</span>
+                                    </div>
                                 </a>
+                                <ul class="nav collapse <?= (segment(2) == 'configuracoes') ? 'show' : '' ?>" id="configuracoesNav" data-parent="#navbarVerticalCollapse">
+                                    <li class="nav-item"><a class="nav-link <?= (segment(3) == 'especialidades') ? 'active' : '' ?>" href="<?= base_url('v2/configuracoes/especialidades') ?>"><i class="fas fa-user-edit"></i> Especialidades</a></li>
+                                    <li class="nav-item"><a class="nav-link <?= (segment(3) == 'estabelecimentos') ? 'active' : '' ?>" href="<?= base_url('v2/configuracoes/estabelecimentos') ?>"><i class="fas fa-user-edit"></i> Estabelecimentos</a></li>
+                                    <li class="nav-item"><a class="nav-link <?= (segment(3) == 'municipios') ? 'active' : '' ?>" href="<?= base_url('v2/configuracoes/municipios') ?>"><i class="fas fa-user-edit"></i> Municipios</a></li>
+                                    <li class="nav-item"><a class="nav-link <?= (segment(3) == 'procedimentos') ? 'active' : '' ?>" href="<?= base_url('v2/configuracoes/procedimentos') ?>"><i class="fas fa-user-edit"></i> Procedimentos</a></li>
+                                </ul>
                             </li>
                         </ul>
                         <div class="navbar-vertical-divider">

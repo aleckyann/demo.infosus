@@ -48,5 +48,7 @@ $autoload['model'] = array(
     'Tfd_model' => 'Tfd',
     'Usuarios_model' => 'Usuarios',
     'Veiculos_model' => 'Veiculos',
-    'Viagens_model' => 'Viagens'
+    'Viagens_model' => 'Viagens',
+    'Estabelecimentos_model' => 'Estabelecimentos',
+    'Municipios_model' => 'Municipios'
 );

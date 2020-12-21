@@ -12,7 +12,8 @@ $autoload['libraries'] = array(
     'user_agent',
     'ui',
     'upload',
-    'sms'
+    'sms',
+    'whatsapp'
 );
 
 

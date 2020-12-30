@@ -12,4 +12,13 @@ class Procedimentos_controller extends Sistema_Controller
         $data['procedimentos'] = $this->Tabela_proced->getAll();
         $this->view('configuracoes/Procedimentos_view', $data);
     }
+
+    public function novo(): void
+    {
+        $dados = $this->input->post();
+        $this->Tabela_proced->insert($dados);
+
+        $this->session->set_flashdata('success', 'Procedimento adicionado ao sistema com sucesso.');
+        redirect($this->agent->referrer());
+    }
 }

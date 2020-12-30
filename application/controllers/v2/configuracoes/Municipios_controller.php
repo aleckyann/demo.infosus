@@ -12,4 +12,14 @@ class Municipios_controller extends Sistema_Controller
         $data['municipios'] = $this->Municipios->getAll();
         $this->view('configuracoes/Municipios_view', $data);
     }
+
+    public function novo(): void
+    {
+        $dados = $this->input->post();
+        $this->Municipios->insert($dados);
+
+        $this->session->set_flashdata('success', 'Municipio adicionado ao sistema com sucesso.');
+        redirect($this->agent->referrer());
+    }
+
 }

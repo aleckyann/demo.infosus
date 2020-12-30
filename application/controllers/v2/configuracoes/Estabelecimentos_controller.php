@@ -12,4 +12,13 @@ class Estabelecimentos_controller extends Sistema_Controller
         $data['estabelecimentos'] = $this->Estabelecimentos->getAll();
         $this->view('configuracoes/Estabelecimentos_view', $data);
     }
+
+    public function novo(): void
+    {
+        $dados = $this->input->post();
+        $this->Estabelecimentos->insert($dados);
+
+        $this->session->set_flashdata('success', 'Especialidade adicionada ao sistema com sucesso.');
+        redirect($this->agent->referrer());
+    }
 }

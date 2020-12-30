@@ -12,4 +12,14 @@ class Especialidades_controller extends Sistema_Controller
         $data['especialidades'] = $this->Especialidades->getAll();
         $this->view('configuracoes/Especialidades_view', $data);
     }
+
+
+    public function novo(): void
+    {
+        $dados = $this->input->post();
+        $this->Especialidades->insert($dados);
+
+        $this->session->set_flashdata('success', 'Especialidade adicionada ao sistema com sucesso.');
+        redirect($this->agent->referrer());
+    }
 }

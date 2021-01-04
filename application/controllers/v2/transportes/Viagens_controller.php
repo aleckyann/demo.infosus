@@ -21,7 +21,7 @@ class Viagens_controller extends Sistema_Controller
     public function viagens_agendadas(): void
     {
         $data['title'] = 'Viagens agendadas';
-        $data['pacientes'] = $this->Viagens->getAll();
+        $data['viagens'] = $this->Viagens->getAll(['viagem_realizada' => NULL]);
         $this->view('transporte/Viagens_agendadas_view', $data);
     }
 
@@ -31,7 +31,7 @@ class Viagens_controller extends Sistema_Controller
     public function viagens_realizadas(): void
     {
         $data['title'] = 'Viagens realizadas';
-        $data['pacientes'] = $this->Viagens->getAll();
+        $data['viagens'] = $this->Viagens->getAll(['viagem_realizada !='=>NULL]);
         $this->view('transporte/Viagens_realizadas_view', $data);
     }
 

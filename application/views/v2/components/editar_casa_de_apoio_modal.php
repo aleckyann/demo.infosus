@@ -1,9 +1,10 @@
-<!-- Modal add_viagem_modal-->
-<div class="modal fade" id="add_viagem_modal" tabindex="-1" role="dialog" aria-labelledby="add_viagem_label" aria-hidden="true">
+
+<!-- Modal editar_casa_de_apoio_modal-->
+<div class="modal fade" id="editar_casa_de_apoio_modal" tabindex="-1" role="dialog" aria-labelledby="editar_casa_de_apoio_label" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header bg-light">
-                <h5 class="modal-title font-weight-light text-dark" id="add_viagem_label"><i class="fas fa-route"></i> Adicionar nova viagem</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-header bg-warning">
+                <h5 class="modal-title font-weight-light text-white" id="editar_casa_de_apoio_label"><i class="fas fa-house-user"></i> Editar registros da casa de apoio</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="<?= base_url('v2/regulacao/casa-de-apoio/editar-registro') ?>" method="post">
                 <div class="modal-body">
@@ -22,10 +23,12 @@
                             <label for="">Previsão de saída</label>
                             <input type="date" name="data_saida" id="data_saida" class="form-control" required>
                         </div>
+
                         <div class="mb-2 col-12">
                             <label for="">Observações ou justificativa</label>
                             <textarea type="date" name="observacao" id="observacao" class="form-control"></textarea>
                         </div>
+
                     </div>
 
                 </div>

@@ -68,55 +68,14 @@
 </div>
 
 
-
-<!-- Modal editarRegistrosCasaDeApoioModel-->
-<div class="modal fade" id="editarRegistrosCasaDeApoioModel" tabindex="-1" role="dialog" aria-labelledby="editarRegistrosCasaDeApoioLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-warning">
-                <h5 class="modal-title font-weight-light text-white" id="editarRegistrosCasaDeApoioLabel"><i class="fas fa-house-user"></i> Editar registros da casa de apoio</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="<?= base_url('v2/regulacao/casa-de-apoio/editar-registro') ?>" method="post">
-                <div class="modal-body">
-                    <?= $csrf_input ?>
-                    <div class="row">
-                        <input type="hidden" name="apoio_id" id="apoio_id">
-                        <div class="mb-2 col-12">
-                            <label for="#nome_paciente">Nome do paciente</label>
-                            <input type="text" class="form-control disabled" id="nome_paciente" readonly>
-                        </div>
-                        <div class="mb-2 col-6">
-                            <label for="">Data de entrada</label>
-                            <input type="date" name="data_entrada" id="data_entrada" class="form-control" required>
-                        </div>
-                        <div class="mb-2 col-6">
-                            <label for="">Previsão de saída</label>
-                            <input type="date" name="data_saida" id="data_saida" class="form-control" required>
-                        </div>
-
-                        <div class="mb-2 col-12">
-                            <label for="">Observações ou justificativa</label>
-                            <textarea type="date" name="observacao" id="observacao" class="form-control"></textarea>
-                        </div>
-
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Cancelar</button>
-                    <button class="btn btn-primary btn-sm" type="submit">Salvar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
+<!-- CARREGAR COMPONENTES -->
+<?php $this->load->view('v2/components/editar_casa_de_apoio_modal') ?>
 
 <script>
     window.onload = function() {
 
         //Cria modal para editar paciente
-        var editarRegistrosCasaDeApoioModel = new bootstrap.Modal(document.getElementById('editarRegistrosCasaDeApoioModel'), {
+        var editar_casa_de_apoio_modal = new bootstrap.Modal(document.getElementById('editar_casa_de_apoio_modal'), {
             keyboard: false
         })
 
@@ -139,7 +98,7 @@
                     $('#observacao').val(casa_de_apoio.observacao);
 
                 });
-            editarRegistrosCasaDeApoioModel.toggle()
+            editar_casa_de_apoio_modal.toggle()
         });
 
 

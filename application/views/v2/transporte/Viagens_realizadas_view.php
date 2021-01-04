@@ -1,6 +1,6 @@
 <div class="d-flex mb-2">
     <div class="card overflow-hidden flex-1">
-        <div class="bg-holder bg-card" style="background-image:url(<?= base_url('public/v2/assets/img/illustrations/corner-4.png') ?>);"></div>
+        <div class="bg-holder bg-card" style="background-image:url(<?= base_url('public/v2/assets/img/illustrations/corner-1.png') ?>);"></div>
         <!--/.bg-holder-->
         <div class="card-body position-relative">
             <a class="float-right btn" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -8,13 +8,13 @@
             </a>
             <h3 class="font-weight-light">
 
-                <i class="fas fa-history text-success"></i> Histórico de utilizações
+                <i class="fas fa-route text-success"></i> Viagens realizadas
                 <!-- <span class="badge badge-soft-warning rounded-pill ml-2">-0.23%</span> -->
             </h3>
             <div class="collapse" id="collapseExample">
                 <div class="p-card">
                     <p class="mb-2">
-                        Nesta página você pode visualizar todo histórico de utilizações da casa de apoio.
+                        Nesta página você pode visualizar todas as viagens realizadas.
                     </p>
                 </div>
             </div>
@@ -22,31 +22,42 @@
     </div>
 </div>
 
-
 <div class="card mb-3">
     <?= $this->ui->alert_flashdata() ?>
 
     <div class="card-body">
 
-        <table id="historico_casa_de_apoio_datatable" class="table table-striped table-hover" style="min-height: 200px;">
+        <table id="viagens_agendadas_datatable" class="table table-striped table-hover" style="min-height: 200px;">
             <thead>
-                <th class="text-dark small text-left">PACIENTE</th>
-                <th class="text-dark small text-left">ENTRADA</th>
-                <th class="text-dark small text-left">SAÍDA</th>
+                <th class="text-dark small text-left">VEÍCULO</th>
+                <th class="text-dark small text-left">DATA</th>
+                <th class="text-dark small text-left">DESTINO</th>
+                <th class="text-dark small text-center align-middle">OPÇÕES</th>
             </thead>
             <tbody>
-                <?php foreach ($apoio as $a) : ?>
+                <?php foreach ($viagens as $v) : ?>
                     <tr>
                         <td class="small">
-                            <a class="load_paciente_button" href="#" data-paciente_id="<?= $a['paciente_id'] ?>"><?= $a['nome_paciente'] ?></a>
+                            <?= $v['viagem_veiculo_id'] ?>
                         </td>
                         <td class="small">
-                            <?= date_format(date_create($a['data_entrada']), 'd/m/Y') ?>
+                            <?= date_format(date_create($v['viagem_data']), 'd/m/Y') ?>
                         </td>
                         <td class="small">
-                            <?= date_format(date_create($a['data_saida']), 'd/m/Y') ?>
+                            <?= $v['viagem_destino'] ?>
                         </td>
 
+                        <td class="text-center p-1">
+                            <div class="btn-group">
+                                <div class="btn-group mb-2">
+                                    <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
+                                    <div class="dropdown-menu">
+                                        <button class="dropdown-item text-warning editar_viagem_button" data-viagem_id="<?= $v['viagem_id'] ?>"><i class="fa fa-edit"></i> Detalhar viagem</button>
+                                        <div class="dropdown-divider"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -55,11 +66,45 @@
     </div>
 </div>
 
+
+<!-- CARREGAR COMPONENTES -->
+<?php $this->load->view('v2/components/add_viagem_modal') ?>
+<?php $this->load->view('v2/components/editar_viagem_modal') ?>
+
+
 <script>
     window.onload = function() {
 
+        //Cria modal para editar paciente
+        var editar_viagem_modal = new bootstrap.Modal(document.getElementById('editar_viagem_modal'), {
+            keyboard: false
+        })
+
+
+        // ABRE MODAL DE EDITAR
+        $('.editar_viagem_button').on('click', function() {
+            var apoio_id = this.dataset.apoio_id;
+            $.ajax({
+                    method: "POST",
+                    url: "<?= base_url('v2/regulacao/casa-de-apoio/json/') ?>" + apoio_id,
+                    data: {
+                        <?= $csrf_name ?>: "<?= $csrf_value ?>"
+                    }
+                })
+                .done(function(casa_de_apoio) {
+                    $('#apoio_id').val(casa_de_apoio.apoio_id);
+                    $('#nome_paciente').val(casa_de_apoio.nome_paciente);
+                    $('#data_entrada').val(casa_de_apoio.data_entrada);
+                    $('#data_saida').val(casa_de_apoio.data_saida);
+                    $('#observacao').val(casa_de_apoio.observacao);
+
+                });
+            editar_viagem_modal.toggle()
+        });
+
+
         //ADICIONANDO FILTRO AS COLUNAS
-        $('#historico_casa_de_apoio_datatable thead th').each(function() {
+        $('#viagens_agendadas_datatable thead th').each(function() {
             let title = $(this).text();
             if (title == '' || title == 'OPÇÕES') {
 
@@ -73,7 +118,7 @@
         });
 
 
-        $('#historico_casa_de_apoio_datatable').DataTable({
+        $('#viagens_agendadas_datatable').DataTable({
             initComplete: function() {
                 this.api().columns().every(function() {
                     let that = this;
@@ -115,6 +160,9 @@
                 },
                 {
                     "bSortable": false
+                },
+                {
+                    "bSortable": false
                 }
             ],
             dom: 'Brtip',
@@ -123,7 +171,7 @@
                     extend: 'print',
                     text: '<i class="fa fa-print"></i> imprimir',
                     exportOptions: {
-                        columns: [0, 1, 2]
+                        columns: [0, 1, 2, 3]
                     },
                     customize: function(win) {
                         $(win.document.body)
@@ -139,9 +187,9 @@
                 },
                 {
                     className: 'btn btn-falcon-default btn-sm rounded-pill font-weight-light m-1',
-                    text: '<i class="fas fa-house-user"></i> Novo paciente',
+                    text: '<i class="fas fa-route"></i> Nova viagem',
                     action: function() {
-                        $('#add_casa_de_apoio_modal').modal('show')
+                        $('#add_viagem_modal').modal('show')
                     }
 
                 }
@@ -151,12 +199,10 @@
 
 
 
-
-
         //CONFIRMAR REMOÇÃO DO PACIENTE 
-        $('.pacienteSaiuButton').on('click', function() {
+        $("#viagens_agendadas_datatable").on("click", ".cancelar_viagem_button", function() {
             Swal.fire({
-                title: 'Confirma a saída do paciente?',
+                title: 'Confirma o cancelamento desta viagem?',
                 showDenyButton: true,
                 showCancelButton: true,
                 confirmButtonText: `Sim`,
@@ -171,5 +217,6 @@
                 }
             })
         })
+
     }
 </script>

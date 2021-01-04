@@ -191,7 +191,7 @@
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link dropdown-indicator <?= (segment(3) == 'transportes') ? 'active collapsed' : '' ?>" href="#veiculosNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="veiculosNav">
+                                <a class="nav-link dropdown-indicator <?= (segment(2) == 'transportes') ? 'active collapsed' : '' ?>" href="#veiculosNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="veiculosNav">
                                     <div class="d-flex align-items-center"><span class="nav-link-icon"><i class="fas fa-bus"></i></span><span class="nav-link-text"> Transportes</span></div>
                                 </a>
                                 <ul class="nav collapse <?= (segment(2) == 'transportes') ? 'show' : '' ?>" id="veiculosNav" data-parent="#navbarVerticalCollapse">

@@ -13,6 +13,7 @@ class Viagens_model extends CI_model
      */
     public function getAll(array $where = []): array
     {
+        $this->db->join('veiculos', 'veiculos.veiculo_id = viagens.viagem_veiculo_id');
         return $this->db->get_where($this->table, $where)->result_array();
     }
 

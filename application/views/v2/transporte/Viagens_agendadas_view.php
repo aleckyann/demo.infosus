@@ -38,7 +38,7 @@
                 <?php foreach ($viagens as $v) : ?>
                     <tr>
                         <td class="small">
-                            <?= $v['viagem_veiculo_id'] ?>
+                            <?= $v['veiculo_marca'] ?> - <?= $v['veiculo_placa'] ?>
                         </td>
                         <td class="small">
                             <?= date_format(date_create($v['viagem_data']), 'd/m/Y') ?>

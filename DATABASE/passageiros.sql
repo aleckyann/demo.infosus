@@ -1,0 +1,1 @@
+CREATE TABLE `infosus`.`passageiros` ( `passageiro_id` INT NOT NULL AUTO_INCREMENT , `viagem_id` INT NOT NULL , `paciente_id` INT NOT NULL , `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP , `updated_at` DATETIME on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`passageiro_id`)) ENGINE = InnoDB;

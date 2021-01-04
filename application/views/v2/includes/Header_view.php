@@ -195,8 +195,9 @@
                                     <div class="d-flex align-items-center"><span class="nav-link-icon"><i class="fas fa-bus"></i></span><span class="nav-link-text"> Transportes</span></div>
                                 </a>
                                 <ul class="nav collapse" id="veiculosNav" data-parent="#navbarVerticalCollapse">
-                                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-car-side"></i> Veiculos</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-route"></i> Viagens</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="<?= base_url('v2/transportes/veiculos') ?>"><i class="fas fa-car-side"></i> Veiculos</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="<?= base_url('v2/transportes/viagens-agendadas') ?>"><i class="fas fa-route text-warning"></i> Viagens agendadas</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="<?= base_url('v2/transportes/viagens-realizadas') ?>"><i class="fas fa-route text-success"></i> Viagens realizadas</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-calendar-plus"></i> Nova viagem</a></li>
                                 </ul>
                             </li>

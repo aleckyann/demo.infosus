@@ -201,18 +201,46 @@
                                     <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-calendar-plus"></i> Nova viagem</a></li>
                                 </ul>
                             </li>
+                            <!-- antenção -->
                             <li class="nav-item">
-                                <a class="nav-link dropdown-indicator" href="#atencaoNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="atencaoNav">
+                                <a class="nav-link dropdown-indicator <?= (segment(2) == 'regulacao') ? 'active' : '' ?>" href="#atencao_primaria_nav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="atencao_primaria_nav">
                                     <div class="d-flex align-items-center">
-                                        <span class="nav-link-icon"><i class="fas fa-hand-holding-medical"></i></span>
+                                        <span class="nav-link-icon">
+                                            <i class="fas fa-hand-holding-medical"></i>
+                                        </span>
                                         <span class="nav-link-text"> Atenção primária</span>
                                     </div>
                                 </a>
-                                <ul class="nav collapse" id="atencaoNav" data-parent="#navbarVerticalCollapse">
-                                    <li class="nav-item"><a class="nav-link" href="#"><i>BETA</i></a></li>
-                                    <li class="nav-item"><a class="nav-link"><i>BETA</i></a></li>
+                                <ul class="nav collapse <?= (segment(2) == 'atencao-primaria') ? 'show' : '' ?>" id="atencao_primaria_nav" data-parent="#navbarVerticalCollapse">
+                                    <li class="nav-item">
+                                        <a class="nav-link dropdown-indicator <?= (segment(3) == 'brasil-previne') ? 'active collapsed' : '' ?>" href="#previne_brasil_nav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="previne_brasil_nav"><i class="fas fa-globe-americas"></i> Previne Brasil</a>
+                                        <ul class="nav collapse <?= (segment(3) == 'brasil-previne') ? 'show' : '' ?>" id="previne_brasil_nav" data-parent="#atencao_primaria_nav">
+                                            <li class="nav-item">
+                                                <a class="nav-link <?= (segment(4) == '1') ? 'active' : '' ?>" href="<?= base_url('v2/atencao-primaria/brasil-previne/1') ?>"><i class="fas fa-thermometer"></i> Indicador 1</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link <?= (segment(4) == '2') ? 'active' : '' ?>" href="<?= base_url('v2/atencao-primaria/brasil-previne/2') ?>"><i class="fas fa-thermometer"></i> Indicador 2</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link <?= (segment(4) == '3') ? 'active' : '' ?>" href="<?= base_url('v2/atencao-primaria/brasil-previne/3') ?>"><i class="fas fa-thermometer"></i> Indicador 3</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link <?= (segment(4) == '4') ? 'active' : '' ?>" href="<?= base_url('v2/atencao-primaria/brasil-previne/4') ?>"><i class="fas fa-thermometer"></i> Indicador 4</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link <?= (segment(4) == '5') ? 'active' : '' ?>" href="<?= base_url('v2/atencao-primaria/brasil-previne/5') ?>"><i class="fas fa-thermometer"></i> Indicador 5</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link <?= (segment(4) == '6') ? 'active' : '' ?>" href="<?= base_url('v2/atencao-primaria/brasil-previne/6') ?>"><i class="fas fa-thermometer"></i> Indicador 6</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link <?= (segment(4) == '7') ? 'active' : '' ?>" href="<?= base_url('v2/atencao-primaria/brasil-previne/7') ?>"><i class="fas fa-thermometer"></i> Indicador 7</a>
+                                            </li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </li>
+                            <!-- antenção -->
                             <li class="nav-item">
                                 <a class="nav-link dropdown-indicator" href="#almoxarifadoNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="almoxarifadoNav">
                                     <div class="d-flex align-items-center">

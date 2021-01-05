@@ -1,30 +1,34 @@
 <!-- Modal add_viagem_modal-->
-<div class="modal fade" id="add_viagem_modal" tabindex="-1" role="dialog" aria-labelledby="add_viagem_label" aria-hidden="true">
+<div class="modal fade" id="add_viagem_modal" role="dialog" aria-labelledby="add_viagem_label" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-light">
                 <h5 class="modal-title font-weight-light text-dark" id="add_viagem_label"><i class="fas fa-route"></i> Adicionar nova viagem</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= base_url('v2/regulacao/casa-de-apoio/editar-registro') ?>" method="post">
+            <form action="<?= base_url('v2/transportes/viagens/novo') ?>" method="post">
+                <?= $csrf_input ?>
                 <div class="modal-body">
-                    <?= $csrf_input ?>
                     <div class="row">
-                        <input type="hidden" name="apoio_id" id="apoio_id">
-                        <div class="mb-2 col-12">
-                            <label for="#nome_paciente">Nome do paciente</label>
-                            <input type="text" class="form-control disabled" id="nome_paciente" readonly>
+                        <div class="mb-2 col-6">
+                            <label for="">CIDADE DE ORIGEM</label>
+                            <select name="viagem_origem" class="add_cidade_viagem_select2" name="viagem_origem" style="width: 100%;" required></select>
                         </div>
                         <div class="mb-2 col-6">
-                            <label for="">Data de entrada</label>
-                            <input type="date" name="data_entrada" id="data_entrada" class="form-control" required>
+                            <label for="">CIDADE DE DESTINO</label>
+                            <select name="viagem_destino" class="add_cidade_viagem_select2" name="viagem_destino" style="width: 100%;" required></select>
                         </div>
                         <div class="mb-2 col-6">
-                            <label for="">Previsão de saída</label>
-                            <input type="date" name="data_saida" id="data_saida" class="form-control" required>
+                            <label for="">DATA DA VIAGEM</label>
+                            <input type="date" name="viagem_data" class="form-control" required>
                         </div>
-                        <div class="mb-2 col-12">
-                            <label for="">Observações ou justificativa</label>
-                            <textarea type="date" name="observacao" id="observacao" class="form-control"></textarea>
+                        <div class="mb-2 col-6">
+                            <label for="">VEÍCULO</label>
+                            <select name="viagem_veiculo_id" class="form-select" required>
+                                <option value="" disabled selected required>SELECIONE UM VEÍCULO</option>
+                                <?php foreach ($this->Veiculos->getAll() as $v) { ?>
+                                    <option value="<?= $v['veiculo_id'] ?>"><?= $v['veiculo_marca'] . ': ' . $v['veiculo_placa'] ?></option>
+                                <?php } ?>
+                            </select>
                         </div>
                     </div>
 
@@ -37,3 +41,35 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    //Cria modal para editar paciente
+    var add_viagem_modal = new bootstrap.Modal(document.getElementById('add_viagem_modal'));
+
+    $(document).ready(function() {
+        var add_cidade_viagem_select2 = $('.add_cidade_viagem_select2').select2({
+            ajax: {
+                url: '<?= base_url('v2/api/municipios/select2') ?>',
+                method: 'POST',
+                data: function(params) {
+                    var query = {
+                        nome_municipio: params.term,
+                        <?= $csrf_name ?>: '<?= $csrf_value ?>'
+                    }
+                    return query;
+                },
+                processResults: function(data, params) {
+                    return {
+                        results: data
+                    }
+                },
+                dataType: 'json',
+                placeholder: "Selecione um paciente",
+            },
+            delay: 250,
+            minimumInputLength: 1,
+        });
+
+    });
+</script>

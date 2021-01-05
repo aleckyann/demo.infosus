@@ -24,13 +24,13 @@
 
 <div class="card mb-3">
     <?= $this->ui->alert_flashdata() ?>
-
     <div class="card-body">
 
         <table id="viagens_agendadas_datatable" class="table table-striped table-hover" style="min-height: 200px;">
             <thead>
                 <th class="text-dark small text-left">VEÍCULO</th>
                 <th class="text-dark small text-left">DATA</th>
+                <th class="text-dark small text-left">ORIGEM</th>
                 <th class="text-dark small text-left">DESTINO</th>
                 <th class="text-dark small text-center align-middle">OPÇÕES</th>
             </thead>
@@ -44,9 +44,11 @@
                             <?= date_format(date_create($v['viagem_data']), 'd/m/Y') ?>
                         </td>
                         <td class="small">
-                            <?= $v['viagem_destino'] ?>
+                            <?= $v['origem'] ?>
                         </td>
-
+                        <td class="small">
+                            <?= $v['destino'] ?>
+                        </td>
                         <td class="text-center p-1">
                             <div class="btn-group">
                                 <div class="btn-group mb-2">
@@ -70,35 +72,32 @@
 
 
 <!-- CARREGAR COMPONENTES -->
-<?php $this->load->view('v2/components/add_viagem_modal') ?>
 <?php $this->load->view('v2/components/editar_viagem_modal') ?>
 
 
 <script>
     window.onload = function() {
 
-        //Cria modal para editar paciente
-        var editar_viagem_modal = new bootstrap.Modal(document.getElementById('editar_viagem_modal'), {
-            keyboard: false
-        })
-
+        //Cria modal para editar viagem
+        var editar_viagem_modal = new bootstrap.Modal(document.getElementById('editar_viagem_modal'));
 
         // ABRE MODAL DE EDITAR
         $('.editar_viagem_button').on('click', function() {
-            var apoio_id = this.dataset.apoio_id;
+            var viagem_id = this.dataset.viagem_id;
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url('v2/regulacao/casa-de-apoio/json/') ?>" + apoio_id,
+                    url: "<?= base_url('v2/api/viagens/json') ?>",
                     data: {
+                        viagem_id: viagem_id,
                         <?= $csrf_name ?>: "<?= $csrf_value ?>"
                     }
                 })
-                .done(function(casa_de_apoio) {
-                    $('#apoio_id').val(casa_de_apoio.apoio_id);
-                    $('#nome_paciente').val(casa_de_apoio.nome_paciente);
-                    $('#data_entrada').val(casa_de_apoio.data_entrada);
-                    $('#data_saida').val(casa_de_apoio.data_saida);
-                    $('#observacao').val(casa_de_apoio.observacao);
+                .done(function(viagem) {
+                    $('#editar_viagem_id').val(viagem.viagem_id);
+                    $('#editar_viagem_origem').val(viagem.origem);
+                    $('#editar_viagem_destino').val(viagem.destino);
+                    $('#editar_viagem_data').val(viagem.viagem_data);
+                    $('#editar_viagem_veiculo').val(viagem.viagem_veiculo_id);
 
                 });
             editar_viagem_modal.toggle()
@@ -165,6 +164,9 @@
                 },
                 {
                     "bSortable": false
+                },
+                {
+                    "bSortable": false
                 }
             ],
             dom: 'Brtip',
@@ -213,7 +215,7 @@
                 denyButtonText: `Não, cancelar`,
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.replace("<?= base_url('v2/regulacao/casa-de-apoio/update-status/') ?>" + this.dataset.apoio_id);
+                    window.location.replace("<?= base_url('v2/regulacao/casa-de-apoio/update-status/') ?>" + this.dataset.viagem_id);
                 } else if (result.isDenied) {
                     Swal.fire('Alteração não foi realizada.', '', 'info')
                 }

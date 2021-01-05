@@ -198,7 +198,7 @@
                                     <li class="nav-item"><a class="nav-link <?= (segment(3) == 'veiculos') ? 'active' : '' ?>" href="<?= base_url('v2/transportes/veiculos') ?>"><i class="fas fa-car-side"></i> Veiculos</a></li>
                                     <li class="nav-item"><a class="nav-link <?= (segment(3) == 'viagens-agendadas') ? 'active' : '' ?>" href="<?= base_url('v2/transportes/viagens-agendadas') ?>"><i class="fas fa-route text-warning"></i> Viagens agendadas</a></li>
                                     <li class="nav-item"><a class="nav-link <?= (segment(3) == 'viagens-realizadas') ? 'active' : '' ?>" href="<?= base_url('v2/transportes/viagens-realizadas') ?>"><i class="fas fa-route text-success"></i> Viagens realizadas</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-calendar-plus"></i> Nova viagem</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#add_viagem_modal"><i class="fas fa-calendar-plus"></i> Nova viagem</a></li>
                                 </ul>
                             </li>
                             <!-- antenção -->

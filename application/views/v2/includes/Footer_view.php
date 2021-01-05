@@ -59,6 +59,7 @@
 <?php $this->load->view('v2/components/add_procedimento_modal') ?>
 <?php $this->load->view('v2/components/add_tfd_modal') ?>
 <?php $this->load->view('v2/components/load_paciente_modal') ?>
+<?php $this->load->view('v2/components/add_viagem_modal') ?>
 
 </body>
 

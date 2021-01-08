@@ -54,8 +54,9 @@
                                 <div class="btn-group mb-2">
                                     <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
                                     <div class="dropdown-menu">
+                                        <button class="dropdown-item passageiros_viagem_button" data-viagem_id="<?= $v['viagem_id'] ?>"><i class="fa fa-users"></i> Passageiros</button>
                                         <button class="dropdown-item text-warning editar_viagem_button" data-viagem_id="<?= $v['viagem_id'] ?>"><i class="fa fa-edit"></i> Editar viagem</button>
-                                        <button class="dropdown-item text-success" data-viagem_id="<?= $v['viagem_id'] ?>"><i class="fa fa-check"></i> Finalizar viagem</button>
+                                        <button class="dropdown-item text-success finalizar_viagem_button" data-viagem_id="<?= $v['viagem_id'] ?>"><i class="fa fa-check"></i> Finalizar viagem</button>
                                         <div class="dropdown-divider"></div>
                                         <button class="dropdown-item text-danger cancelar_viagem_button" data-viagem_id="<?= $v['viagem_id'] ?>"><i class="fa fa-times"></i> Cancelar viagem</button>
                                     </div>
@@ -73,6 +74,7 @@
 
 <!-- CARREGAR COMPONENTES -->
 <?php $this->load->view('v2/components/editar_viagem_modal') ?>
+<?php $this->load->view('v2/components/passageiros_viagem_modal') ?>
 
 
 <script>
@@ -201,9 +203,51 @@
             ]
         });
 
+        
+        //Cria modal para editar viagem
+        var passageiros_viagem_modal = new bootstrap.Modal(document.getElementById('passageiros_viagem_modal'));
+        // ABRE MODAL DE EDITAR
+        $('.passageiros_viagem_button').on('click', function() {
+            var viagem_id = this.dataset.viagem_id;
+            $.ajax({
+                    method: "POST",
+                    url: "<?= base_url('v2/api/passageiros/json') ?>",
+                    data: {
+                        viagem_id: viagem_id,
+                        <?= $csrf_name ?>: "<?= $csrf_value ?>"
+                    }
+                })
+                .done(function(passageiros) {
+                    $.each(passageiros, function(index, value) {
+                        console.log(value);
+                    });
 
 
-        //CONFIRMAR REMOÇÃO DO PACIENTE 
+                });
+            passageiros_viagem_modal.toggle()
+        });
+
+
+        //CONFIRMAR REMOÇÃO DA VIAGEM 
+        $("#viagens_agendadas_datatable").on("click", ".finalizar_viagem_button", function() {
+            Swal.fire({
+                title: 'Confirma a realização desta viagem?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: `Sim`,
+                icon: 'question',
+                showCancelButton: false,
+                denyButtonText: `Não, cancelar`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.replace("<?= base_url('v2/transportes/viagens/finalizar/') ?>" + this.dataset.viagem_id);
+                } else if (result.isDenied) {
+                    Swal.fire('Alteração não foi realizada.', '', 'info')
+                }
+            })
+        })
+
+        //CONFIRMAR FINALIZAÇÃO DE VIAGEM
         $("#viagens_agendadas_datatable").on("click", ".cancelar_viagem_button", function() {
             Swal.fire({
                 title: 'Confirma o cancelamento desta viagem?',
@@ -215,7 +259,7 @@
                 denyButtonText: `Não, cancelar`,
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.replace("<?= base_url('v2/regulacao/casa-de-apoio/update-status/') ?>" + this.dataset.viagem_id);
+                    window.location.replace("<?= base_url('v2/transportes/viagens/cancelar/') ?>" + this.dataset.viagem_id);
                 } else if (result.isDenied) {
                     Swal.fire('Alteração não foi realizada.', '', 'info')
                 }

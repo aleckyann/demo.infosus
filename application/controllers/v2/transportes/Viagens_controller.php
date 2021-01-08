@@ -21,7 +21,7 @@ class Viagens_controller extends Sistema_Controller
     public function viagens_agendadas(): void
     {
         $data['title'] = 'Viagens agendadas';
-        $data['viagens'] = $this->Viagens->getAll(['viagem_realizada' => NULL]);
+        $data['viagens'] = $this->Viagens->getAll(['viagem_realizada' => NULL, 'deleted_at' => NULL]);
         $this->view('transporte/Viagens_agendadas_view', $data);
     }
 
@@ -31,7 +31,7 @@ class Viagens_controller extends Sistema_Controller
     public function viagens_realizadas(): void
     {
         $data['title'] = 'Viagens realizadas';
-        $data['viagens'] = $this->Viagens->getAll(['viagem_realizada !='=>NULL]);
+        $data['viagens'] = $this->Viagens->getAll(['viagem_realizada !='=>NULL, 'deleted_at'=>NULL]);
         $this->view('transporte/Viagens_realizadas_view', $data);
     }
 
@@ -41,7 +41,7 @@ class Viagens_controller extends Sistema_Controller
         $viagem = $this->input->post();
         $this->Viagens->insert($viagem);
 
-        $this->session->set_flashdata('success', 'Viagem criada com sucesso!');
+        $this->session->set_flashdata('success', 'VIAGEM CRIADA COM SUCESSO.    ');
         redirect($this->agent->referrer());
     }
 
@@ -54,7 +54,35 @@ class Viagens_controller extends Sistema_Controller
             $viagem
         );
 
-        $this->session->set_flashdata('success', 'Viagem criada com sucesso!');
+        $this->session->set_flashdata('success', 'VIAGEM EDITADA COM SUCESSO.');
+        redirect($this->agent->referrer());
+    }
+
+    /**
+     * GET: 
+     */
+    public function cancelar(int $viagem_id): void
+    {
+        $this->Viagens->update(
+            ['viagem_id' => $viagem_id],
+            ['deleted_at'=>date('Y-m-d H:i:s')]
+        );
+        //FOREACH PARA CANCELAR PACIENTES DESTA VIAGEM
+        $this->session->set_flashdata('success', 'VIAGEM CANCELADA COM SUCESSO.');
+        redirect($this->agent->referrer());
+    }
+
+    /**
+     * GET: 
+     */
+    public function finalizar(int $viagem_id): void
+    {
+        $this->Viagens->update(
+            ['viagem_id' => $viagem_id],
+            ['viagem_realizada'=> date('Y-m-d H:i:s')]
+        );
+
+        $this->session->set_flashdata('success', 'VIAGEM FINALIZADA COM SUCESSO.');
         redirect($this->agent->referrer());
     }
 

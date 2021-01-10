@@ -220,6 +220,19 @@
                     }
                 })
                 .done(function(passageiros) {
+                    $('#passageiros_viagem_content').append(`
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label>Veículo</label>
+                            <input disabled value="${passageiros.viagem.veiculo_marca}" class="form-control col-6"> 
+                        </div>
+                        <div class="col-lg-6">
+                            <label>Data da viagem</label>
+                            <input disabled value="${passageiros.viagem.viagem_data}" type="date" class="form-control col-6"> 
+                        </div>
+                    </div>
+                    <hr>
+                    `)
                     //CRIA 1 INPUT PARA CADA PASSAGEIRO POSSÍVEL
                     //ADICIONA VALOR DO PASSAGEIRO SE ELE JÁ EXISTE
                     for (let index = 0; index < passageiros.passageiros.length; index++) {

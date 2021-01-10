@@ -9,7 +9,6 @@
                 <input type="hidden" name="passageiro_viagem_id" id="passageiros_viagem_id">
                 <?= $csrf_input ?>
                 <div class="modal-body modal-scroll">
-                    <p>[ADD INFORMAÇÕES DA VIAGEM]</p>
                     <div id="passageiros_viagem_content"></div>
                 </div>
                 <div class="modal-footer">

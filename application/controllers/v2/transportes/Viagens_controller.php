@@ -39,9 +39,19 @@ class Viagens_controller extends Sistema_Controller
     public function novo(): void
     {
         $viagem = $this->input->post();
-        $this->Viagens->insert($viagem);
 
-        $this->session->set_flashdata('success', 'VIAGEM CRIADA COM SUCESSO.    ');
+        $viagem_id = $this->Viagens->insert($viagem);
+        
+        //CRIA UM PASSAGEIRO PARA CADA VAGA NO VEÍCULO
+        $veiculo = $this->Veiculos->getAll(['veiculo_id'=>$viagem['viagem_veiculo_id']]);
+        for ($i=0; $i < $veiculo[0]['veiculo_vagas']; $i++) { 
+            $this->db->insert(
+                'passageiros', 
+                ['passageiro_viagem_id'=>$viagem_id]
+            );
+        }
+
+        $this->session->set_flashdata('success', 'VIAGEM CRIADA COM SUCESSO.');
         redirect($this->agent->referrer());
     }
 

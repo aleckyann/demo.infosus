@@ -5,17 +5,18 @@
             <div class="modal-header bg-primary">
                 <h5 class="modal-title font-weight-light text-white" id="load_paciente_label"><i class="fas fa-users"></i> Passageiros</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body modal-scroll" id="content_passageiro">
-                CARREGAR TODAS AS VAGAS
-
-                
-
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Fechar</button>
-                <button class="btn btn-primary btn-sm" type="submit">Salvar</button>
-
-            </div>
+            <form action="<?= base_url('v2/transportes/viagens/update-passageiros') ?>" method="post">
+                <input type="hidden" name="passageiro_viagem_id" id="passageiros_viagem_id">
+                <?= $csrf_input ?>
+                <div class="modal-body modal-scroll">
+                    <p>[ADD INFORMAÇÕES DA VIAGEM]</p>
+                    <div id="passageiros_viagem_content"></div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Fechar</button>
+                    <button class="btn btn-primary btn-sm" type="submit">Atualizar viagem</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

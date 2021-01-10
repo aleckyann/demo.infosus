@@ -11,3 +11,6 @@ $route['v2/transportes/viagens/editar'][ 'post'] = 'v2/transportes/Viagens_contr
 
 $route['v2/transportes/viagens/cancelar/(:num)']['get'] = 'v2/transportes/Viagens_controller/cancelar/$1';
 $route['v2/transportes/viagens/finalizar/(:num)']['get'] = 'v2/transportes/Viagens_controller/finalizar/$1';
+
+
+$route['v2/transportes/viagens/update-passageiros']['post'] = 'v2/transportes/Passageiros_controller/update_passageiros';

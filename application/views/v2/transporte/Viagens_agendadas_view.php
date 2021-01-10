@@ -203,11 +203,13 @@
             ]
         });
 
-        
-        //Cria modal para editar viagem
+
+        //Cria modal para editar passageiros
         var passageiros_viagem_modal = new bootstrap.Modal(document.getElementById('passageiros_viagem_modal'));
-        // ABRE MODAL DE EDITAR
+
+        // ABRE MODAL DE EDITAR PASSAGEIROS
         $('.passageiros_viagem_button').on('click', function() {
+            $('#passageiros_viagem_content').empty(); //LIMPA MODAL ANTES DE RECARREGAR
             var viagem_id = this.dataset.viagem_id;
             $.ajax({
                     method: "POST",
@@ -218,10 +220,45 @@
                     }
                 })
                 .done(function(passageiros) {
-                    $.each(passageiros, function(index, value) {
-                        console.log(value);
-                    });
+                    //CRIA 1 INPUT PARA CADA PASSAGEIRO POSSÍVEL
+                    //ADICIONA VALOR DO PASSAGEIRO SE ELE JÁ EXISTE
+                    for (let index = 0; index < passageiros.passageiros.length; index++) {
+                        $('#passageiros_viagem_content').append(`
+                        <label class="font-weight-light text-dark my-2"><span class="fa fa-user"></span> Vaga ${index+1}</label>
+                        <select style="width:100%" id="paciente_viagem_select2_${index}" class="load_pacientes_viagem_select2" name="passageiro[${passageiros.passageiros[index].passageiro_id}]">
+                            ${passageiros.passageiros[index].nome_paciente ? 
+                            `<option selected value="${passageiros.passageiros[index].passageiro_paciente_id}"> ${passageiros.passageiros[index].nome_paciente}</option>`
+                            : ''}
+                        </select>
+                        `)
+                    }
 
+                    //SETA O ID DA VIAGEM
+                    $('#passageiros_viagem_id').val(passageiros.viagem.viagem_id);
+
+                    //LOAD PACIENTES COM SELECT2
+                    $('.load_pacientes_viagem_select2').select2({
+                        ajax: {
+                            url: '<?= base_url('v2/pacientes/json/select2') ?>',
+                            method: 'POST',
+                            data: function(params) {
+                                var query = {
+                                    nome_paciente: params.term,
+                                    <?= $csrf_name ?>: '<?= $csrf_value ?>'
+                                }
+                                return query;
+                            },
+                            processResults: function(data, params) {
+                                return {
+                                    results: data
+                                }
+                            },
+                            dataType: 'json',
+                            placeholder: "Selecione um paciente",
+                        },
+                        delay: 250,
+                        minimumInputLength: 1,
+                    });
 
                 });
             passageiros_viagem_modal.toggle()
@@ -250,13 +287,13 @@
         //CONFIRMAR FINALIZAÇÃO DE VIAGEM
         $("#viagens_agendadas_datatable").on("click", ".cancelar_viagem_button", function() {
             Swal.fire({
-                title: 'Confirma o cancelamento desta viagem?',
+                title: 'Tem certeza que deseja cancelar esta viagem?',
                 showDenyButton: true,
                 showCancelButton: true,
                 confirmButtonText: `Sim`,
                 icon: 'question',
                 showCancelButton: false,
-                denyButtonText: `Não, cancelar`,
+                denyButtonText: `Não`,
             }).then((result) => {
                 if (result.isConfirmed) {
                     window.location.replace("<?= base_url('v2/transportes/viagens/cancelar/') ?>" + this.dataset.viagem_id);
@@ -265,6 +302,8 @@
                 }
             })
         })
+
+
 
     }
 </script>

@@ -33,9 +33,10 @@ class Viagens_model extends CI_model
      * Insere um registro em viagens
      * Recebe um array
      */
-    public function insert(array $dados): void
+    public function insert(array $dados): int
     {
         $this->db->insert($this->table, $dados);
+        return $this->db->insert_id();
     }
 
     /**

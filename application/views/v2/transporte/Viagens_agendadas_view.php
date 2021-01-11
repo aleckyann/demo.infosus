@@ -54,7 +54,7 @@
                                 <div class="btn-group mb-2">
                                     <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
                                     <div class="dropdown-menu">
-                                        <button class="dropdown-item passageiros_viagem_button" data-viagem_id="<?= $v['viagem_id'] ?>"><i class="fa fa-users"></i> Passageiros</button>
+                                        <button class="dropdown-item passageiros_viagem_button text-primary" data-viagem_id="<?= $v['viagem_id'] ?>"><i class="fa fa-users"></i> Passageiros</button>
                                         <button class="dropdown-item text-warning editar_viagem_button" data-viagem_id="<?= $v['viagem_id'] ?>"><i class="fa fa-edit"></i> Editar viagem</button>
                                         <button class="dropdown-item text-success finalizar_viagem_button" data-viagem_id="<?= $v['viagem_id'] ?>"><i class="fa fa-check"></i> Finalizar viagem</button>
                                         <div class="dropdown-divider"></div>
@@ -235,18 +235,18 @@
                     //ADICIONA VALOR DO PASSAGEIRO SE ELE JÁ EXISTE
                     for (let index = 0; index < passageiros.passageiros.length; index++) {
                         $('#passageiros_viagem_content').append(`
-                        <div class="row my-1">
-                            <div class="col-lg-10">
-                                <p class="font-weight-light text-dark my-2"><span class="fa fa-user"></span> Vaga ${index+1} </p>
+                        <div class="row mt-3">
+                            <div class="col-lg-8 mb-1">
+                                <span class="badge bg-primary"><span class="fa fa-user"></span> Vaga ${index+1} </span>
                             </div>
-                            <div class="col-lg-2">
-                                <button type="button" onclick="$('#paciente_viagem_select2_${index}').empty().append('<option value=NENHUM selected>Nenhum passageiro</option>')" class="btn btn-xs text-danger float-right"><i class="fas fa-user-times"></i></button>
+                            <div class="col-lg-4">
+                                <a href="#" type="button" onclick="$('#paciente_viagem_select2_${index}').empty().append('<option value=NENHUM selected>Nenhum passageiro selecionado</option>'); Swal.fire('Passageiro removido!', '', 'success')" class="small text-danger float-right"><i class="fas fa-user-times"></i> Remover passageiro</a>
                             </div>
                         </div>
                         <select style="width:100%" id="paciente_viagem_select2_${index}" class="load_pacientes_viagem_select2" name="passageiro[${passageiros.passageiros[index].passageiro_id}]">
                             ${passageiros.passageiros[index].nome_paciente ? 
                             `<option selected value="${passageiros.passageiros[index].passageiro_paciente_id}"> ${passageiros.passageiros[index].nome_paciente}</option>`
-                            : '<option selected>Nenhum passageiro</option>'}
+                            : '<option selected>Nenhum passageiro selecionado</option>'}
                         </select>
                         `)
                     }

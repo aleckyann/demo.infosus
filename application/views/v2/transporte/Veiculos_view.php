@@ -85,7 +85,7 @@
         var editar_veiculo_modal = new bootstrap.Modal(document.getElementById('editar_veiculo_modal'))
 
 
-        $('.editar_paciente_button').on('click', function() {
+        $('.editar_veiculo_button').on('click', function() {
             var paciente_id = this.dataset.id;
             $.ajax({
                     method: "POST",

@@ -9,59 +9,28 @@
                 <div class="modal-body">
                     <?= $csrf_input ?>
                     <div class="row">
-                        <input type="hidden" name="veiculo_id" id="veiculo_id">
-                        <div class="mb-2 col-8">
-                            <label class="form-label">Nome</label>
-                            <input class="form-control" name="nome_paciente" id="nome_paciente" type="text" placeholder="Nome completo do paciente" />
+                        <div class="mb-2 col-lg-8">
+                            <label class="form-label">Marca</label>
+                            <input class="form-control" name="veiculo_marca" type="text" placeholder="Marca do veículo" required />
                         </div>
                         <div class="mb-2 col-lg-4">
-                            <label class="form-label">Data de nascimento</label>
-                            <input class="form-control" name="nascimento" id="nascimento" type="date" />
+                            <label class="form-label">Ano</label>
+                            <input class="form-control" name="veiculo_ano" type="number" placeholder="Ano do veículo" required />
                         </div>
                         <div class="mb-2 col-lg-4">
-                            <label class="form-label">CPF</label>
-                            <input class="form-control" name="cpf" id="cpf" type="text" placeholder="000.000.000-00" />
+                            <label class="form-label">Tipo</label>
+                            <input class="form-control" name="veiculo_tipo" type="text" placeholder="Tipo de veículo" required />
                         </div>
                         <div class="mb-2 col-lg-4">
-                            <label class="form-label">RG</label>
-                            <input class="form-control" name="identidade" id="identidade" type="text" placeholder="00.000.000" />
-                        </div>
-
-                        <div class="mb-2 col-lg-4">
-                            <label class="form-label">Telefone</label>
-                            <input class="form-control" name="telefone_paciente" id="telefone_paciente" type="phone" placeholder="(00) 99999-9999" />
-                        </div>
-                        <div class="mb-2 col-6">
-                            <label class="form-label">Endereço</label>
-                            <input class="form-control" name="endereco_paciente" id="endereco_paciente" type="text" placeholder="Endereço completo" />
-                        </div>
-                        <div class="mb-2 col-3">
-                            <label class="form-label">CEP</label>
-                            <input class="form-control" name="cep" id="cep" type="text" placeholder="39999-999" />
-                        </div>
-                        <div class="mb-2 col-3">
-                            <label class="form-label">Bairro</label>
-                            <input class="form-control" name="bairro_paciente" id="bairro_paciente" type="text" placeholder="Nome do bairro" />
-                        </div>
-
-                        <div class="mb-2 col-3">
-                            <label class="form-label">CNS</label>
-                            <input class="form-control" name="cns_paciente" id="cns_paciente" type="text" placeholder="Cartão do sus" />
+                            <label class="form-label">Placa</label>
+                            <input class="form-control" name="veiculo_placa" type="text" placeholder="Placa do veículo" required />
                         </div>
                         <div class="mb-2 col-lg-4">
-                            <label class="form-label">ACS ou referência</label>
-                            <input class="form-control" name="acs" id="acs" type="text" placeholder="Agente de saúde" />
+                            <label class="form-label">Vagas</label>
+                            <input class="form-control" name="veiculo_vagas" type="number" placeholder="Número de vagas do veículo" required />
                         </div>
-                        <div class="mb-2 col-5">
-                            <label class="form-label">Responsável</label>
-                            <input class="form-control" name="responsavel" id="responsavel" type="text" placeholder="Responsável se houver" />
-                        </div>
-                        <div class="mb-2 col-lg-4">
-                            <label class="form-label">Profissão</label>
-                            <input class="form-control" name="profissao" id="profissao" type="text" placeholder="Profissão" />
-                        </div>
+                        <p class="small text-primary mt-5"><i class="fas fa-info-circle"></i> Atenção, ao editar um veículo, todas as viagens feitas vão apresentar as informações atualizadas.</p>
                     </div>
-
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Cancelar</button>

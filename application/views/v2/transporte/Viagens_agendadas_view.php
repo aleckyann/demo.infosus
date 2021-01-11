@@ -222,11 +222,11 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <label>Veículo</label>
-                            <input disabled value="${passageiros.viagem.veiculo_marca}" class="form-control col-6"> 
+                            <input disabled value="${passageiros.veiculo_marca}" class="form-control col-6"> 
                         </div>
                         <div class="col-lg-6">
                             <label>Data da viagem</label>
-                            <input disabled value="${passageiros.viagem.viagem_data}" type="date" class="form-control col-6"> 
+                            <input disabled value="${passageiros.viagem_data}" type="date" class="form-control col-6"> 
                         </div>
                     </div>
                     <hr>
@@ -252,7 +252,7 @@
                     }
 
                     //SETA O ID DA VIAGEM
-                    $('#passageiros_viagem_id').val(passageiros.viagem.viagem_id);
+                    $('#passageiros_viagem_id').val(passageiros.viagem_id);
 
                     //LOAD PACIENTES COM SELECT2
                     $('.load_pacientes_viagem_select2').select2({

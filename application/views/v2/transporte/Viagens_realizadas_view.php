@@ -70,7 +70,6 @@
 <?php $this->load->view('v2/components/add_viagem_modal') ?>
 <?php $this->load->view('v2/components/load_viagem_modal') ?>
 
-
 <script>
     window.onload = function() {
 

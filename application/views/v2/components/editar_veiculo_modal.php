@@ -9,7 +9,7 @@
                 <div class="modal-body">
                     <?= $csrf_input ?>
                     <div class="row">
-                        <input type="hidden" name="paciente_id" id="paciente_id">
+                        <input type="hidden" name="veiculo_id" id="veiculo_id">
                         <div class="mb-2 col-8">
                             <label class="form-label">Nome</label>
                             <input class="form-control" name="nome_paciente" id="nome_paciente" type="text" placeholder="Nome completo do paciente" />

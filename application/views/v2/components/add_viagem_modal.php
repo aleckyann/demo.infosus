@@ -45,7 +45,7 @@
 
 <script>
     //Cria modal para editar paciente
-    var add_viagem_modal = new bootstrap.Modal(document.getElementById('add_viagem_modal'));
+    // var add_viagem_modal = new bootstrap.Modal(document.getElementById('add_viagem_modal'));
 
     $(document).ready(function() {
         var add_cidade_viagem_select2 = $('.add_cidade_viagem_select2').select2({

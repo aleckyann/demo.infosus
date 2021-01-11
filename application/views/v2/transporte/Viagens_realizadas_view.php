@@ -26,8 +26,7 @@
     <?= $this->ui->alert_flashdata() ?>
 
     <div class="card-body">
-
-        <table id="viagens_agendadas_datatable" class="table table-striped table-hover" style="min-height: 200px;">
+        <table id="viagens_realizadas_datatable" class="table table-striped table-hover" style="min-height: 200px;">
             <thead>
                 <th class="text-dark small text-left">VEÍCULO</th>
                 <th class="text-dark small text-left">DATA</th>
@@ -38,13 +37,13 @@
                 <?php foreach ($viagens as $v) : ?>
                     <tr>
                         <td class="small">
-                            <?= $v['viagem_veiculo_id'] ?>
+                            <?= $v['veiculo_marca'] . '-' . $v['veiculo_marca'] ?>
                         </td>
                         <td class="small">
-                            <?= date_format(date_create($v['viagem_data']), 'd/m/Y') ?>
+                            <?= date_format(date_create($v['viagem_realizada']), 'd/m/Y') ?>
                         </td>
                         <td class="small">
-                            <?= $v['viagem_destino'] ?>
+                            <?= $v['destino'] ?>
                         </td>
 
                         <td class="text-center p-1">
@@ -52,7 +51,7 @@
                                 <div class="btn-group mb-2">
                                     <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
                                     <div class="dropdown-menu">
-                                        <button class="dropdown-item text-warning editar_viagem_button" data-viagem_id="<?= $v['viagem_id'] ?>"><i class="fa fa-edit"></i> Detalhar viagem</button>
+                                        <button class="dropdown-item text-primary load_viagem_button" data-viagem_id="<?= $v['viagem_id'] ?>"><i class="fa fa-edit"></i> Dados da viagem</button>
                                         <div class="dropdown-divider"></div>
                                     </div>
                                 </div>
@@ -69,42 +68,47 @@
 
 <!-- CARREGAR COMPONENTES -->
 <?php $this->load->view('v2/components/add_viagem_modal') ?>
-<?php $this->load->view('v2/components/editar_viagem_modal') ?>
+<?php $this->load->view('v2/components/load_viagem_modal') ?>
 
 
 <script>
     window.onload = function() {
 
         //Cria modal para editar paciente
-        var editar_viagem_modal = new bootstrap.Modal(document.getElementById('editar_viagem_modal'), {
-            keyboard: false
-        })
-
+        var load_viagem_modal = new bootstrap.Modal(document.getElementById('load_viagem_modal'));
 
         // ABRE MODAL DE EDITAR
-        $('.editar_viagem_button').on('click', function() {
-            var apoio_id = this.dataset.apoio_id;
+        $('.load_viagem_button').on('click', function() {
+            var viagem_id = this.dataset.viagem_id;
+            $('#load_viagem_content').empty();
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url('v2/regulacao/casa-de-apoio/json/') ?>" + apoio_id,
+                    url: "<?= base_url('v2/api/passageiros/json') ?>",
                     data: {
-                        <?= $csrf_name ?>: "<?= $csrf_value ?>"
+                        <?= $csrf_name ?>: "<?= $csrf_value ?>",
+                        viagem_id: viagem_id
                     }
                 })
-                .done(function(casa_de_apoio) {
-                    $('#apoio_id').val(casa_de_apoio.apoio_id);
-                    $('#nome_paciente').val(casa_de_apoio.nome_paciente);
-                    $('#data_entrada').val(casa_de_apoio.data_entrada);
-                    $('#data_saida').val(casa_de_apoio.data_saida);
-                    $('#observacao').val(casa_de_apoio.observacao);
+                .done(function(passageiros) {
+                    $('#load_viagem_origem').text(passageiros.origem)
+                    $('#load_viagem_destino').text(passageiros.destino)
+                    $('#load_viagem_data').text(passageiros.viagem_data)
+                    $('#load_viagem_veiculo').text(passageiros.veiculo_marca)
+                    for (let index = 0; index < passageiros.passageiros.length; index++) {
+                        $('#load_viagem_content').append(`
+                            <tr>
+                                <td>${passageiros.passageiros[index].nome_paciente}</td>
+                            </tr>
 
+                        `)
+                    }
                 });
-            editar_viagem_modal.toggle()
+            load_viagem_modal.toggle()
         });
 
 
         //ADICIONANDO FILTRO AS COLUNAS
-        $('#viagens_agendadas_datatable thead th').each(function() {
+        $('#viagens_realizadas_datatable thead th').each(function() {
             let title = $(this).text();
             if (title == '' || title == 'OPÇÕES') {
 
@@ -118,7 +122,7 @@
         });
 
 
-        $('#viagens_agendadas_datatable').DataTable({
+        $('#viagens_realizadas_datatable').DataTable({
             initComplete: function() {
                 this.api().columns().every(function() {
                     let that = this;
@@ -137,6 +141,7 @@
             },
             "ordering": false,
             "oLanguage": {
+
                 "sProcessing": "Aguarde enquanto os dados são carregados ...",
                 "sLengthMenu": "Mostrar _MENU_ resgistros por pagina",
                 "sZeroRecords": "Nenhuma registro encontrado correspondente aos critérios de pesquisa",
@@ -196,27 +201,6 @@
 
             ]
         });
-
-
-
-        //CONFIRMAR REMOÇÃO DO PACIENTE 
-        $("#viagens_agendadas_datatable").on("click", ".cancelar_viagem_button", function() {
-            Swal.fire({
-                title: 'Confirma o cancelamento desta viagem?',
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: `Sim`,
-                icon: 'question',
-                showCancelButton: false,
-                denyButtonText: `Não, cancelar`,
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.replace("<?= base_url('v2/regulacao/casa-de-apoio/update-status/') ?>" + this.dataset.apoio_id);
-                } else if (result.isDenied) {
-                    Swal.fire('Alteração não foi realizada.', '', 'info')
-                }
-            })
-        })
 
     }
 </script>

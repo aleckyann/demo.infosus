@@ -246,7 +246,7 @@
                         <select style="width:100%" id="paciente_viagem_select2_${index}" class="load_pacientes_viagem_select2" name="passageiro[${passageiros.passageiros[index].passageiro_id}]">
                             ${passageiros.passageiros[index].nome_paciente ? 
                             `<option selected value="${passageiros.passageiros[index].passageiro_paciente_id}"> ${passageiros.passageiros[index].nome_paciente}</option>`
-                            : '<option selected class=text-danger>Nenhum passageiro</option>'}
+                            : '<option selected>Nenhum passageiro</option>'}
                         </select>
                         `)
                     }

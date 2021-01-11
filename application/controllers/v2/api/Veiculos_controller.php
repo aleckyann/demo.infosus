@@ -5,6 +5,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Veiculos_controller extends Sistema_Controller
 {
 
+    /**
+     * POST: v2/api/veiculos/json
+     */
     public function json(): void
     {
         $veiculo_id = $this->input->post('veiculo_id');

@@ -86,29 +86,22 @@
 
 
         $('.editar_veiculo_button').on('click', function() {
-            var paciente_id = this.dataset.id;
+            var veiculo_id = this.dataset.id;
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url('v2/pacientes/jsonOne/') ?>",
+                    url: "<?= base_url('v2/api/veiculos/json') ?>",
                     data: {
                         <?= $csrf_name ?>: "<?= $csrf_value ?>",
-                        paciente_id: paciente_id
+                        veiculo_id: veiculo_id
                     }
                 })
-                .done(function(paciente) {
-                    $('#paciente_id').val(paciente.paciente_id);
-                    $('#acs').val(paciente.acs);
-                    $('#bairro_paciente').val(paciente.bairro_paciente);
-                    $('#cep').val(paciente.cep);
-                    $('#cns_paciente').val(paciente.cns_paciente);
-                    $('#cpf').val(paciente.cpf);
-                    $('#endereco_paciente').val(paciente.endereco_paciente);
-                    $('#identidade').val(paciente.identidade);
-                    $('#nascimento').val(paciente.nascimento);
-                    $('#nome_paciente').val(paciente.nome_paciente);
-                    $('#profissao').val(paciente.profissao);
-                    $('#responsavel').val(paciente.responsavel);
-                    $('#telefone_paciente').val(paciente.telefone_paciente);
+                .done(function(veiculo) {
+                    $('#veiculo_id').val(veiculo.veiculo_id);
+                    $('#veiculo_marca').val(veiculo.veiculo_marca);
+                    $('#veiculo_ano').val(veiculo.veiculo_ano);
+                    $('#veiculo_tipo').val(veiculo.veiculo_tipo);
+                    $('#veiculo_placa').val(veiculo.veiculo_placa);
+                    $('#veiculo_vagas').val(veiculo.veiculo_vagas);
                 });
             editar_veiculo_modal.toggle()
         });

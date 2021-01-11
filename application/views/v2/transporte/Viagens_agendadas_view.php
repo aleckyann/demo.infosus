@@ -14,7 +14,7 @@
             <div class="collapse" id="collapseExample">
                 <div class="p-card">
                     <p class="mb-2">
-                        Nesta página você pode visualizar todas as viagens agendadas.
+                        Nesta página você pode visualizar todas as viagens agendadas e configurar os passageiros desta viagem clicando no menu <span class="text-primary">azul</span>
                     </p>
                 </div>
             </div>

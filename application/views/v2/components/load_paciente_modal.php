@@ -68,10 +68,9 @@
 </div>
 
 <script>
-    //Cria modal para adição de pacientes na casa de apoio
-    var load_paciente_modal = new bootstrap.Modal(document.getElementById('load_paciente_modal'), {
-        keyboard: false
-    })
+    //Cria modal para mostrar dados do paciente
+    var load_paciente_modal = new bootstrap.Modal(document.getElementById('load_paciente_modal'))
+
     $('.load_paciente_button').on('click', function() {
 
         $.ajax({

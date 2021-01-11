@@ -23,7 +23,23 @@ class Veiculos_controller extends Sistema_Controller
         $veiculo = $this->input->post();
         $this->Veiculos->insert($veiculo);
 
-        $this->session->set_flashdata('success', 'Veículo cadastrado com sucesso!');
+        $this->session->set_flashdata('success', 'VEÍCULO CADASTRADO COM SUCESSO.');
+        redirect($this->agent->referrer());
+    }
+
+
+    /**
+     * POST: v2/transporte/veiculos/editar
+     */
+    public function editar(): void
+    {
+        $veiculo = $this->input->post();
+        $this->Veiculos->update(
+            ['veiculo_id'=>$veiculo['veiculo_id']],
+            $veiculo
+        );
+
+        $this->session->set_flashdata('success', 'VEÍCULO ATUALIZADO COM SUCESSO.');
         redirect($this->agent->referrer());
     }
 

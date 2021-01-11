@@ -10,3 +10,4 @@ $route['v2/api/tabela_proced/select2']['post'] = 'v2/api/Tabela_proced_controlle
 $route['v2/api/municipios/select2']['post'] = 'v2/api/Municipios_controller/select2';
 $route['v2/api/viagens/json']['post'] = 'v2/api/Viagens_controller/json';
 $route['v2/api/passageiros/json']['post'] = 'v2/api/Passageiros_controller/json';
+$route['v2/api/veiculos/json']['post'] = 'v2/api/Veiculos_controller/json';

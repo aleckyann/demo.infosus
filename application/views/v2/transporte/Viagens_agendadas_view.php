@@ -154,7 +154,6 @@
                     "sLast": ">>"
                 }
             },
-
             "aoColumns": [{
                     "bSortable": false
                 },
@@ -197,9 +196,7 @@
                     action: function() {
                         $('#add_viagem_modal').modal('show')
                     }
-
                 }
-
             ]
         });
 
@@ -220,6 +217,7 @@
                     }
                 })
                 .done(function(passageiros) {
+                    //CRIA DADOS DA VIAGEM
                     $('#passageiros_viagem_content').append(`
                     <div class="row">
                         <div class="col-lg-6">
@@ -237,11 +235,18 @@
                     //ADICIONA VALOR DO PASSAGEIRO SE ELE JÁ EXISTE
                     for (let index = 0; index < passageiros.passageiros.length; index++) {
                         $('#passageiros_viagem_content').append(`
-                        <label class="font-weight-light text-dark my-2"><span class="fa fa-user"></span> Vaga ${index+1}</label>
+                        <div class="row my-1">
+                            <div class="col-lg-10">
+                                <p class="font-weight-light text-dark my-2"><span class="fa fa-user"></span> Vaga ${index+1} </p>
+                            </div>
+                            <div class="col-lg-2">
+                                <button type="button" onclick="$('#paciente_viagem_select2_${index}').empty().append('<option value=NENHUM selected>Nenhum passageiro</option>')" class="btn btn-xs text-danger float-right"><i class="fas fa-user-times"></i></button>
+                            </div>
+                        </div>
                         <select style="width:100%" id="paciente_viagem_select2_${index}" class="load_pacientes_viagem_select2" name="passageiro[${passageiros.passageiros[index].passageiro_id}]">
                             ${passageiros.passageiros[index].nome_paciente ? 
                             `<option selected value="${passageiros.passageiros[index].passageiro_paciente_id}"> ${passageiros.passageiros[index].nome_paciente}</option>`
-                            : ''}
+                            : '<option selected class=text-danger>Nenhum passageiro</option>'}
                         </select>
                         `)
                     }

@@ -15,6 +15,9 @@ class Passageiros_controller extends Sistema_Controller
 
         foreach ($passageiros as $passageiro) {
             $passageiro_id = array_search($passageiro, $passageiros);
+            if($passageiro == 'NENHUM') {
+                $passageiro = 0;
+            }
             $this->Passageiros->update(
                 [
                     'passageiro_viagem_id' => $passageiro_viagem_id,

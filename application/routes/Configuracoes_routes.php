@@ -11,3 +11,7 @@ $route['v2/configuracoes/municipios/novo']['post'] = 'v2/configuracoes/Municipio
 
 $route['v2/configuracoes/especialidades']['get'] = 'v2/configuracoes/Especialidades_controller/index';
 $route['v2/configuracoes/especialidades/novo']['post'] = 'v2/configuracoes/Especialidades_controller/novo';
+
+$route['v2/configuracoes/usuarios']['get'] = 'v2/configuracoes/Usuarios_controller/index';
+$route['v2/configuracoes/usuarios/novo']['post'] = 'v2/configuracoes/Usuarios_controller/novo';
+$route['v2/configuracoes/usuarios/editar']['post'] = 'v2/configuracoes/Usuarios_controller/editar';

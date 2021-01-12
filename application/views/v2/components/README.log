@@ -1,0 +1,12 @@
+OS COMPONENTES SÃO DE DOIS TIPOS:
+
+1. GLOBAIS
+    Os componente GLOBAIS são aqueles que abrem em qualquer lugar da aplicação, 
+    isto é, em qualquer página.
+    Os componente GLOBAIS são inseridos no arquivo includes/Footer_view.php
+
+2. LOCAIS
+    Os componente LOCAIS são aqueles que estão disponíveis apenas em páginas específicas.
+    Os componente GLOBAIS são inseridos no final do arquivo em que ele vai ser utilizado.
+
+

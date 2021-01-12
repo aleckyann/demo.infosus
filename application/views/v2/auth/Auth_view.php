@@ -6,14 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- ===============================================-->
-    <!--    Document Title-->
-    <!-- ===============================================-->
     <title>INFOSUS - AUTENTICAÇÃO</title>
 
-    <!-- ===============================================-->
-    <!--    Favicons-->
-    <!-- ===============================================-->
     <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url() ?>/public/v2/assets/img/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url() ?>/public/v2/assets/img/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url() ?>/public/v2/assets/img/favicons/favicon-16x16.png">
@@ -21,11 +15,8 @@
     <link rel="manifest" href="<?= base_url() ?>/public/v2/assets/img/favicons/manifest.json">
     <meta name="msapplication-TileImage" content="<?= base_url() ?>/public/v2/assets/img/favicons/mstile-150x150.png">
     <meta name="theme-color" content="#ffffff">
-    <script src="<?= base_url() ?>/public/v2/assets/js/config.navbar-vertical.js"></script>
 
-    <!-- ===============================================-->
-    <!--    Stylesheets-->
-    <!-- ===============================================-->
+    <script src="<?= base_url() ?>/public/v2/assets/js/config.navbar-vertical.js"></script>
     <link href="<?= base_url() ?>/public/v2/assets/css/theme-rtl.min.css" rel="stylesheet" id="style-rtl" />
     <link href="<?= base_url() ?>/public/v2/assets/css/theme.min.css" rel="stylesheet" id="style-default" />
     <script>
@@ -42,9 +33,7 @@
 </head>
 
 <body>
-    <!-- ===============================================-->
-    <!--    Main Content-->
-    <!-- ===============================================-->
+
     <main class="main" id="top">
         <div class="container-fluid">
             <div class="row min-vh-100 flex-center g-0">
@@ -58,9 +47,9 @@
                                         <div class="bg-holder bg-auth-card-shape" style="background-image:url(<?= base_url() ?>/public/v2/assets/img/illustrations/half-circle.png);"></div>
                                         <!--/.bg-holder-->
                                         <div class="z-index-1 position-relative">
-                                            <!-- <a class="link-light mb-4 font-sans-serif fs-4 d-inline-block font-weight-bolder" href="<?= base_url() ?>/public/v2/index.html">
+                                            <a class="link-light mb-4 font-sans-serif fs-4 d-inline-block font-weight-bolder" href="<?= base_url() ?>/public/v2/index.html">
                                             
-                                            </a> -->
+                                            </a>
                                             <img class="align-content mb-4" style="filter: brightness(0) invert(1);" src="<?= base_url() ?>public/images/logo.png" width="100" alt="Logotipo Infosus">
 
                                             <p class="opacity-75 text-white">A melhor solução em tecnologia da informação para o SUS</p>

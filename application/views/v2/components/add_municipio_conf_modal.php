@@ -34,9 +34,7 @@
 
 <script>
     $(document).ready(function() {
-        var add_municipio_conf_modal = new bootstrap.Modal(document.getElementById('add_municipio_conf_modal'), {
-            keyboard: false
-        })
+        var add_municipio_conf_modal = new bootstrap.Modal(document.getElementById('add_municipio_conf_modal'))
 
     });
 </script>

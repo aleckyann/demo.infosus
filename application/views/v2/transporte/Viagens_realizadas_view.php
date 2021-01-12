@@ -94,12 +94,14 @@
                     $('#load_viagem_data').text(passageiros.viagem_data)
                     $('#load_viagem_veiculo').text(passageiros.veiculo_marca)
                     for (let index = 0; index < passageiros.passageiros.length; index++) {
-                        $('#load_viagem_content').append(`
+                        if (passageiros.passageiros[index].nome_paciente) {
+                            $('#load_viagem_content').append(`
                             <tr>
                                 <td>${passageiros.passageiros[index].nome_paciente}</td>
                             </tr>
-
-                        `)
+                            
+                            `)
+                        }
                     }
                 });
             load_viagem_modal.toggle()

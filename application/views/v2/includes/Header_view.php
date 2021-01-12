@@ -103,6 +103,7 @@
                                     <li class="nav-item"><a class="nav-link <?= (segment(3) == 'estabelecimentos') ? 'active' : '' ?>" href="<?= base_url('v2/configuracoes/estabelecimentos') ?>"><i class="fas fa-user-edit"></i> Estabelecimentos</a></li>
                                     <li class="nav-item"><a class="nav-link <?= (segment(3) == 'municipios') ? 'active' : '' ?>" href="<?= base_url('v2/configuracoes/municipios') ?>"><i class="fas fa-user-edit"></i> Municipios</a></li>
                                     <li class="nav-item"><a class="nav-link <?= (segment(3) == 'procedimentos') ? 'active' : '' ?>" href="<?= base_url('v2/configuracoes/procedimentos') ?>"><i class="fas fa-user-edit"></i> Procedimentos</a></li>
+                                    <li class="nav-item"><a class="nav-link <?= (segment(3) == 'usuarios') ? 'active' : '' ?>" href="<?= base_url('v2/configuracoes/usuarios') ?>"><i class="fas fa-user-edit"></i> Usuários</a></li>
                                 </ul>
                             </li>
                         </ul>

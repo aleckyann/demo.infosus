@@ -5,15 +5,28 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Pacientes_controller extends Sistema_Controller
 {
 
-
+    /**
+     * GET: v2/pacientes/listagem
+     */
     public function listagem(): void
     {
         $data['title'] = 'Lista com todos os pacientes'; 
         $data['pacientes'] = $this->Pacientes->getAll();
         $this->view('pacientes/Listagem_view', $data);
     }
-    
 
+    /**
+     * GET: v2/pacientes/historicos/(num)
+     */
+    public function historicos(int $paciente_id): void
+    {
+        $data['title'] = 'Histórico do paciente';
+        $this->view('pacientes/Historicos_view', $data);
+    }
+    
+    /**
+     * 
+     */
     public function edit(): void
     {
         $dados = $this->input->post();
@@ -25,6 +38,9 @@ class Pacientes_controller extends Sistema_Controller
         redirect('v2/pacientes/listagem');
     }
 
+    /**
+     * 
+     */
     public function new(): void
     {
         $paciente = $this->input->post();
@@ -34,7 +50,9 @@ class Pacientes_controller extends Sistema_Controller
         redirect('v2/pacientes/listagem');
     }
 
-
+    /**
+     * 
+     */
     public function jsonAll()
     {
         $dados = $this->input->post();
@@ -42,7 +60,9 @@ class Pacientes_controller extends Sistema_Controller
             ->set_content_type('application/json')
             ->set_output(json_encode($this->Pacientes->getAll($dados)));
     }
-
+    /**
+     * 
+     */
     public function jsonOne()
     {
         $paciente_id = $this->input->post('paciente_id');

@@ -54,7 +54,7 @@
                                 <div class="btn-group mb-2">
                                     <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#"><i class="fa fa-database"></i> Históricos</a>
+                                        <a class="dropdown-item text-primary" href="<?=base_url('v2/pacientes/historicos/'.$p['paciente_id'])?>"><i class="fa fa-database"></i> Históricos</a>
                                         <div class="dropdown-divider"></div>
                                         <button class="dropdown-item text-warning editar_paciente_button" data-id="<?= $p['paciente_id'] ?>"><i class="fa fa-edit"></i> Editar paciente</button>
                                     </div>

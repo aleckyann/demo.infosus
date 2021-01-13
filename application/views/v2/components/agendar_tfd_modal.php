@@ -4,7 +4,7 @@
         <div class="modal-content">
             <form action="<?= base_url('v2/regulacao/tfd/agendar') ?>" method="post">
                 <div class="modal-header bg-warning">
-                    <h5 class="modal-title font-weight-light text-white" id="agendar_tfd_label"><i class="fas fa-edit"></i> Editar procedimento</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title font-weight-light text-white" id="agendar_tfd_label"><i class="fas fa-edit"></i> Agendamento de procedimento</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body modal-scroll">
                     <?= $csrf_input ?>

@@ -34,7 +34,7 @@
                         </div>
                         <div class="mb-2 col-lg-4">
                             <label class="form-label">Senha de acesso</label>
-                            <input class="form-control" id="editar_usuario_conf_password" name="usuario_password" type="number" placeholder="Senha de acesso" />
+                            <input class="form-control" id="editar_usuario_conf_password" name="usuario_password" type="text" placeholder="Senha de acesso" />
                         </div>
                         <p class="small text-primary mt-5"><i class="fas fa-info-circle"></i> Mantenha o campo SENHA DE ACESSO em branco para manter a senha atual.</p>
                     </div>

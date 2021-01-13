@@ -27,6 +27,7 @@ class Auth_controller extends CI_Controller
             $this->session->set_userdata($usuario_autenticado);
             $this->session->set_flashdata('info', '<i class="far fa-smile-beam"></i> SEJA BEM VINDO AO INFOSUS!');
             redirect('v2/dashboard');
+            
         } else {
             $this->session->set_flashdata('danger', 'Login ou senha incorretos.');
             redirect();

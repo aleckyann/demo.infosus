@@ -36,7 +36,7 @@ class Tfd_controller extends Sistema_Controller
             $config['upload_path']          = realpath(APPPATH . '../public/v2/anexos/tfd');
             $config['allowed_types']        = 'jpeg|jpg|png|pdf|doc|docx';
             $config['file_name']            = $tfd_id;
-            // $config['overwrite'] = TRUE;
+            $config['overwrite'] = TRUE;
             $this->upload->initialize($config);
 
             //Se upload der certo, atualiza no DB
@@ -51,8 +51,8 @@ class Tfd_controller extends Sistema_Controller
             }
         }
 
-        $this->session->set_flashdata('success', 'TFD criado com sucesso');
-        redirect($this->agent->referrer());
+        // $this->session->set_flashdata('success', 'TFD criado com sucesso');
+        // redirect($this->agent->referrer());
     }
 
 

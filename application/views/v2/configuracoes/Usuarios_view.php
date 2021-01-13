@@ -31,6 +31,7 @@
             <thead>
                 <th class="text-dark small text-left">USUÁRIO</th>
                 <th class="text-dark small text-left">TIPO</th>
+                <th class="text-dark small text-left">WHATSAPP</th>
                 <th class="text-dark small text-left">OPÇÕES</th>
             </thead>
             <tbody>
@@ -41,6 +42,9 @@
                         </td>
                         <td class="small">
                             <?= $u['usuario_nivel'] ?>
+                        </td>
+                        <td class="small">
+                            <?= $u['usuario_telefone'] ?>
                         </td>
                         <td class="text-center">
                             <div class="btn-group ">
@@ -72,19 +76,22 @@
 
         var editar_usuario_conf_modal = new bootstrap.Modal(document.getElementById('editar_usuario_conf_modal'))
 
-
         $('.editar_usuario_button').on('click', function() {
-            var paciente_id = this.dataset.id;
+            var usuario_id = this.dataset.usuario_id;
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url('v2/pacientes/jsonOne/') ?>",
+                    url: "<?= base_url('v2/api/usuarios/json/') ?>",
                     data: {
                         <?= $csrf_name ?>: "<?= $csrf_value ?>",
-                        paciente_id: paciente_id
+                        usuario_id: usuario_id
                     }
                 })
                 .done(function(usuario) {
-                    //
+                    $('#editar_usuario_conf_id').val(usuario.usuario_id);
+                    $('#editar_usuario_conf_nome').val(usuario.usuario_nome);
+                    $('#editar_usuario_conf_email').val(usuario.usuario_email);
+                    $('#editar_usuario_conf_telefone').val(usuario.usuario_telefone);
+                    $('#editar_usuario_conf_nivel').val(usuario.usuario_nivel);
                 });
             editar_usuario_conf_modal.toggle()
         });
@@ -146,6 +153,8 @@
                 "bSortable": false
             }, {
                 "bSortable": false
+            }, {
+                "bSortable": false
             }],
             dom: 'Brtip',
             buttons: [{
@@ -153,7 +162,7 @@
                     extend: 'print',
                     text: '<i class="fa fa-print"></i> imprimir',
                     exportOptions: {
-                        columns: [0, 1]
+                        columns: [0, 1, 2]
                     },
                     customize: function(win) {
                         $(win.document.body)
@@ -169,7 +178,7 @@
                 },
                 {
                     className: 'btn btn-falcon-default btn-sm rounded-pill font-weight-light m-1',
-                    text: '<i class="fas fa-user-edit"></i> Nova procedimento',
+                    text: '<i class="fas fa-user-plus"></i> Novo usuário',
                     action: function() {
                         $('#add_usuario_conf_modal').modal('show')
                     }

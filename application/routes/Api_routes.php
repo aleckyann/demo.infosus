@@ -11,3 +11,4 @@ $route['v2/api/municipios/select2']['post'] = 'v2/api/Municipios_controller/sele
 $route['v2/api/viagens/json']['post'] = 'v2/api/Viagens_controller/json';
 $route['v2/api/passageiros/json']['post'] = 'v2/api/Passageiros_controller/json';
 $route['v2/api/veiculos/json']['post'] = 'v2/api/Veiculos_controller/json';
+$route['v2/api/usuarios/json']['post'] = 'v2/api/Usuarios_controller/json';

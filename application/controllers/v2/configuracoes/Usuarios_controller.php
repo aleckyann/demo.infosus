@@ -21,10 +21,12 @@ class Usuarios_controller extends Sistema_Controller
      */
     public function novo(): void
     {
-        $dados = $this->input->post();
-        $this->Usuarios->insert($dados);
+        $usuario = $this->input->post();
+        $usuario['usuario_password'] = hash('whirlpool', $usuario['usuario_password']);
 
-        $this->session->set_flashdata('success', 'Usuario adicionado ao sistema com sucesso.');
+        $this->Usuarios->insert($usuario);
+
+        $this->session->set_flashdata('success', 'USUÁRIO CRIADO COM SUCESSO.');
         redirect($this->agent->referrer());
     }
 
@@ -33,10 +35,16 @@ class Usuarios_controller extends Sistema_Controller
      */
     public function editar(): void
     {
-        $dados = $this->input->post();
-        $this->Usuarios->update($dados);
+        $usuario = $this->input->post();
+        if($usuario['usuario_password']){
+            $usuario['usuario_password'] = hash('whirlpool', $usuario['usuario_password']);
+        }
+        $this->Usuarios->update(
+            ['usuario_id'=>$usuario['usuario_id']],
+            $usuario
+        );
 
-        $this->session->set_flashdata('success', 'Usuario adicionado ao sistema com sucesso.');
+        $this->session->set_flashdata('success', 'USUÁRIO EDITADO COM SUCESSO');
         redirect($this->agent->referrer());
     }
 }

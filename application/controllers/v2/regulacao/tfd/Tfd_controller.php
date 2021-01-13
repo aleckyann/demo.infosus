@@ -51,8 +51,8 @@ class Tfd_controller extends Sistema_Controller
             }
         }
 
-        // $this->session->set_flashdata('success', 'TFD criado com sucesso');
-        // redirect($this->agent->referrer());
+        $this->session->set_flashdata('success', 'TFD criado com sucesso');
+        redirect($this->agent->referrer());
     }
 
 

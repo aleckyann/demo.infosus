@@ -45,6 +45,7 @@
 <script src="<?= base_url() ?>public/vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
 <script src="<?= base_url() ?>public/assets/js/init-scripts/data-table/datatables-init.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="<?= base_url() ?>public/v2/vendors/countup/countUp.umd.js"></script>
 
 <script>
     $(function() {

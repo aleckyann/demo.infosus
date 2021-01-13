@@ -1,58 +1,97 @@
-<div class="card">
-    <div class="card-header bg-light">
-        <h5 class="mb-0">Página inicial</h5>
+<div class="d-flex mb-2">
+    <div class="card overflow-hidden flex-1">
+        <div class="bg-holder bg-card" style="background-image:url(<?= base_url('public/v2/assets/img/illustrations/corner-2.png') ?>);"></div>
+        <!--/.bg-holder-->
+        <div class="card-body position-relative">
+            <a class="float-right btn" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <i class="fas fa-question-circle"></i>
+            </a>
+            <h3 class="font-weight-light">
+
+                <i class="fa fa-chart-line"></i> Dashboard
+                <!-- <span class="badge badge-soft-warning rounded-pill ml-2">-0.23%</span> -->
+            </h3>
+            <div class="collapse" id="collapseExample">
+                <div class="p-card">
+                    <p class="mb-2">
+                        Nesta página você pode acompanhar dados do sistema.
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="card-body fs--1 p-0">
-        <a class="border-bottom-0 notification rounded-0 border-x-0 border border-300" href="#!">
-            <div class="notification-avatar">
-                <div class="avatar avatar-xl mr-3">
-                    <div class="avatar-emoji rounded-circle "><span role="img" aria-label="Emoji">🔍</span></div>
-                </div>
-            </div>
-            <div class="notification-body">
-                <h2 class="h5">Núcleo de regulação</h2>
-                <span class="notification-time">Módulo de de regulação</span>
-            </div>
-        </a>
+</div>
 
+<?= $this->ui->alert_flashdata() ?>
 
+<div class="card mb-3">
+    <div class="card-body">
+        <div class="row">
+            <h1>Procedimentos</h1>
+            <hr>
+            <div class="col-lg-3">
+                <h3 data-countup='{"endValue":<?= $procedimentos['fila'] ?>,"duration":5, "separator":"."}'>0</h3>
+                <p>Na fila <a data-toggle="tooltip" title="Ver procedimentos na fila" href="<?= base_url('v2/regulacao/procedimentos/fila') ?>"><i class="fas fa-external-link-alt"></i></a></p>
+            </div>
+            <div class="col-lg-3">
+                <h3 data-countup='{"endValue":<?= $procedimentos['agendados'] ?>,"duration":5, "separator":"."}'>0</h3>
+                <p class="text-warning">Agendados <a data-toggle="tooltip" title="Ver procedimentos na agendados" href="<?= base_url('v2/regulacao/procedimentos/agendados') ?>"><i class="fas fa-external-link-alt"></i></a></p>
+            </div>
+            <div class="col-lg-3">
+                <h3 data-countup='{"endValue":<?= $procedimentos['realizados'] ?>,"duration":5, "separator":"."}'>0</h3>
+                <p class="text-success">Realizados <a data-toggle="tooltip" title="Ver procedimentos realizados" href="<?= base_url('v2/regulacao/procedimentos/realizados') ?>"><i class="fas fa-external-link-alt"></i></a></p>
+            </div>
+            <div class="col-lg-3">
+                <h3 data-countup='{"endValue":<?= $procedimentos['negados'] ?>,"duration":5, "separator":"."}'>0</h3>
+                <p class="text-danger">Negados <a data-toggle="tooltip" title="Ver procedimentos negados" href="<?= base_url('v2/regulacao/procedimentos/negados') ?>"><i class="fas fa-external-link-alt"></i></a></p>
+            </div>
+        </div>
+    </div>
+</div>
 
+<div class="card mb-3">
+    <div class="card-body">
+        <div class="row">
+            <h1>TFD</h1>
+            <hr>
+            <div class="col-lg-3">
+                <h3 data-countup='{"endValue":<?= $tfd['fila'] ?>,"duration":5, "separator":"."}'>0</h3>
+                <p>Na fila <a data-toggle="tooltip" title="Ver tfd na fila" href="<?= base_url('v2/regulacao/tfd/fila') ?>"><i class="fas fa-external-link-alt"></i></a></p>
+            </div>
+            <div class="col-lg-3">
+                <h3 data-countup='{"endValue":<?= $tfd['agendados'] ?>,"duration":5, "separator":"."}'>0</h3>
+                <p class="text-warning">Agendados <a data-toggle="tooltip" title="Ver tfd agendados" href="<?= base_url('v2/regulacao/tfd/agendados') ?>"><i class="fas fa-external-link-alt"></i></a></p>
+            </div>
+            <div class="col-lg-3">
+                <h3 data-countup='{"endValue":<?= $tfd['realizados'] ?>,"duration":5, "separator":"."}'>0</h3>
+                <p class="text-success">Realizados <a data-toggle="tooltip" title="Ver tfd realizados" href="<?= base_url('v2/regulacao/tfd/realizados') ?>"><i class="fas fa-external-link-alt"></i></a></p>
+            </div>
+            <div class="col-lg-3">
+                <h3 data-countup='{"endValue":<?= $tfd['negados'] ?>,"duration":5, "separator":"."}'>0</h3>
+                <p class="text-danger">Negados <a data-toggle="tooltip" title="Ver tfd negados" href="<?= base_url('v2/regulacao/tfd/negados') ?>"><i class="fas fa-external-link-alt"></i></a></p>
+            </div>
+        </div>
+    </div>
+</div>
 
-        <a class="border-bottom-0 notification rounded-0 border-x-0 border border-300" href="#!">
-            <div class="notification-avatar">
-                <div class="avatar avatar-xl mr-3">
-                    <div class="avatar-emoji rounded-circle "><span role="img" aria-label="Emoji">📋️</span></div>
-                </div>
+<div class="card mb-3">
+    <div class="card-body">
+        <div class="row">
+            <h1>Viagens</h1>
+            <hr>
+            <div class="col-lg-3"></div>
+            <div class="col-lg-3">
+                <h3 data-countup='{"endValue":<?= $viagens['agendadas'] ?>,"duration":5, "separator":"."}'>0</h3>
+                <p class="text-warning">Agendadas <a data-toggle="tooltip" title="Ver viagens agendadas" href="<?= base_url('v2/transportes/viagens-agendadas') ?>"><i class="fas fa-external-link-alt"></i></a></p>
             </div>
-            <div class="notification-body">
-                <h2 class="h5">Atenção primária</h2>
-                <span class="notification-time">Módulo de atenção primária</span>
+            <div class="col-lg-3">
+                <h3 data-countup='{"endValue":<?= $viagens['realizadas'] ?>,"duration":5, "separator":"."}'>0</h3>
+                <p class="text-success">Realizadas <a data-toggle="tooltip" title="Ver viagens realizadas" href="<?= base_url('v2/transportes/viagens-realizadas') ?>"><i class="fas fa-external-link-alt"></i></a></p>
             </div>
-        </a>
-
-        <a class="border-bottom-0 notification rounded-0 border-x-0 border border-300" href="#!">
-            <div class="notification-avatar">
-                <div class="avatar avatar-xl mr-3">
-                    <div class="avatar-emoji rounded-circle "><span role="img" aria-label="Emoji">🏷️</span></div>
-                </div>
+            <div class="col-lg-3">
+                <h3 data-countup='{"endValue":<?= $viagens['canceladas'] ?>,"duration":5, "separator":"."}'>0</h3>
+                <p class="text-danger">Canceladas <a data-toggle="tooltip" title="Ver viagens canceladas" href="<?= base_url('v2/transportes/viagens-canceladas') ?>"><i class="fas fa-external-link-alt"></i></a></p>
             </div>
-            <div class="notification-body">
-                <h2 class="h5">Almoxarifado</h2>
-                <span class="notification-time">Módulo de almoxarifado</span>
-            </div>
-        </a>
-
-        <a class="border-bottom-0 notification rounded-0 border-x-0 border border-300" href="#!">
-            <div class="notification-avatar">
-                <div class="avatar avatar-xl mr-3">
-                    <div class="avatar-emoji rounded-circle "><span role="img" aria-label="Emoji">📅️</span></div>
-                </div>
-            </div>
-            <div class="notification-body">
-                <h2 class="h5">Transporte</h2>
-                <span class="notification-time">Módulo de controle de transportes</span>
-            </div>
-        </a>
-
+        </div>
     </div>
 </div>

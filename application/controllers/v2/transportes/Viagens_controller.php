@@ -35,6 +35,16 @@ class Viagens_controller extends Sistema_Controller
         $this->view('transporte/Viagens_realizadas_view', $data);
     }
 
+    /**
+     * GET: v2/transporte/viagens/canceladas
+     */
+    public function viagens_canceladas(): void
+    {
+        $data['title'] = 'Viagens canceladas';
+        $data['viagens'] = $this->Viagens->getAll(['deleted_at !=' => NULL]);
+        $this->view('transporte/Viagens_canceladas_view', $data);
+    }
+
 
     public function novo(): void
     {

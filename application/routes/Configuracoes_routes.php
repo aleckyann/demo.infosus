@@ -15,3 +15,10 @@ $route['v2/configuracoes/especialidades/novo']['post'] = 'v2/configuracoes/Espec
 $route['v2/configuracoes/usuarios']['get'] = 'v2/configuracoes/Usuarios_controller/index';
 $route['v2/configuracoes/usuarios/novo']['post'] = 'v2/configuracoes/Usuarios_controller/novo';
 $route['v2/configuracoes/usuarios/editar']['post'] = 'v2/configuracoes/Usuarios_controller/editar';
+
+$route['v2/configuracoes/cotas']['get'] = 'v2/configuracoes/Cotas_controller/index';
+$route['v2/configuracoes/cotas/novo']['post'] = 'v2/configuracoes/Cotas_controller/novo';
+
+
+$route['v2/configuracoes/estoques']['get'] = 'v2/configuracoes/Estoques_controller/index';
+$route['v2/configuracoes/estoques/novo']['post'] = 'v2/configuracoes/Estoques_controller/novo';

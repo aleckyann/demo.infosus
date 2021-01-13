@@ -6,6 +6,7 @@ $route['v2/transportes/veiculos/editar']['post'] = 'v2/transportes/Veiculos_cont
 
 $route['v2/transportes/viagens-agendadas']['get'] = 'v2/transportes/Viagens_controller/viagens_agendadas';
 $route['v2/transportes/viagens-realizadas']['get'] = 'v2/transportes/Viagens_controller/viagens_realizadas';
+$route['v2/transportes/viagens-canceladas']['get'] = 'v2/transportes/Viagens_controller/viagens_canceladas';
 $route['v2/transportes/viagens/novo']['post'] = 'v2/transportes/Viagens_controller/novo';
 $route['v2/transportes/viagens/editar'][ 'post'] = 'v2/transportes/Viagens_controller/editar';
 

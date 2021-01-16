@@ -8,13 +8,13 @@
             </a>
             <h3 class="font-weight-light">
 
-                <i class="fas fa-ticket-alt"></i> Cotas
+                <i class="fas fa-boxes"></i> Estoques
                 <!-- <span class="badge badge-soft-warning rounded-pill ml-2">-0.23%</span> -->
             </h3>
             <div class="collapse" id="collapseExample">
                 <div class="p-card">
                     <p class="mb-2">
-                        Nesta página você pode configurar as cotas cadastradas no sistema
+                        Nesta página você pode configurar os estoques cadastrados no sistema
                     </p>
                 </div>
             </div>
@@ -27,15 +27,15 @@
     <?= $this->ui->alert_flashdata() ?>
 
     <div class="card-body">
-        <table id="cotas_conf_datatable" class="table table-striped" style="min-height: 200px;">
+        <table id="estoque_conf_datatable" class="table table-striped" style="min-height: 200px;">
             <thead>
-                <th class="text-dark small text-left">COTAS</th>
+                <th class="text-dark small text-left">ESTOQUES</th>
             </thead>
             <tbody>
-                <?php foreach ($cotas as $c) { ?>
+                <?php foreach ($estoques as $e) { ?>
                     <tr>
                         <td class="small">
-                            <?= $c['cota_nome'] ?>
+                            <?= $e['estoque_nome'] ?>
                         </td>
                     </tr>
                 <?php } ?>
@@ -46,16 +46,45 @@
 
 
 <!-- CARREGAR COMPONENTES -->
-<?php $this->load->view('v2/components/add_cotas_conf_modal') ?>
+<?php $this->load->view('v2/components/add_estoques_modal') ?>
 
 <script>
     window.onload = function() {
 
-        var add_cotas_conf_modal = new bootstrap.Modal(document.getElementById('add_cotas_conf_modal'))
+        var add_estoque_modal = new bootstrap.Modal(document.getElementById('add_estoque_modal'))
+
+
+        $('.editar_paciente_button').on('click', function() {
+            var paciente_id = this.dataset.id;
+            $.ajax({
+                    method: "POST",
+                    url: "<?= base_url('v2/pacientes/jsonOne/') ?>",
+                    data: {
+                        <?= $csrf_name ?>: "<?= $csrf_value ?>",
+                        paciente_id: paciente_id
+                    }
+                })
+                .done(function(paciente) {
+                    $('#paciente_id').val(paciente.paciente_id);
+                    $('#acs').val(paciente.acs);
+                    $('#bairro_paciente').val(paciente.bairro_paciente);
+                    $('#cep').val(paciente.cep);
+                    $('#cns_paciente').val(paciente.cns_paciente);
+                    $('#cpf').val(paciente.cpf);
+                    $('#endereco_paciente').val(paciente.endereco_paciente);
+                    $('#identidade').val(paciente.identidade);
+                    $('#nascimento').val(paciente.nascimento);
+                    $('#nome_paciente').val(paciente.nome_paciente);
+                    $('#profissao').val(paciente.profissao);
+                    $('#responsavel').val(paciente.responsavel);
+                    $('#telefone_paciente').val(paciente.telefone_paciente);
+                });
+            editar_paciente_modal.toggle()
+        });
 
 
         //Add input de filtro às colunas
-        $('#cotas_conf_datatable thead th').each(function() {
+        $('#estoque_conf_datatable thead th').each(function() {
             let title = $(this).text();
             if (title == '' || title == 'OPÇÕES') {
 
@@ -70,7 +99,7 @@
 
 
 
-        $('#cotas_conf_datatable').DataTable({
+        $('#estoque_conf_datatable').DataTable({
             initComplete: function() {
                 this.api().columns().every(function() {
                     let that = this;
@@ -129,9 +158,9 @@
                 },
                 {
                     className: 'btn btn-falcon-default btn-sm rounded-pill font-weight-light m-1',
-                    text: '<i class="fas fa-ticket-alt"></i> Nova cota',
+                    text: '<i class="fas fa-boxes"></i> Novo estoque',
                     action: function() {
-                        $('#add_cotas_conf_modal').modal('show')
+                        $('#add_estoque_modal').modal('show')
                     }
 
                 }

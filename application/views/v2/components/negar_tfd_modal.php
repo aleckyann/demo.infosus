@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-danger">
-                <h5 class="modal-title font-weight-light text-white" id="negar_tfd_label"><i class="fas fa-calendar-times"></i> Negar TFD</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title font-weight-light text-white" id="negar_tfd_label"><i class="fas fa-laptop-medical"></i> Negar TFD</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="<?= base_url('v2/regulacao/tfd/negar') ?>" method="post">
                 <?= $csrf_input ?>
@@ -24,4 +24,3 @@
         </div>
     </div>
 </div>
-

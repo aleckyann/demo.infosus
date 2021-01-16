@@ -6,7 +6,7 @@
                 <input type="hidden" name="tfd_id" id="editar_tfd_id">
                 <input type="hidden" name="editar_tfd_anexo" id="editar_tfd_anexo">
                 <div class="modal-header bg-warning">
-                    <h5 class="modal-title font-weight-light text-white" id="editar_tfd_label"><i class="fas fa-edit"></i> Editar procedimento</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title font-weight-light text-white" id="editar_tfd_label"><i class="fas fa-laptop-medical"></i> Editar procedimento</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body modal-scroll">
                     <?= $csrf_input ?>

@@ -3,7 +3,7 @@
     <div class="modal-dialog  modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header bg-light">
-                <h5 class="modal-title font-weight-light text-dark" id="add_tfd_label"><i class="far fa-calendar-plus"></i> Adicionar novo TFD</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title font-weight-light text-dark" id="add_tfd_label"><i class="fas fa-laptop-medical"></i> Adicionar novo TFD</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="<?= base_url('v2/regulacao/tfd/novo') ?>" method="post" enctype="multipart/form-data">
                 <?= $csrf_input ?>

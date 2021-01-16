@@ -8,7 +8,7 @@
             </a>
             <h3 class="font-weight-light">
 
-                <i class="fas fa-user-edit"></i> Cotas
+                <i class="fas fa-ticket-alt"></i> Cotas
                 <!-- <span class="badge badge-soft-warning rounded-pill ml-2">-0.23%</span> -->
             </h3>
             <div class="collapse" id="collapseExample">
@@ -27,15 +27,15 @@
     <?= $this->ui->alert_flashdata() ?>
 
     <div class="card-body">
-        <table id="especialidades_conf_datatable" class="table table-striped" style="min-height: 200px;">
+        <table id="cotas_conf_datatable" class="table table-striped" style="min-height: 200px;">
             <thead>
-                <th class="text-dark small text-left">ESPECIALIDADE</th>
+                <th class="text-dark small text-left">COTAS</th>
             </thead>
             <tbody>
                 <?php foreach ($cotas as $c) { ?>
                     <tr>
                         <td class="small">
-                            <?= $c['especialidade_nome'] ?>
+                            <?= $e['cota_nome'] ?>
                         </td>
                     </tr>
                 <?php } ?>
@@ -46,43 +46,16 @@
 
 
 <!-- CARREGAR COMPONENTES -->
-<?php $this->load->view('v2/components/add_especialidade_conf_modal') ?>
+<?php $this->load->view('v2/components/add_cotas_conf_modal') ?>
 
 <script>
     window.onload = function() {
 
-
-        $('.editar_paciente_button').on('click', function() {
-            var paciente_id = this.dataset.id;
-            $.ajax({
-                    method: "POST",
-                    url: "<?= base_url('v2/pacientes/jsonOne/') ?>",
-                    data: {
-                        <?= $csrf_name ?>: "<?= $csrf_value ?>",
-                        paciente_id: paciente_id
-                    }
-                })
-                .done(function(paciente) {
-                    $('#paciente_id').val(paciente.paciente_id);
-                    $('#acs').val(paciente.acs);
-                    $('#bairro_paciente').val(paciente.bairro_paciente);
-                    $('#cep').val(paciente.cep);
-                    $('#cns_paciente').val(paciente.cns_paciente);
-                    $('#cpf').val(paciente.cpf);
-                    $('#endereco_paciente').val(paciente.endereco_paciente);
-                    $('#identidade').val(paciente.identidade);
-                    $('#nascimento').val(paciente.nascimento);
-                    $('#nome_paciente').val(paciente.nome_paciente);
-                    $('#profissao').val(paciente.profissao);
-                    $('#responsavel').val(paciente.responsavel);
-                    $('#telefone_paciente').val(paciente.telefone_paciente);
-                });
-            editar_paciente_modal.toggle()
-        });
+        var add_cotas_conf_modal = new bootstrap.Modal(document.getElementById('add_cotas_conf_modal'))
 
 
         //Add input de filtro às colunas
-        $('#especialidades_conf_datatable thead th').each(function() {
+        $('#cotas_conf_datatable thead th').each(function() {
             let title = $(this).text();
             if (title == '' || title == 'OPÇÕES') {
 
@@ -97,7 +70,7 @@
 
 
 
-        $('#especialidades_conf_datatable').DataTable({
+        $('#cotas_conf_datatable').DataTable({
             initComplete: function() {
                 this.api().columns().every(function() {
                     let that = this;
@@ -156,9 +129,9 @@
                 },
                 {
                     className: 'btn btn-falcon-default btn-sm rounded-pill font-weight-light m-1',
-                    text: '<i class="fas fa-user-edit"></i> Nova especialidade',
+                    text: '<i class="fas fa-ticket-alt"></i> Nova cota',
                     action: function() {
-                        $('#add_especialidade_conf_modal').modal('show')
+                        $('#add_cotas_conf_modal').modal('show')
                     }
 
                 }

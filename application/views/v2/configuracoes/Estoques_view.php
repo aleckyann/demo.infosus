@@ -8,7 +8,7 @@
             </a>
             <h3 class="font-weight-light">
 
-                <i class="fas fa-user-edit"></i> Estoques
+                <i class="fas fa-boxes"></i> Estoques
                 <!-- <span class="badge badge-soft-warning rounded-pill ml-2">-0.23%</span> -->
             </h3>
             <div class="collapse" id="collapseExample">
@@ -27,9 +27,9 @@
     <?= $this->ui->alert_flashdata() ?>
 
     <div class="card-body">
-        <table id="especialidades_conf_datatable" class="table table-striped" style="min-height: 200px;">
+        <table id="estoque_conf_datatable" class="table table-striped" style="min-height: 200px;">
             <thead>
-                <th class="text-dark small text-left">ESPECIALIDADE</th>
+                <th class="text-dark small text-left">ESTOQUES</th>
             </thead>
             <tbody>
                 <?php foreach ($estoques as $e) { ?>
@@ -46,10 +46,12 @@
 
 
 <!-- CARREGAR COMPONENTES -->
-<?php $this->load->view('v2/components/add_especialidade_conf_modal') ?>
+<?php $this->load->view('v2/components/add_estoques_conf_modal') ?>
 
 <script>
     window.onload = function() {
+
+        var add_estoque_conf_modal = new bootstrap.Modal(document.getElementById('add_estoque_conf_modal'))
 
 
         $('.editar_paciente_button').on('click', function() {
@@ -82,7 +84,7 @@
 
 
         //Add input de filtro às colunas
-        $('#especialidades_conf_datatable thead th').each(function() {
+        $('#estoque_conf_datatable thead th').each(function() {
             let title = $(this).text();
             if (title == '' || title == 'OPÇÕES') {
 
@@ -97,7 +99,7 @@
 
 
 
-        $('#especialidades_conf_datatable').DataTable({
+        $('#estoque_conf_datatable').DataTable({
             initComplete: function() {
                 this.api().columns().every(function() {
                     let that = this;
@@ -156,9 +158,9 @@
                 },
                 {
                     className: 'btn btn-falcon-default btn-sm rounded-pill font-weight-light m-1',
-                    text: '<i class="fas fa-user-edit"></i> Nova especialidade',
+                    text: '<i class="fas fa-boxes"></i> Novo estoque',
                     action: function() {
-                        $('#add_especialidade_conf_modal').modal('show')
+                        $('#add_estoque_conf_modal').modal('show')
                     }
 
                 }

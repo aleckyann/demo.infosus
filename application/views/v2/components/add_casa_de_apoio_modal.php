@@ -52,9 +52,8 @@
 
 <script>
     //Cria modal para adição de pacientes na casa de apoio
-    var add_casa_de_apoio_modal = new bootstrap.Modal(document.getElementById('add_casa_de_apoio_modal'), {
-        keyboard: false
-    })
+    var add_casa_de_apoio_modal = new bootstrap.Modal(document.getElementById('add_casa_de_apoio_modal'))
+    
     $(document).ready(function() {
         var casaDeApoio_select2 = $('#pacientesCasaDeApoio_select2').select2({
             ajax: {

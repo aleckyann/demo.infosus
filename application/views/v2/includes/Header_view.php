@@ -234,7 +234,19 @@
                                     </div>
                                 </a>
                                 <ul class="nav collapse" id="almoxarifadoNav" data-parent="#navbarVerticalCollapse">
-                                    <li class="nav-item"><a class="nav-link font-weight-light <?= (segment(3) == 'estoques') ? 'active' : '' ?>" href="<?= base_url('v2/almoxarifado/estoques') ?>"><i class="fas fa-boxes"></i> Estoques</a></li>
+                                    <li class="nav-item">
+                                        <a class="nav-link dropdown-indicator <?= (segment(3) == 'estoques') ? 'active collapsed' : '' ?>" href="#estoquesNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="previne_brasil_nav"><i class="fas fa-boxes"></i> Estoques</a>
+                                        <ul class="nav collapse <?= (segment(3) == 'estoques') ? 'show' : '' ?>" id="estoquesNav" data-parent="#estoquesNav">
+                                            <?php foreach ($this->Estoques->getAll() as $e) : ?>
+                                                <li class="nav-item">
+                                                    <a class="nav-link font-weight-light <?= (segment(4) == $e['estoque_id']) ? 'active' : '' ?>" href="<?= base_url('v2/almoxarifado/estoques/' . $e['estoque_id']) ?>"><i class="fas fa-box"></i> <?= $e['estoque_nome'] ?></a>
+                                                </li>
+                                            <?php endforeach; ?>
+                                            <li class="nav-item">
+                                                <a class="nav-link font-weight-light" href="#" data-toggle="modal" data-target="#add_estoques_modal"><i class="fas fa-cart-plus"></i> Novo Estoque</a>
+                                            </li>
+                                        </ul>
+                                    </li>
                                     <li class="nav-item"><a class="nav-link font-weight-light <?= (segment(3) == 'produtos') ? 'active' : '' ?>" href="<?= base_url('v2/almoxarifado/produtos') ?>"><i class="fas fa-box-open"></i> Produtos</a></li>
                                 </ul>
                             </li>
@@ -256,7 +268,7 @@
                                     <li class="nav-item"><a class="nav-link font-weight-light <?= (segment(3) == 'procedimentos') ? 'active' : '' ?>" href="<?= base_url('v2/configuracoes/procedimentos') ?>"><i class="fas fa-procedures"></i> Procedimentos</a></li>
                                     <li class="nav-item"><a class="nav-link font-weight-light <?= (segment(3) == 'municipios') ? 'active' : '' ?>" href="<?= base_url('v2/configuracoes/municipios') ?>"><i class="fas fa-globe-americas mr-1"></i> Municipios</a></li>
                                     <li class="nav-item"><a class="nav-link font-weight-light <?= (segment(3) == 'usuarios') ? 'active' : '' ?>" href="<?= base_url('v2/configuracoes/usuarios') ?>"><i class="fas fa-users"></i> Usuários</a></li>
-                                    <li class="nav-item"><a class="nav-link font-weight-light <?= (segment(3) == 'cotas') ? 'active' : '' ?>" href="<?= base_url('v2/configuracoes/cotas') ?>"><i class="fas fa-ticket-alt"></i> Cotas</a></li>
+                                    <li class="nav-item"><a class="nav-link font-weight-light <?= (segment(3) == 'cotas') ? 'active' : '' ?>" href="<?= base_url('v2/configuracoes/cotas') ?>"><i class="fas fa-ticket-alt"></i> Cotas / Convênios</a></li>
                                 </ul>
                             </li>
                         </ul>

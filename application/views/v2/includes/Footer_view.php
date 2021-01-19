@@ -61,6 +61,7 @@
 <?php $this->load->view('v2/components/add_tfd_modal') ?>
 <?php $this->load->view('v2/components/load_paciente_modal') ?>
 <?php $this->load->view('v2/components/add_viagem_modal') ?>
+<?php $this->load->view('v2/components/add_estoques_modal') ?>
 
 </body>
 

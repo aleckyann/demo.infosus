@@ -15,14 +15,6 @@ class Pacientes_controller extends Sistema_Controller
         $this->view('pacientes/Listagem_view', $data);
     }
 
-    /**
-     * GET: v2/pacientes/historicos/(num)
-     */
-    public function historicos(int $paciente_id): void
-    {
-        $data['title'] = 'Histórico do paciente';
-        $this->view('pacientes/Historicos_view', $data);
-    }
     
     /**
      * 

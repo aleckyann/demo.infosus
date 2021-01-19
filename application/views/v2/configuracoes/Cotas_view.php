@@ -8,7 +8,7 @@
             </a>
             <h3 class="font-weight-light">
 
-                <i class="fas fa-ticket-alt"></i> Cotas
+                <i class="fas fa-ticket-alt"></i> Cotas / Convênios
                 <!-- <span class="badge badge-soft-warning rounded-pill ml-2">-0.23%</span> -->
             </h3>
             <div class="collapse" id="collapseExample">
@@ -129,7 +129,7 @@
                 },
                 {
                     className: 'btn btn-falcon-default btn-sm rounded-pill font-weight-light m-1',
-                    text: '<i class="fas fa-ticket-alt"></i> Nova cota',
+                    text: '<i class="fas fa-ticket-alt"></i> Nova cota/convênio',
                     action: function() {
                         $('#add_cotas_conf_modal').modal('show')
                     }

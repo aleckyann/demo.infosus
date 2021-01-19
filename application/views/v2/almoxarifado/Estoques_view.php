@@ -158,7 +158,7 @@
                 },
                 {
                     className: 'btn btn-falcon-default btn-sm rounded-pill font-weight-light m-1',
-                    text: '<i class="fas fa-boxes"></i> Novo estoque',
+                    text: '<i class="fas fa-cart-new"></i> Novo estoque',
                     action: function() {
                         $('#add_estoque_modal').modal('show')
                     }

@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header bg-light">
-                <h5 class="modal-title font-weight-light" id="add_municipio_label"><i class="fas fa-ticket-alt"></i> Adicionar nova cota</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title font-weight-light" id="add_municipio_label"><i class="fas fa-ticket-alt"></i> Adicionar nova cota/convênio</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="<?= base_url('v2/configuracoes/cotas/novo') ?>" method="post">
                 <div class="modal-body modal-scroll">

@@ -28,18 +28,21 @@
 
     <div class="card-body">
         <p class="font-weight-light text-dark">
-            <b>Paciente:</b> Fulano de tal
+            <b>Paciente:</b> <span class="text-primary"><?= $paciente['nome_paciente'] ?></span>
         </p>
+
         <hr>
-        <ul class="nav nav-pills" id="pill-myTab" role="tablist">
-            <li class="nav-item"><a class="nav-link active" id="pill-home-tab" data-toggle="tab" href="#pill-tab-procedimentos" role="tab" aria-controls="pill-tab-home" aria-selected="true"><i class="fas fa-diagnoses"></i> Procedimentos</a></li>
-            <li class="nav-item"><a class="nav-link" id="pill-profile-tab" data-toggle="tab" href="#pill-tab-tfd" role="tab" aria-controls="pill-tab-profile" aria-selected="false"><i class="fas fa-laptop-medical"></i> TFD</a></li>
-            <li class="nav-item"><a class="nav-link" id="pill-contact-tab" data-toggle="tab" href="#pill-tab-viagens" role="tab" aria-controls="pill-tab-contact" aria-selected="false"><i class="fas fa-route"></i> Viagens</a></li>
-            <li class="nav-item"><a class="nav-link" id="pill-contact-tab" data-toggle="tab" href="#pill-tab-casa" role="tab" aria-controls="pill-tab-contact" aria-selected="false"><i class="fas fa-house-user"></i> Casa de apoio</a></li>
+
+        <ul class="nav nav-pills" role="tablist">
+            <li class="nav-item"><a class="nav-link active" id="pill-procedimentos-tab" data-toggle="tab" href="#pill-tab-procedimentos" role="tab" aria-controls="pill-tab-procedimentos" aria-selected="true"><i class="fas fa-diagnoses"></i> Procedimentos</a></li>
+            <li class="nav-item"><a class="nav-link" id="pill-tfd-tab" data-toggle="tab" href="#pill-tab-tfd" role="tab" aria-controls="pill-tab-tfd" aria-selected="false"><i class="fas fa-laptop-medical"></i> TFD</a></li>
+            <li class="nav-item"><a class="nav-link" id="pill-passageiros-tab" data-toggle="tab" href="#pill-tab-passageiros" role="tab" aria-controls="pill-tab-passageiros" aria-selected="false"><i class="fas fa-route"></i> Viagens</a></li>
+            <li class="nav-item"><a class="nav-link" id="pill-casa-tab" data-toggle="tab" href="#pill-tab-casa" role="tab" aria-controls="pill-tab-casa" aria-selected="false"><i class="fas fa-house-user"></i> Casa de apoio</a></li>
         </ul>
-        <div class="tab-content border p-3 mt-3" id="pill-myTabContent">
-            <div class="tab-pane fade show active" id="pill-tab-procedimentos" role="tabpanel" aria-labelledby="home-tab">
-                <table class="table table-bordered">
+        <div class="tab-content border p-3 mt-3">
+            <!-- Procedimentos -->
+            <div class="tab-pane fade show active" id="pill-tab-procedimentos" role="tabpanel" aria-labelledby="procedimentos-tab">
+                <table class="table table-bordered" id="historico_procedimentos_datatable">
                     <thead class="bg-light">
                         <th>Data</th>
                         <th>Estabelecimento</th>
@@ -49,73 +52,85 @@
                     <tbody>
                         <?php foreach ($procedimentos as $p) : ?>
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>as</td>
+                                <td>asasas</td>
+                                <td>sdsdsf</td>
+                                <td>sdfsdf</td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
-            <div class="tab-pane fade" id="pill-tab-tfd" role="tabpanel" aria-labelledby="profile-tab">
-                <table class="table table-bordered">
+
+            <!-- Tfd -->
+            <div class="tab-pane fade" id="pill-tab-tfd" role="tabpanel" aria-labelledby="tfd-tab">
+                <table class="table table-bordered" id="historico_tfd_datatable">
                     <thead class="bg-light">
-                        <th>Data</th>
-                        <th>Estabelecimento</th>
-                        <th>Prestador</th>
+                        <th>Data da solicitação</th>
+                        <th>Data do atendimento</th>
+                        <th>Cidade</th>
                         <th>Cota</th>
+                        <th>Prestador</th>
                     </thead>
                     <tbody>
+
                         <?php foreach ($tfd as $t) : ?>
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td><?=$t['tfd_data_solicitacao']?></td>
+                                <td><?=$t['tfd_data_atendimento']?></td>
+                                <td><?=$t['tfd_cidade_destino']?></td>
+                                <td><?=$t['tfd_cota']?></td>
+                                <td><?=$t['tfd_estabelecimento_prestador']?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
-            <div class="tab-pane fade" id="pill-tab-viagens" role="tabpanel" aria-labelledby="contact-tab">
-                <table class="table table-bordered">
+
+            <!-- Passageiros -->
+            <div class="tab-pane fade" id="pill-tab-passageiros" role="tabpanel" aria-labelledby="passageiros-tab">
+                <table class="table table-bordered" id="historico_passageiros_datatable">
                     <thead class="bg-light">
-                        <th>Data</th>
+                        <th>Data marcada</th>
+                        <th>Data da viagem</th>
                         <th>Origem</th>
                         <th>Destino</th>
                     </thead>
                     <tbody>
-                        <?php foreach ($viagens as $v) : ?>
+
+                        <?php foreach ($passageiros as $p) : ?>
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td><?= date_format(date_create($p['viagem_data']), 'd/m/Y') ?></td>
+                                <td><?= date_format(date_create($p['viagem_realizada']), 'd/m/Y') ?></td>
+                                <td><?= $p['viagem_origem'] ?></td>
+                                <td><?= $p['viagem_destino'] ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
-            <div class="tab-pane fade" id="pill-tab-casa" role="tabpanel" aria-labelledby="contact-tab">
-                <table class="table table-bordered">
+
+            <!-- Casa -->
+            <div class="tab-pane fade" id="pill-tab-casa" role="tabpanel" aria-labelledby="casa-tab">
+                <table class="table table-bordered" id="historico_casa_datatable">
                     <thead class="bg-light">
-                        <th>Data</th>
-                        <th>Estabelecimento</th>
-                        <th>Prestador</th>
-                        <th>Cota</th>
+                        <th>Entrada</th>
+                        <th>Saída</th>
+                        <th>Observação</th>
                     </thead>
                     <tbody>
                         <?php foreach ($casa as $c) : ?>
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td><?= date_format(date_create($c['data_entrada']), 'd/m/Y') ?></td>
+                                <td><?= date_format(date_create($c['data_saida']), 'd/m/Y') ?></td>
+                                <td><?= $c['observacao'] ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
+
         </div>
+
     </div>
 </div>

@@ -11,7 +11,7 @@ class Pacientes_model extends CI_model
      * Busca todas os pacientes
      * Recebe um array(opcional)
      */
-    public function getAll(Array $where =[]) :Array
+    public function getAll(array $where =[]) :Array
     {
         return $this->db->order_by('nome_paciente', 'asc')->get_where($this->table, $where)->result_array();
     }

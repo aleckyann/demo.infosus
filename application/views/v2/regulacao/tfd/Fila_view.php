@@ -105,10 +105,10 @@
 <script>
     window.onload = function() {
 
-        //Cria modal para editar tfd
+        //[MODAL EDITAR]
         var editar_tfd_modal = new bootstrap.Modal(document.getElementById('editar_tfd_modal'))
 
-        // ABRE MODAL DE EDITAR
+        //ABRE MODAL E CARREGA INFORMAÇÕES [MODAL EDITAR]
         $('.aditar_tfd_button').on('click', function() {
             var tfd_id = this.dataset.tfd_id;
             $.ajax({
@@ -119,6 +119,7 @@
                     }
                 })
                 .done(function(tfd) {
+                    console.log(tfd)
                     $('#editar_tfd_paciente_nome').val(tfd.nome_paciente);
                     $('#editar_tfd_paciente_nascimento').val(tfd.nascimento);
                     $('#editar_tfd_paciente_cpf').val(tfd.cpf);
@@ -126,7 +127,9 @@
                     $('#editar_tfd_data_atendimento').val(tfd.tfd_data_atendimento);
                     $('#editar_tfd_cidade_destino').val(tfd.tfd_cidade_destino);
                     $('#editar_tfd_cota').val(tfd.tfd_cota);
-                    $('#editar_tfd_estabelecimento_solicitante').val(tfd.tfd_estabelecimento_solicitante);
+                    $('#editar_tfd_estabelecimento_solicitante').append(`
+                            <option selected value="${tfd.tfd_estabelecimento_solicitante}">${tfd.estabelecimento_nome}</option>
+                    `)
                     $('#editar_tfd_estabelecimento_prestador').val(tfd.tfd_estabelecimento_prestador);
                     $('#editar_tfd_alimentacao').val(tfd.tfd_alimentacao);
                     $('#editar_tfd_passagem').val(tfd.tfd_passagem);
@@ -141,12 +144,36 @@
             editar_tfd_modal.toggle()
         });
 
+        //CARREGA SELECT2 COM ESTABELECIMENTOS [MODAL EDITAR]
+        let editar_tfd_estabelecimento_solicitante = $('#editar_tfd_estabelecimento_solicitante').select2({
+            ajax: {
+                url: '<?= base_url('v2/api/estabelecimentos-solicitantes/json') ?>',
+                method: 'POST',
+                data: function(params) {
+                    let query = {
+                        estabelecimento: params.term,
+                        <?= $csrf_name ?>: '<?= $csrf_value ?>'
+                    }
+                    return query;
+                },
+                processResults: function(data, params) {
+                    return {
+                        results: data
+                    }
+                },
+                dataType: 'json',
+                placeholder: "Selecione um estabelecimento",
+            },
+            delay: 250,
+            minimumInputLength: 1,
+        });
+
         // ==================================
 
-        //Cria modal para agendar tfd
-        var agendar_tfd_modal = new bootstrap.Modal(document.getElementById('agendar_tfd_modal'))
+        //[MODAL AGENDAR]
+        let agendar_tfd_modal = new bootstrap.Modal(document.getElementById('agendar_tfd_modal'))
 
-        // ABRE MODAL DE AGENDAR
+        //ABRE MODAL DE AGENDAMENTO E CARREGA DADOS
         $('.agendar_tfd_button').on('click', function() {
             var tfd_id = this.dataset.tfd_id;
             $.ajax({
@@ -157,13 +184,13 @@
                     }
                 })
                 .done(function(tfd) {
+                    console.log(tfd)
                     $('#agendar_tfd_paciente_nome').val(tfd.nome_paciente);
                     $('#agendar_tfd_paciente_nascimento').val(tfd.nascimento);
                     $('#agendar_tfd_paciente_cpf').val(tfd.cpf);
                     $('#agendar_tfd_id').val(tfd.tfd_id);
                     $('#agendar_tfd_data_solicitacao').val(tfd.tfd_data_solicitacao);
                     $('#agendar_tfd_data_atendimento').val(tfd.tfd_data_atendimento);
-                    $('#agendar_tfd_cidade_destino').val(tfd.tfd_cidade_destino);
                     $('#agendar_tfd_cota').val(tfd.tfd_cota);
                     $('#agendar_tfd_estabelecimento_solicitante').val(tfd.tfd_estabelecimento_solicitante);
                     $('#agendar_tfd_estabelecimento_prestador').val(tfd.tfd_estabelecimento_prestador);
@@ -177,6 +204,30 @@
                 });
             agendar_tfd_modal.toggle()
         });
+        //CARREGAR SELECT2 COM CIDADE DE DESTINO [MODAL AGENDAR]
+        let agendar_tfd_cidade_destino = $('#agendar_tfd_cidade_destino').select2({
+            ajax: {
+                url: '<?= base_url('v2/api/municipios/json') ?>',
+                method: 'POST',
+                data: function(params) {
+                    let query = {
+                        nome: params.term,
+                        <?= $csrf_name ?>: '<?= $csrf_value ?>'
+                    }
+                    return query;
+                },
+                processResults: function(data, params) {
+                    return {
+                        results: data
+                    }
+                },
+                dataType: 'json',
+                placeholder: "Selecione um município",
+            },
+            delay: 250,
+            minimumInputLength: 1,
+        });
+        
 
         // ================================
 

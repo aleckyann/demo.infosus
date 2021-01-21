@@ -10,9 +10,18 @@
                     <?= $csrf_input ?>
                     <div class="row">
 
-                        <div class="mb-2 col-lg-12">
+                        <div class="mb-2 col-lg-7">
                             <label for="">Nome da estabelecimento</label>
-                            <input type="text" class="form-control" name="estabelecimento" placeholder="Informe o nome do estabelecimento que deseja adicionar ao sistema." required>
+                            <input type="text" class="form-control" name="estabelecimento_nome" placeholder="Informe o nome do estabelecimento" required>
+                        </div>
+
+                        <div class="mb-2 col-lg-5">
+                            <label for="">Tipo de estabelecimento</label>
+                            <select name="estabelecimento_tipo" class="form-select" required>
+                                <option value="" selected disabled>SELECIONE</option>
+                                <option value="SOLICITANTE">SOLICITANTE/LOCAL</option>
+                                <option value="PRESTADOR">PRESTADOR DE SERVIÇO</option>
+                            </select>
                         </div>
 
                     </div>

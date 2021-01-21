@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Classe para manipulação da tabela estabelecimentos_solicitantes
+ * Classe para manipulação da tabela estabelecimentos
  */
 class Estabelecimentos_model extends CI_model
 {
-    protected $table = 'estabelecimentos_solicitantes';
+    protected $table = 'estabelecimentos';
 
     /**
-     * Busca todas os estabelecimentos_solicitantes
+     * Busca todas os estabelecimentos
      * Recebe um array(opcional)
      */
     public function getAll(array $where = []): array
@@ -17,7 +17,7 @@ class Estabelecimentos_model extends CI_model
     }
 
     /**
-     * Atualiza um estabelecimentos_solicitantes
+     * Atualiza um estabelecimentos
      * Recebe um array
      */
     public function update(array $where, array $dados): void
@@ -26,7 +26,7 @@ class Estabelecimentos_model extends CI_model
     }
 
     /**
-     * Insere um registro em estabelecimentos_solicitantes
+     * Insere um registro em estabelecimentos
      * Recebe um array
      */
     public function insert(array $dados): void

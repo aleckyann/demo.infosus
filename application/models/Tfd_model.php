@@ -61,6 +61,7 @@ class Tfd_model extends CI_model
     public function porPaciente(array $where = []): array
     {
         $this->db->join('pacientes', 'tfd.paciente_id =  pacientes.paciente_id');
+        $this->db->join('estabelecimentos', 'estabelecimentos.estabelecimento_id =  tfd.tfd_estabelecimento_solicitante');
         return $this->db->get_where('tfd', $where)->result_array();
     }
 }

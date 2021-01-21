@@ -43,19 +43,21 @@
             <!-- Procedimentos -->
             <div class="tab-pane fade show active" id="pill-tab-procedimentos" role="tabpanel" aria-labelledby="procedimentos-tab">
                 <table class="table table-bordered" id="historico_procedimentos_datatable">
-                    <thead class="bg-light">
-                        <th>Data</th>
-                        <th>Estabelecimento</th>
-                        <th>Prestador</th>
+                    <thead class="bg-light text-dark">
+                        <th>Data da solicitação</th>
+                        <th>Data do atendimento</th>
+                        <th>Cidade</th>
                         <th>Cota</th>
+                        <th>Prestador</th>
                     </thead>
                     <tbody>
                         <?php foreach ($procedimentos as $p) : ?>
                             <tr>
-                                <td>as</td>
-                                <td>asasas</td>
-                                <td>sdsdsf</td>
-                                <td>sdfsdf</td>
+                                <td><?= date_format(date_create($p['data_solicitacao']), 'd/m/Y') ?></td>
+                                <td><?= date_format(date_create($p['data']), 'd/m/Y') ?></td>
+                                <td><?= $p['estabelecimento_prestador'] ?></td>
+                                <td><?= $p['estabelecimento_solicitante'] ?></td>
+                                <td><?= $p['cota'] ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -65,7 +67,7 @@
             <!-- Tfd -->
             <div class="tab-pane fade" id="pill-tab-tfd" role="tabpanel" aria-labelledby="tfd-tab">
                 <table class="table table-bordered" id="historico_tfd_datatable">
-                    <thead class="bg-light">
+                    <thead class="bg-light text-dark">
                         <th>Data da solicitação</th>
                         <th>Data do atendimento</th>
                         <th>Cidade</th>
@@ -76,11 +78,11 @@
 
                         <?php foreach ($tfd as $t) : ?>
                             <tr>
-                                <td><?=$t['tfd_data_solicitacao']?></td>
-                                <td><?=$t['tfd_data_atendimento']?></td>
-                                <td><?=$t['tfd_cidade_destino']?></td>
-                                <td><?=$t['tfd_cota']?></td>
-                                <td><?=$t['tfd_estabelecimento_prestador']?></td>
+                                <td><?= $t['tfd_data_solicitacao'] ?></td>
+                                <td><?= $t['tfd_data_atendimento'] ?></td>
+                                <td><?= $t['tfd_cidade_destino'] ?></td>
+                                <td><?= $t['tfd_cota'] ?></td>
+                                <td><?= $t['tfd_estabelecimento_prestador'] ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -90,7 +92,7 @@
             <!-- Passageiros -->
             <div class="tab-pane fade" id="pill-tab-passageiros" role="tabpanel" aria-labelledby="passageiros-tab">
                 <table class="table table-bordered" id="historico_passageiros_datatable">
-                    <thead class="bg-light">
+                    <thead class="bg-light text-dark">
                         <th>Data marcada</th>
                         <th>Data da viagem</th>
                         <th>Origem</th>
@@ -102,8 +104,8 @@
                             <tr>
                                 <td><?= date_format(date_create($p['viagem_data']), 'd/m/Y') ?></td>
                                 <td><?= date_format(date_create($p['viagem_realizada']), 'd/m/Y') ?></td>
-                                <td><?= $p['viagem_origem'] ?></td>
-                                <td><?= $p['viagem_destino'] ?></td>
+                                <td><?= $p['origem'] ?></td>
+                                <td><?= $p['destino'] ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -113,7 +115,7 @@
             <!-- Casa -->
             <div class="tab-pane fade" id="pill-tab-casa" role="tabpanel" aria-labelledby="casa-tab">
                 <table class="table table-bordered" id="historico_casa_datatable">
-                    <thead class="bg-light">
+                    <thead class="bg-light text-dark">
                         <th>Entrada</th>
                         <th>Saída</th>
                         <th>Observação</th>

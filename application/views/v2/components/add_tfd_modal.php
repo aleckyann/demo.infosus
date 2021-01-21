@@ -32,7 +32,8 @@
 
                         <div class="mb-2 col-lg-3">
                             <label for="">Estabelecimento solicitante <i class="fa fa-question-circle text-muted" data-toggle="tooltip" title="Qual estabelecimento solicitou o TFD"></i></label>
-                            <input type="text" name="tfd_estabelecimento_solicitante" class="form-control" required>
+                            <select name="tfd_estabelecimento_solicitante" id="add_tfd_estabelecimento_solicitante" style="width: 100%;" required></select>
+
                         </div>
 
                         <div class="mb-2 col-lg-6">
@@ -87,15 +88,15 @@
 </div>
 <script>
     //Cria modal para editar paciente
-    var add_tfd_modal = new bootstrap.Modal(document.getElementById('add_tfd_modal'));
+    let add_tfd_modal = new bootstrap.Modal(document.getElementById('add_tfd_modal'));
 
     $(document).ready(function() {
-        var tfdSelect2 = $('#addTfdSelect2').select2({
+        let tfdSelect2 = $('#addTfdSelect2').select2({
             ajax: {
                 url: '<?= base_url('v2/pacientes/json/select2') ?>',
                 method: 'POST',
                 data: function(params) {
-                    var query = {
+                    let query = {
                         nome_paciente: params.term,
                         <?= $csrf_name ?>: '<?= $csrf_value ?>'
                     }
@@ -117,6 +118,30 @@
         tfdSelect2.on('select2:select', function(e) {
             $('#disabled_paciente_cpf_tfd').val(e.params.data.cpf)
             $('#disabled_paciente_nascimento_tfd').val(e.params.data.nascimento)
+        });
+
+        //ESTABELECIMENTOS SOLICITANTES
+        let add_tfd_estabelecimento_solicitante = $('#add_tfd_estabelecimento_solicitante').select2({
+            ajax: {
+                url: '<?= base_url('v2/api/estabelecimentos-solicitantes/json') ?>',
+                method: 'POST',
+                data: function(params) {
+                    let query = {
+                        estabelecimento: params.term,
+                        <?= $csrf_name ?>: '<?= $csrf_value ?>'
+                    }
+                    return query;
+                },
+                processResults: function(data, params) {
+                    return {
+                        results: data
+                    }
+                },
+                dataType: 'json',
+                placeholder: "Selecione um paciente",
+            },
+            delay: 250,
+            minimumInputLength: 1,
         });
     });
 </script>

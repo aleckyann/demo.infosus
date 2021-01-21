@@ -1,5 +1,5 @@
 <!-- Modal editar_tfd_modal-->
-<div class="modal fade" id="editar_tfd_modal" tabindex="-1" role="dialog" aria-labelledby="editar_tfd_label" aria-hidden="true">
+<div class="modal fade" id="editar_tfd_modal" role="dialog" aria-labelledby="editar_tfd_label" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <form action="<?= base_url('v2/regulacao/tfd/editar') ?>" method="post" enctype="multipart/form-data">
@@ -32,9 +32,10 @@
                         </div>
 
                         <div class="mb-2 col-4">
-                            <label for="">Estabelecimento solicitante</label>
-                            <input type="text" name="tfd_estabelecimento_solicitante" id="editar_tfd_estabelecimento_solicitante" class="form-control">
+                            <label for="tfd_estabelecimento_solicitante">Estabelecimento solicitante</label>
+                            <select name="tfd_estabelecimento_solicitante" id="editar_tfd_estabelecimento_solicitante" style="width: 100%;" required></select>
                         </div>
+
                         <div class="mb-2 col-4">
                             <label for="">Anexo <small class="text-muted">(.jpeg .jpg .png pdf .doc .docx)</small> </label>
                             <div class="form-file">
@@ -46,13 +47,10 @@
                             </div>
                         </div>
 
-
                         <div class="mb-2 col-12">
                             <label for="">Descrição</label>
                             <textarea name="tfd_descricao" id="editar_tfd_descricao" rows="1" class="form-control"></textarea>
                         </div>
-
-
 
                         <div class="col-12 mt-1">
                             <label>Classificação de risco / vunerabilidade:</label>

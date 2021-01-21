@@ -35,12 +35,12 @@
                         </div>
                         <div class="mb-2 col-lg-4">
                             <label for="">Cidade do atendimento <i class="fa fa-question-circle text-primary" data-toggle="tooltip" title="Cidade em que paciente vai realizar o atendimento."></i></label>
-                            <input type="text" name="tfd_cidade_destino" id="agendar_tfd_cidade_destino" class="form-control" required>
+                            <select name="tfd_cidade_destino" id="agendar_tfd_cidade_destino" style="width: 100%;" required></select>
                         </div>
 
                         <div class="mb-2 col-lg-3">
                             <label for="">Tipo de deslocamento</label>
-                            <select name="tfd_veiculo" id="agendar_tfd_veiculo" class="form-control" id="" required>
+                            <select name="tfd_veiculo" id="agendar_tfd_veiculo" class="form-select" id="" required>
                                 <option value="" disabled selected>Selecione</option>
                                 <option value="Ambulância">Ambulância</option>
                                 <option value="Carro de passeio">Carro de passeio</option>
@@ -51,23 +51,38 @@
                         </div>
 
                         <div class="mb-2 col-lg-3">
-                            <label for="">cota</label>
-                            <input type="text" name="tfd_cota" id="agendar_tfd_cota" class="form-control" required>
+                            <label for="">Cota/convênio</label>
+                            <select name="tfd_cota" id="agendar_tfd_cota" class="form-select" id="" required>
+                                <option value="" disabled selected>Selecione</option>
+                                <?php foreach ($this->Cotas->getAll() as $c) : ?>
+                                    <option value="<?= $c['cota_id'] ?>"><?= $c['cota_nome'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                         <div class="mb-2 col-lg-3">
                             <label for="">Estabelecimento solicitante</label>
-                            <input type="text" name="tfd_estabelecimento_solicitante" id="agendar_tfd_estabelecimento_solicitante" class="form-control" required>
+                            <select name="tfd_estabelecimento_solicitante" id="agendar_tfd_estabelecimento_solicitante" class="form-select" required>
+                                <option value="" disabled selected>Selecione</option>
+                                <?php foreach ($this->Estabelecimentos->getAll(['estabelecimento_tipo' => 'SOLICITANTE']) as $c) : ?>
+                                    <option value="<?= $c['estabelecimento_id'] ?>"><?= $c['estabelecimento_nome'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                         <div class="mb-2 col-lg-3">
                             <label for="">Estabelecimento prestador</label>
-                            <input type="text" name="tfd_estabelecimento_prestador" id="agendar_tfd_estabelecimento_prestador" class="form-control" required>
+                            <select name="tfd_estabelecimento_prestador" id="agendar_tfd_estabelecimento_prestador" class="form-select" required>
+                                <option value="" disabled selected>Selecione</option>
+                                <?php foreach ($this->Estabelecimentos->getAll(['estabelecimento_tipo' => 'PRESTADOR']) as $c) : ?>
+                                    <option value="<?= $c['estabelecimento_id'] ?>"><?= $c['estabelecimento_nome'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
 
                         <hr>
 
                         <div class="col-lg-3">
                             <label for="tfd_alimentacao" name="tfd_alimentacao"> Necessidade de alimentação? <i class="fa fa-question-circle text-primary" data-toggle="tooltip" data-placement="top" title="Este paciente precisa de ajuda de custo para alimentação?"></i></label>
-                            <select name="tfd_alimentacao" class="form-control" id="agendar_tfd_alimentacao" required>
+                            <select name="tfd_alimentacao" class="form-select" id="agendar_tfd_alimentacao" required>
                                 <option value="" selected disabled>Selecione</option>
                                 <option value="Não">Não</option>
                                 <option value="Sim">Sim</option>
@@ -75,7 +90,7 @@
                         </div>
                         <div class="col-lg-3">
                             <label for="tfd_passagem" name="tfd_passagem"> Necessidade de Passagem? <i class="fa fa-question-circle text-primary" data-toggle="tooltip" data-placement="top" title="Este paciente precisa de ajuda de custo com passagem?"></i></label>
-                            <select name="tfd_passagem" class="form-control" id="agendar_tfd_passagem" required>
+                            <select name="tfd_passagem" class="form-select" id="agendar_tfd_passagem" required>
                                 <option value="" selected disabled>Selecione</option>
                                 <option value="Não">Não</option>
                                 <option value="Sim">Sim</option>
@@ -83,7 +98,7 @@
                         </div>
                         <div class="col-lg-3">
                             <label for="tfd_hospedagem" name="tfd_hospedagem"> Necessidade de Hospedagem? <i class="fa fa-question-circle text-primary" data-toggle="tooltip" data-placement="top" title="Este paciente precisa de ajuda de custo com hospedagem?"></i></label>
-                            <select name="tfd_hospedagem" class="form-control" id="agendar_tfd_hospedagem" required>
+                            <select name="tfd_hospedagem" class="form-select" id="agendar_tfd_hospedagem" required>
                                 <option value="" selected disabled>Selecione</option>
                                 <option value="Não">Não</option>
                                 <option value="Sim">Sim</option>

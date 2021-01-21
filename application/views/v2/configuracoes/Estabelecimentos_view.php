@@ -30,12 +30,16 @@
         <table id="estabelecimentos_conf_datatable" class="table table-striped" style="min-height: 200px;">
             <thead>
                 <th class="text-dark small text-left">ESTABELECIMENTO</th>
+                <th class="text-dark small text-left">TIPO</th>
             </thead>
             <tbody>
                 <?php foreach ($estabelecimentos as $e) { ?>
                     <tr>
                         <td class="small">
-                            <?= $e['estabelecimento'] ?>
+                            <?= $e['estabelecimento_nome'] ?>
+                        </td>
+                        <td class="small">
+                            <?= $e['estabelecimento_tipo'] ?>
                         </td>
                     </tr>
                 <?php } ?>
@@ -133,6 +137,8 @@
 
             "aoColumns": [{
                 "bSortable": false
+            }, {
+                "bSortable": false
             }],
             dom: 'Brtip',
             buttons: [{
@@ -156,7 +162,7 @@
                 },
                 {
                     className: 'btn btn-falcon-default btn-sm rounded-pill font-weight-light m-1',
-                    text: '<i class="fas fa-user-edit"></i> Nova estabelecimento',
+                    text: '<i class="fas fa-user-edit"></i> Novo estabelecimento',
                     action: function() {
                         $('#add_estabelecimento_conf_modal').modal('show')
                     }

@@ -64,7 +64,11 @@
                         </td>
 
                         <td class="small text-center">
-                            <a target="_new" href="<?= base_url('public/v2/anexos/tfd/' . $t['tfd_anexo']) ?>" data-toggle="tooltip" title="Clique para fazer download"><i class="fas fa-download"></i></a>
+                            <?php if ($t['tfd_anexo']) { ?>
+                                <a target="_new" href="<?= base_url('public/v2/anexos/tfd/' . $t['tfd_anexo']) ?>" data-toggle="tooltip" title="Clique para fazer download"><i class="fas fa-download"></i></a>
+                            <?php } else { ?>
+                                <i class="fas fa-download text-muted" data-toggle="tooltip" title="Nenhum anexo."></i>
+                            <?php } ?>
                         </td>
 
                         <td class="text-center p-1">

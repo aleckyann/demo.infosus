@@ -131,7 +131,9 @@
                     $('#editar_tfd_data_atendimento').val(tfd.tfd_data_atendimento);
                     $('#editar_tfd_cidade_destino').val(tfd.tfd_cidade_destino);
                     $('#editar_tfd_cota').val(tfd.tfd_cota);
-                    $('#editar_tfd_estabelecimento_solicitante').val(tfd.tfd_estabelecimento_solicitante);
+                    $('#editar_tfd_estabelecimento_solicitante').append(`
+                            <option selected value="${tfd.tfd_estabelecimento_solicitante}">${tfd.estabelecimento_nome}</option>
+                    `)
                     $('#editar_tfd_estabelecimento_prestador').val(tfd.tfd_estabelecimento_prestador);
                     $('#editar_tfd_alimentacao').val(tfd.tfd_alimentacao);
                     $('#editar_tfd_passagem').val(tfd.tfd_passagem);
@@ -142,6 +144,30 @@
                     $('#editar_tfd_descricao').val(tfd.tfd_descricao);
                 });
             editar_tfd_modal.toggle()
+        });
+
+        //CARREGA SELECT2 COM ESTABELECIMENTOS [MODAL EDITAR]
+        let editar_tfd_estabelecimento_solicitante = $('#editar_tfd_estabelecimento_solicitante').select2({
+            ajax: {
+                url: '<?= base_url('v2/api/estabelecimentos-solicitantes/json') ?>',
+                method: 'POST',
+                data: function(params) {
+                    let query = {
+                        estabelecimento: params.term,
+                        <?= $csrf_name ?>: '<?= $csrf_value ?>'
+                    }
+                    return query;
+                },
+                processResults: function(data, params) {
+                    return {
+                        results: data
+                    }
+                },
+                dataType: 'json',
+                placeholder: "Selecione um estabelecimento",
+            },
+            delay: 250,
+            minimumInputLength: 1,
         });
 
         // ==================================

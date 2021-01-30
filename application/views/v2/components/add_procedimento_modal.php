@@ -42,7 +42,7 @@
                         </div>
                         <div class="mb-2 col-lg-4">
                             <label for="">Profissional solicitante:</label>
-                            <select name="profissional solicitante" id="agendar_procedimento_profissionais" required style="width:100%"></select>
+                            <select name="profissional_solicitante" id="agendar_procedimento_profissionais" required style="width:100%"></select>
                         </div>
                         <div class="mb-2 col-lg-4">
                             <label for="">Data de entrada:</label>
@@ -165,6 +165,30 @@
                 },
                 dataType: 'json',
                 placeholder: "Selecione uma cota",
+            },
+            delay: 250,
+            minimumInputLength: 1,
+        });
+
+        //CARREGA SELECT2 COM MUNICIPIOS SOLICITANTES [MODAL EDITAR]
+        let agendar_procedimento_profissionais = $('#agendar_procedimento_profissionais').select2({
+            ajax: {
+                url: '<?= base_url('v2/api/profissionais/json') ?>',
+                method: 'POST',
+                data: function(params) {
+                    let query = {
+                        profissional_nome: params.term,
+                        <?= $csrf_name ?>: '<?= $csrf_value ?>'
+                    }
+                    return query;
+                },
+                processResults: function(data, params) {
+                    return {
+                        results: data
+                    }
+                },
+                dataType: 'json',
+                placeholder: "Selecione um profissional",
             },
             delay: 250,
             minimumInputLength: 1,

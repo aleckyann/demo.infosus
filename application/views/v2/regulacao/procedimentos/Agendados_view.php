@@ -102,7 +102,6 @@
                     <span class="text-dark font-weight-bold">${title}</span>
                     <input type="text" class="form-control form-control-sm pl-1" placeholder="🔎 Filtrar ${title.toLocaleLowerCase()}">
                 `);
-
             }
         });
 

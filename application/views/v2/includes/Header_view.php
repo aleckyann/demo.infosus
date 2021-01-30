@@ -188,7 +188,7 @@
                             </li>
                             <!-- antenção -->
                             <li class="nav-item">
-                                <a class="nav-link dropdown-indicator <?= (segment(2) == 'regulacao') ? 'active' : '' ?>" href="#atencao_primaria_nav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="atencao_primaria_nav">
+                                <a class="nav-link dropdown-indicator <?= (segment(2) == 'atencao-primaria') ? 'active' : '' ?>" href="#atencao_primaria_nav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="atencao_primaria_nav">
                                     <div class="d-flex align-items-center">
                                         <span class="nav-link-icon">
                                             <i class="fas fa-hand-holding-medical"></i>

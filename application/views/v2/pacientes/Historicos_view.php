@@ -78,8 +78,8 @@
 
                         <?php foreach ($tfd as $t) : ?>
                             <tr>
-                                <td><?= $t['tfd_data_solicitacao'] ?></td>
-                                <td><?= $t['tfd_data_atendimento'] ?></td>
+                                <td><?= date_format(date_create($t['tfd_data_solicitacao']),'d/m/Y') ?></td>
+                                <td><?= date_format(date_create($t['tfd_data_atendimento']),'d/m/Y') ?></td>
                                 <td><?= $t['tfd_cidade_destino'] ?></td>
                                 <td><?= $t['tfd_cota'] ?></td>
                                 <td><?= $t['tfd_estabelecimento_prestador'] ?></td>

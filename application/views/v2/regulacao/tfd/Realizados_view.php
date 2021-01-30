@@ -106,8 +106,9 @@
             var tfd_id = this.dataset.tfd_id;
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url('v2/regulacao/tfd/json/') ?>" + tfd_id,
+                    url: "<?= base_url('v2/api/tfd/json/') ?>",
                     data: {
+                        tfd_id: tfd_id,
                         <?= $csrf_name ?>: "<?= $csrf_value ?>"
                     }
                 })
@@ -120,7 +121,9 @@
                     $('#reagendar_tfd_paciente_cpf').val(tfd.cpf);
                     $('#reagendar_tfd_data_atendimento').val(tfd.tfd_data_atendimento);
                     $('#reagendar_tfd_data_solicitacao').val(tfd.tfd_data_solicitacao);
-                    $('#reagendar_tfd_cidade_destino').val(tfd.tfd_cidade_destino);
+                    $('#reagendar_tfd_cidade_destino').append(`
+                            <option selected value="${tfd.municipio_id}">${tfd.nome_municipio}</option>
+                    `)
                     $('#reagendar_tfd_cota').val(tfd.tfd_cota);
                     $('#reagendar_tfd_estabelecimento_solicitante').val(tfd.tfd_estabelecimento_solicitante);
                     $('#reagendar_tfd_estabelecimento_prestador').val(tfd.tfd_estabelecimento_prestador);
@@ -134,6 +137,30 @@
                     $('#reagendar_tfd_anexo').val(tfd.tfd_anexo);
                 });
             reagendar_tfd_modal.toggle()
+        });
+
+        //CARREGA SELECT2 COM ESTABELECIMENTOS [MODAL EDITAR]
+        let reagendar_tfd_cidade_destino = $('#reagendar_tfd_cidade_destino').select2({
+            ajax: {
+                url: '<?= base_url('v2/api/municipios/json') ?>',
+                method: 'POST',
+                data: function(params) {
+                    let query = {
+                        cidade_nome: params.term,
+                        <?= $csrf_name ?>: '<?= $csrf_value ?>'
+                    }
+                    return query;
+                },
+                processResults: function(data, params) {
+                    return {
+                        results: data
+                    }
+                },
+                dataType: 'json',
+                placeholder: "Selecione um estabelecimento",
+            },
+            delay: 250,
+            minimumInputLength: 1,
         });
 
         //ADICIONANDO FILTRO AS COLUNAS

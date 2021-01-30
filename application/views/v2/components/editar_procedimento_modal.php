@@ -1,5 +1,5 @@
 <!-- Modal editar_procedimento_modal-->
-<div class="modal fade" id="editar_procedimento_modal" tabindex="-1" role="dialog" aria-labelledby="editar_procedimento_label" aria-hidden="true">
+<div class="modal fade" id="editar_procedimento_modal" role="dialog" aria-labelledby="editar_procedimento_label" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-warning">
@@ -16,25 +16,25 @@
                         </div>
                         <div class="mb-2 col-lg-6">
                             <label for="">Nome do procedimento</label>
-                            <input type="text" name="nome_procedimento" id="nome_procedimento" class="form-control" required>
+                            <select name="nome_procedimento" id="agendar_procedimento_nome_procedimento" required style="width:100%"></select>
                         </div>
                         <div class="mb-2 col-lg-6">
                             <label for="">Especialidade</label>
                             <select name="especialidade" id="especialidade" class="form-select" required>
                                 <option selected disabled>Selecione uma especialidade</option>
                                 <?php foreach ($this->Especialidades->getAll() as $e) : ?>
-                                    <option value="<?= $e['especialidade_nome'] ?>"><?= $e['especialidade_nome'] ?></option>
+                                    <option value="<?= $e['especialidades_id'] ?>"><?= $e['especialidade_nome'] ?></option>
                                 <?php endforeach; ?>
                             </select>
 
                         </div>
                         <div class="mb-2 col-lg-4">
                             <label for="">Estabelecimento solicitante</label>
-                            <input type="text" name="estabelecimento_solicitante" id="estabelecimento_solicitante" class="form-control" required>
+                            <select name="estabelecimento_solicitante" id="estabelecimento_solicitante" required style="width:100%"></select>
                         </div>
                         <div class="mb-2 col-lg-4">
                             <label for="">Profissional solicitante</label>
-                            <input type="text" name="profissional_solicitante" id="profissional_solicitante" class="form-control" required>
+                            <select name="profissional_solicitante" id="profissional_solicitante" required style="width:100%"></select>
                         </div>
                         <div class="mb-2 col-lg-4">
                             <label for="">Data do procedimento</label>

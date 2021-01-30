@@ -17,3 +17,5 @@ $route['v2/api/estabelecimentos-prestadores/json']['post'] = 'v2/api/Estabelecim
 $route['v2/api/estabelecimentos-solicitantes/json']['post'] = 'v2/api/Estabelecimentos_controller/solicitantes';
 $route['v2/api/tfd/json']['post'] = 'v2/api/Tfd_controller/json';
 $route['v2/api/cotas/json']['post'] = 'v2/api/Cotas_controller/json';
+$route['v2/api/profissionais/json']['post'] = 'v2/api/Profissionais_controller/json';
+$route['v2/api/procedimentos/json']['post'] = 'v2/api/Procedimentos_controller/json';

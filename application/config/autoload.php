@@ -55,5 +55,6 @@ $autoload['model'] = array(
     'Passageiros_model' => 'Passageiros',
     'Cotas_model' => 'Cotas',
     'Estoques_model' => 'Estoques',
-    'Produtos_model' => 'Produtos'
+    'Produtos_model' => 'Produtos',
+    'Profissionais_model' => 'Profissionais'
 );

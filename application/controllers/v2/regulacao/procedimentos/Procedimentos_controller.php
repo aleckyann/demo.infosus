@@ -26,15 +26,15 @@ class Procedimentos_controller extends Sistema_Controller
         $dados = $this->input->post();
         $this->Procedimentos->insert($dados);
 
-        $paciente = $this->Pacientes->getAll(['paciente_id'=>$dados['paciente_id']])[0];
-        $this->sms->enviar(
-            $paciente['telefone_paciente'], 
-            'SECRETARIA DE SAUDE: '. explode(' ', $paciente['nome_paciente'])[0] .', ACABAMOS DE ADICIONAR A SUA SOLICITACAO DE PROCEDIMENTO EM NOSSA FILA.'
-        );
-        $this->whatsapp->enviar(
-            $paciente['telefone_paciente'],
-            'Olá ' . explode(' ', $paciente['nome_paciente'])[0] . '. n A nossa equipe da secretaria de saúde acabou de adicionar a sua solicitação de procedimento em nossa fila. \n\n Estamos trabalhando para que possamos agendar o seu procedimento o mais rápido possível! *A GENTE VAI TE AVISAR POR AQUI ASSIM QUE O SEU PROCEDIMENTO FOR AGENDADO!*'
-        );
+        // $paciente = $this->Pacientes->getAll(['paciente_id'=>$dados['paciente_id']])[0];
+        // $this->sms->enviar(
+        //     $paciente['telefone_paciente'], 
+        //     'SECRETARIA DE SAUDE: '. explode(' ', $paciente['nome_paciente'])[0] .', ACABAMOS DE ADICIONAR A SUA SOLICITACAO DE PROCEDIMENTO EM NOSSA FILA.'
+        // );
+        // $this->whatsapp->enviar(
+        //     $paciente['telefone_paciente'],
+        //     'Olá ' . explode(' ', $paciente['nome_paciente'])[0] . '. n A nossa equipe da secretaria de saúde acabou de adicionar a sua solicitação de procedimento em nossa fila. \n\n Estamos trabalhando para que possamos agendar o seu procedimento o mais rápido possível! *A GENTE VAI TE AVISAR POR AQUI ASSIM QUE O SEU PROCEDIMENTO FOR AGENDADO!*'
+        // );
         $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> PROCEDIMENTO ADICIONADO A FILA COM SUCESSO.');
         redirect($this->agent->referrer());
     }

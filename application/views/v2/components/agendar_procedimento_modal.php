@@ -1,5 +1,5 @@
 <!-- Modal agendar_procedimento_modal-->
-<div class="modal fade" id="agendar_procedimento_modal" tabindex="-1" role="dialog" aria-labelledby="agendarProcedimento_label" aria-hidden="true">
+<div class="modal fade" id="agendar_procedimento_modal" role="dialog" aria-labelledby="agendarProcedimento_label" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-light">
@@ -24,17 +24,11 @@
                         </div>
                         <div class="mb-2 col-lg-6">
                             <label for="">Nome do procedimento</label>
-                            <input type="text" id="agendar_nome_procedimento" class="form-control" disabled>
+                            <input class="form-control" type="text" id="agendar_nome_procedimento" disabled>
                         </div>
                         <div class="mb-2 col-lg-6">
                             <label for="">Especialidade</label>
-                            <select id="agendar_especialidade" class="form-select" disabled>
-                                <option selected disabled>Selecione uma especialidade</option>
-                                <?php foreach ($this->Especialidades->getAll() as $e) : ?>
-                                    <option value="<?= $e['especialidade_nome'] ?>"><?= $e['especialidade_nome'] ?></option>
-                                <?php endforeach; ?>
-                            </select>
-
+                            <input class="form-control" type="text" id="agendar_especialidade" disabled>
                         </div>
                         <div class="mb-2 col-lg-4">
                             <label for="">Estabelecimento solicitante</label>
@@ -54,19 +48,19 @@
                             <textarea type="date" name="sintomas" id="agendar_sintomas" class="form-control" disabled></textarea>
                         </div>
                         <hr>
-                        <div class="mb-2 col-lg-3">
-                            <label for="">Estabelecimento</label>
-                            <input type="text" class="form-control" name="estabelecimento_prestador" required>
+                        <div class="mb-2 col-lg-6">
+                            <label for="">Estabelecimento prestador</label>
+                            <select name="estabelecimento_prestador" id="agendar_procedimento_estabelecimento_solicitante" required style="width:100%"></select>
                         </div>
-                        <div class="mb-2 col-lg-3">
+                        <div class="mb-2 col-lg-6">
                             <label for="">Cidade</label>
-                            <input type="text" class="form-control" name="cidade_prestador" required>
+                            <select name="cidade_prestador" id="agendar_procedimento_municipios" required style="width:100%"></select>
                         </div>
-                        <div class="mb-2 col-lg-3">
+                        <div class="mb-2 col-lg-6">
                             <label for="">Cota</label>
-                            <input type="text" class="form-control" name="cota" required>
+                            <select name="cota" id="agendar_procedimento_cotas" required style="width:100%"></select>
                         </div>
-                        <div class="mb-2 col-lg-3">
+                        <div class="mb-2 col-lg-6">
                             <label for="">Data agendada</label>
                             <input type="date" class="form-control" name="data" required>
                         </div>

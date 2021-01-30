@@ -19,4 +19,5 @@ $route['v2/configuracoes/usuarios/editar']['post'] = 'v2/configuracoes/Usuarios_
 $route['v2/configuracoes/cotas']['get'] = 'v2/configuracoes/Cotas_controller/index';
 $route['v2/configuracoes/cotas/novo']['post'] = 'v2/configuracoes/Cotas_controller/novo';
 
-
+$route['v2/configuracoes/profissionais']['get'] = 'v2/configuracoes/Profissionais_controller/index';
+$route['v2/configuracoes/profissionais/novo']['post'] = 'v2/configuracoes/Profissionais_controller/novo';

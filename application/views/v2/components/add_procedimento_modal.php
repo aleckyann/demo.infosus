@@ -24,25 +24,25 @@
                         <hr>
                         <div class="mb-2 col-lg-12">
                             <label for="">Nome do procedimento:</label>
-                            <select name="nome_procedimento" style="width:100%" id="tabela_procedimentos_select2" required></select>
+                            <select name="tabela_proced_id" style="width:100%" id="tabela_procedimentos_select2" required></select>
                         </div>
                         <div class="mb-2 col-lg-4">
                             <label for="">Especialidade:</label>
                             <select name="especialidade" class="form-select" required>
                                 <option selected disabled>Selecione uma especialidade</option>
                                 <?php foreach ($this->Especialidades->getAll() as $e) : ?>
-                                    <option value="<?= $e['especialidade_nome'] ?>"><?= $e['especialidade_nome'] ?></option>
+                                    <option value="<?= $e['especialidades_id'] ?>"><?= $e['especialidade_nome'] ?></option>
                                 <?php endforeach; ?>
                             </select>
 
                         </div>
                         <div class="mb-2 col-lg-4">
                             <label for="">Estabelecimento solicitante:</label>
-                            <input type="text" name="estabelecimento_solicitante" class="form-control" required>
+                            <select name="estabelecimento_solicitante" id="novo_procedimento_estabelecimentos" required style="width:100%"></select>
                         </div>
                         <div class="mb-2 col-lg-4">
                             <label for="">Profissional solicitante:</label>
-                            <input type="text" name="profissional_solicitante" class="form-control" required>
+                            <select name="profissional solicitante" id="agendar_procedimento_profissionais" required style="width:100%"></select>
                         </div>
                         <div class="mb-2 col-lg-4">
                             <label for="">Data de entrada:</label>
@@ -90,17 +90,15 @@
 </div>
 <script>
     //Cria modal para editar paciente
-    var add_procedimento_modal = new bootstrap.Modal(document.getElementById('add_procedimento_modal'), {
-        keyboard: false
-    })
+    let add_procedimento_modal = new bootstrap.Modal(document.getElementById('add_procedimento_modal'))
 
     $(document).ready(function() {
-        var procedimentoSelect2 = $('#add_procedimentos_select2').select2({
+        let procedimentoSelect2 = $('#add_procedimentos_select2').select2({
             ajax: {
                 url: '<?= base_url('v2/pacientes/json/select2') ?>',
                 method: 'POST',
                 data: function(params) {
-                    var query = {
+                    let query = {
                         nome_paciente: params.term,
                         <?= $csrf_name ?>: '<?= $csrf_value ?>'
                     }
@@ -124,12 +122,12 @@
             $('#disabledProcedimentoNascimento').val(e.params.data.nascimento)
         });
 
-        var tabela_procedimentos = $('#tabela_procedimentos_select2').select2({
+        let tabela_procedimentos = $('#tabela_procedimentos_select2').select2({
             ajax: {
                 url: '<?= base_url('v2/api/tabela_proced/select2') ?>',
                 method: 'POST',
                 data: function(params) {
-                    var query = {
+                    let query = {
                         nome: params.term,
                         <?= $csrf_name ?>: '<?= $csrf_value ?>'
                     }
@@ -142,6 +140,31 @@
                 },
                 dataType: 'json',
                 placeholder: "Selecione um procedimento",
+            },
+            delay: 250,
+            minimumInputLength: 1,
+        });
+
+
+        //CARREGA SELECT2 COM ESTABELECIMENTOS SOLICITANTES [MODAL EDITAR]
+        let novo_procedimento_estabelecimentos = $('#novo_procedimento_estabelecimentos').select2({
+            ajax: {
+                url: '<?= base_url('v2/api/estabelecimentos-solicitantes/json') ?>',
+                method: 'POST',
+                data: function(params) {
+                    let query = {
+                        estabelecimento: params.term,
+                        <?= $csrf_name ?>: '<?= $csrf_value ?>'
+                    }
+                    return query;
+                },
+                processResults: function(data, params) {
+                    return {
+                        results: data
+                    }
+                },
+                dataType: 'json',
+                placeholder: "Selecione uma cota",
             },
             delay: 250,
             minimumInputLength: 1,

@@ -66,10 +66,9 @@
                             </span>
                         </td>
                         <td class="small">
-                            <?= $p['nome_procedimento'] ?>
+                            <?= $p['nome'] ?>
                         </td>
                         <td class="small">
-
                             <?= date_format(date_create($p['data_solicitacao']), 'd/m/Y') ?>
                         </td>
 
@@ -78,10 +77,10 @@
                                 <div class="btn-group mb-2">
                                     <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
                                     <div class="dropdown-menu">
-                                        <button class="dropdown-item agendar_procedimento_modal" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-calendar-alt"></i> Agendar procedimento</button>
-                                        <button class="dropdown-item text-warning editar_procedimento_button" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-edit"></i> Editar procedimento</button>
+                                        <button class="dropdown-item agendar_procedimento_modal" data-procedimentos_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-calendar-alt"></i> Agendar procedimento</button>
+                                        <button class="dropdown-item text-warning editar_procedimento_button" data-procedimentos_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-edit"></i> Editar procedimento</button>
                                         <div class="dropdown-divider"></div>
-                                        <button class="dropdown-item text-danger negar_procedimento_button" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-times"></i> Negar procedimento</button>
+                                        <button class="dropdown-item text-danger negar_procedimento_button" data-procedimentos_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-times"></i> Negar procedimento</button>
                                     </div>
                                 </div>
                             </div>
@@ -105,62 +104,149 @@
     window.onload = function() {
 
         //Cria modal para editar procedimento
-        var editar_procedimento_modal = new bootstrap.Modal(document.getElementById('editar_procedimento_modal'), {
-            keyboard: false
-        })
+        var editar_procedimento_modal = new bootstrap.Modal(document.getElementById('editar_procedimento_modal'))
 
         // ABRE MODAL DE EDITAR
         $('.editar_procedimento_button').on('click', function() {
-            var procedimento_id = this.dataset.procedimento_id;
+            var procedimentos_id = this.dataset.procedimentos_id;
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url('v2/regulacao/procedimentos/json/') ?>" + procedimento_id,
+                    url: "<?= base_url('v2/api/procedimentos/json/') ?>",
                     data: {
+                        procedimentos_id: procedimentos_id,
                         <?= $csrf_name ?>: "<?= $csrf_value ?>"
                     }
                 })
                 .done(function(procedimento) {
+                    console.log(procedimento)
                     $('#procedimentos_id').val(procedimento.procedimentos_id);
                     $('#nome_paciente').val(procedimento.nome_paciente);
-                    $('#nome_procedimento').val(procedimento.nome_procedimento);
+                    $('#agendar_procedimento_nome_procedimento').append(`
+                        <option value="${procedimento.procedimentos_id}">
+                            ${procedimento.nome}
+                        </option>
+                    `)
                     $("#especialidade").val(procedimento.especialidade);
-                    $('#profissional_solicitante').val(procedimento.profissional_solicitante);
-                    $('#estabelecimento_solicitante').val(procedimento.estabelecimento_solicitante);
+                    $('#profissional_solicitante').append(`
+                        <option value="${procedimento.profissional_id}">
+                            ${procedimento.profissional_nome}
+                        </option>
+                    `);
+
+                    $('#estabelecimento_solicitante').append(`
+                        <option value="${procedimento.estabelecimento_id}">
+                            ${procedimento.estabelecimento_nome}
+                        </option>
+                    `);
                     $('#nome_paciente').val(procedimento.nome_paciente);
                     $(".editarProcedimentoButton[value='" + procedimento.procedimento_risco + "']").prop("checked", true);
                     $('#data_solicitacao').val(procedimento.data_solicitacao);
-                    $('#data').val(procedimento.data);
+                    $('#data').val(procedimento.data_solicitacao);
                     $('#sintomas').val(procedimento.sintomas);
 
                 });
             editar_procedimento_modal.toggle()
         });
 
-        // ==================================
+
+        //ESTABELECIMENTOS SOLICITANTES [MODAL EDITAR]
+        let estabelecimento_solicitante = $('#estabelecimento_solicitante').select2({
+            ajax: {
+                url: '<?= base_url('v2/api/estabelecimentos-solicitantes/json') ?>',
+                method: 'POST',
+                data: function(params) {
+                    let query = {
+                        estabelecimento: params.term,
+                        <?= $csrf_name ?>: '<?= $csrf_value ?>'
+                    }
+                    return query;
+                },
+                processResults: function(data, params) {
+                    return {
+                        results: data
+                    }
+                },
+                dataType: 'json',
+                placeholder: "Selecione um estabelecimento",
+            },
+            delay: 250,
+            minimumInputLength: 1,
+        });
+
+        //PROCEDIMENTOS [MODAL EDITAR]
+        let editar_procedimentos_solicitante = $('#agendar_procedimento_nome_procedimento').select2({
+            ajax: {
+                url: '<?= base_url('v2/api/procedimentos/json') ?>',
+                method: 'POST',
+                data: function(params) {
+                    let query = {
+                        procedimento_nome: params.term,
+                        <?= $csrf_name ?>: '<?= $csrf_value ?>'
+                    }
+                    return query;
+                },
+                processResults: function(data, params) {
+                    return {
+                        results: data
+                    }
+                },
+                dataType: 'json',
+                placeholder: "Selecione um estabelecimento",
+            },
+            delay: 250,
+            minimumInputLength: 1,
+        });
+
+        //PROFISSIONAIS [MODAL EDITAR]
+        let editar_profissionais_solicitante = $('#profissional_solicitante').select2({
+            ajax: {
+                url: '<?= base_url('v2/api/procedimentos/json') ?>',
+                method: 'POST',
+                data: function(params) {
+                    let query = {
+                        procedimento_nome: params.term,
+                        <?= $csrf_name ?>: '<?= $csrf_value ?>'
+                    }
+                    return query;
+                },
+                processResults: function(data, params) {
+                    return {
+                        results: data
+                    }
+                },
+                dataType: 'json',
+                placeholder: "Selecione um estabelecimento",
+            },
+            delay: 250,
+            minimumInputLength: 1,
+        });
+
+
+
+
+
 
         //Cria modal para agendar procedimento
-        var agendar_procedimento_modal = new bootstrap.Modal(document.getElementById('agendar_procedimento_modal'), {
-            keyboard: false
-        })
-
+        var agendar_procedimento_modal = new bootstrap.Modal(document.getElementById('agendar_procedimento_modal'))
 
         // ABRE MODAL DE AGENDAR
         $('.agendar_procedimento_modal').on('click', function() {
-            var procedimento_id = this.dataset.procedimento_id;
+            var procedimentos_id = this.dataset.procedimentos_id;
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url('v2/regulacao/procedimentos/json/') ?>" + procedimento_id,
+                    url: "<?= base_url('v2/api/procedimentos/json/') ?>",
                     data: {
+                        procedimentos_id: procedimentos_id,
                         <?= $csrf_name ?>: "<?= $csrf_value ?>"
                     }
                 })
                 .done(function(procedimento) {
                     $('#agendar_procedimentos_id').val(procedimento.procedimentos_id);
                     $('#agendar_nome_paciente').val(procedimento.nome_paciente);
-                    $('#agendar_nome_procedimento').val(procedimento.nome_procedimento);
-                    $("#agendar_especialidade").val(procedimento.especialidade);
-                    $('#agendar_profissional_solicitante').val(procedimento.profissional_solicitante);
-                    $('#agendar_estabelecimento_solicitante').val(procedimento.estabelecimento_solicitante);
+                    $('#agendar_nome_procedimento').val(procedimento.nome);
+                    $("#agendar_especialidade").val(procedimento.especialidade_nome);
+                    $('#agendar_profissional_solicitante').val(procedimento.profissional_nome);
+                    $('#agendar_estabelecimento_solicitante').val(procedimento.estabelecimento_nome);
                     $('#agendar_nome_paciente').val(procedimento.nome_paciente);
                     $('#agendar_telefone_paciente').val(procedimento.telefone_paciente);
                     $('#agendar_cns_paciente').val(procedimento.cns_paciente);
@@ -170,6 +256,102 @@
 
                 });
             agendar_procedimento_modal.toggle()
+        });
+
+        //CARREGA SELECT2 COM ESTABELECIMENTO SOLICITANTES [MODAL EDITAR]
+        let agendar_procedimento_estabelecimento_solicitante = $('#agendar_procedimento_estabelecimento_solicitante').select2({
+            ajax: {
+                url: '<?= base_url('v2/api/estabelecimentos-solicitantes/json') ?>',
+                method: 'POST',
+                data: function(params) {
+                    let query = {
+                        estabelecimento: params.term,
+                        <?= $csrf_name ?>: '<?= $csrf_value ?>'
+                    }
+                    return query;
+                },
+                processResults: function(data, params) {
+                    return {
+                        results: data
+                    }
+                },
+                dataType: 'json',
+                placeholder: "Selecione um estabelecimento",
+            },
+            delay: 250,
+            minimumInputLength: 1,
+        });
+
+        //CARREGA SELECT2 COM MUNICIPIOS SOLICITANTES [MODAL EDITAR]
+        let agendar_procedimento_municipios = $('#agendar_procedimento_municipios').select2({
+            ajax: {
+                url: '<?= base_url('v2/api/municipios/json') ?>',
+                method: 'POST',
+                data: function(params) {
+                    let query = {
+                        estabelecimento: params.term,
+                        <?= $csrf_name ?>: '<?= $csrf_value ?>'
+                    }
+                    return query;
+                },
+                processResults: function(data, params) {
+                    return {
+                        results: data
+                    }
+                },
+                dataType: 'json',
+                placeholder: "Selecione um municipio",
+            },
+            delay: 250,
+            minimumInputLength: 1,
+        });
+
+        //CARREGA SELECT2 COM MUNICIPIOS SOLICITANTES [MODAL EDITAR]
+        let agendar_procedimento_cotas = $('#agendar_procedimento_cotas').select2({
+            ajax: {
+                url: '<?= base_url('v2/api/cotas/json') ?>',
+                method: 'POST',
+                data: function(params) {
+                    let query = {
+                        estabelecimento: params.term,
+                        <?= $csrf_name ?>: '<?= $csrf_value ?>'
+                    }
+                    return query;
+                },
+                processResults: function(data, params) {
+                    return {
+                        results: data
+                    }
+                },
+                dataType: 'json',
+                placeholder: "Selecione uma cota",
+            },
+            delay: 250,
+            minimumInputLength: 1,
+        });
+
+        //CARREGA SELECT2 COM MUNICIPIOS SOLICITANTES [MODAL EDITAR]
+        let agendar_procedimento_profissionais = $('#agendar_procedimento_profissionais').select2({
+            ajax: {
+                url: '<?= base_url('v2/api/profissionais/json') ?>',
+                method: 'POST',
+                data: function(params) {
+                    let query = {
+                        profissional_nome: params.term,
+                        <?= $csrf_name ?>: '<?= $csrf_value ?>'
+                    }
+                    return query;
+                },
+                processResults: function(data, params) {
+                    return {
+                        results: data
+                    }
+                },
+                dataType: 'json',
+                placeholder: "Selecione um municipio",
+            },
+            delay: 250,
+            minimumInputLength: 1,
         });
 
         // ================================
@@ -278,7 +460,7 @@
 
         // ABRE MODAL DE EDITAR
         $('.negar_procedimento_button').on('click', function() {
-            $('#negar_procedimentos_id').val(this.dataset.procedimento_id);
+            $('#negar_procedimentos_id').val(this.dataset.procedimentos_id);
             negar_procedimento_modal.toggle()
         });
 

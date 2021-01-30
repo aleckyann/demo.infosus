@@ -60,7 +60,7 @@
                             </span>
                         </td>
                         <td class="small">
-                            <?= $p['nome_procedimento'] ?>
+                            <?= $p['nome'] ?>
                         </td>
                         <td class="small">
                             <?= date_format(date_create($p['data']), 'd/m/Y') ?>
@@ -72,7 +72,6 @@
                                     <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
                                     <div class="dropdown-menu">
                                         <button class="dropdown-item text-success finalizar_procedimento_button" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-check"></i> Concluir procedimento</button>
-                                        <button class="dropdown-item text-warning editar_procedimento_button" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-edit"></i> Editar procedimento</button>
                                         <div class="dropdown-divider"></div>
                                         <button class="dropdown-item text-danger negar_procedimento_button" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-times"></i> Negar procedimento</button>
                                     </div>
@@ -88,42 +87,10 @@
 </div>
 
 <!-- CARREGAR COMPONENTES -->
-<?php $this->load->view('v2/components/editar_procedimento_modal') ?>
 <?php $this->load->view('v2/components/negar_procedimento_modal') ?>
 
 <script>
     window.onload = function() {
-
-        //Cria modal para editar procedimento
-        var editar_procedimento_modal = new bootstrap.Modal(document.getElementById('editar_procedimento_modal'))
-
-        // ABRE MODAL DE EDITAR
-        $('.editar_procedimento_button').on('click', function() {
-            var procedimento_id = this.dataset.procedimento_id;
-            $.ajax({
-                    method: "POST",
-                    url: "<?= base_url('v2/regulacao/procedimentos/json/') ?>" + procedimento_id,
-                    data: {
-                        <?= $csrf_name ?>: "<?= $csrf_value ?>"
-                    }
-                })
-                .done(function(procedimento) {
-                    $('#procedimentos_id').val(procedimento.procedimentos_id);
-                    $('#nome_paciente').val(procedimento.nome_paciente);
-                    $('#nome_procedimento').val(procedimento.nome_procedimento);
-                    $("#especialidade").val(procedimento.especialidade);
-                    $('#profissional_solicitante').val(procedimento.profissional_solicitante);
-                    $('#estabelecimento_solicitante').val(procedimento.estabelecimento_solicitante);
-                    $('#nome_paciente').val(procedimento.nome_paciente);
-                    $(".editarProcedimentoButton[value='" + procedimento.procedimento_risco + "']").prop("checked", true);
-                    $('#data').val(procedimento.data);
-                    $('#sintomas').val(procedimento.sintomas);
-
-                });
-            editar_procedimento_modal.toggle()
-        });
-
-        // ==================================
 
         //ADICIONANDO FILTRO AS COLUNAS
         $('#procedimentos_agendados_datatable thead th').each(function() {

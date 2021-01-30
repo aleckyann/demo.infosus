@@ -263,9 +263,10 @@
                                     </div>
                                 </a>
                                 <ul class="nav collapse <?= (segment(2) == 'configuracoes') ? 'show' : '' ?>" id="configuracoesNav" data-parent="#navbarVerticalCollapse">
-                                    <li class="nav-item"><a class="nav-link font-weight-light <?= (segment(3) == 'especialidades') ? 'active' : '' ?>" href="<?= base_url('v2/configuracoes/especialidades') ?>"><i class="fas fa-hospital-user"></i> Especialidades</a></li>
                                     <li class="nav-item"><a class="nav-link font-weight-light <?= (segment(3) == 'estabelecimentos') ? 'active' : '' ?>" href="<?= base_url('v2/configuracoes/estabelecimentos') ?>"><i class="fas fa-hospital-alt"></i> Estabelecimentos</a></li>
                                     <li class="nav-item"><a class="nav-link font-weight-light <?= (segment(3) == 'procedimentos') ? 'active' : '' ?>" href="<?= base_url('v2/configuracoes/procedimentos') ?>"><i class="fas fa-procedures"></i> Procedimentos</a></li>
+                                    <li class="nav-item"><a class="nav-link font-weight-light <?= (segment(3) == 'especialidades') ? 'active' : '' ?>" href="<?= base_url('v2/configuracoes/especialidades') ?>"><i class="fas fa-hospital-user"></i> Especialidades</a></li>
+                                    <li class="nav-item"><a class="nav-link font-weight-light <?= (segment(3) == 'profissionais') ? 'active' : '' ?>" href="<?= base_url('v2/configuracoes/profissionais') ?>"><i class="fas fa-user-md mr-1"></i> Profissionais</a></li>
                                     <li class="nav-item"><a class="nav-link font-weight-light <?= (segment(3) == 'municipios') ? 'active' : '' ?>" href="<?= base_url('v2/configuracoes/municipios') ?>"><i class="fas fa-globe-americas mr-1"></i> Municipios</a></li>
                                     <li class="nav-item"><a class="nav-link font-weight-light <?= (segment(3) == 'usuarios') ? 'active' : '' ?>" href="<?= base_url('v2/configuracoes/usuarios') ?>"><i class="fas fa-users"></i> Usuários</a></li>
                                     <li class="nav-item"><a class="nav-link font-weight-light <?= (segment(3) == 'cotas') ? 'active' : '' ?>" href="<?= base_url('v2/configuracoes/cotas') ?>"><i class="fas fa-ticket-alt"></i> Cotas / Convênios</a></li>

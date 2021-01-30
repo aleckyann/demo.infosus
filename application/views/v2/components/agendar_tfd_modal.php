@@ -14,10 +14,12 @@
                             <label for="">Nome do paciente:</label>
                             <input type="text" class="form-control" id="agendar_tfd_paciente_nome" disabled>
                         </div>
+                        
                         <div class="mb-2 col-lg-3">
                             <label for="">Nascimento</label>
                             <input type="date" id="agendar_tfd_nascimento" class="form-control" disabled>
                         </div>
+                        
                         <div class="mb-2 col-lg-3">
                             <label for="">CPF</label>
                             <input type="text" id="agendar_tfd_cpf" class="form-control" disabled>

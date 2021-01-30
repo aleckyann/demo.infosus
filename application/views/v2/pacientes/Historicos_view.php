@@ -55,9 +55,9 @@
                             <tr>
                                 <td><?= date_format(date_create($p['data_solicitacao']), 'd/m/Y') ?></td>
                                 <td><?= date_format(date_create($p['data']), 'd/m/Y') ?></td>
-                                <td><?= $p['estabelecimento_prestador'] ?></td>
-                                <td><?= $p['estabelecimento_solicitante'] ?></td>
-                                <td><?= $p['cota'] ?></td>
+                                <td><?= $p['nome_municipio'] ?></td>
+                                <td><?= $p['cota_nome'] ?></td>
+                                <td><?= $p['estabelecimento_nome'] ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -80,9 +80,9 @@
                             <tr>
                                 <td><?= date_format(date_create($t['tfd_data_solicitacao']),'d/m/Y') ?></td>
                                 <td><?= date_format(date_create($t['tfd_data_atendimento']),'d/m/Y') ?></td>
-                                <td><?= $t['tfd_cidade_destino'] ?></td>
-                                <td><?= $t['tfd_cota'] ?></td>
-                                <td><?= $t['tfd_estabelecimento_prestador'] ?></td>
+                                <td><?= $t['nome_municipio'] ?></td>
+                                <td><?= $t['cota_nome'] ?></td>
+                                <td><?= $t['estabelecimento_nome'] ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

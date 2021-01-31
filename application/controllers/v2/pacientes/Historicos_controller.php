@@ -3,6 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Historicos_controller extends Sistema_Controller
 {
+    
    
     /**
      * GET: v2/pacientes/historicos/(num)

@@ -1,16 +1,16 @@
-<!-- Modal add_estoques_modal-->
-<div class="modal fade" id="add_estoques_modal" role="dialog" aria-labelledby="add_estoque_label" aria-hidden="true">
+<!-- Modal add_produtos_modal-->
+<div class="modal fade" id="add_produtos_modal" role="dialog" aria-labelledby="add_estoque_label" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header bg-light">
-                <h5 class="modal-title font-weight-light" id="add_estoque_label"><i class="fas fa-cart-plus"></i> Adicionar novo estoque</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title font-weight-light" id="add_estoque_label"><i class="fas fa-cart-plus"></i> Adicionar novo produto</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="<?= base_url('v2/almoxarifado/estoques/novo') ?>" method="post">
                 <div class="modal-body modal-scroll">
                     <?= $csrf_input ?>
                     <div class="row">
                         <div class="mb-2 col-lg-12">
-                            <label for="">Nome do estoque</label>
+                            <label for="">Nome do produto</label>
                             <input type="text" class="form-control" name="estoque_nome" placeholder="Informe o nome do estoque" required>
                         </div>
                     </div>
@@ -26,6 +26,5 @@
 
 
 <script>
-    //Cria modal para adição de pacientes na casa de apoio
-    var add_estoques_modal = new bootstrap.Modal(document.getElementById('add_estoques_modal'))
+    var add_produtos_modal = new bootstrap.Modal(document.getElementById('add_produtos_modal'))
 </script>

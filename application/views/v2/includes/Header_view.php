@@ -237,13 +237,13 @@
                                     <li class="nav-item">
                                         <a class="nav-link dropdown-indicator <?= (segment(3) == 'estoques') ? 'active collapsed' : '' ?>" href="#estoquesNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="previne_brasil_nav"><i class="fas fa-boxes"></i> Estoques</a>
                                         <ul class="nav collapse <?= (segment(3) == 'estoques') ? 'show' : '' ?>" id="estoquesNav" data-parent="#estoquesNav">
-                                            <?php foreach ($this->Estoques->getAll() as $e) : ?>
+                                            <?php foreach ($this->Almoxarifados->getAll() as $e) : ?>
                                                 <li class="nav-item">
-                                                    <a class="nav-link font-weight-light <?= (segment(4) == $e['estoque_id']) ? 'active' : '' ?>" href="<?= base_url('v2/almoxarifado/estoques/' . $e['estoque_id']) ?>"><i class="fas fa-box"></i> <?= $e['estoque_nome'] ?></a>
+                                                    <a class="nav-link font-weight-light <?= (segment(4) == $e['almoxarifado_id']) ? 'active' : '' ?>" href="<?= base_url('v2/almoxarifado/'. $e['almoxarifado_id'].'/estoques') ?>"><i class="fas fa-box"></i> <?= $e['almoxarifado_nome'] ?></a>
                                                 </li>
                                             <?php endforeach; ?>
                                             <li class="nav-item">
-                                                <a class="nav-link font-weight-light" href="#" data-toggle="modal" data-target="#add_estoques_modal"><i class="fas fa-cart-plus"></i> Novo Estoque</a>
+                                                <a class="nav-link font-weight-light" href="#" data-toggle="modal" data-target="#add_almoxarifado_modal"><i class="fas fa-cart-plus"></i> Novo Estoque</a>
                                             </li>
                                         </ul>
                                     </li>

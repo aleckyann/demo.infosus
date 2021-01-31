@@ -39,11 +39,11 @@ $autoload['language'] = array();
 
 
 $autoload['model'] = array(
-    'Especialidades_model' => 'Especialidades',
     'Auth_model' => 'Auth',
-    'CasaDeApoio_model' => 'Casa_de_apoio',
     'Dashboard_model' => 'Dashboard',
     'Pacientes_model' => 'Pacientes',
+    'Especialidades_model' => 'Especialidades',
+    'CasaDeApoio_model' => 'Casa_de_apoio',
     'Procedimentos_model' => 'Procedimentos',
     'TabelaProced_model' => 'Tabela_proced',
     'Tfd_model' => 'Tfd',
@@ -56,5 +56,6 @@ $autoload['model'] = array(
     'Cotas_model' => 'Cotas',
     'Estoques_model' => 'Estoques',
     'Produtos_model' => 'Produtos',
+    'Almoxarifados_model' => 'Almoxarifados',
     'Profissionais_model' => 'Profissionais'
 );

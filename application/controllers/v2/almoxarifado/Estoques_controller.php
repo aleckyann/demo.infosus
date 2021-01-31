@@ -6,19 +6,12 @@ class Estoques_controller extends Sistema_Controller
 {
 
 
-    public function index(): void
+    public function index(int $almoxarifado_id): void
     {
         $data['title'] = 'Estoques';
-        $data['estoques'] = $this->Estoques->getAll();
+        $data['almoxarifado'] = $this->Almoxarifados->getAll(['almoxarifado_id' => $almoxarifado_id])[0];
+        $data['estoques'] = $this->Estoques->getAll(['estoque_almoxarifado_id' => $almoxarifado_id]);
         $this->view('almoxarifado/Estoques_view', $data);
     }
 
-    public function novo(): void
-    {
-        $estoque = $this->input->post();
-        $this->Estoques->insert($estoque);
-
-        $this->session->set_flashdata('success', 'ESTOQUE ADICIONADO COM SUCESSO.');
-        redirect($this->agent->referrer());
-    }
 }

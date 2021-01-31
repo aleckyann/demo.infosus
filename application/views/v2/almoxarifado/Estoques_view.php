@@ -8,13 +8,13 @@
             </a>
             <h3 class="font-weight-light">
 
-                <i class="fas fa-boxes"></i> Estoques
+                <i class="fas fa-boxes"></i> <?= $almoxarifado['almoxarifado_nome'] ?><br>
                 <!-- <span class="badge badge-soft-warning rounded-pill ml-2">-0.23%</span> -->
             </h3>
             <div class="collapse" id="collapseExample">
                 <div class="p-card">
                     <p class="mb-2">
-                        Nesta página você pode configurar os estoques cadastrados no sistema
+                        Nesta página você pode manipular todos os produtos cadastrados neste estoque
                     </p>
                 </div>
             </div>
@@ -29,7 +29,7 @@
     <div class="card-body">
         <table id="estoque_conf_datatable" class="table table-striped" style="min-height: 200px;">
             <thead>
-                <th class="text-dark small text-left">ESTOQUES</th>
+                <th class="text-dark small text-left">PRODUTOS</th>
             </thead>
             <tbody>
                 <?php foreach ($estoques as $e) { ?>
@@ -46,7 +46,7 @@
 
 
 <!-- CARREGAR COMPONENTES -->
-<?php $this->load->view('v2/components/add_estoques_modal') ?>
+<?php $this->load->view('v2/components/add_almoxarifado_modal') ?>
 
 <script>
     window.onload = function() {

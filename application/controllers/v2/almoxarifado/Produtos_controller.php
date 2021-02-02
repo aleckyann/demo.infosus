@@ -15,10 +15,10 @@ class Produtos_controller extends Sistema_Controller
 
     public function novo(): void
     {
-        $estoque = $this->input->post();
-        $this->Produtos->insert($estoque);
+        $produto = $this->input->post();
+        $this->Produtos->insert($produto);
 
-        $this->session->set_flashdata('success', 'ESTOQUE ADICIONADO COM SUCESSO.');
+        $this->session->set_flashdata('success', 'PRODUTO ADICIONADO COM SUCESSO.');
         redirect($this->agent->referrer());
     }
 }

@@ -243,7 +243,7 @@
                                                 </li>
                                             <?php endforeach; ?>
                                             <li class="nav-item">
-                                                <a class="nav-link font-weight-light" href="#" data-toggle="modal" data-target="#add_almoxarifado_modal"><i class="fas fa-cart-plus"></i> Novo Estoque</a>
+                                                <a class="nav-link font-weight-light" href="#" data-toggle="modal" data-target="#add_almoxarifado_modal"><i class="fas fa-cart-plus"></i> Novo estoque</a>
                                             </li>
                                         </ul>
                                     </li>

@@ -75,9 +75,7 @@
     window.onload = function() {
 
         //Cria modal para editar paciente
-        var editar_casa_de_apoio_modal = new bootstrap.Modal(document.getElementById('editar_casa_de_apoio_modal'), {
-            keyboard: false
-        })
+        var editar_casa_de_apoio_modal = new bootstrap.Modal(document.getElementById('editar_casa_de_apoio_modal'))
 
 
         // ABRE MODAL DE EDITAR

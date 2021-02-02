@@ -1,9 +1,9 @@
 <!-- Modal add_paciente_modal-->
 <div class="modal fade" id="add_paciente_modal" tabindex="-1" role="dialog" aria-labelledby="add_paciente_label" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
-            <div class="modal-header bg-light">
-                <h5 class="modal-title font-weight-light" id="add_paciente_label"><i class="fas fa-user-injured"></i> Cadastrar novo paciente</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title font-weight-light text-white" id="add_paciente_label"><i class="fas fa-user-injured"></i> Cadastrar novo paciente</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="<?= base_url('v2/pacientes/new') ?>" method="post">
                 <div class="modal-body modal-scroll">

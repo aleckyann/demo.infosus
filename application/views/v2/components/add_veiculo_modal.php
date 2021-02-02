@@ -2,8 +2,8 @@
 <div class="modal fade" id="add_veiculo_modal" tabindex="-1" role="dialog" aria-labelledby="add_veiculo_modal_label" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header bg-light">
-                <h5 class="modal-title font-weight-light text-dark" id="add_veiculo_modal_label"><i class="fas fa-car-side"></i> Adicionar veículo</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title font-weight-light text-white" id="add_veiculo_modal_label"><i class="fas fa-car-side"></i> Adicionar veículo</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="<?= base_url('v2/transportes/veiculos/novo') ?>" method="post">
                 <div class="modal-body">

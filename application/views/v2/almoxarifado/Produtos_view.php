@@ -8,13 +8,13 @@
             </a>
             <h3 class="font-weight-light">
 
-                <i class="fas fa-boxes"></i> Produtos
+                <i class="fas fa-boxes"></i> Listagem de produtos
                 <!-- <span class="badge badge-soft-warning rounded-pill ml-2">-0.23%</span> -->
             </h3>
             <div class="collapse" id="collapseExample">
                 <div class="p-card">
                     <p class="mb-2">
-                        Nesta página você pode configurar os produtos cadastrados no sistema
+                        Nesta página você pode configurar os produtos que podem ser cadastrados no sistema.
                     </p>
                 </div>
             </div>
@@ -27,15 +27,15 @@
     <?= $this->ui->alert_flashdata() ?>
 
     <div class="card-body">
-        <table id="estoque_conf_datatable" class="table table-striped" style="min-height: 200px;">
+        <table id="cadastro_produtos_modal" class="table table-striped" style="min-height: 200px;">
             <thead>
-                <th class="text-dark small text-left">ESTOQUES</th>
+                <th class="text-dark small text-left">PRODUTO</th>
             </thead>
             <tbody>
                 <?php foreach ($produtos as $p) { ?>
                     <tr>
-                        <td class="small">
-                            <?= $e['produto_nome'] ?>
+                        <td>
+                            <?= $p['produto_nome'] ?>
                         </td>
                     </tr>
                 <?php } ?>
@@ -51,10 +51,10 @@
 <script>
     window.onload = function() {
 
-        var add_produtos_modal = new bootstrap.Modal(document.getElementById('add_produtos_modal'))
+        let add_produtos_modal = new bootstrap.Modal(document.getElementById('add_produtos_modal'))
 
         $('.editar_paciente_button').on('click', function() {
-            var paciente_id = this.dataset.id;
+            let paciente_id = this.dataset.id;
             $.ajax({
                     method: "POST",
                     url: "<?= base_url('v2/pacientes/jsonOne/') ?>",
@@ -83,7 +83,7 @@
 
 
         //Add input de filtro às colunas
-        $('#estoque_conf_datatable thead th').each(function() {
+        $('#cadastro_produtos_modal thead th').each(function() {
             let title = $(this).text();
             if (title == '' || title == 'OPÇÕES') {
 
@@ -98,7 +98,7 @@
 
 
 
-        $('#estoque_conf_datatable').DataTable({
+        $('#cadastro_produtos_modal').DataTable({
             initComplete: function() {
                 this.api().columns().every(function() {
                     let that = this;
@@ -156,8 +156,8 @@
                     }
                 },
                 {
-                    className: 'btn btn-falcon-default btn-sm rounded-pill font-weight-light m-1',
-                    text: '<i class="fas fa-cart-new"></i> Novo estoque',
+                    className: 'btn btn-falcon-primary btn-sm rounded-pill font-weight-light m-1',
+                    text: '<i class="fas fa-box"></i> Cadastrar produto',
                     action: function() {
                         $('#add_produtos_modal').modal('show')
                     }

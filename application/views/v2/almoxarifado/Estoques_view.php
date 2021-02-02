@@ -27,15 +27,44 @@
     <?= $this->ui->alert_flashdata() ?>
 
     <div class="card-body">
-        <table id="estoque_conf_datatable" class="table table-striped" style="min-height: 200px;">
+        <table id="estoque_datatable" class="table table-striped" style="min-height: 200px;">
             <thead>
+                <th class="text-dark small text-left"></th>
                 <th class="text-dark small text-left">PRODUTOS</th>
+                <th class="text-dark small text-left">QTD. NO ESTOQUE</th>
+                <th class="text-dark small text-left">QTD. MÍNIMA</th>
+                <th class="text-dark small text-left">OPÇÕES</th>
             </thead>
             <tbody>
                 <?php foreach ($estoques as $e) { ?>
                     <tr>
+                        <td>
+                            <?php if ($e['estoque_quantidade'] < $e['estoque_quantidade_minima']) : ?>
+                                <i class="fas fa-exclamation-circle text-danger" data-toggle="tooltip" title="Produto abaixo do indicado."></i>
+                            <?php endif; ?>
+                        </td>
                         <td class="small">
-                            <?= $e['estoque_nome'] ?>
+                            <?= $e['produto_nome'] ?>
+                        </td>
+                        <td class="small">
+                            <?= $e['estoque_quantidade'] ?>
+                        </td>
+                        <td class="small">
+                            <?= $e['estoque_quantidade_minima'] ?>
+                        </td>
+                        <td class="small">
+                            <div class="btn-group">
+                                <div class="btn-group mb-2">
+                                    <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
+                                    <div class="dropdown-menu">
+                                        <button class="dropdown-item text-primary editarRegistrosCasaDeApoioButton" data-apoio_id=""><i class="fas fa-sign-in-alt"></i> Repor estoque</button>
+                                        <button class="dropdown-item text-warning editarRegistrosCasaDeApoioButton" data-apoio_id=""><i class="fas fa-exchange-alt"></i> Transferir entre estoques</button>
+                                        <button class="dropdown-item text-danger pacienteSaiu_button" data-apoio_id=""><i class="fas fa-sign-out-alt"></i> Retirar do estoque</button>
+                                        <div class="dropdown-divider"></div>
+                                        <button class="dropdown-item editarRegistrosCasaDeApoioButton" data-apoio_id=""><i class="fas fa-history"></i> Histórico</button>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 <?php } ?>
@@ -46,45 +75,16 @@
 
 
 <!-- CARREGAR COMPONENTES -->
-<?php $this->load->view('v2/components/add_almoxarifado_modal') ?>
+<?php $this->load->view('v2/components/add_produto_estoque_modal') ?>
 
 <script>
     window.onload = function() {
 
-        var add_estoque_modal = new bootstrap.Modal(document.getElementById('add_estoque_modal'))
-
-
-        $('.editar_paciente_button').on('click', function() {
-            var paciente_id = this.dataset.id;
-            $.ajax({
-                    method: "POST",
-                    url: "<?= base_url('v2/pacientes/jsonOne/') ?>",
-                    data: {
-                        <?= $csrf_name ?>: "<?= $csrf_value ?>",
-                        paciente_id: paciente_id
-                    }
-                })
-                .done(function(paciente) {
-                    $('#paciente_id').val(paciente.paciente_id);
-                    $('#acs').val(paciente.acs);
-                    $('#bairro_paciente').val(paciente.bairro_paciente);
-                    $('#cep').val(paciente.cep);
-                    $('#cns_paciente').val(paciente.cns_paciente);
-                    $('#cpf').val(paciente.cpf);
-                    $('#endereco_paciente').val(paciente.endereco_paciente);
-                    $('#identidade').val(paciente.identidade);
-                    $('#nascimento').val(paciente.nascimento);
-                    $('#nome_paciente').val(paciente.nome_paciente);
-                    $('#profissao').val(paciente.profissao);
-                    $('#responsavel').val(paciente.responsavel);
-                    $('#telefone_paciente').val(paciente.telefone_paciente);
-                });
-            editar_paciente_modal.toggle()
-        });
+        let add_estoque_modal = new bootstrap.Modal(document.getElementById('add_produto_estoque_modal'))
 
 
         //Add input de filtro às colunas
-        $('#estoque_conf_datatable thead th').each(function() {
+        $('#estoque_datatable thead th').each(function() {
             let title = $(this).text();
             if (title == '' || title == 'OPÇÕES') {
 
@@ -99,7 +99,7 @@
 
 
 
-        $('#estoque_conf_datatable').DataTable({
+        $('#estoque_datatable').DataTable({
             initComplete: function() {
                 this.api().columns().every(function() {
                     let that = this;
@@ -134,15 +134,28 @@
             },
 
             "aoColumns": [{
-                "bSortable": false
-            }],
+                    "bSortable": false
+                },
+                {
+                    "bSortable": false
+                },
+                {
+                    "bSortable": false
+                },
+                {
+                    "bSortable": false
+                },
+                {
+                    "bSortable": false
+                }
+            ],
             dom: 'Brtip',
             buttons: [{
                     className: 'btn btn-falcon-default btn-sm rounded-pill font-weight-light m-1',
                     extend: 'print',
                     text: '<i class="fa fa-print"></i> imprimir',
                     exportOptions: {
-                        columns: [0]
+                        columns: [1, 2, 3]
                     },
                     customize: function(win) {
                         $(win.document.body)
@@ -157,15 +170,38 @@
                     }
                 },
                 {
-                    className: 'btn btn-falcon-default btn-sm rounded-pill font-weight-light m-1',
-                    text: '<i class="fas fa-cart-new"></i> Novo estoque',
+                    className: 'btn btn-falcon-primary btn-sm rounded-pill font-weight-light m-1',
+                    text: '<i class="fas fa-box"></i> Adicionar produto ao estoque',
                     action: function() {
-                        $('#add_estoque_modal').modal('show')
+                        $('#add_produto_estoque_modal').modal('show')
                     }
 
                 }
 
             ]
+        });
+        //CARREGA SELECT2 [MODAL ADD PRODUTO]
+        let estoque_produtos_select2 = $('#estoque_produtos_select2').select2({
+            ajax: {
+                url: '<?= base_url('v2/api/produtos/json') ?>',
+                method: 'POST',
+                data: function(params) {
+                    let query = {
+                        produto_nome: params.term,
+                        <?= $csrf_name ?>: '<?= $csrf_value ?>'
+                    }
+                    return query;
+                },
+                processResults: function(data, params) {
+                    return {
+                        results: data
+                    }
+                },
+                dataType: 'json',
+                placeholder: "Selecione um produto",
+            },
+            delay: 250,
+            minimumInputLength: 1,
         });
     }
 </script>

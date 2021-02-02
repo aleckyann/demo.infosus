@@ -2,8 +2,8 @@
 <div class="modal fade" id="add_viagem_modal" role="dialog" aria-labelledby="add_viagem_label" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header bg-light">
-                <h5 class="modal-title font-weight-light text-dark" id="add_viagem_label"><i class="fas fa-route"></i> Adicionar nova viagem</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title font-weight-light text-white" id="add_viagem_label"><i class="fas fa-route"></i> Adicionar nova viagem</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="<?= base_url('v2/transportes/viagens/novo') ?>" method="post">
                 <?= $csrf_input ?>

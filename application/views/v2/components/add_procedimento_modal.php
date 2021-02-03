@@ -38,7 +38,7 @@
                         </div>
                         <div class="mb-2 col-lg-4">
                             <label for="">Estabelecimento solicitante:</label>
-                            <select name="estabelecimento_solicitante" id="novo_procedimento_estabelecimentos" required style="width:100%"></select>
+                            <select name="estabelecimento_solicitante" id="novo_procedimento_estabelecimento_solicitante" required style="width:100%"></select>
                         </div>
                         <div class="mb-2 col-lg-4">
                             <label for="">Profissional solicitante:</label>
@@ -147,7 +147,7 @@
 
 
         //CARREGA SELECT2 COM ESTABELECIMENTOS SOLICITANTES [MODAL EDITAR]
-        let novo_procedimento_estabelecimentos = $('#novo_procedimento_estabelecimentos').select2({
+        let novo_procedimento_estabelecimento_solicitante = $('#novo_procedimento_estabelecimento_solicitante').select2({
             ajax: {
                 url: '<?= base_url('v2/api/estabelecimentos-solicitantes/json') ?>',
                 method: 'POST',

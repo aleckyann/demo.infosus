@@ -246,7 +246,7 @@
                     $('#agendar_nome_procedimento').val(procedimento.nome);
                     $("#agendar_especialidade").val(procedimento.especialidade_nome);
                     $('#agendar_profissional_solicitante').val(procedimento.profissional_nome);
-                    $('#agendar_estabelecimento_solicitante').val(procedimento.estabelecimento_nome);
+                    $('#agendar_procedimento_estabelecimento_solicitante').val(procedimento.estabelecimento_nome);
                     $('#agendar_nome_paciente').val(procedimento.nome_paciente);
                     $('#agendar_telefone_paciente').val(procedimento.telefone_paciente);
                     $('#agendar_cns_paciente').val(procedimento.cns_paciente);
@@ -258,10 +258,11 @@
             agendar_procedimento_modal.toggle()
         });
 
-        //CARREGA SELECT2 COM ESTABELECIMENTO SOLICITANTES [MODAL EDITAR]
-        let agendar_procedimento_estabelecimento_solicitante = $('#agendar_procedimento_estabelecimento_solicitante').select2({
+
+        //CARREGA SELECT2 COM ESTABELECIMENTO PRESTADOR [MODAL EDITAR]
+        let agendar_procedimento_estabelecimento_prestador = $('#agendar_procedimento_estabelecimento_prestador').select2({
             ajax: {
-                url: '<?= base_url('v2/api/estabelecimentos-solicitantes/json') ?>',
+                url: '<?= base_url('v2/api/estabelecimentos-prestadores/json') ?>',
                 method: 'POST',
                 data: function(params) {
                     let query = {

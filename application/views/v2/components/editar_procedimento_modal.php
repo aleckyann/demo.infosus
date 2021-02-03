@@ -16,7 +16,7 @@
                         </div>
                         <div class="mb-2 col-lg-6">
                             <label for="">Nome do procedimento</label>
-                            <select name="nome_procedimento" id="agendar_procedimento_nome_procedimento" required style="width:100%"></select>
+                            <select name="tabela_proced_id" id="agendar_procedimento_nome_procedimento" required style="width:100%"></select>
                         </div>
                         <div class="mb-2 col-lg-6">
                             <label for="">Especialidade</label>
@@ -35,10 +35,6 @@
                         <div class="mb-2 col-lg-4">
                             <label for="">Profissional solicitante</label>
                             <select name="profissional_solicitante" id="profissional_solicitante" required style="width:100%"></select>
-                        </div>
-                        <div class="mb-2 col-lg-4">
-                            <label for="">Data do procedimento</label>
-                            <input type="date" name="data" id="data" class="form-control" required>
                         </div>
 
                         <div class="mb-2 col-lg-12">

@@ -11,16 +11,16 @@
                     <div class="row">
                         <div class="mb-2 col-lg-6">
                             <label for="">Nome do produto</label>
-                            <select name="estoque_produto_id" id="estoque_produtos_select2" style="width:100%" required></select>
+                            <input type="text" class="form-control" name="produto_nome" required>
                         </div>
 
                         <div class="mb-2 col-lg-3">
                             <label for="">Quantidade</label>
-                            <input type="number" class="form-control" name="estoque_quantidade" placeholder="Quantidade adicionada." required>
+                            <input type="number" class="form-control" name="produto_quantidade_atual" placeholder="Quantidade adicionada." required>
                         </div>
                         <div class="mb-2 col-lg-3">
                             <label for="">Quantidade mínima <small class="text-info">(opcional)</small></label>
-                            <input type="number" class="form-control" name="estoque_quantidade_minima" placeholder="Quantidade mínima.">
+                            <input type="number" class="form-control" name="produto_quantidade_minima" placeholder="Quantidade mínima.">
                         </div>
 
                     </div>

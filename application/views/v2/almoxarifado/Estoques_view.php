@@ -8,7 +8,7 @@
             </a>
             <h3 class="font-weight-light">
 
-                <i class="fas fa-boxes"></i> <?= $almoxarifado['almoxarifado_nome'] ?><br>
+                <i class="fas fa-boxes"></i> <?= $estoque['estoque_nome'] ?><br>
                 <!-- <span class="badge badge-soft-warning rounded-pill ml-2">-0.23%</span> -->
             </h3>
             <div class="collapse" id="collapseExample">
@@ -31,28 +31,28 @@
             <thead>
                 <th class="text-dark small text-left"></th>
                 <th class="text-dark small text-left">PRODUTOS</th>
-                <th class="text-dark small text-left">QTD. NO ESTOQUE</th>
-                <th class="text-dark small text-left">QTD. MÍNIMA</th>
+                <th class="text-dark small text-left">QUANTIDADE EM ESTOQUE</th>
+                <th class="text-dark small text-left">QUANTIDADE MÍNIMA</th>
                 <th class="text-dark small text-left">OPÇÕES</th>
             </thead>
             <tbody>
-                <?php foreach ($estoques as $e) { ?>
+                <?php foreach ($produtos as $p) { ?>
                     <tr>
-                        <td>
-                            <?php if ($e['estoque_quantidade'] < $e['estoque_quantidade_minima']) : ?>
+                        <td class="text-center">
+                            <?php if ($p['produto_quantidade_atual'] < $p['produto_quantidade_minima']) : ?>
                                 <i class="fas fa-exclamation-circle text-danger" data-toggle="tooltip" title="Produto abaixo do indicado."></i>
                             <?php endif; ?>
                         </td>
                         <td class="small">
-                            <?= $e['produto_nome'] ?>
+                            <?= $p['produto_nome'] ?>
                         </td>
-                        <td class="small">
-                            <?= $e['estoque_quantidade'] ?>
+                        <td class="text-center small">
+                            <?= $p['produto_quantidade_atual'] ?>
                         </td>
-                        <td class="small">
-                            <?= $e['estoque_quantidade_minima'] ?>
+                        <td class="text-center small">
+                            <?= $p['produto_quantidade_minima'] ?>
                         </td>
-                        <td class="small">
+                        <td class="text-center small">
                             <div class="btn-group">
                                 <div class="btn-group mb-2">
                                     <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
@@ -82,11 +82,10 @@
 
         let add_estoque_modal = new bootstrap.Modal(document.getElementById('add_produto_estoque_modal'))
 
-
         //Add input de filtro às colunas
         $('#estoque_datatable thead th').each(function() {
             let title = $(this).text();
-            if (title == '' || title == 'OPÇÕES') {
+            if (title == '' || title == 'OPÇÕES' || title == 'QUANTIDADE MÍNIMA') {
 
             } else {
                 $(this).html(`
@@ -179,29 +178,6 @@
                 }
 
             ]
-        });
-        //CARREGA SELECT2 [MODAL ADD PRODUTO]
-        let estoque_produtos_select2 = $('#estoque_produtos_select2').select2({
-            ajax: {
-                url: '<?= base_url('v2/api/produtos/json') ?>',
-                method: 'POST',
-                data: function(params) {
-                    let query = {
-                        produto_nome: params.term,
-                        <?= $csrf_name ?>: '<?= $csrf_value ?>'
-                    }
-                    return query;
-                },
-                processResults: function(data, params) {
-                    return {
-                        results: data
-                    }
-                },
-                dataType: 'json',
-                placeholder: "Selecione um produto",
-            },
-            delay: 250,
-            minimumInputLength: 1,
         });
     }
 </script>

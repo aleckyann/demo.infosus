@@ -32,7 +32,7 @@
                         </div>
                         <div class="mb-2 col-lg-4">
                             <label for="">Estabelecimento solicitante</label>
-                            <input type="text" id="agendar_estabelecimento_solicitante" class="form-control" disabled>
+                            <input type="text" id="agendar_procedimento_estabelecimento_solicitante" class="form-control" disabled>
                         </div>
                         <div class="mb-2 col-lg-4">
                             <label for="">Profissional solicitante</label>
@@ -50,7 +50,7 @@
                         <hr>
                         <div class="mb-2 col-lg-6">
                             <label for="">Estabelecimento prestador</label>
-                            <select name="estabelecimento_prestador" id="agendar_procedimento_estabelecimento_solicitante" required style="width:100%"></select>
+                            <select name="estabelecimento_prestador" id="agendar_procedimento_estabelecimento_prestador" required style="width:100%"></select>
                         </div>
                         <div class="mb-2 col-lg-6">
                             <label for="">Cidade</label>

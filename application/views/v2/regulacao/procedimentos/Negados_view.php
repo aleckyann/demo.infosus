@@ -63,7 +63,7 @@
                             <?= $p['negado_por'] ?>
                         </td>
                         <td class="small">
-                            <?= $p['nome_procedimento'] ?>
+                            <?= $p['nome'] ?>
                         </td>
 
                     </tr>

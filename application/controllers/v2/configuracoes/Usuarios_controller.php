@@ -16,6 +16,7 @@ class Usuarios_controller extends Sistema_Controller
         $this->view('configuracoes/Usuarios_view', $data);
     }
 
+    
     /**
      * POTS: v2/configuracoes/usuarios/novo
      */

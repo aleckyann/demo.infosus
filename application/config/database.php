@@ -2,42 +2,12 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 $query_builder = TRUE;
+$active_group = 'INFOSUS';
 
-/**
- * Método utilizado para automatizar novos clientes
- * os usuários e bancos de dados devem ser criados
- * com o máximo de caracteres da umbler (16)
- */
-$active_group = substr($_SERVER['SERVER_NAME'],0,16);
 
-/**
- * CRIAR BANCO DE DADOS COM MESMO NOME DO DOMÍNIO UTILIZADO
- * USERNAME: demo.infosus.com.br (max 16 caracteres)
- * DATABASE: demo.infosus.com.br (max 16 caracteres)
- */
-$db[$active_group] = array(
-	'dsn'	=> '',
-	'hostname' => 'mysql741.umbler.com',
-	'username' => $active_group,
-	'password' => 'jf91500290',
-	'database' => $active_group,
-	'dbdriver' => 'mysqli',
-	'dbprefix' => '',
-	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE
-);
 
-if($_SERVER['SERVER_NAME'] == 'localhost'){
+//AMBIENTE LOCAL DE DESENVOLVIMENTO
+if ($_SERVER['SERVER_NAME'] == 'localhost') {
 	$active_group = 'desenvolvimento';
 	$db['desenvolvimento'] = array(
 		'dsn'	=> '',
@@ -61,3 +31,48 @@ if($_SERVER['SERVER_NAME'] == 'localhost'){
 		'save_queries' => TRUE
 	);
 }
+
+/**
+ * Método utilizado para automatizar novos clientes
+ * os usuários e bancos de dados devem ser criados
+ * com o máximo de caracteres da umbler (16)
+ */
+if ($_SERVER['SERVER_NAME'] == 'homologacao.infosus.net.br') {
+	$hostname = 'mysql741.umbler.com';
+	$username = 'homologacao.info';
+	$database = 'homologacao.info';
+} elseif ($_SERVER['SERVER_NAME'] == 'vargemgrande.infosus.net.br') {
+	$hostname = 'mysql742.umbler.com';
+	$username = 'vargemgrande.inf';
+	$database = 'vargemgrande.inf';
+}
+
+/**
+ * CRIAR BANCO DE DADOS COM MESMO NOME DO DOMÍNIO UTILIZADO
+ * USERNAME: demo.infosus.com.br (max 16 caracteres)
+ * DATABASE: demo.infosus.com.br (max 16 caracteres)
+ */
+$db['INFOSUS'] = array(
+	'dsn'	=> '',
+	'hostname' => $hostname,
+	'username' => $username,
+	'password' => 'l33tsupah4x0r',
+	'database' => $username,
+	'dbdriver' => 'mysqli',
+	'dbprefix' => '',
+	'pconnect' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);
+
+
+

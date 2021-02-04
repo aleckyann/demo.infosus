@@ -22,12 +22,24 @@ class Usuarios_controller extends Sistema_Controller
     public function novo(): void
     {
         $usuario = $this->input->post();
-        $usuario['usuario_password'] = hash('whirlpool', $usuario['usuario_password']);
+        pre($usuario);
+        $this->whatsapp->enviar(
+            $usuario['usuario_telefone'],
+            'Olá ' . explode(' ', $usuario['usuario_nome'])[0] . ', 
+Seu usuário foi criado com sucesso no sistema INFOSUS, acesse:
 
-        $this->Usuarios->insert($usuario);
+*Login:* ' . $usuario['usuario_email'] . ' 
+*Senha:* ' . $usuario['usuario_password'] .' 
+*Acesso:* ' . base_url() .'
 
-        $this->session->set_flashdata('success', 'USUÁRIO CRIADO COM SUCESSO.');
-        redirect($this->agent->referrer());
+_Mensagem automática_');
+
+        // $usuario['usuario_password'] = hash('whirlpool', $usuario['usuario_password']);
+
+        // $this->Usuarios->insert($usuario);
+
+        // $this->session->set_flashdata('success', 'USUÁRIO CRIADO COM SUCESSO.');
+        // redirect($this->agent->referrer());
     }
 
     /**

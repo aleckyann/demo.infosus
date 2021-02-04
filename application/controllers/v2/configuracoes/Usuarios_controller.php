@@ -34,12 +34,12 @@ Seu usuário foi criado com sucesso no sistema INFOSUS, acesse:
 
 _Mensagem automática_');
 
-        // $usuario['usuario_password'] = hash('whirlpool', $usuario['usuario_password']);
+        $usuario['usuario_password'] = hash('whirlpool', $usuario['usuario_password']);
 
-        // $this->Usuarios->insert($usuario);
+        $this->Usuarios->insert($usuario);
 
-        // $this->session->set_flashdata('success', 'USUÁRIO CRIADO COM SUCESSO.');
-        // redirect($this->agent->referrer());
+        $this->session->set_flashdata('success', 'USUÁRIO CRIADO COM SUCESSO.');
+        redirect($this->agent->referrer());
     }
 
     /**

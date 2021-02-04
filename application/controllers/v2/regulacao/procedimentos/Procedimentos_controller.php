@@ -25,16 +25,21 @@ class Procedimentos_controller extends Sistema_Controller
     {
         $dados = $this->input->post();
         $this->Procedimentos->insert($dados);
+        
+        $geral = $this->db->get('geral')->row_array();
+        $procedimento = $this->db->get_where('tabela_proced',['id'=>$dados['tabela_proced_id']])->row_array();
+        $paciente = $this->Pacientes->getAll(['paciente_id'=>$dados['paciente_id']])[0];
+        $paciente_nome = explode(' ', $paciente['nome_paciente'])[0] .' '.explode(' ', $paciente['nome_paciente'])[1];
 
-        // $paciente = $this->Pacientes->getAll(['paciente_id'=>$dados['paciente_id']])[0];
-        // $this->sms->enviar(
-        //     $paciente['telefone_paciente'], 
-        //     'SECRETARIA DE SAUDE: '. explode(' ', $paciente['nome_paciente'])[0] .', ACABAMOS DE ADICIONAR A SUA SOLICITACAO DE PROCEDIMENTO EM NOSSA FILA.'
-        // );
-        // $this->whatsapp->enviar(
-        //     $paciente['telefone_paciente'],
-        //     'Olá ' . explode(' ', $paciente['nome_paciente'])[0] . '. n A nossa equipe da secretaria de saúde acabou de adicionar a sua solicitação de procedimento em nossa fila. \n\n Estamos trabalhando para que possamos agendar o seu procedimento o mais rápido possível! *A GENTE VAI TE AVISAR POR AQUI ASSIM QUE O SEU PROCEDIMENTO FOR AGENDADO!*'
-        // );
+        //NOTIFICAÇÃO NO WHATSAPP
+        $this->whatsapp->enviar(
+            $paciente['telefone_paciente'],
+            'Olá ' .$paciente_nome. ', 
+Já cadastramos sua solicitação do procedimento *'.$procedimento['nome'].'* em nosso sistema. Retornaremos assim que a a nossa equipe encontrar uma data disponível.
+
+*Secretaria Municipal de Saúde de '.$geral['geral_cidade'].'*
+_Administração: '.$geral['geral_slogan'].'_'
+);
         $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> PROCEDIMENTO ADICIONADO A FILA COM SUCESSO.');
         redirect($this->agent->referrer());
     }
@@ -52,16 +57,21 @@ class Procedimentos_controller extends Sistema_Controller
             ],
             $dados
         );
-        
+
+        $geral = $this->db->get('geral')->row_array();
+        // $procedimento = $this->db->get_where('tabela_proced', ['id' => $dados['tabela_proced_id']])->row_array();
         $paciente_id = $this->db->get_where('procedimentos', ['procedimentos_id'=>$dados['procedimentos_id']])->row_array()['paciente_id'];
         $paciente = $this->Pacientes->getAll(['paciente_id' => $paciente_id])[0];
-        $this->sms->enviar(
-            $paciente['telefone_paciente'],
-            'SECRETARIA DE SAUDE: ' . explode(' ', $paciente['nome_paciente'])[0] . ', ACABAMOS DE AGENDAR O SEU PROCEDIMENTO PARA O DIA: '. date_format(date_create($dados['data']), 'd/m/Y')
-        );
+        $paciente_nome = explode(' ', $paciente['nome_paciente'])[0] . ' ' . explode(' ', $paciente['nome_paciente'])[1];
+
+        //NOTIFICAÇÃO NO WHATSAPP
         $this->whatsapp->enviar(
             $paciente['telefone_paciente'],
-            'Olá ' . explode(' ', $paciente['nome_paciente'])[0] . '. O seu procedimento foi agendado para o dia: '. date_format(date_create($dados['data']), 'd/m/Y')
+            'Olá ' . $paciente_nome . ', 
+Nossa equipe encontrou um horário disponível para a sua solicitação do seu procedimento e ele foi agendado para o dia *'.date_format(date_create($dados['data']),'d/m/Y').'*.
+
+*Secretaria Municipal de Saúde de ' . $geral['geral_cidade'] . '*
+_Administração: ' . $geral['geral_slogan'] . '_'
         );
 
         $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> PROCEDIMENTO AGENDADO COM SUCESSO');

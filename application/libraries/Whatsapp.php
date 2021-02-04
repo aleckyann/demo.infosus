@@ -13,7 +13,7 @@ class Whatsapp
 
     public function enviar($telefone, $mensagem)
     {
-        $url = 'https://api.z-api.io/instances/3925DD69D64E8060021E0616E050C6B6/token/498C159C42414B2377E8AE2D/send-messages';
+        $url = 'https://api.z-api.io/instances/392D8E79328F703BF4FDC28CC8B3DA05/token/895B9EBF4E8F9BDCE69D95E0/send-messages';
         $ch = curl_init($url);
 
         $data = array(

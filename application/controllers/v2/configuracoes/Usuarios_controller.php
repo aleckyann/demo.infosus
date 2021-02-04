@@ -16,14 +16,13 @@ class Usuarios_controller extends Sistema_Controller
         $this->view('configuracoes/Usuarios_view', $data);
     }
 
-    
+
     /**
      * POTS: v2/configuracoes/usuarios/novo
      */
     public function novo(): void
     {
         $usuario = $this->input->post();
-        pre($usuario);
         $this->whatsapp->enviar(
             $usuario['usuario_telefone'],
             'Olá ' . explode(' ', $usuario['usuario_nome'])[0] . ', 

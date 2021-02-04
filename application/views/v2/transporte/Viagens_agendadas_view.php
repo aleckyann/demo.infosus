@@ -235,19 +235,32 @@
                     //ADICIONA VALOR DO PASSAGEIRO SE ELE JÁ EXISTE
                     for (let index = 0; index < passageiros.passageiros.length; index++) {
                         $('#passageiros_viagem_content').append(`
+                        <hr>
                         <div class="row mt-3">
                             <div class="col-lg-8 mb-1">
                                 <span class="badge bg-primary"><span class="fa fa-user"></span> Vaga ${index+1} </span>
                             </div>
                             <div class="col-lg-4">
-                                <a href="#" type="button" onclick="$('#paciente_viagem_select2_${index}').empty().append('<option value=NENHUM selected>Nenhum passageiro selecionado</option>'); Swal.fire('Passageiro removido!', '', 'success')" class="small text-danger float-right"><i class="fas fa-user-times"></i> Remover passageiro</a>
+                                <a href="#" type="button" onclick="$('#paciente_viagem_select2_${index}').empty().append('<option value=NENHUM selected>Nenhum passageiro selecionado</option>'); $('#paciente_viagem_local_input_${index}').empty(); $('#paciente_viagem_horario_input_${index}').empty(); Swal.fire('Passageiro removido!', '', 'success')" class="small text-danger float-right"><i class="fas fa-user-times"></i> Limpar vaga</a>
+                            </div>
+
+                            <div class="col-lg-6">
+                            <label>Nome do Passageiro</label>
+                                <select style="width:100%" id="paciente_viagem_select2_${index}" class="load_pacientes_viagem_select2" name="passageiro[${passageiros.passageiros[index].passageiro_id}][passageiro_paciente_id]">
+                                    ${passageiros.passageiros[index].nome_paciente ? 
+                                    `<option selected value="${passageiros.passageiros[index].passageiro_paciente_id}"> ${passageiros.passageiros[index].nome_paciente}</option>`
+                                    : '<option value=NENHUM selected>Nenhum passageiro selecionado</option>'}
+                                </select>
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Local de partida</label>
+                                <input type="text" id="paciente_viagem_local_input_${index}" value="${passageiros.passageiros[index].passageiro_local}" name="passageiro[${passageiros.passageiros[index].passageiro_id}][passageiro_local]" id="" class="form-control">
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Horário de partida</label>
+                                <input type="time" id="paciente_viagem_horario_input_${index}" value="${passageiros.passageiros[index].passageiro_horario}" name="passageiro[${passageiros.passageiros[index].passageiro_id}][passageiro_horario]" id="" class="form-control">
                             </div>
                         </div>
-                        <select style="width:100%" id="paciente_viagem_select2_${index}" class="load_pacientes_viagem_select2" name="passageiro[${passageiros.passageiros[index].passageiro_id}]">
-                            ${passageiros.passageiros[index].nome_paciente ? 
-                            `<option selected value="${passageiros.passageiros[index].passageiro_paciente_id}"> ${passageiros.passageiros[index].nome_paciente}</option>`
-                            : '<option selected>Nenhum passageiro selecionado</option>'}
-                        </select>
                         `)
                     }
 

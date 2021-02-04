@@ -23,7 +23,7 @@ class Passageiros_controller extends Sistema_Controller
                     'passageiro_viagem_id' => $passageiro_viagem_id,
                     'passageiro_id' => $passageiro_id
                 ],
-                ['passageiro_paciente_id' => $passageiro]
+                $passageiro
             );
         }
         

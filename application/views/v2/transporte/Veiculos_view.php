@@ -82,11 +82,11 @@
     window.onload = function() {
 
         //Cria modal para editar paciente
-        var editar_veiculo_modal = new bootstrap.Modal(document.getElementById('editar_veiculo_modal'))
+        let editar_veiculo_modal = new bootstrap.Modal(document.getElementById('editar_veiculo_modal'))
 
 
         $('.editar_veiculo_button').on('click', function() {
-            var veiculo_id = this.dataset.id;
+            let veiculo_id = this.dataset.id;
             $.ajax({
                     method: "POST",
                     url: "<?= base_url('v2/api/veiculos/json') ?>",

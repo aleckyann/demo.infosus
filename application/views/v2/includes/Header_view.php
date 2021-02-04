@@ -277,7 +277,7 @@
                             <div class="navbar-vertical-divider">
                                 <hr class="navbar-vertical-hr my-3" />
                             </div>
-                            <a class="btn btn-sm btn-block btn-primary mb-4 font-weight-light" href="https://web.whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i> Suporte</a>
+                            <a class="btn btn-sm btn-block btn-primary mb-4 font-weight-light" href="https://wa.me/5538999892125" target="_blank"><i class="fab fa-whatsapp"></i> Suporte</a>
                         </div>
                     </div>
                 </div>

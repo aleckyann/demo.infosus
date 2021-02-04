@@ -14,7 +14,7 @@ class Historicos_controller extends Sistema_Controller
 
         $data['paciente'] = $this->db->get_where('pacientes',['paciente_id'=>$paciente_id])->row_array();
         $data['procedimentos'] = 
-        $this->db->join('estabelecimentos', 'estabelecimentos.estabelecimento_id = procedimentos.estabelecimento_prestador')->join('municipios_ibge', 'municipios_ibge.municipio_id = procedimentos.cidade_prestador')->join('cotas', 'procedimentos.cota = cotas.cota_id')->get_where('procedimentos', ['paciente_id'=>$paciente_id])->result_array();
+        $this->db->join('tabela_proced', 'tabela_proced.id = procedimentos.tabela_proced_id')->join('estabelecimentos', 'estabelecimentos.estabelecimento_id = procedimentos.estabelecimento_prestador')->join('municipios_ibge', 'municipios_ibge.municipio_id = procedimentos.cidade_prestador')->join('cotas', 'procedimentos.cota = cotas.cota_id')->get_where('procedimentos', ['paciente_id'=>$paciente_id])->result_array();
         
         $data['tfd'] = 
         $this->db->join('estabelecimentos', 'estabelecimentos.estabelecimento_id = tfd.tfd_estabelecimento_prestador')->join('municipios_ibge', 'municipios_ibge.municipio_id = tfd.tfd_cidade_destino')->join('cotas', 'cotas.cota_id = tfd.tfd_cota')->get_where('tfd', ['paciente_id' => $paciente_id])->result_array();

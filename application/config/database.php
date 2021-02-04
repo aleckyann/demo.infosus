@@ -41,10 +41,17 @@ if ($_SERVER['SERVER_NAME'] == 'homologacao.infosus.net.br') {
 	$hostname = 'mysql741.umbler.com';
 	$username = 'homologacao.info';
 	$database = 'homologacao.info';
+	$password = 'l33tsupah4x0r';
 } elseif ($_SERVER['SERVER_NAME'] == 'vargemgrande.infosus.net.br') {
 	$hostname = 'mysql742.umbler.com';
 	$username = 'vargemgrande.inf';
 	$database = 'vargemgrande.inf';
+	$password = 'l33tsupah4x0r';
+} elseif ($_SERVER['SERVER_NAME'] == 'localhost') {
+	$hostname = 'localhost';
+	$username = 'phpmyadmin';
+	$database = 'infosus';
+	$password = '106.312.266-05';
 }
 
 /**

@@ -78,6 +78,15 @@
 
 
 <script>
+    function clear_passageiro(id) {
+        $('#paciente_viagem_select2_' + id).empty().append('<option value="NENHUM" selected>Nenhum passageiro selecionado</option>');
+        $('#paciente_viagem_local_input_' + id).val('');
+        $('#paciente_viagem_horario_partida_input_' + id).val('');
+        $('#paciente_viagem_ponto_chegada_input_' + id).val('');
+        $('#paciente_viagem_horario_procedimento_input_' + id).val('');
+        Swal.fire('Passageiro removido!', '', 'success');
+    }
+
     window.onload = function() {
 
         //Cria modal para editar viagem
@@ -241,24 +250,31 @@
                                 <span class="badge bg-primary"><span class="fa fa-user"></span> Vaga ${index+1} </span>
                             </div>
                             <div class="col-lg-4">
-                                <a href="#" type="button" onclick="$('#paciente_viagem_select2_${index}').empty().append('<option value=NENHUM selected>Nenhum passageiro selecionado</option>'); $('#paciente_viagem_local_input_${index}').empty(); $('#paciente_viagem_horario_input_${index}').empty(); Swal.fire('Passageiro removido!', '', 'success')" class="small text-danger float-right"><i class="fas fa-user-times"></i> Limpar vaga</a>
+                                <a href="#" type="button" onclick="clear_passageiro(${index})" class="small text-danger float-right"><i class="fas fa-user-times"></i> Limpar vaga</a>
                             </div>
-
-                            <div class="col-lg-6">
-                            <label>Nome do Passageiro</label>
+                            <div class="col-lg-12">
+                                <label class="text-dark">Nome do Passageiro</label>
                                 <select style="width:100%" id="paciente_viagem_select2_${index}" class="load_pacientes_viagem_select2" name="passageiro[${passageiros.passageiros[index].passageiro_id}][passageiro_paciente_id]">
                                     ${passageiros.passageiros[index].nome_paciente ? 
                                     `<option selected value="${passageiros.passageiros[index].passageiro_paciente_id}"> ${passageiros.passageiros[index].nome_paciente}</option>`
                                     : '<option value=NENHUM selected>Nenhum passageiro selecionado</option>'}
                                 </select>
                             </div>
-                            <div class="col-lg-3">
-                                <label>Local de partida</label>
-                                <input type="text" id="paciente_viagem_local_input_${index}" value="${passageiros.passageiros[index].passageiro_local}" name="passageiro[${passageiros.passageiros[index].passageiro_id}][passageiro_local]" id="" class="form-control">
+                            <div class="col-lg-4">
+                                <label class="text-dark">Ponto de partida</label>
+                                <input type="text" id="paciente_viagem_local_input_${index}" value="${passageiros.passageiros[index].passageiro_local}" name="passageiro[${passageiros.passageiros[index].passageiro_id}][passageiro_local]" class="form-control">
                             </div>
-                            <div class="col-lg-3">
-                                <label>Horário de partida</label>
-                                <input type="time" id="paciente_viagem_horario_input_${index}" value="${passageiros.passageiros[index].passageiro_horario}" name="passageiro[${passageiros.passageiros[index].passageiro_id}][passageiro_horario]" id="" class="form-control">
+                            <div class="col-lg-2">
+                                <label class="text-dark">Horário de partida</label>
+                                <input type="time" id="paciente_viagem_horario_partida_input_${index}" value="${passageiros.passageiros[index].passageiro_horario}" name="passageiro[${passageiros.passageiros[index].passageiro_id}][passageiro_horario]" class="form-control">
+                            </div>
+                            <div class="col-lg-4">
+                                <label class="text-dark">Ponto de chegada</label>
+                                <input type="text" id="paciente_viagem_ponto_chegada_input_${index}" value="${passageiros.passageiros[index].passageiro_ponto_chegada}" name="passageiro[${passageiros.passageiros[index].passageiro_id}][passageiro_ponto_chegada]" class="form-control">
+                            </div>
+                            <div class="col-lg-2">
+                                <label class="text-dark">Horário do procedimento</label>
+                                <input type="time" id="paciente_viagem_horario_procedimento_input_${index}" value="${passageiros.passageiros[index].passageiro_horario_procedimento}" name="passageiro[${passageiros.passageiros[index].passageiro_id}][passageiro_horario_procedimento]" class="form-control">
                             </div>
                         </div>
                         `)

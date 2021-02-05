@@ -106,4 +106,25 @@ class Viagens_controller extends Sistema_Controller
         redirect($this->agent->referrer());
     }
 
+
+    /**
+     * GET: v2/transportes/viagem(:num)
+     */
+    public function print(int $viagem_id): void
+    {
+
+        $this->db->select('viagens.*, veiculos.*, m1.nome_municipio as origem, m2.nome_municipio as destino');
+        $this->db->join('veiculos', 'veiculos.veiculo_id = viagens.viagem_veiculo_id');
+        $this->db->join('municipios_ibge m1', 'viagens.viagem_origem = m1.municipio_id');
+        $this->db->join('municipios_ibge m2', 'viagens.viagem_destino = m2.municipio_id');
+        $resultado['viagem'] = $this->db->get_where('viagens', ['viagem_id' => $viagem_id])->row_array();
+
+        $this->db->join('pacientes', 'pacientes.paciente_id = passageiros.passageiro_paciente_id', 'left');
+        $this->db->join('viagens', 'viagens.viagem_id = passageiros.passageiro_viagem_id');
+        $resultado['passageiros'] = $this->db->get_where('passageiros', ['passageiro_viagem_id' => $viagem_id])->result_array();
+        
+        $this->load->view('v2/transporte/Impressao_view', $resultado);
+
+    }
+    
 }

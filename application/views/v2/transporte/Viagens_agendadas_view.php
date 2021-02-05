@@ -54,6 +54,7 @@
                                 <div class="btn-group mb-2">
                                     <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
                                     <div class="dropdown-menu">
+                                        <a class="dropdown-item text-default" href="<?=base_url('v2/transportes/viagem/print/' . $v['viagem_id'])?>" target="_new"><i class="fa fa-print"></i> Imprimir</a>
                                         <button class="dropdown-item passageiros_viagem_button text-primary" data-viagem_id="<?= $v['viagem_id'] ?>"><i class="fa fa-users"></i> Passageiros</button>
                                         <button class="dropdown-item text-warning editar_viagem_button" data-viagem_id="<?= $v['viagem_id'] ?>"><i class="fa fa-edit"></i> Editar viagem</button>
                                         <button class="dropdown-item text-success finalizar_viagem_button" data-viagem_id="<?= $v['viagem_id'] ?>"><i class="fa fa-check"></i> Finalizar viagem</button>
@@ -208,7 +209,6 @@
                 }
             ]
         });
-
 
         //Cria modal para editar passageiros
         var passageiros_viagem_modal = new bootstrap.Modal(document.getElementById('passageiros_viagem_modal'));

@@ -96,7 +96,7 @@
     <footer>
         <div class="row g-0 justify-content-between fs--1 mt-4 mb-3">
             <div class="col-12 col-sm-auto text-center">
-                <p class="mb-0 text-600">Tecnologia desenvolvida pela <span class="d-none d-sm-inline-block"><a href="https://infosus.net.br">Infosus</a>.</p>
+                <p class="mb-0 text-600">Tecnologia desenvolvida pela INFOSUS.</p>
             </div>
             <div class="col-12 col-sm-auto text-center">
                 <p class="mb-0 text-600">v2.0.0 alpha</p>

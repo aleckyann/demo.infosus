@@ -21,7 +21,7 @@
                         </div>
                         <div class="mb-2 col-6">
                             <label for="">Previsão de saída</label>
-                            <input type="date" name="data_saida" id="data_saida" class="form-control" required>
+                            <input type="date" name="data_saida" id="data_saida" class="form-control">
                         </div>
 
                         <div class="mb-2 col-12">

@@ -1,22 +1,20 @@
-<?= $this->ui->alert_flashdata() ?>
+            <?= $this->ui->alert_flashdata() ?>
 
-<footer>
-    <div class="row g-0 justify-content-between fs--1 mt-4 mb-3">
-        <div class="col-12 col-sm-auto text-center">
-            <p class="mb-0 text-600">Tecnologia desenvolvida pela <span class="d-none d-sm-inline-block"><a href="https://infosus.net.br">Infosus</a>.</p>
+            <footer>
+                <div class="row g-0 justify-content-between fs--1 mt-4 mb-3">
+                    <div class="col-12 col-sm-auto text-center">
+                        <p class="mb-0 text-600">Tecnologia desenvolvida pela <span class="d-none d-sm-inline-block"><a href="https://infosus.net.br">Infosus</a>.</p>
+                    </div>
+                    <div class="col-12 col-sm-auto text-center">
+                        <p class="mb-0 text-600">v2.0.0 alpha</p>
+                    </div>
+                </div>
+            </footer>
         </div>
-        <div class="col-12 col-sm-auto text-center">
-            <p class="mb-0 text-600">v2.0.0 alpha</p>
-        </div>
+
     </div>
-</footer>
-</div>
-
-</div>
 </main>
-<!-- ===============================================-->
-<!--    End of Main Content-->
-<!-- ===============================================-->
+
 
 
 
@@ -52,16 +50,17 @@
         $('[data-toggle="tooltip"]').tooltip()
     })
 </script>
+
 <!-- ================ -->
-<!-- FIXED COMPONENTS -->
+<!-- GLOBAL COMPONENTS -->
 <!-- ================ -->
-<?php $this->load->view('v2/components/add_paciente_modal') ?>
-<?php $this->load->view('v2/components/add_casa_de_apoio_modal') ?>
-<?php $this->load->view('v2/components/add_procedimento_modal') ?>
-<?php $this->load->view('v2/components/add_tfd_modal') ?>
-<?php $this->load->view('v2/components/load_paciente_modal') ?>
-<?php $this->load->view('v2/components/add_viagem_modal') ?>
-<?php $this->load->view('v2/components/add_estoque_modal') ?>
+<?php $this->load->view('v2/components/global/add_paciente_modal') ?>
+<?php $this->load->view('v2/components/global/add_casa_de_apoio_modal') ?>
+<?php $this->load->view('v2/components/global/add_procedimento_modal') ?>
+<?php $this->load->view('v2/components/global/add_tfd_modal') ?>
+<?php $this->load->view('v2/components/global/load_paciente_modal') ?>
+<?php $this->load->view('v2/components/global/add_viagem_modal') ?>
+<?php $this->load->view('v2/components/global/add_estoque_modal') ?>
 
 </body>
 

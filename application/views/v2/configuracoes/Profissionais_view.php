@@ -46,7 +46,7 @@
 
 
 <!-- CARREGAR COMPONENTES -->
-<?php $this->load->view('v2/components/add_profissionais_conf_modal') ?>
+<?php $this->load->view('v2/components/configuracoes/add_profissionais_conf_modal') ?>
 
 <script>
     window.onload = function() {
@@ -128,7 +128,7 @@
                     }
                 },
                 {
-                    className: 'btn btn-falcon-default btn-sm rounded-pill font-weight-light m-1',
+                    className: 'btn btn-falcon-primary btn-sm rounded-pill font-weight-light m-1',
                     text: '<i class="fas fa-user-md"></i> Nova cota/convênio',
                     action: function() {
                         $('#add_profissionais_conf_modal').modal('show')

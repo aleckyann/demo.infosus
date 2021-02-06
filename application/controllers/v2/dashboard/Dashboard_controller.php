@@ -5,7 +5,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Dashboard_controller extends Sistema_Controller
 {
 
-
+    /**
+     * GET: v2/dashboard
+     */
     public function index(): void
     {
         $dados['procedimentos'] =

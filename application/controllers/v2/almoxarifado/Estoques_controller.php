@@ -5,7 +5,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Estoques_controller extends Sistema_Controller
 {
 
-
+    /**
+    * GET: v2/almoxarifado/estoque/(:num)
+     */
     public function index(int $estoque_id): void
     {
         $data['title'] = 'Produtos';
@@ -14,7 +16,10 @@ class Estoques_controller extends Sistema_Controller
 
         $this->view('almoxarifado/Estoques_view', $data);
     }
-
+    
+    /**
+     * GET: v2/almoxarifado/estoque/
+     */
     public function novo(int $estoque_id): void
     {
         $produto = $this->input->post();
@@ -25,7 +30,9 @@ class Estoques_controller extends Sistema_Controller
         redirect($this->agent->referrer());
     }
 
-
+    /**
+     * GET: v2/almoxarifado/estoque/novo
+     */
     public function novo_estoque(): void
     {
         $estoque = $this->input->post();

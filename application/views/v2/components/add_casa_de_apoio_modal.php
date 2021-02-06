@@ -5,7 +5,7 @@
             <div class="modal-header bg-primary">
                 <h5 class="modal-title font-weight-light text-white" id="add_casa_de_apoio_label"><i class="fas fa-house-user"></i> Adicionar paciente na casa de apoio</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= base_url('v2/regulacao/casa-de-apoio/new') ?>" method="post">
+            <form action="<?= base_url('v2/regulacao/casa-de-apoio/novo') ?>" method="post">
                 <div class="modal-body modal-scroll">
                     <?= $csrf_input ?>
                     <div class="row">

@@ -5,7 +5,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Municipios_controller extends Sistema_Controller
 {
 
-
+    /**
+     * GET: v2/configuracoes/municipios
+     */
     public function index(): void
     {
         $data['title'] = 'Configurar Municipios';
@@ -13,6 +15,9 @@ class Municipios_controller extends Sistema_Controller
         $this->view('configuracoes/Municipios_view', $data);
     }
 
+    /**
+     * POST: v2/configuracoes/municipios/novo
+     */
     public function novo(): void
     {
         $dados = $this->input->post();

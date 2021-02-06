@@ -5,7 +5,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Cotas_controller extends Sistema_Controller
 {
 
-
+    /**
+     * GET: v2/configuracoes/cotas
+     */
     public function index(): void
     {
         $data['title'] = 'Configurar cotas';
@@ -13,6 +15,9 @@ class Cotas_controller extends Sistema_Controller
         $this->view('configuracoes/Cotas_view', $data);
     }
 
+    /**
+     * POST: v2/configuracoes/cotas/novo
+     */
     public function novo(): void
     {
         $dados = $this->input->post();

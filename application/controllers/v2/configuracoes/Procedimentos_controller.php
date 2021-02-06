@@ -5,7 +5,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Procedimentos_controller extends Sistema_Controller
 {
 
-
+    /**
+     * GET: v2/configuracoes/procedimentos
+     */
     public function index(): void
     {
         $data['title'] = 'Configurar procedimentos';
@@ -13,6 +15,9 @@ class Procedimentos_controller extends Sistema_Controller
         $this->view('configuracoes/Procedimentos_view', $data);
     }
 
+    /**
+     * POST: v2/configuracoes/procedimentos/novo
+     */
     public function novo(): void
     {
         $dados = $this->input->post();

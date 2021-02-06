@@ -5,7 +5,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Especialidades_controller extends Sistema_Controller
 {
 
-
+    /**
+     * GET: v2/configuracoes/especialidades
+     */
     public function index(): void
     {
         $data['title'] = 'Configurar Especialidades';
@@ -13,7 +15,9 @@ class Especialidades_controller extends Sistema_Controller
         $this->view('configuracoes/Especialidades_view', $data);
     }
 
-
+    /**
+     * POST: v2/configuracoes/especialidades/novo
+     */
     public function novo(): void
     {
         $dados = $this->input->post();

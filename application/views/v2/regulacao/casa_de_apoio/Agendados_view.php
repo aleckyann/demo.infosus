@@ -69,7 +69,7 @@
 
 
 <!-- CARREGAR COMPONENTES -->
-<?php $this->load->view('v2/components/editar_casa_de_apoio_modal') ?>
+<?php $this->load->view('v2/components/casa_de_apoio/editar_casa_de_apoio_modal') ?>
 
 <script>
     window.onload = function() {
@@ -183,7 +183,7 @@
                     }
                 },
                 {
-                    className: 'btn btn-falcon-default btn-sm rounded-pill font-weight-light m-1',
+                    className: 'btn btn-falcon-primary btn-sm rounded-pill font-weight-light m-1',
                     text: '<i class="fas fa-house-user"></i> Novo paciente',
                     action: function() {
                         $('#add_casa_de_apoio_modal').modal('show')

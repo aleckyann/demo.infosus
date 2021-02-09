@@ -56,5 +56,6 @@ $autoload['model'] = array(
     'Cotas_model' => 'Cotas',
     'Estoques_model' => 'Estoques',
     'Produtos_model' => 'Produtos',
-    'Profissionais_model' => 'Profissionais'
+    'Profissionais_model' => 'Profissionais',
+    'Logs_model' => 'Logs'
 );

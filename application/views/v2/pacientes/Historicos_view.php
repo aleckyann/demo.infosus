@@ -19,7 +19,6 @@
                         <span class="badge bg-primary"><i class="fas fa-laptop-medical"></i> TFD</span>
                         <span class="badge bg-primary"><i class="fas fa-route"></i> Viagens</span>
                         <span class="badge bg-primary"><i class="fas fa-house-user"></i> Casa de apoio</span>
-
                     </p>
                 </div>
             </div>

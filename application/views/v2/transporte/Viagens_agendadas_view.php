@@ -74,8 +74,8 @@
 
 
 <!-- CARREGAR COMPONENTES -->
-<?php $this->load->view('v2/components/editar_viagem_modal') ?>
-<?php $this->load->view('v2/components/passageiros_viagem_modal') ?>
+<?php $this->load->view('v2/components/transportes/editar_viagem_modal') ?>
+<?php $this->load->view('v2/components/transportes/passageiros_viagem_modal') ?>
 
 
 <script>
@@ -201,7 +201,7 @@
                     }
                 },
                 {
-                    className: 'btn btn-falcon-default btn-sm rounded-pill font-weight-light m-1',
+                    className: 'btn btn-falcon-primary btn-sm rounded-pill font-weight-light m-1',
                     text: '<i class="fas fa-route"></i> Nova viagem',
                     action: function() {
                         $('#add_viagem_modal').modal('show')

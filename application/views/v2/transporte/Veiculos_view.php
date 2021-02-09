@@ -75,8 +75,8 @@
 
 
 <!-- CARREGAR COMPONENTES -->
-<?php $this->load->view('v2/components/add_veiculo_modal') ?>
-<?php $this->load->view('v2/components/editar_veiculo_modal') ?>
+<?php $this->load->view('v2/components/transportes/add_veiculo_modal') ?>
+<?php $this->load->view('v2/components/transportes/editar_veiculo_modal') ?>
 
 <script>
     window.onload = function() {
@@ -194,7 +194,7 @@
                     }
                 },
                 {
-                    className: 'btn btn-falcon-default btn-sm rounded-pill font-weight-light m-1',
+                    className: 'btn btn-falcon-primary btn-sm rounded-pill font-weight-light m-1',
                     text: '<i class="fas fa-car-side"></i> Novo veículo',
                     action: function() {
                         $('#add_veiculo_modal').modal('show')

@@ -92,7 +92,7 @@
 
 
 <!-- CARREGAR COMPONENTES -->
-<?php $this->load->view('v2/components/reagendar_tfd_modal') ?>
+<?php $this->load->view('v2/components/tfd/reagendar_tfd_modal') ?>
 
 
 <script>
@@ -246,7 +246,7 @@
                     }
                 },
                 {
-                    className: 'btn btn-falcon-default btn-sm rounded-pill font-weight-light m-1',
+                    className: 'btn btn-falcon-primary btn-sm rounded-pill font-weight-light m-1',
                     text: '<i class="far fa-calendar-plus"></i> Novo TFD',
                     action: function() {
                         $('#add_tfd_modal').modal('show')

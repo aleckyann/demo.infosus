@@ -71,7 +71,7 @@
 
 
 <!-- CARREGAR COMPONENTES -->
-<?php $this->load->view('v2/components/editar_paciente_modal') ?>
+<?php $this->load->view('v2/components/pacientes/editar_paciente_modal') ?>
 
 <script>
     window.onload = function() {
@@ -193,7 +193,7 @@
                     }
                 },
                 {
-                    className: 'btn btn-falcon-default btn-sm rounded-pill font-weight-light m-1',
+                    className: 'btn btn-falcon-primary btn-sm rounded-pill font-weight-light m-1',
                     text: '<i class="fas fa-user-plus"></i> Novo paciente',
                     action: function() {
                         $('#add_paciente_modal').modal('show')

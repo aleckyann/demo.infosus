@@ -87,7 +87,7 @@
 </div>
 
 <!-- CARREGAR COMPONENTES -->
-<?php $this->load->view('v2/components/negar_procedimento_modal') ?>
+<?php $this->load->view('v2/components/procedimentos/negar_procedimento_modal') ?>
 
 <script>
     window.onload = function() {
@@ -174,7 +174,7 @@
                     }
                 },
                 {
-                    className: 'btn btn-falcon-default btn-sm rounded-pill font-weight-light m-1',
+                    className: 'btn btn-falcon-primary btn-sm rounded-pill font-weight-light m-1',
                     text: '<i class="far fa-calendar-plus"></i> Novo procedimento',
                     action: function() {
                         $('#add_procedimento_modal').modal('show')

@@ -1,0 +1,1 @@
+CREATE TABLE `vargemgrande.inf`.`logs` ( `log_id` INT NOT NULL AUTO_INCREMENT , `log_tipo` VARCHAR(255) NOT NULL , `log_desc` TEXT NOT NULL , `log_created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`log_id`)) ENGINE = InnoDB;

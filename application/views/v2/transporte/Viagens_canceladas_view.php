@@ -53,12 +53,8 @@
 </div>
 
 
-<!-- CARREGAR COMPONENTES -->
-<?php $this->load->view('v2/components/add_viagem_modal') ?>
-
 <script>
     window.onload = function() {
-
 
         //ADICIONANDO FILTRO AS COLUNAS
         $('#viagens_canceladas_datatable thead th').each(function() {
@@ -141,7 +137,7 @@
                     }
                 },
                 {
-                    className: 'btn btn-falcon-default btn-sm rounded-pill font-weight-light m-1',
+                    className: 'btn btn-falcon-primary btn-sm rounded-pill font-weight-light m-1',
                     text: '<i class="fas fa-route"></i> Nova viagem',
                     action: function() {
                         $('#add_viagem_modal').modal('show')

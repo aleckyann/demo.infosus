@@ -182,7 +182,6 @@
                     action: function() {
                         $('#add_usuario_conf_modal').modal('show')
                     }
-
                 }
 
             ]

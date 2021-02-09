@@ -75,6 +75,14 @@
                             <label class="btn btn-outline-danger" for="add_tfd4"><span class="m-2">4</span></label><br>Alta
                         </div>
 
+                        <hr>
+
+                        <div class="my-2 col-12">
+                            <div class="form-check form-switch">
+                                <input name="notificar_whatsapp" value="true" class="form-check-input" id="add_tfd_whatsapp" type="checkbox" checked /><label class="form-check-label" for="add_tfd_whatsapp">Notificar paciente por whatsapp?</label>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>

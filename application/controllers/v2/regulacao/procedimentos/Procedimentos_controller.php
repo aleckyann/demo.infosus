@@ -24,6 +24,10 @@ class Procedimentos_controller extends Sistema_Controller
     public function novo(): void
     {
         $dados = $this->input->post();
+
+        $notificar_whatsapp = $dados['notificar_whatsapp'];
+        unset($dados['notificar_whatsapp']);
+
         $this->Procedimentos->insert($dados);
         
         $geral = $this->db->get('geral')->row_array();
@@ -32,6 +36,7 @@ class Procedimentos_controller extends Sistema_Controller
         $paciente_nome = explode(' ', $paciente['nome_paciente'])[0] .' '.explode(' ', $paciente['nome_paciente'])[1];
 
         //NOTIFICAÇÃO NO WHATSAPP
+        if($notificar_whatsapp){
         $this->whatsapp->enviar(
             $paciente['telefone_paciente'],
             'Olá ' .$paciente_nome. ', 
@@ -40,6 +45,8 @@ Já cadastramos sua solicitação do procedimento *'.$procedimento['nome'].'* em
 *Secretaria Municipal de Saúde de '.$geral['geral_cidade'].'*
 _Administração: '.$geral['geral_slogan'].'_'
 );
+        }
+
         $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> PROCEDIMENTO ADICIONADO A FILA COM SUCESSO.');
         redirect($this->agent->referrer());
     }
@@ -51,6 +58,11 @@ _Administração: '.$geral['geral_slogan'].'_'
     public function agendar(): void
     {
         $dados = $this->input->post();
+        
+        $notificar_whatsapp = $dados['notificar_whatsapp'];
+        unset($dados['notificar_whatsapp']);
+
+
         $this->Procedimentos->update(
             [
                 'procedimentos_id' => $dados['procedimentos_id']
@@ -65,14 +77,17 @@ _Administração: '.$geral['geral_slogan'].'_'
         $paciente_nome = explode(' ', $paciente['nome_paciente'])[0] . ' ' . explode(' ', $paciente['nome_paciente'])[1];
 
         //NOTIFICAÇÃO NO WHATSAPP
-        $this->whatsapp->enviar(
-            $paciente['telefone_paciente'],
-            'Olá ' . $paciente_nome . ', 
+        if($notificar_whatsapp){
+            $this->whatsapp->enviar(
+                $paciente['telefone_paciente'],
+                'Olá ' . $paciente_nome . ', 
 Nossa equipe encontrou um horário disponível para a sua solicitação do seu procedimento e ele foi agendado para o dia *'.date_format(date_create($dados['data']),'d/m/Y').'*.
-
+    
 *Secretaria Municipal de Saúde de ' . $geral['geral_cidade'] . '*
 _Administração: ' . $geral['geral_slogan'] . '_'
-        );
+            );
+
+        }
 
         $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> PROCEDIMENTO AGENDADO COM SUCESSO');
         redirect($this->agent->referrer());

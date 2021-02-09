@@ -25,8 +25,10 @@ class Tfd_controller extends Sistema_Controller
     {
         $dados = $this->input->post();
 
-        //Se não houver 'tfd_data_atendimento' insere NULL no DB
-        // if ($dados['tfd_data_atendimento']) unset($dados['tfd_data_atendimento']);
+        if($dados['notificar_whatsapp']){
+            unset($dados['notificar_whatsapp']);
+            
+        }
 
         //Salva o TFD
         $tfd_id = $this->Tfd->insert($dados);

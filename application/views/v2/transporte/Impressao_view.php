@@ -30,7 +30,7 @@
     </style>
 </head>
 
-<body onload="window.print()">
+<body onload="">
     <div class=" mb-3" style="width:21cm">
         <div class="card-body">
             <div class="row align-items-center">
@@ -62,24 +62,24 @@
             </div>
 
             <div class="table-responsive mt-4 fs--1">
-                <table class="table table-striped border-bottom tablePrint">
+                <table class="table table-striped table-bordered border-default tablePrint">
                     <thead>
-                        <tr class="bg-default text-dark">
-                            <th class="text-left" style="width: 22%">Passageiro</th>
-                            <th class="text-right" style="width: 20%">Ponto de partida</th>
-                            <th class="text-right" style="width: 19%">Horário de partida</th>
-                            <th class="text-right" style="width: 20%">Ponto de chegada</th>
-                            <th class="text-right" style="width: 18%">Procedimento</th>
+                        <tr class="bg-default text-dark h6">
+                            <th class="text-left" style="width: 30%">Passageiro</th>
+                            <th class="text-right" style="width: 25%">Ponto de partida</th>
+                            <th class="text-right" style="width: 15%">Horário de partida</th>
+                            <th class="text-right" style="width: 15%">Horário de chegada</th>
+                            <th class="text-right" style="width: 15%">Horário do procedim.</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($passageiros as $p) : ?>
                             <tr>
-                                <td class="align-middle text-left small"><?= $p['nome_paciente'] ?></td>
-                                <td class=" align-middle text-right small"><?= $p['passageiro_local'] ?></td>
-                                <td class="align-middle text-right small"><?= $p['passageiro_horario'] ?></td>
-                                <td class="align-middle text-right small"><?= $p['passageiro_ponto_chegada'] ?></td>
-                                <td class="align-middle text-right small"><?= $p['passageiro_horario_procedimento'] ?></td>
+                                <td class="align-middle text-left"><?= $p['nome_paciente'] ?> <?= $p['telefone_paciente'] ?></td>
+                                <td class=" align-middle text-right"><?= $p['passageiro_local'] ?></td>
+                                <td class="align-middle text-right"><?= $p['passageiro_horario'] ?></td>
+                                <td class="align-middle text-right"><?= $p['passageiro_ponto_chegada'] ?></td>
+                                <td class="align-middle text-right"><?= $p['passageiro_horario_procedimento'] ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

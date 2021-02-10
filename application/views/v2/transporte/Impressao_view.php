@@ -30,7 +30,7 @@
     </style>
 </head>
 
-<body onload="">
+<body onload="window.print()">
     <div class=" mb-3" style="width:21cm">
         <div class="card-body">
             <div class="row align-items-center">

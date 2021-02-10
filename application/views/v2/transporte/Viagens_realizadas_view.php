@@ -67,7 +67,6 @@
 
 
 <!-- CARREGAR COMPONENTES -->
-<?php $this->load->view('v2/components/transportes/add_viagem_modal') ?>
 <?php $this->load->view('v2/components/transportes/load_viagem_modal') ?>
 
 <script>

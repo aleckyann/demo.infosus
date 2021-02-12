@@ -129,7 +129,7 @@
                 },
                 {
                     className: 'btn btn-falcon-primary btn-sm rounded-pill font-weight-light m-1',
-                    text: '<i class="fas fa-user-md"></i> Nova cota/convênio',
+                    text: '<i class="fas fa-user-md"></i> Novo profissional',
                     action: function() {
                         $('#add_profissionais_conf_modal').modal('show')
                     }

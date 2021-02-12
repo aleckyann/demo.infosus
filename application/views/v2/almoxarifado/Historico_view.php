@@ -8,13 +8,13 @@
             </a>
             <h3 class="font-weight-light">
 
-                <i class="fas fa-boxes"></i> Listagem de produtos
+                <i class="fas fa-history"></i> Histórico de almoxarifado
                 <!-- <span class="badge badge-soft-warning rounded-pill ml-2">-0.23%</span> -->
             </h3>
             <div class="collapse" id="collapseExample">
                 <div class="p-card">
                     <p class="mb-2">
-                        Nesta página você pode configurar os produtos que podem ser cadastrados no sistema.
+                        Nesta página você pode verificar histórico de movimentações de estoque.
                     </p>
                 </div>
             </div>
@@ -27,32 +27,32 @@
     <?= $this->ui->alert_flashdata() ?>
 
     <div class="card-body">
-        <table id="cadastro_produtos_modal" class="table table-striped" style="min-height: 200px;">
+        <table id="historico_almoxarifado_datatable" class="table table-striped" style="min-height: 200px;">
             <thead>
                 <th class="text-dark small text-left">PRODUTO</th>
+                <th class="text-dark small text-left">TIPO</th>
+                <th class="text-dark small text-left">QUANTIDADE</th>
             </thead>
             <tbody>
-                <?php foreach ($produtos as $p) { ?>
+                <?php foreach ($historico as $h) { ?>
                     <tr>
-                        <td>
-                            <?= $p['produto_nome'] ?>
-                        </td>
+                        <td><?= $h['historico_almoxarifado_id'] ?></td>
+                        <td><?= $h['historico_almoxarifado_id'] ?></td>
+                        <td><?= $h['historico_almoxarifado_id'] ?></td>
                     </tr>
                 <?php } ?>
+                <tr></tr>
             </tbody>
         </table>
     </div>
 </div>
 
 
-<!-- CARREGAR COMPONENTES -->
-<?php $this->load->view('v2/components/almoxarifado/add_produtos_modal') ?>
-
 <script>
     window.onload = function() {
 
         //Add input de filtro às colunas
-        $('#cadastro_produtos_modal thead th').each(function() {
+        $('#historico_almoxarifado_datatable thead th').each(function() {
             let title = $(this).text();
             if (title == '' || title == 'OPÇÕES') {
 
@@ -65,7 +65,7 @@
             }
         });
 
-        $('#cadastro_produtos_modal').DataTable({
+        $('#historico_almoxarifado_datatable').DataTable({
             initComplete: function() {
                 this.api().columns().every(function() {
                     let that = this;
@@ -121,14 +121,6 @@
                             .addClass('compact')
                             .css('font-size', 'inherit');
                     }
-                },
-                {
-                    className: 'btn btn-falcon-primary btn-sm rounded-pill font-weight-light m-1',
-                    text: '<i class="fas fa-box"></i> Cadastrar produto',
-                    action: function() {
-                        $('#add_produtos_modal').modal('show')
-                    }
-
                 }
 
             ]

@@ -47,6 +47,11 @@ if ($_SERVER['SERVER_NAME'] == 'homologacao.infosus.net.br') {
 	$username = 'vargemgrande.inf';
 	$database = 'vargemgrande.inf';
 	$password = 'l33tsupah4x0r';
+} elseif ($_SERVER['SERVER_NAME'] == 'serranopolismg.infosus.net.br') {
+	$hostname = 'mysql742.umbler.com';
+	$username = 'serranopolismg';
+	$database = 'serranopolismg';
+	$password = 'l33tsupah4x0r';
 } elseif ($_SERVER['SERVER_NAME'] == 'localhost') {
 	$hostname = 'localhost';
 	$username = 'phpmyadmin';

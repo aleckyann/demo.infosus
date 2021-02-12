@@ -57,11 +57,9 @@
                                 <div class="btn-group mb-2">
                                     <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
                                     <div class="dropdown-menu">
-                                        <button class="dropdown-item text-primary editarRegistrosCasaDeApoioButton" data-apoio_id=""><i class="fas fa-sign-in-alt"></i> Repor estoque</button>
-                                        <button class="dropdown-item text-warning editarRegistrosCasaDeApoioButton" data-apoio_id=""><i class="fas fa-exchange-alt"></i> Transferir entre estoques</button>
-                                        <button class="dropdown-item text-danger pacienteSaiu_button" data-apoio_id=""><i class="fas fa-sign-out-alt"></i> Retirar do estoque</button>
+                                        <button class="dropdown-item text-primary repor_produto_estoque_button" data-apoio_id=""><i class="fas fa-sign-in-alt"></i> Repor estoque</button>
                                         <div class="dropdown-divider"></div>
-                                        <button class="dropdown-item editarRegistrosCasaDeApoioButton" data-apoio_id=""><i class="fas fa-history"></i> Histórico</button>
+                                        <button class="dropdown-item text-danger retirar_produto_estoque_button" data-apoio_id=""><i class="fas fa-sign-out-alt"></i> Retirar do estoque</button>
                                     </div>
                                 </div>
                             </div>
@@ -75,12 +73,49 @@
 
 
 <!-- CARREGAR COMPONENTES -->
-<?php $this->load->view('v2/components/add_produto_estoque_modal') ?>
+<?php $this->load->view('v2/components/almoxarifado/add_produto_estoque_modal') ?>
+<?php $this->load->view('v2/components/almoxarifado/repor_produto_estoque_modal') ?>
+<?php $this->load->view('v2/components/almoxarifado/retirar_produto_estoque_modal') ?>
 
 <script>
     window.onload = function() {
 
-        let add_estoque_modal = new bootstrap.Modal(document.getElementById('add_produto_estoque_modal'))
+        let add_estoque_modal = new bootstrap.Modal(document.getElementById('add_produto_estoque_modal'));
+        let repor_produto_estoque_modal = new bootstrap.Modal(document.getElementById('repor_produto_estoque_modal'));
+        let retirar_produto_estoque_modal = new bootstrap.Modal(document.getElementById('retirar_produto_estoque_modal'));
+
+        $('.repor_produto_estoque_button').on('click', function() {
+            let paciente_id = this.dataset.id;
+            $.ajax({
+                    method: "POST",
+                    url: "<?= base_url('v2/pacientes/jsonOne/') ?>",
+                    data: {
+                        <?= $csrf_name ?>: "<?= $csrf_value ?>",
+                        paciente_id: paciente_id
+                    }
+                })
+                .done(function(paciente) {
+
+                });
+            repor_produto_estoque_modal.toggle()
+        });
+
+        $('.retirar_produto_estoque_button').on('click', function() {
+            let paciente_id = this.dataset.id;
+            $.ajax({
+                    method: "POST",
+                    url: "<?= base_url('v2/pacientes/jsonOne/') ?>",
+                    data: {
+                        <?= $csrf_name ?>: "<?= $csrf_value ?>",
+                        paciente_id: paciente_id
+                    }
+                })
+                .done(function(paciente) {
+
+                });
+            retirar_produto_estoque_modal.toggle()
+        });
+
 
         //Add input de filtro às colunas
         $('#estoque_datatable thead th').each(function() {

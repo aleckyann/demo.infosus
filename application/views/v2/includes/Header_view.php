@@ -246,6 +246,7 @@
                                                 <a class="nav-link font-weight-light" href="#" data-toggle="modal" data-target="#add_estoque_modal"><i class="fas fa-cart-plus"></i> Novo estoque</a>
                                             </li>
                                         </ul>
+                                        <a class="nav-link <?= (segment(3) == 'historico') ? 'active collapsed' : '' ?>" href="<?=base_url('v2/almoxarifado/historico')?>" ><i class="fas fa-history mr-1"></i> Histórico</a>
                                     </li>
                                 </ul>
                             </li>

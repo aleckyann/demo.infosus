@@ -53,7 +53,6 @@
 
         var add_profissionais_conf_modal = new bootstrap.Modal(document.getElementById('add_profissionais_conf_modal'))
 
-
         //Add input de filtro às colunas
         $('#profissionais_conf_datatable thead th').each(function() {
             let title = $(this).text();

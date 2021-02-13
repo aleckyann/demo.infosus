@@ -20,11 +20,11 @@
 
                         <div class="mb-2 col-lg-2">
                             <label for="">Quantidade atual</label>
-                            <input type="number" class="form-control" name="produto_quantidade_atual" placeholder="Quantidade adicionada." required>
+                            <input type="number" class="form-control" id="repor_produto_quantidade_atual" disabled>
                         </div>
                         <div class="mb-2 col-lg-2">
                             <label for="">Repor</label>
-                            <input type="number" class="form-control" name="produto_quantidade_atual" placeholder="Quantidade adicionada." required>
+                            <input type="number" class="form-control" name="quantidadeXXXX" placeholder="Quantidade adicionada." required>
                         </div>
                     </div>
                 </div>

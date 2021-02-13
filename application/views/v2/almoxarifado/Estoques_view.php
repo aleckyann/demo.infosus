@@ -57,9 +57,9 @@
                                 <div class="btn-group mb-2">
                                     <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
                                     <div class="dropdown-menu">
-                                        <button class="dropdown-item text-primary repor_produto_estoque_button" data-apoio_id=""><i class="fas fa-sign-in-alt"></i> Repor estoque</button>
+                                        <button class="dropdown-item text-primary repor_produto_estoque_button" data-produto_id="<?= $p['produto_id'] ?>"><i class="fas fa-sign-in-alt"></i> Repor estoque</button>
                                         <div class="dropdown-divider"></div>
-                                        <button class="dropdown-item text-danger retirar_produto_estoque_button" data-apoio_id=""><i class="fas fa-sign-out-alt"></i> Retirar do estoque</button>
+                                        <button class="dropdown-item text-danger retirar_produto_estoque_button" data-produto_id="<?= $p['produto_id'] ?>"><i class="fas fa-sign-out-alt"></i> Retirar do estoque</button>
                                     </div>
                                 </div>
                             </div>
@@ -85,17 +85,19 @@
         let retirar_produto_estoque_modal = new bootstrap.Modal(document.getElementById('retirar_produto_estoque_modal'));
 
         $('.repor_produto_estoque_button').on('click', function() {
-            let paciente_id = this.dataset.id;
+            let produto_id = this.dataset.produto_id;
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url('v2/pacientes/jsonOne/') ?>",
+                    url: "<?= base_url('v2/api/produtos/json') ?>",
                     data: {
                         <?= $csrf_name ?>: "<?= $csrf_value ?>",
-                        paciente_id: paciente_id
+                        produto_id: produto_id
                     }
                 })
-                .done(function(paciente) {
-
+                .done(function(estoque) {
+                    $('#repor_produto_nome').val(estoque.estoque_nome);
+                    $('#repor_produto_estoque').val(estoque.estoque_nome);
+                    $('#repor_produto_quantidade_atual').val(estoque.produto_quantidade_atual);
                 });
             repor_produto_estoque_modal.toggle()
         });

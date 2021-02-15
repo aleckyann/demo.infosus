@@ -18,7 +18,7 @@ class Estoques_controller extends Sistema_Controller
     }
     
     /**
-     * GET: v2/almoxarifado/estoque/
+     * POST: v2/almoxarifado/estoque/
      */
     public function novo(int $estoque_id): void
     {

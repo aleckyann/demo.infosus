@@ -95,6 +95,7 @@
                     }
                 })
                 .done(function(estoque) {
+                    $('#repor_produto_id').val(produto_id);
                     $('#repor_produto_nome').val(estoque.estoque_nome);
                     $('#repor_produto_estoque').val(estoque.estoque_nome);
                     $('#repor_produto_quantidade_atual').val(estoque.produto_quantidade_atual);
@@ -103,17 +104,20 @@
         });
 
         $('.retirar_produto_estoque_button').on('click', function() {
-            let paciente_id = this.dataset.id;
+            let produto_id = this.dataset.produto_id;
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url('v2/pacientes/jsonOne/') ?>",
+                    url: "<?= base_url('v2/api/produtos/json') ?>",
                     data: {
                         <?= $csrf_name ?>: "<?= $csrf_value ?>",
-                        paciente_id: paciente_id
+                        produto_id: produto_id
                     }
                 })
-                .done(function(paciente) {
-
+                .done(function(estoque) {
+                    $('#retirar_produto_id').val(produto_id);
+                    $('#retirar_produto_nome').val(estoque.estoque_nome);
+                    $('#retirar_produto_estoque').val(estoque.estoque_nome);
+                    $('#retirar_produto_quantidade_atual').val(estoque.produto_quantidade_atual);
                 });
             retirar_produto_estoque_modal.toggle()
         });

@@ -29,6 +29,8 @@
     <div class="card-body">
         <table id="historico_almoxarifado_datatable" class="table table-striped" style="min-height: 200px;">
             <thead>
+                <th class="text-dark small text-left">RESPONSÁVEL</th>
+                <th class="text-dark small text-left">ESTOQUE</th>
                 <th class="text-dark small text-left">PRODUTO</th>
                 <th class="text-dark small text-left">TIPO</th>
                 <th class="text-dark small text-left">QUANTIDADE</th>
@@ -36,12 +38,13 @@
             <tbody>
                 <?php foreach ($historico as $h) { ?>
                     <tr>
-                        <td><?= $h['historico_almoxarifado_id'] ?></td>
-                        <td><?= $h['historico_almoxarifado_id'] ?></td>
-                        <td><?= $h['historico_almoxarifado_id'] ?></td>
+                        <td><?= $h['usuario_nome'] ?></td>
+                        <td><?= $h['estoque_nome'] ?></td>
+                        <td><?= $h['produto_nome'] ?></td>
+                        <td><?= $h['h_a_tipo'] ?></td>
+                        <td><?= $h['h_a_produto_quantidade'] ?></td>
                     </tr>
                 <?php } ?>
-                <tr></tr>
             </tbody>
         </table>
     </div>
@@ -99,7 +102,20 @@
                 }
             },
 
-            "aoColumns": [{
+            "aoColumns": [
+            {
+                "bSortable": false
+            }, 
+            {
+                "bSortable": false
+            },
+            {
+                "bSortable": false
+            },
+            {
+                "bSortable": false
+            },
+            {
                 "bSortable": false
             }],
             dom: 'Brtip',
@@ -108,7 +124,7 @@
                     extend: 'print',
                     text: '<i class="fa fa-print"></i> imprimir',
                     exportOptions: {
-                        columns: [0]
+                        columns: [0, 1, 2, 3, 4]
                     },
                     customize: function(win) {
                         $(win.document.body)

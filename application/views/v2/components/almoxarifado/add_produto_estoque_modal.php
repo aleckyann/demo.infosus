@@ -5,7 +5,8 @@
             <div class="modal-header bg-primary">
                 <h5 class="modal-title font-weight-light text-white" id="add_produto_estoque_label"><i class="fas fa-box"></i> Adicionar produto ao estoque</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= current_url() ?>" method="post">
+            <form action="<?= base_url('v2/almoxarifado/produtos/novo') ?>" method="post">
+            <input type="hidden" value="<?=$this->uri->segment(4)?>" name="produto_estoque_id">
                 <div class="modal-body modal-scroll">
                     <?= $csrf_input ?>
                     <div class="row">
@@ -19,11 +20,12 @@
                             <input type="number" class="form-control" name="produto_quantidade_atual" placeholder="Quantidade adicionada." required>
                         </div>
                         <div class="mb-2 col-lg-3">
-                            <label for="">Quantidade mínima <small class="text-info">(opcional)</small></label>
-                            <input type="number" class="form-control" name="produto_quantidade_minima" placeholder="Quantidade mínima.">
+                            <label for="">Quantidade mínima</label>
+                            <input type="number" class="form-control" name="produto_quantidade_minima" placeholder="Quantidade mínima." required>
                         </div>
 
                     </div>
+                        <span class="text-primary small"><i class="fas fa-info-circle"></i> Quantidade mínima é utilizada para gerar alertas para produtos que estão próximos de acabar.</span>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Cancelar</button>

@@ -21,9 +21,9 @@
                 </table>
             </div>
 
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Fechar</button>
+            <div class="modal-footer">
+                <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Fechar</button>
+            </div>
         </div>
     </div>
 </div>

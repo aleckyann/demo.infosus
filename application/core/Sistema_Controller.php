@@ -10,6 +10,21 @@ class Sistema_Controller extends CI_Controller
             $this->session->set_flashdata('danger', 'Falha na autenticação. Faça login novamente.');
             redirect();
         }
+
+        //LOG PARA TODAS AS REQUISIÇÕES POST
+        if($this->input->post()){
+            $json = [
+                'log_tipo' => 'automatic log',
+                'log_desc' => json_encode([
+                    'referrer' => $this->agent->referrer(),
+                    'current' => current_url(),
+                    'get' => $this->input->get(),
+                    'post' => $this->input->post(),
+                    'user' => $this->session->usuario_id
+                ])
+            ];
+            $this->db->insert('logs', $json);
+        }
     }
 
     public function usuario_view(string $view, array $data = []): void

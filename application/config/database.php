@@ -57,7 +57,12 @@ if ($_SERVER['SERVER_NAME'] == 'homologacao.infosus.net.br') {
 	$username = 'graomogol';
 	$database = 'graomogol';
 	$password = 'l33tsupah4x0r';
-} elseif ($_SERVER['SERVER_NAME'] == 'localhost') {
+} elseif ($_SERVER['SERVER_NAME'] == 'botumirim.infosus.net.br') {
+	$hostname = 'mysql742.umbler.com';
+	$username = 'botumirim';
+	$database = 'botumirim';
+	$password = 'l33tsupah4x0r';
+}  elseif ($_SERVER['SERVER_NAME'] == 'localhost') {
 	$hostname = 'localhost';
 	$username = 'phpmyadmin';
 	$database = 'infosus';

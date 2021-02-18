@@ -12,3 +12,5 @@ $route['v2/regulacao/procedimentos/realizados']['get'] = 'v2/regulacao/procedime
 $route['v2/regulacao/procedimentos/negados']['get'] = 'v2/regulacao/procedimentos/Procedimentos_controller/negados';
 
 $route['v2/regulacao/procedimentos/json/(:num)']['post'] = 'v2/regulacao/procedimentos/Procedimentos_controller/jsonOne/$1';
+
+$route['v2/regulacao/procedimentos/print/(:num)']['get'] = 'v2/regulacao/procedimentos/Procedimentos_controller/print/$1';

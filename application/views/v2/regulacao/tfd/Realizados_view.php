@@ -78,7 +78,7 @@
                                     <div class="dropdown-menu">
                                         <button class="dropdown-item reagendar_tfd_button text-warning" data-tfd_id="<?= $t['tfd_id'] ?>"><i class="fas fa-retweet"></i> Reagendar TFD</button>
                                         <div class="dropdown-divider"></div>
-                                        <button class="dropdown-item reagendar_tfd_button" data-tfd_id="<?= $t['tfd_id'] ?>"><i class="fa fa-file"></i> Visualizar TFD</button>
+                                        <a target="_new" href="<?=base_url('v2/regulacao/tfd/print/').$t['tfd_id']?>" class="dropdown-item" data-tfd_id="<?= $t['tfd_id'] ?>"><i class="fa fa-file"></i> Visualizar TFD</a>
                                     </div>
                                 </div>
                             </div>

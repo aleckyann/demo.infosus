@@ -82,6 +82,7 @@
                                 <div class="btn-group mb-2">
                                     <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
                                     <div class="dropdown-menu">
+                                        <a target="_new" href="<?= base_url('v2/regulacao/tfd/print/') . $t['tfd_id'] ?>" class="dropdown-item"><i class="fa fa-print"></i> Imprimir</a>
                                         <button class="dropdown-item agendar_tfd_button" data-tfd_id="<?= $t['tfd_id'] ?>"><i class="fa fa-calendar-alt"></i> Agendar TFD</button>
                                         <button class="dropdown-item text-warning aditar_tfd_button" data-tfd_id="<?= $t['tfd_id'] ?>"><i class="fa fa-edit"></i> Editar TFD</button>
                                         <div class="dropdown-divider"></div>
@@ -227,7 +228,7 @@
             delay: 250,
             minimumInputLength: 1,
         });
-        
+
 
         // ================================
 

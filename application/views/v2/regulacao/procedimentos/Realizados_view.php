@@ -61,7 +61,7 @@
                             </span>
                         </td>
                         <td class="small">
-                            <?= $p['nome_procedimento'] ?>
+                            <?= $p['nome'] ?>
                         </td>
                         <td class="small">
                             <?= date_format(date_create($p['data_solicitacao']), 'd/m/Y') ?>

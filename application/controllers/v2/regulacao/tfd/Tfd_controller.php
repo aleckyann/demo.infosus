@@ -257,4 +257,20 @@ class Tfd_controller extends Sistema_Controller
             ->set_content_type('application/json')
             ->set_output(json_encode($this->Tfd->porPaciente(['tfd_id' => $tfd_id])[0]));
     }
+
+    /**
+     * GET: v2/regulacao/tfd/print/(:num)
+     */
+    public function print(int $tfd_id): void
+    {
+        $data['title'] = 'TFD completo';
+
+        $data['tfd'] = $this->db
+        ->join('pacientes', 'pacientes.paciente_id = tfd.paciente_id')
+        ->join('estabelecimentos', 'estabelecimentos.estabelecimento_id = tfd.tfd_estabelecimento_solicitante')
+        ->join('municipios_ibge', 'municipios_ibge.municipio_id = tfd.tfd_cidade_destino', 'left')
+        ->get_where('tfd', ['tfd_id' => $tfd_id])->row_array();
+        
+        $this->load->view('v2/regulacao/tfd/Print_view', $data);
+    }
 }

@@ -13,3 +13,5 @@ $route['v2/regulacao/tfd/realizados']['get'] = 'v2/regulacao/tfd/Tfd_controller/
 $route['v2/regulacao/tfd/negados']['get'] = 'v2/regulacao/tfd/Tfd_controller/negados';
 
 $route['v2/regulacao/tfd/json/(:num)']['post'] = 'v2/regulacao/tfd/Tfd_controller/jsonOne/$1';
+
+$route['v2/regulacao/tfd/print/(:num)']['get'] = 'v2/regulacao/tfd/Tfd_controller/print/$1';

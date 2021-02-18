@@ -188,4 +188,22 @@ _Administração: ' . $geral['geral_slogan'] . '_'
             ->set_content_type('application/json')
             ->set_output(json_encode($this->Procedimentos->porPaciente(['procedimentos_id' => $procedimentos_id])[0]));
     }
+
+    /**
+     * GET: v2/regulacao/procedimentos/print/(:num)
+     */
+    public function print(int $procedimento_id) :void
+    {
+        $data['title'] = 'Procedimento completo';
+
+        $data['procedimento'] = $this->db
+        ->join('especialidades', 'procedimentos.especialidade = especialidades.especialidades_id')
+        ->join('pacientes', 'pacientes.paciente_id = procedimentos.paciente_id')
+        ->join('tabela_proced', 'tabela_proced.id = procedimentos.tabela_proced_id')
+        ->join('profissionais', 'profissionais.profissional_id = procedimentos.profissional_solicitante')
+        ->get_where('procedimentos', ['procedimentos_id'=>$procedimento_id])->row_array();
+        
+        $this->load->view('v2/regulacao/procedimentos/Print_view', $data);
+    }
+
 }

@@ -54,15 +54,30 @@
 
                         <div class="mb-2 col-lg-4">
                             <label for="">cota</label>
-                            <input type="text" name="tfd_cota" id="reagendar_tfd_cota" class="form-select" required>
+                            <select name="tfd_cota" id="reagendar_tfd_cota" class="form-select" id="" required>
+                                <option value="" disabled selected>Selecione</option>
+                                <?php foreach ($this->Cotas->getAll() as $c) : ?>
+                                    <option value="<?= $c['cota_id'] ?>"><?= $c['cota_nome'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                         <div class="mb-2 col-lg-4">
                             <label for="">Estabelecimento solicitante</label>
-                            <input type="text" name="tfd_estabelecimento_solicitante" id="reagendar_tfd_estabelecimento_solicitante" class="form-control" required>
+                            <select name="tfd_estabelecimento_solicitante" id="reagendar_tfd_estabelecimento_solicitante" class="form-select" required>
+                                <option value="" disabled selected>Selecione</option>
+                                <?php foreach ($this->Estabelecimentos->getAll(['estabelecimento_tipo' => 'SOLICITANTE']) as $c) : ?>
+                                    <option value="<?= $c['estabelecimento_id'] ?>"><?= $c['estabelecimento_nome'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                         <div class="mb-2 col-lg-4">
                             <label for="">Estabelecimento prestador</label>
-                            <input type="text" name="tfd_estabelecimento_prestador" id="reagendar_tfd_estabelecimento_prestador" class="form-control" required>
+                            <select name="tfd_estabelecimento_prestador" id="reagendar_tfd_estabelecimento_prestador" class="form-select" required>
+                                <option value="" disabled selected>Selecione</option>
+                                <?php foreach ($this->Estabelecimentos->getAll(['estabelecimento_tipo' => 'PRESTADOR']) as $c) : ?>
+                                    <option value="<?= $c['estabelecimento_id'] ?>"><?= $c['estabelecimento_nome'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
 
                         <hr>

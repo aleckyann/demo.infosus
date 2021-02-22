@@ -52,16 +52,6 @@ class Pacientes_controller extends Sistema_Controller
             ->set_content_type('application/json')
             ->set_output(json_encode($this->Pacientes->getAll($dados)));
     }
-    /**
-     * 
-     */
-    public function jsonOne()
-    {
-        $paciente_id = $this->input->post('paciente_id');
-        $this->output
-            ->set_content_type('application/json')
-            ->set_output(json_encode($this->Pacientes->getAll(['paciente_id' => $paciente_id])[0]));
-    }
 
     /**
      * POST: v2/pacientes/json/select2

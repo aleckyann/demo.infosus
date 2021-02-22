@@ -71,9 +71,9 @@
                                 <div class="btn-group mb-2">
                                     <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
                                     <div class="dropdown-menu">
-                                        <button class="dropdown-item text-success finalizar_procedimento_button" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-check"></i> Concluir procedimento</button>
+                                        <button class="dropdown-item text-success finalizar_procedimento_button" data-procedimentos_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-check"></i> Concluir procedimento</button>
                                         <div class="dropdown-divider"></div>
-                                        <button class="dropdown-item text-danger negar_procedimento_button" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-times"></i> Negar procedimento</button>
+                                        <button class="dropdown-item text-danger negar_procedimento_button" data-procedimentos_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-times"></i> Negar procedimento</button>
                                     </div>
                                 </div>
                             </div>
@@ -190,9 +190,9 @@
         //Cria modal para editar procedimento
         var negar_procedimento_modal = new bootstrap.Modal(document.getElementById('negar_procedimento_modal'))
 
-        // ABRE MODAL DE EDITAR
-        $('.negar_procedimento_button').on('click', function() {
-            $('#negar_procedimentos_id').val(this.dataset.procedimento_id);
+        // ABRE MODAL DE NEGAR PROCEDIMENTO
+        $('body').on('click', '.negar_procedimento_button', function() {
+            $('#negar_procedimentos_id').val(this.dataset.procedimentos_id);
             negar_procedimento_modal.toggle()
         });
 
@@ -209,7 +209,7 @@
                 denyButtonText: `Não, cancelar`,
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.replace("<?= base_url('v2/regulacao/procedimentos/concluir/') ?>" + this.dataset.procedimento_id);
+                    window.location.replace("<?= base_url('v2/regulacao/procedimentos/concluir/') ?>" + this.dataset.procedimentos_id);
                 } else if (result.isDenied) {
                     Swal.fire('Alteração não foi realizada.', '', 'info')
                 }

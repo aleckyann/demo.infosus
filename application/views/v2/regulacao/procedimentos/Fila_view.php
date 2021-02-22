@@ -77,7 +77,7 @@
                                 <div class="btn-group mb-2">
                                     <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
                                     <div class="dropdown-menu">
-                                        <a target="_new" href="<?=base_url('v2/regulacao/procedimentos/print/'). $p['procedimentos_id'] ?>" class="dropdown-item"><i class="fa fa-print"></i> Imprimir</a>
+                                        <a target="_new" href="<?= base_url('v2/regulacao/procedimentos/print/') . $p['procedimentos_id'] ?>" class="dropdown-item"><i class="fa fa-print"></i> Imprimir</a>
                                         <button class="dropdown-item agendar_procedimento_modal" data-procedimentos_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-calendar-alt"></i> Agendar procedimento</button>
                                         <button class="dropdown-item text-warning editar_procedimento_button" data-procedimentos_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-edit"></i> Editar procedimento</button>
                                         <div class="dropdown-divider"></div>
@@ -438,7 +438,7 @@
         })
 
         // ABRE MODAL DE EDITAR
-        $('.negar_procedimento_button').on('click', function() {
+        $('body').on('click', '.negar_procedimento_button', function() {
             $('#negar_procedimentos_id').val(this.dataset.procedimentos_id);
             negar_procedimento_modal.toggle()
         });

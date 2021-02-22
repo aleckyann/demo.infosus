@@ -162,7 +162,7 @@
                 },
                 {
                     className: 'btn btn-falcon-primary btn-sm rounded-pill font-weight-light m-1',
-                    text: '<i class="fas fa-user-edit"></i> Nova procedimento',
+                    text: '<i class="fas fa-user-edit"></i> Novo procedimento',
                     action: function() {
                         $('#add_procedimento_conf_modal').modal('show')
                     }

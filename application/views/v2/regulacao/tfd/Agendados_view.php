@@ -272,12 +272,10 @@
         // ============================
 
         //Cria modal para negar tfd
-        var negar_tfd_modal = new bootstrap.Modal(document.getElementById('negar_tfd_modal'), {
-            keyboard: false
-        })
+        var negar_tfd_modal = new bootstrap.Modal(document.getElementById('negar_tfd_modal'))
 
-        // ABRE MODAL DE negar TFD
-        $('.negar_tfd_button').on('click', function() {
+        // ABRE MODAL DE NEGAR TFD
+        $('body').on('click', '.negar_tfd_button', function() {
             $('#negar_tfd_id').val(this.dataset.tfd_id);
             negar_tfd_modal.toggle()
         });

@@ -110,7 +110,7 @@
         var editar_tfd_modal = new bootstrap.Modal(document.getElementById('editar_tfd_modal'))
 
         //ABRE MODAL E CARREGA INFORMAÇÕES [MODAL EDITAR]
-        $('.aditar_tfd_button').on('click', function() {
+        $('body').on('click', '.aditar_tfd_button', function() {
             var tfd_id = this.dataset.tfd_id;
             $.ajax({
                     method: "POST",
@@ -175,7 +175,7 @@
         let agendar_tfd_modal = new bootstrap.Modal(document.getElementById('agendar_tfd_modal'))
 
         //ABRE MODAL DE AGENDAMENTO E CARREGA DADOS
-        $('.agendar_tfd_button').on('click', function() {
+        $('body').on('click', '.agendar_tfd_button', function() {
             var tfd_id = this.dataset.tfd_id;
             $.ajax({
                     method: "POST",

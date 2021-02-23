@@ -112,7 +112,7 @@
         var editar_tfd_modal = new bootstrap.Modal(document.getElementById('editar_tfd_modal'))
 
         // ABRE MODAL DE EDITAR
-        $('.editar_tfd_button').on('click', function() {
+        $('body').on('click', '.editar_tfd_button', function() {
             var tfd_id = this.dataset.tfd_id;
             $.ajax({
                     method: "POST",
@@ -282,7 +282,7 @@
 
 
         //CONFIRMAR FINALIZAÇÃO DO PACIENTE 
-        $('.finalizar_tfd_button').on('click', function() {
+        $('body').on('click', '.finalizar_tfd_button', function() {
             Swal.fire({
                 title: 'Confirma conclusão desse tfd?',
                 showDenyButton: true,

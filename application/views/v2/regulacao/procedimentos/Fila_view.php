@@ -108,7 +108,7 @@
         var editar_procedimento_modal = new bootstrap.Modal(document.getElementById('editar_procedimento_modal'))
 
         // ABRE MODAL DE EDITAR
-        $('.editar_procedimento_button').on('click', function() {
+        $('body').on('click', '.editar_procedimento_button', function() {
             var procedimentos_id = this.dataset.procedimentos_id;
             $.ajax({
                     method: "POST",
@@ -231,7 +231,7 @@
         var agendar_procedimento_modal = new bootstrap.Modal(document.getElementById('agendar_procedimento_modal'))
 
         // ABRE MODAL DE AGENDAR
-        $('.agendar_procedimento_modal').on('click', function() {
+        $('body').on('click', '.agendar_procedimento_modal', function() {
             var procedimentos_id = this.dataset.procedimentos_id;
             $.ajax({
                     method: "POST",
@@ -433,9 +433,7 @@
         // ============================
 
         //Cria modal para editar procedimento
-        var negar_procedimento_modal = new bootstrap.Modal(document.getElementById('negar_procedimento_modal'), {
-            keyboard: false
-        })
+        var negar_procedimento_modal = new bootstrap.Modal(document.getElementById('negar_procedimento_modal'))
 
         // ABRE MODAL DE EDITAR
         $('body').on('click', '.negar_procedimento_button', function() {

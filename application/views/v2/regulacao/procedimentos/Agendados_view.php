@@ -198,7 +198,7 @@
 
 
         //CONFIRMAR FINALIZAÇÃO DO PACIENTE 
-        $('.finalizar_procedimento_button').on('click', function() {
+        $('body').on('click', '.finalizar_procedimento_button', function() {
             Swal.fire({
                 title: 'Confirma conclusão desse procedimento?',
                 showDenyButton: true,

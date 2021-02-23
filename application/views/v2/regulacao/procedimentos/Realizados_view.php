@@ -72,7 +72,7 @@
                                 <div class="btn-group mb-2">
                                     <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
                                     <div class="dropdown-menu">
-                                        <button class="dropdown-item text-warning visualizar_procedimento_button" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-edit"></i> Editar procedimento</button>
+                                        <button class="dropdown-item text-warning visualizar_procedimento_button" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-eye"></i> Visualizar procedimento</button>
                                         <div class="dropdown-divider"></div>
                                     </div>
                                 </div>
@@ -93,14 +93,8 @@
 <script>
     window.onload = function() {
 
-        //Cria modal para editar paciente
-        // var visualizar_procedimento_model = new bootstrap.Modal(document.getElementById('visualizar_procedimento_model'), {
-        //     keyboard: false
-        // })
-
-
         // ABRE MODAL DE VISUALIZAR PROCEDIMENTO
-        $('.visualizar_procedimento_button').on('click', function() {
+        $('body').on('click', '.visualizar_procedimento_button', function() {
             var procedimento_id = this.dataset.procedimento_id;
             $.ajax({
                     method: "POST",

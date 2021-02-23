@@ -79,7 +79,7 @@
 
 
         // ABRE MODAL DE EDITAR
-        $('.editarRegistrosCasaDeApoioButton').on('click', function() {
+        $('body').on('click', '.editarRegistrosCasaDeApoioButton', function() {
             var apoio_id = this.dataset.apoio_id;
             $.ajax({
                     method: "POST",

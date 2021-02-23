@@ -16,7 +16,7 @@ class Procedimentos_controller extends Sistema_Controller
         $this->db->join('estabelecimentos', 'procedimentos.estabelecimento_solicitante =  estabelecimentos.estabelecimento_id');
         $this->db->join('profissionais', 'procedimentos.profissional_solicitante =  profissionais.profissional_id');
         $this->db->join('tabela_proced', 'procedimentos.tabela_proced_id =  tabela_proced.id');
-        $this->db->join('especialidades', 'procedimentos.especialidade =  especialidades.especialidades_id');
+        $this->db->join('especialidades', 'procedimentos.especialidade =  especialidades.especialidades_id', 'left');
         $resultado = $this->db->get_where('procedimentos', $where)->row_array();
 
         

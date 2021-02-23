@@ -94,8 +94,6 @@
     </div>
 </div>
 
-
-
 <!-- CARREGAR COMPONENTES -->
 <?php $this->load->view('v2/components/procedimentos/editar_procedimento_modal') ?>
 <?php $this->load->view('v2/components/procedimentos/agendar_procedimento_modal') ?>
@@ -109,6 +107,11 @@
 
         // ABRE MODAL DE EDITAR
         $('body').on('click', '.editar_procedimento_button', function() {
+            $('#editar_procedimento_form').each(function() {
+                this.reset();
+            });
+            console.log('%c editar_procedimento_form: RESETADO', 'color: white; background-color: orange; border-radius:4px; padding:2px; font-size:12px');
+
             var procedimentos_id = this.dataset.procedimentos_id;
             $.ajax({
                     method: "POST",
@@ -119,7 +122,6 @@
                     }
                 })
                 .done(function(procedimento) {
-                    console.log(procedimento)
                     $('#procedimentos_id').val(procedimento.procedimentos_id);
                     $('#nome_paciente').val(procedimento.nome_paciente);
                     $('#agendar_procedimento_nome_procedimento').append(`
@@ -232,6 +234,11 @@
 
         // ABRE MODAL DE AGENDAR
         $('body').on('click', '.agendar_procedimento_modal', function() {
+            $('#agendar_procedimento_form').each(function() {
+                this.reset();
+            });
+            console.log('%c agendar_procedimento_form: RESETADO', 'color: white; background-color: grey; border-radius:4px; padding:2px; font-size:12px');
+
             var procedimentos_id = this.dataset.procedimentos_id;
             $.ajax({
                     method: "POST",
@@ -254,7 +261,6 @@
                     $('#agendar_data_solicitacao').val(procedimento.data_solicitacao);
                     $('#agendar_data').val(procedimento.data);
                     $('#agendar_sintomas').val(procedimento.sintomas);
-
                 });
             agendar_procedimento_modal.toggle()
         });

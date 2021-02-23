@@ -5,7 +5,7 @@
             <div class="modal-header bg-light">
                 <h5 class="modal-title font-weight-light text-dark" id="agendarProcedimento_label"><i class="fas fa-calendar-alt"></i> Agendar procedimento</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= base_url('v2/regulacao/procedimentos/agendar') ?>" method="post">
+            <form action="<?= base_url('v2/regulacao/procedimentos/agendar') ?>" method="post" id="agendar_procedimento_form">
                 <div class="modal-body">
                     <?= $csrf_input ?>
                     <input type="hidden" name="procedimentos_id" id="agendar_procedimentos_id">

@@ -30,26 +30,37 @@
     </style>
 </head>
 
+<?php
+// Dados complementares temporários
+$estabelecimento_prestador = $this->db->get_where('estabelecimentos', ['estabelecimento_id' => $procedimento['estabelecimento_prestador']])->row_array();
+?>
+
 <body onload="window.print()">
     <div class=" mb-3" style="width:21cm">
         <div class="card-body">
             <div class="row align-items-center">
-                <div class="col">
-                    <h5 class="font-weight-bold">PACIENTE</h5>
+                <div class="col-12 mb-5">
+                    <h5 class="font-weight-bold">DADOS DO PACIENTE</h5>
                     <p class="font-weight-light mb-1"><span class="text-dark">Nome:</span> <?= $procedimento['nome_paciente'] ?></p>
                     <p class="font-weight-light mb-1"><span class="text-dark">Nascimento:</span> <?= date_format(date_create($procedimento['nascimento']), 'd/m/Y') ?></p>
                     <p class="font-weight-light mb-1"><span class="text-dark">Endereço:</span> <?= $procedimento['endereco_paciente'] ?></p>
                     <p class="font-weight-light mb-1"><span class="text-dark">Telefone:</span> <?= $procedimento['telefone_paciente'] ?></p>
                 </div>
+                <div class="col-12">
+                    <h5 class="font-weight-bold">DADOS DO PROCEDIMENTO</h5>
+                    <p class="font-weight-light mb-1"><span class="text-dark">Procedimento:</span> <?= $procedimento['nome'] ?></p>
+                    <p class="font-weight-light mb-1"><span class="text-dark">Urgência (1-4):</span> <?= $procedimento['procedimento_risco'] ?></p>
+                    <p class="font-weight-light mb-1"><span class="text-dark">Cota utilizada:</span> <?= $procedimento['cota'] ?></p>
+                    <p class="font-weight-light mb-1"><span class="text-dark">Data da solicitação:</span> <?= date_format(date_create($procedimento['data_solicitacao']), 'd/m/Y') ?></p>
+                    <p class="font-weight-light mb-1"><span class="text-dark">Data do atendimento:</span> <?= date_format(date_create($procedimento['data']), 'd/m/Y') ?></p>
+                    <p class="font-weight-light mb-1"><span class="text-dark">Profissional solicitante:</span> <?= $procedimento['profissional_nome'] ?></p>
+                    <p class="font-weight-light mb-1"><span class="text-dark">Estabelecimento solicitante:</span> <?= $procedimento['estabelecimento_nome'] ?></p>
+                    <p class="font-weight-light mb-1"><span class="text-dark">Estabelecimento prestador:</span> <?= $estabelecimento_prestador['estabelecimento_nome'] ?></p>
+                    <p class="font-weight-light mb-1"><span class="text-dark">Cidade do prestador:</span> <?= $procedimento['nome_municipio'] ?></p>
+                </div>
             </div>
-
-            <div>
-                Data da solicitação:
-                Data do atendimento:
-                Cidade de destino:
-                Estabelecimento_prestador:
-                Estabelecimento_solicitante:
-
+            <hr>
+            <div class="d-print-none">
                 <?= pre($procedimento) ?>
             </div>
 

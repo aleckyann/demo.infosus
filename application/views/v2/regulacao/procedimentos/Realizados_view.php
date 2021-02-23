@@ -72,7 +72,7 @@
                                 <div class="btn-group mb-2">
                                     <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
                                     <div class="dropdown-menu">
-                                        <button class="dropdown-item text-warning visualizar_procedimento_button" data-procedimento_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-eye"></i> Visualizar procedimento</button>
+                                        <a class="dropdown-item" target="_new" href="<?= base_url('v2/regulacao/procedimentos/print/').$p['procedimentos_id'] ?>"><i class="fa fa-print"></i> Visualizar procedimento</a>
                                         <div class="dropdown-divider"></div>
                                     </div>
                                 </div>
@@ -92,28 +92,6 @@
 
 <script>
     window.onload = function() {
-
-        // ABRE MODAL DE VISUALIZAR PROCEDIMENTO
-        $('body').on('click', '.visualizar_procedimento_button', function() {
-            var procedimento_id = this.dataset.procedimento_id;
-            $.ajax({
-                    method: "POST",
-                    url: "<?= base_url('v2/regulacao/procedimentos/json/') ?>" + procedimento_id,
-                    data: {
-                        <?= $csrf_name ?>: "<?= $csrf_value ?>"
-                    }
-                })
-                .done(function(casa_de_apoio) {
-                    $('#procedimento_id').val(casa_de_apoio.procedimento_id);
-                    $('#nome_paciente').val(casa_de_apoio.nome_paciente);
-                    $('#data_entrada').val(casa_de_apoio.data_entrada);
-                    $('#data_saida').val(casa_de_apoio.data_saida);
-                    $('#observacao').val(casa_de_apoio.observacao);
-                });
-            alert('Implementar modal com dados do procedimento.')
-            // visualizar_procedimento_model.toggle()
-        });
-
 
         //ADICIONANDO FILTRO AS COLUNAS
         $('#procedimentos_realizados_datatable thead th').each(function() {

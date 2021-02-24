@@ -84,7 +84,7 @@
             var paciente_id = this.dataset.id;
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url('v2/pacientes/jsonOne/') ?>",
+                    url: "<?= base_url('v2/api/pacientes/json') ?>",
                     data: {
                         <?= $csrf_name ?>: "<?= $csrf_value ?>",
                         paciente_id: paciente_id

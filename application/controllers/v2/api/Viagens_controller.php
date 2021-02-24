@@ -16,12 +16,18 @@ class Viagens_controller extends Sistema_Controller
         $resultado = $this->db
         // ->join('veiculo', ['pacientes.paciente_id = '])
         ->get_where('viagens', ['viagem_id'=>$viagem_id])->row_array();
-        $this->output
-            ->set_content_type('application/json')
-            ->set_output(
-                json_encode(
-                    $resultado
-                )
-            );
+
+
+        if (count($resultado) == 1) {
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode($resultado[0]));
+        } elseif (count($resultado) > 1) {
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode($resultado));
+        } else {
+            show_404();
+        }
     }
 }

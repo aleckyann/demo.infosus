@@ -17,12 +17,17 @@ class Tfd_controller extends Sistema_Controller
         $this->db->join('municipios_ibge', 'municipios_ibge.municipio_id =  tfd.tfd_cidade_destino');
         $resultado = $this->db
             ->get_where('tfd', ['tfd_id' => $tfd_id])->row_array();
-        $this->output
+
+        if (count($resultado) == 1) {
+            $this->output
             ->set_content_type('application/json')
-            ->set_output(
-                json_encode(
-                    $resultado
-                )
-            );
+            ->set_output(json_encode($resultado[0]));
+        } elseif (count($resultado) > 1) {
+            $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($resultado));
+        } else {
+            show_404();
+        }
     }
 }

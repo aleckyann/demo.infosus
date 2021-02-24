@@ -12,15 +12,11 @@ class Passageiros_controller extends Sistema_Controller
     {
         $viagem_id = $this->input->post('viagem_id');
         
-        // $resultado['viagem'] = $this->db
-        // ->join('veiculos', 'veiculos.veiculo_id = viagens.viagem_veiculo_id')
-        // ->get_where('viagens', ['viagem_id'=>$viagem_id])->row_array();
-
         $resultado['viagem'] =
-        $this->db->select('viagens.*, veiculos.*, m1.nome_municipio as origem, m2.nome_municipio as destino');
-        $this->db->join('veiculos', 'veiculos.veiculo_id = viagens.viagem_veiculo_id');
-        $this->db->join('municipios_ibge m1', 'viagens.viagem_origem = m1.municipio_id');
-        $this->db->join('municipios_ibge m2', 'viagens.viagem_destino = m2.municipio_id');
+            $this->db->select('viagens.*, veiculos.*, m1.nome_municipio as origem, m2.nome_municipio as destino');
+            $this->db->join('veiculos', 'veiculos.veiculo_id = viagens.viagem_veiculo_id');
+            $this->db->join('municipios_ibge m1', 'viagens.viagem_origem = m1.municipio_id');
+            $this->db->join('municipios_ibge m2', 'viagens.viagem_destino = m2.municipio_id');
         $resultado = $this->db->get_where('viagens', ['viagem_id' => $viagem_id])->row_array();
 
 
@@ -28,12 +24,18 @@ class Passageiros_controller extends Sistema_Controller
         $this->db->join('viagens', 'viagens.viagem_id = passageiros.passageiro_viagem_id');
         $resultado['passageiros'] = $this->db
         ->get_where('passageiros', ['passageiro_viagem_id'=>$viagem_id])->result_array();
-        $this->output
-            ->set_content_type('application/json')
-            ->set_output(
-                json_encode(
-                    $resultado
-                )
-            );
+        
+
+        if (count($resultado) == 1) {
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode($resultado[0]));
+        } elseif (count($resultado) > 1) {
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode($resultado));
+        } else {
+            show_404();
+        }
     }
 }

@@ -9,13 +9,18 @@ class Municipios_controller extends Sistema_Controller
     {
         $nome = $this->input->post('nome_municipio');
         $resultado = $this->db->select('municipio_id id, nome_municipio text')->like(['nome_municipio' => $nome])->get('municipios_ibge')->result_array();
-        $this->output
+
+        if (count($resultado) == 1) {
+            $this->output
             ->set_content_type('application/json')
-            ->set_output(
-                json_encode(
-                    $resultado
-                )
-            );
+            ->set_output(json_encode($resultado[0]));
+        } elseif (count($resultado) > 1) {
+            $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($resultado));
+        } else {
+            show_404();
+        }
     }
 
 
@@ -23,12 +28,17 @@ class Municipios_controller extends Sistema_Controller
     {
         $nome = $this->input->post('nome_municipio');
         $resultado = $this->db->select('municipio_id id, nome_municipio text')->like(['nome_municipio' => $nome])->get('municipios_ibge')->result_array();
-        $this->output
+
+        if (count($resultado) == 1) {
+            $this->output
             ->set_content_type('application/json')
-            ->set_output(
-                json_encode(
-                    $resultado
-                )
-            );
+            ->set_output(json_encode($resultado[0]));
+        } elseif (count($resultado) > 1) {
+            $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($resultado));
+        } else {
+            show_404();
+        }
     }
 }

@@ -16,7 +16,7 @@ class Pacientes_controller extends Sistema_Controller
             $this->output
                 ->set_content_type('application/json')
                 ->set_output(json_encode($resultado[0]));
-        } elseif(count($resultado) > 1) {
+        } elseif (count($resultado) > 1) {
             $this->output
                 ->set_content_type('application/json')
                 ->set_output(json_encode($resultado));

@@ -246,7 +246,7 @@
                                                 <a class="nav-link font-weight-light" href="#" data-toggle="modal" data-target="#add_estoque_modal"><i class="fas fa-cart-plus"></i> Novo estoque</a>
                                             </li>
                                         </ul>
-                                        <a class="nav-link <?= (segment(3) == 'historico') ? 'active collapsed' : '' ?>" href="<?=base_url('v2/almoxarifado/historico')?>" ><i class="fas fa-history mr-1"></i> Histórico</a>
+                                        <a class="nav-link <?= (segment(3) == 'historico') ? 'active collapsed' : '' ?>" href="<?= base_url('v2/almoxarifado/historico') ?>"><i class="fas fa-history mr-1"></i> Histórico</a>
                                     </li>
                                 </ul>
                             </li>
@@ -292,12 +292,10 @@
                     <a class="navbar-brand mr-1 mr-sm-3" href="#">
                         <div class="d-flex align-items-center"><span class="font-sans-serif">Infosus</span></div>
                     </a>
-                    <!-- <ul class="navbar-nav navbar-nav-icons ml-auto flex-row align-items-center">
+                    <ul class="navbar-nav navbar-nav-icons ml-auto flex-row align-items-center">
                         <li class="nav-item dropdown">
                             <a class="nav-link pr-0" id="navbarDropdownUser" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <div class="avatar avatar-xl">
-                                    <img class="rounded-circle" src="<?= base_url() ?>/public/v2/assets/img/team/3-thumb.png" alt="" />
-                                </div>
+                                <a href="<?=base_url('logout')?>" class="btn btn-sm btn-danger" data-toggle="tooltip" title="Sair do sistema"> <i class="fas fa-door-open"></i></a>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right py-0" aria-labelledby="navbarDropdownUser">
                                 <div class="bg-white rounded-lg py-2">
@@ -306,7 +304,7 @@
                                 </div>
                             </div>
                         </li>
-                    </ul> -->
+                    </ul>
                 </nav>
 
                 <script>

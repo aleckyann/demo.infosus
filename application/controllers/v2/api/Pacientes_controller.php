@@ -6,7 +6,7 @@ class Pacientes_controller extends Sistema_Controller
 {
 
     /**
-     * 
+     * POST: v2/api/pacientes/json
      */
     public function json()
     {

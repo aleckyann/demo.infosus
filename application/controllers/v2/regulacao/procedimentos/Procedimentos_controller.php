@@ -197,12 +197,12 @@ _Administração: ' . $geral['geral_slogan'] . '_'
         $data['title'] = 'Procedimento completo';
 
         $data['procedimento'] = $this->db
-        ->join('especialidades', 'procedimentos.especialidade = especialidades.especialidades_id')
-        ->join('pacientes', 'pacientes.paciente_id = procedimentos.paciente_id')
-        ->join('tabela_proced', 'tabela_proced.id = procedimentos.tabela_proced_id')
-        ->join('profissionais', 'profissionais.profissional_id = procedimentos.profissional_solicitante')
-        ->join('estabelecimentos', 'estabelecimentos.estabelecimento_id = procedimentos.estabelecimento_solicitante')
-        ->join('municipios_ibge', 'municipios_ibge.municipio_id = procedimentos.cidade_prestador')
+        ->join('especialidades', 'procedimentos.especialidade = especialidades.especialidades_id', 'left')
+        ->join('pacientes', 'pacientes.paciente_id = procedimentos.paciente_id', 'left')
+        ->join('tabela_proced', 'tabela_proced.id = procedimentos.tabela_proced_id', 'left')
+        ->join('profissionais', 'profissionais.profissional_id = procedimentos.profissional_solicitante', 'left')
+        ->join('estabelecimentos', 'estabelecimentos.estabelecimento_id = procedimentos.estabelecimento_solicitante', 'left')
+        ->join('municipios_ibge', 'municipios_ibge.municipio_id = procedimentos.cidade_prestador', 'left')
         ->get_where('procedimentos', ['procedimentos_id'=>$procedimento_id])->row_array();
         
         $this->load->view('v2/regulacao/procedimentos/Print_view', $data);

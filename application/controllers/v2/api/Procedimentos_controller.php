@@ -10,6 +10,7 @@ class Procedimentos_controller extends Sistema_Controller
      */
     public function json(): void
     {
+
         $where = $this->input->post();
 
         $this->db->join('pacientes', 'procedimentos.paciente_id =  pacientes.paciente_id');
@@ -17,15 +18,19 @@ class Procedimentos_controller extends Sistema_Controller
         $this->db->join('profissionais', 'procedimentos.profissional_solicitante =  profissionais.profissional_id');
         $this->db->join('tabela_proced', 'procedimentos.tabela_proced_id =  tabela_proced.id');
         $this->db->join('especialidades', 'procedimentos.especialidade =  especialidades.especialidades_id', 'left');
-        $resultado = $this->db->get_where('procedimentos', $where)->row_array();
 
-        
-        $this->output
-            ->set_content_type('application/json')
-            ->set_output(
-                json_encode(
-                    $resultado
-                )
-            );
+        $resultado = $this->db->get_where('procedimentos', $where)->result_array();
+
+        if (count($resultado) == 1) {
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode($resultado[0]));
+        } elseif (count($resultado) > 1) {
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode($resultado));
+        } else {
+            show_404();
+        }
     }
 }

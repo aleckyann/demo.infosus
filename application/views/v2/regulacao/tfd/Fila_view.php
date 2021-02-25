@@ -185,7 +185,6 @@
                     }
                 })
                 .done(function(tfd) {
-                    console.log(tfd)
                     $('#agendar_tfd_paciente_nome').val(tfd.nome_paciente);
                     $('#agendar_tfd_paciente_nascimento').val(tfd.nascimento);
                     $('#agendar_tfd_paciente_cpf').val(tfd.cpf);

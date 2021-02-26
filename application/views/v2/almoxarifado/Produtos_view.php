@@ -1,3 +1,4 @@
+<?php die()?>
 <div class="d-flex mb-2">
     <div class="card overflow-hidden flex-1">
         <div class="bg-holder bg-card" style="background-image:url(<?= base_url('public/v2/assets/img/illustrations/corner-2.png') ?>);"></div>

@@ -30,9 +30,10 @@
         <table id="estoque_datatable" class="table table-striped" style="min-height: 200px;">
             <thead>
                 <th class="text-dark small text-left"></th>
-                <th class="text-dark small text-left">PRODUTOS</th>
-                <th class="text-dark small text-left">QUANTIDADE EM ESTOQUE</th>
-                <th class="text-dark small text-left">QUANTIDADE MÍNIMA</th>
+                <th class="text-dark small text-left">PRODUTO</th>
+                <th class="text-dark small text-left">LOTE</th>
+                <th class="text-dark small text-left">VALIDADE</th>
+                <th class="text-dark small text-left">QTD. EM ESTOQUE</th>
                 <th class="text-dark small text-left">OPÇÕES</th>
             </thead>
             <tbody>
@@ -46,11 +47,24 @@
                         <td class="small">
                             <?= $p['produto_nome'] ?>
                         </td>
-                        <td class="text-center small">
-                            <?= $p['produto_quantidade_atual'] ?>
+                        <td class="small">
+                            <?= $p['produto_lote'] ?>
+                        </td>
+                        <td class="small">
+                            <?php
+                                $diff = floor((strtotime($p['produto_validade']) - strtotime(date('Y-m-d'))) / (60 * 60 * 24));
+                                if ($diff <= $p['produto_aviso_validade']) {
+                                    $aviso = 'class="text-danger font-weight-bold" data-toggle="tooltip" title="Produto está próximo do vencimento!"';
+                                } else {
+                                    $aviso = '';
+                                }
+                            ?>
+                            <span <?= $aviso ?>>
+                                <?= ($p['produto_validade'] != '0000-00-00') ? date_format(date_create($p['produto_validade']), 'd/m/Y') : '' ?>
+                            </span>
                         </td>
                         <td class="text-center small">
-                            <?= $p['produto_quantidade_minima'] ?>
+                            <?= $p['produto_quantidade_atual'] ?>
                         </td>
                         <td class="text-center small">
                             <div class="btn-group">
@@ -189,6 +203,9 @@
                 },
                 {
                     "bSortable": false
+                },
+                {
+                    "bSortable": false
                 }
             ],
             dom: 'Brtip',
@@ -197,7 +214,7 @@
                     extend: 'print',
                     text: '<i class="fa fa-print"></i> imprimir',
                     exportOptions: {
-                        columns: [1, 2, 3]
+                        columns: [1, 2, 3, 4, 5]
                     },
                     customize: function(win) {
                         $(win.document.body)

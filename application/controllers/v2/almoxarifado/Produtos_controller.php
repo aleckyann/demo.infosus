@@ -35,7 +35,7 @@ class Produtos_controller extends Sistema_Controller
         $dados = $this->input->post();
         $produto = $this->db->get_where('produtos', ['produto_id'=>$dados['produto_id']])->row_array();
 
-        if($dados['retirar_quantidade'] < $produto['produto_quantidade_atual']){
+        if($dados['retirar_quantidade'] <= $produto['produto_quantidade_atual']){
             $quantidade_atual = $produto['produto_quantidade_atual'] - $dados['retirar_quantidade'];
             $this->db->update('produtos', ['produto_quantidade_atual'=>$quantidade_atual],['produto_id'=>$dados['produto_id']]);
             $this->session->set_flashdata('success', 'RETIRADA REALIZADA COM SUCESSO.');

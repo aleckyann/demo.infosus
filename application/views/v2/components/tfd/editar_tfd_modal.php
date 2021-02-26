@@ -6,7 +6,7 @@
                 <input type="hidden" name="tfd_id" id="editar_tfd_id">
                 <input type="hidden" name="editar_tfd_anexo" id="editar_tfd_anexo">
                 <div class="modal-header bg-warning">
-                    <h5 class="modal-title font-weight-light text-white" id="editar_tfd_label"><i class="fas fa-laptop-medical"></i> Editar procedimento</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title font-weight-light text-white" id="editar_tfd_label"><i class="fas fa-laptop-medical"></i> Editar TFD</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body modal-scroll">
                     <?= $csrf_input ?>
@@ -17,11 +17,11 @@
                         </div>
                         <div class="mb-2 col-lg-3">
                             <label for="">Nascimento</label>
-                            <input type="date" id="editar_tfd_nascimento" class="form-control" disabled>
+                            <input type="date" id="editar_tfd_paciente_nascimento" class="form-control" disabled>
                         </div>
                         <div class="mb-2 col-lg-3">
                             <label for="">CPF</label>
-                            <input type="text" id="editar_tfd_cpf" class="form-control" disabled>
+                            <input type="text" id="editar_tfd_paciente_cpf" class="form-control" disabled>
                         </div>
 
                         <hr>

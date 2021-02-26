@@ -96,11 +96,12 @@
                 })
                 .done(function(estoque) {
                     $('#repor_produto_id').val(produto_id);
-                    $('#repor_produto_nome').val(estoque.estoque_nome);
+                    $('#repor_produto_nome').val(estoque.produto_nome);
                     $('#repor_produto_estoque').val(estoque.estoque_nome);
                     $('#repor_produto_quantidade_atual').val(estoque.produto_quantidade_atual);
                 });
-            repor_produto_estoque_modal.toggle()
+            repor_produto_estoque_modal.toggle();
+            console.log('%c repor_produto_estoque_modal: OPEN', 'color: white; background-color: blue; border-radius:4px; padding:2px; font-size:12px');
         });
 
         $('.retirar_produto_estoque_button').on('click', function() {
@@ -115,11 +116,12 @@
                 })
                 .done(function(estoque) {
                     $('#retirar_produto_id').val(produto_id);
-                    $('#retirar_produto_nome').val(estoque.estoque_nome);
+                    $('#retirar_produto_nome').val(estoque.produto_nome);
                     $('#retirar_produto_estoque').val(estoque.estoque_nome);
                     $('#retirar_produto_quantidade_atual').val(estoque.produto_quantidade_atual);
                 });
-            retirar_produto_estoque_modal.toggle()
+            retirar_produto_estoque_modal.toggle();
+            console.log('%c retirar_produto_estoque_modal: OPEN', 'color: white; background-color: red; border-radius:4px; padding:2px; font-size:12px');
         });
 
 

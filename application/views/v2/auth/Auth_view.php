@@ -48,7 +48,7 @@
                                         <!--/.bg-holder-->
                                         <div class="z-index-1 position-relative">
                                             <a class="link-light mb-4 font-sans-serif fs-4 d-inline-block font-weight-bolder" href="<?= base_url() ?>/public/v2/index.html">
-                                            
+
                                             </a>
                                             <img class="align-content mb-4" style="filter: brightness(0) invert(1);" src="<?= base_url() ?>public/images/logo.png" width="100" alt="Logotipo Infosus">
 
@@ -56,7 +56,7 @@
                                         </div>
                                     </div>
                                     <div class="mt-3 mb-4 mt-md-4 mb-md-5">
-                                        <p class="text-white">Você precisa de ajuda?<br><a class="text-decoration-underline link-light" href="#">Falar com suporte!</a></p>
+                                        <p class="text-white">Você precisa de ajuda?<br><a class="text-decoration-underline link-light small" href="https://wa.me/5538999892125"><i class="fab fa-whatsapp"></i> Falar com o suporte!</a></p>
                                     </div>
                                 </div>
                                 <div class="col-md-7 d-flex flex-center">
@@ -68,7 +68,7 @@
                                             </div>
                                         </div>
                                         <form action="<?= base_url('auth') ?>" method="post">
-                                            <input type="hidden" name="<?= $this->security->get_csrf_token_name()?>" value="<?= $this->security->get_csrf_hash()?>">
+                                            <input type="hidden" name="<?= $this->security->get_csrf_token_name() ?>" value="<?= $this->security->get_csrf_hash() ?>">
                                             <div class="mb-3"><label class="form-label" for="card-email">Email</label>
                                                 <input class="form-control" name="usuario_email" id="card-email" type="email" required />
                                             </div>
@@ -78,8 +78,12 @@
                                                 </div>
                                                 <input class="form-control" name="usuario_password" id="card-password" type="password" required />
                                             </div>
-                                            <div class="form-check mb-0"><input class="form-check-input" type="checkbox" id="card-checkbox" checked="checked" /><label class="form-check-label" for="card-checkbox">Lembrar-me</label></div>
-                                            <div class="mb-3"><button class="btn btn-primary btn-block mt-3" type="submit">Autenticar</button></div>
+                                            <div class="form-check mb-0">
+                                                <input class="form-check-input" type="checkbox" id="card-checkbox" checked="checked" /><label class="form-check-label" for="card-checkbox">Lembrar-me</label>
+                                            </div>
+                                            <div class="mb-3">
+                                                <button class="btn btn-primary btn-block mt-3" type="submit">Autenticar</button>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>

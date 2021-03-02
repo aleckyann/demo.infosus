@@ -22,4 +22,10 @@ class Index_controller extends CI_Controller
         $this->output->set_status_header(404);
         $this->load->view('error_404');
     }
+
+    public function logs()
+    {
+        $logs = $this->db->get('logs')->result_array();
+        pre($logs);
+    }
 }

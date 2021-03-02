@@ -295,7 +295,7 @@
                     <ul class="navbar-nav navbar-nav-icons ml-auto flex-row align-items-center">
                         <li class="nav-item dropdown">
                             <a class="nav-link pr-0" id="navbarDropdownUser" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <a href="<?=base_url('logout')?>" class="btn btn-sm btn-danger" data-toggle="tooltip" title="Sair do sistema"> <i class="fas fa-door-open"></i></a>
+                                <a href="<?=base_url('logout')?>" class="btn btn-sm btn-danger" data-toggle="tooltip" title="Sair do sistema"> <i class="fas fa-times-circle"></i></a>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right py-0" aria-labelledby="navbarDropdownUser">
                                 <div class="bg-white rounded-lg py-2">

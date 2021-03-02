@@ -10,6 +10,8 @@ class Dashboard_controller extends Sistema_Controller
      */
     public function index(): void
     {
+        $dados['title'] = 'Dashboard';
+
         $dados['procedimentos'] =
         [
             'fila' => $this->db->get_where('procedimentos', ['realizado' => '', 'data' => NULL, 'negado_por' => NULL])->num_rows(),

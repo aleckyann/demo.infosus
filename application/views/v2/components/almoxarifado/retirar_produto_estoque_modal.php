@@ -6,26 +6,29 @@
                 <h5 class="modal-title font-weight-light text-white" id="retirar_produto_estoque_label"><i class="fas fa-box"></i> Retirar do estoque</h5><button class="btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="<?= base_url('v2/almoxarifado/produtos/retirar') ?>" method="post">
-            <input type="hidden" id="retirar_produto_id" name="produto_id">
+                <input type="hidden" id="retirar_produto_id" name="produto_id">
                 <div class="modal-body modal-scroll">
                     <?= $csrf_input ?>
                     <div class="row">
-                        <div class="mb-2 col-lg-4">
+                        <div class="mb-2 col-lg-6">
                             <label for="">Nome do produto</label>
                             <input type="text" class="form-control" id="retirar_produto_nome" disabled>
                         </div>
-                        <div class="mb-2 col-lg-4">
+                        <div class="mb-2 col-lg-3">
                             <label for="">Estoque</label>
                             <input type="text" class="form-control" id="retirar_produto_estoque" disabled>
                         </div>
-                        <div class="mb-2 col-lg-2">
+                        <div class="mb-2 col-lg-3">
                             <label for="">Quantidade atual</label>
                             <input type="number" class="form-control" id="retirar_produto_quantidade_atual" disabled>
                         </div>
-
-                        <div class="mb-2 col-lg-2">
+                        <div class="mb-2 col-lg-4">
                             <label for="">Retirar</label>
                             <input type="number" class="form-control" name="retirar_quantidade" placeholder="Quantidade a retirar." required>
+                        </div>
+                        <div class="mb-2 col-lg-8">
+                            <label for="">Destino do produto</label>
+                            <input type="text" class="form-control" name="h_a_destino" placeholder="Destino do produto retirado">
                         </div>
                     </div>
                 </div>

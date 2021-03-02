@@ -34,6 +34,7 @@
                 <th class="text-dark small text-left">PRODUTO</th>
                 <th class="text-dark small text-left">TIPO</th>
                 <th class="text-dark small text-left">QUANTIDADE</th>
+                <th class="text-dark small text-left">DESTINO</th>
             </thead>
             <tbody>
                 <?php foreach ($historico as $h) { ?>
@@ -43,6 +44,7 @@
                         <td><?= $h['produto_nome'] ?></td>
                         <td><?= $h['h_a_tipo'] ?></td>
                         <td><?= $h['h_a_produto_quantidade'] ?></td>
+                        <td><?= $h['h_a_destino'] ?></td>
                     </tr>
                 <?php } ?>
             </tbody>
@@ -102,22 +104,25 @@
                 }
             },
 
-            "aoColumns": [
-            {
-                "bSortable": false
-            }, 
-            {
-                "bSortable": false
-            },
-            {
-                "bSortable": false
-            },
-            {
-                "bSortable": false
-            },
-            {
-                "bSortable": false
-            }],
+            "aoColumns": [{
+                    "bSortable": false
+                },
+                {
+                    "bSortable": false
+                },
+                {
+                    "bSortable": false
+                },
+                {
+                    "bSortable": false
+                },
+                {
+                    "bSortable": false
+                },
+                {
+                    "bSortable": false
+                }
+            ],
             dom: 'Brtip',
             buttons: [{
                     className: 'btn btn-falcon-default btn-sm rounded-pill font-weight-light m-1',

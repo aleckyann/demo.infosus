@@ -33,6 +33,7 @@ class Produtos_controller extends Sistema_Controller
     public function retirar()
     {
         $dados = $this->input->post();
+
         $produto = $this->db->get_where('produtos', ['produto_id'=>$dados['produto_id']])->row_array();
 
         if($dados['retirar_quantidade'] <= $produto['produto_quantidade_atual']){
@@ -47,6 +48,7 @@ class Produtos_controller extends Sistema_Controller
                     'h_a_produto_id' => $produto['produto_id'],
                     'h_a_estoque_id' => $produto['produto_estoque_id'],
                     'h_a_produto_quantidade' => $dados['retirar_quantidade'],
+                    'h_a_destino' => $dados['h_a_destino'],
                     'h_a_usuario_id' => $this->session->usuario_id
                 ]
             );

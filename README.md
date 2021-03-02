@@ -8,3 +8,7 @@ ALTER TABLE `pacientes` ADD `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMES
 
 #produtos
 ALTER TABLE `produtos` ADD `produto_lote` VARCHAR(255) NOT NULL AFTER `produto_quantidade_minima`, ADD `produto_validade` DATE NULL DEFAULT NULL AFTER `produto_lote`, ADD `produto_aviso_validade` INT NULL DEFAULT NULL AFTER `produto_validade`;
+
+
+
+ALTER TABLE `historico_almoxarifado` ADD `h_a_destino` VARCHAR(255) NOT NULL AFTER `h_a_produto_quantidade`;

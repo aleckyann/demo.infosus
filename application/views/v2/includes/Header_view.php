@@ -9,20 +9,31 @@
     <title>INFOSUS | <?= $title ?? '' ?></title>
 
     <!-- ===============================================-->
-    <!--    Favicons-->
+    <!-- Favicons-->
     <!-- ===============================================-->
-    <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url() ?>/public/v2/assets/img/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url() ?>/public/v2/assets/img/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url() ?>/public/v2/assets/img/favicons/favicon-16x16.png">
-    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url() ?>/public/v2/assets/img/favicons/favicon.ico">
-    <link rel="manifest" href="<?= base_url() ?>/public/v2/assets/img/favicons/manifest.json">
-    <meta name="msapplication-TileImage" content="<?= base_url() ?>/public/v2/assets/img/favicons/mstile-150x150.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="<?= base_url() ?>/public/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="<?= base_url() ?>/public/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="<?= base_url() ?>/public/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="<?= base_url() ?>/public/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="<?= base_url() ?>/public/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="<?= base_url() ?>/public/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="<?= base_url() ?>/public/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="<?= base_url() ?>/public/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url() ?>/public/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="<?= base_url() ?>/public/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url() ?>/public/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="<?= base_url() ?>/public/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url() ?>/public/favicon/favicon-16x16.png">
+    <link rel="manifest" href="<?= base_url() ?>/public/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="<?= base_url() ?>/public/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
+
 
     <script src="<?= base_url() ?>/public/v2/assets/js/config.navbar-vertical.js"></script>
 
     <!-- ===============================================-->
-    <!--    Stylesheets-->
+    <!-- Stylesheets-->
     <!-- ===============================================-->
     <link href="<?= base_url() ?>/public/v2/assets/css/theme-rtl.min.css" rel="stylesheet" id="style-rtl" />
     <link href="<?= base_url() ?>/public/v2/assets/css/theme.min.css" rel="stylesheet" id="style-default" />
@@ -295,7 +306,7 @@
                     <ul class="navbar-nav navbar-nav-icons ml-auto flex-row align-items-center">
                         <li class="nav-item dropdown">
                             <a class="nav-link pr-0" id="navbarDropdownUser" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <a href="<?=base_url('logout')?>" class="btn btn-sm btn-danger" data-toggle="tooltip" title="Sair do sistema"> <i class="fas fa-times-circle"></i></a>
+                                <a href="<?= base_url('logout') ?>" class="btn btn-sm btn-danger" data-toggle="tooltip" title="Sair do sistema"> <i class="fas fa-times-circle"></i></a>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right py-0" aria-labelledby="navbarDropdownUser">
                                 <div class="bg-white rounded-lg py-2">

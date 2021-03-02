@@ -72,12 +72,28 @@ if ($_SERVER['SERVER_NAME'] == 'homologacao.infosus.net.br') {
 	$username = 'montalvania';
 	$database = 'montalvania';
 	$password = 'l33tsupah4x0r';
-}  elseif ($_SERVER['SERVER_NAME'] == 'localhost') {
+} elseif ($_SERVER['SERVER_NAME'] == 'juvenilia.infosus.net.br') {
+	$hostname = 'mysql743.umbler.com';
+	$username = 'juvenilia';
+	$database = 'juvenilia';
+	$password = 'l33tsupah4x0r';
+} elseif ($_SERVER['SERVER_NAME'] == 'matiascardoso.infosus.net.br') {
+	$hostname = 'mysql743.umbler.com';
+	$username = 'matiascardoso';
+	$database = 'matiascardoso';
+	$password = 'l33tsupah4x0r';
+} elseif ($_SERVER['SERVER_NAME'] == 'miravania.infosus.net.br') {
+	$hostname = 'mysql743.umbler.com';
+	$username = 'miravania';
+	$database = 'miravania';
+	$password = 'l33tsupah4x0r';
+} elseif ($_SERVER['SERVER_NAME'] == 'localhost') {
 	$hostname = 'localhost';
 	$username = 'phpmyadmin';
 	$database = 'infosus';
 	$password = '106.312.266-05';
 }
+
 
 /**
  * CRIAR BANCO DE DADOS COM MESMO NOME DO DOMÍNIO UTILIZADO
@@ -88,7 +104,7 @@ $db['INFOSUS'] = array(
 	'dsn'	=> '',
 	'hostname' => $hostname,
 	'username' => $username,
-	'password' => 'l33tsupah4x0r',
+	'password' => $password,
 	'database' => $username,
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

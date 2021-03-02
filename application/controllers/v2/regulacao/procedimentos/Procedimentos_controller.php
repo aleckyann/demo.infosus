@@ -11,7 +11,7 @@ class Procedimentos_controller extends Sistema_Controller
      */
     public function fila(): void
     {
-        $dados['title'] = 'Procedimentos na fila';
+        $dados['title'] = 'Fila';
         $dados['procedimentos'] = $this->Procedimentos->porPaciente(['realizado' => '', 'data' => NULL, 'negado_por' => NULL]);
 
         $this->view('regulacao/procedimentos/Fila_view', $dados);
@@ -150,7 +150,7 @@ _Administração: ' . $geral['geral_slogan'] . '_'
      */
     public function agendados(): void
     {
-        $dados['title'] = 'Procedimentos agendados';
+        $dados['title'] = 'Agendados';
         $dados['procedimentos'] = $this->Procedimentos->porPaciente(['realizado' => '', 'data !=' => NULL, 'negado_por' => NULL]);
 
         $this->view('regulacao/procedimentos/Agendados_view', $dados);
@@ -163,7 +163,7 @@ _Administração: ' . $geral['geral_slogan'] . '_'
      */
     public function negados(): void
     {
-        $dados['title'] = 'Procedimentos negados';
+        $dados['title'] = 'Negados';
         $dados['procedimentos'] = $this->Procedimentos->porPaciente(['negado_por !=' => NULL]);
 
         $this->view('regulacao/procedimentos/Negados_view', $dados);
@@ -176,7 +176,7 @@ _Administração: ' . $geral['geral_slogan'] . '_'
      */
     public function realizados(): void
     {
-        $dados['title'] = 'Procedimentos realizados';
+        $dados['title'] = 'Realizados';
         $dados['procedimentos'] = $this->Procedimentos->porPaciente(['realizado' => 'sim']);
 
         $this->view('regulacao/procedimentos/Realizados_view', $dados);

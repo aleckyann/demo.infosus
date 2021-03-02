@@ -10,7 +10,7 @@ class Pacientes_controller extends Sistema_Controller
      */
     public function listagem(): void
     {
-        $data['title'] = 'Lista com todos os pacientes'; 
+        $data['title'] = 'Pacientes'; 
         $data['pacientes'] = $this->Pacientes->getAll();
         $this->view('pacientes/Listagem_view', $data);
     }

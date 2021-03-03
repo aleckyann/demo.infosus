@@ -50,7 +50,7 @@
     $(document).ready(function() {
         var add_cidade_viagem_select2 = $('.add_cidade_viagem_select2').select2({
             ajax: {
-                url: '<?= base_url('v2/api/municipios/select2') ?>',
+                url: '<?= base_url('v2/api/municipios/json') ?>',
                 method: 'POST',
                 data: function(params) {
                     var query = {

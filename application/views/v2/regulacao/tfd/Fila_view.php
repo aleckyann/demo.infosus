@@ -120,7 +120,6 @@
                     }
                 })
                 .done(function(tfd) {
-                    console.log(tfd)
                     $('#editar_tfd_paciente_nome').val(tfd.nome_paciente);
                     $('#editar_tfd_paciente_nascimento').val(tfd.nascimento);
                     $('#editar_tfd_paciente_cpf').val(tfd.cpf);

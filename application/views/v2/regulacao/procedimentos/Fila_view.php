@@ -203,11 +203,11 @@
         //PROFISSIONAIS [MODAL EDITAR]
         let editar_profissionais_solicitante = $('#profissional_solicitante').select2({
             ajax: {
-                url: '<?= base_url('v2/api/procedimentos/json') ?>',
+                url: '<?= base_url('v2/api/profissionais/json') ?>',
                 method: 'POST',
                 data: function(params) {
                     let query = {
-                        procedimento_nome: params.term,
+                        profissional_nome: params.term,
                         <?= $csrf_name ?>: '<?= $csrf_value ?>'
                     }
                     return query;
@@ -218,7 +218,7 @@
                     }
                 },
                 dataType: 'json',
-                placeholder: "Selecione um estabelecimento",
+                placeholder: "Selecione um profissional",
             },
             delay: 250,
             minimumInputLength: 1,
@@ -297,7 +297,7 @@
                 method: 'POST',
                 data: function(params) {
                     let query = {
-                        estabelecimento: params.term,
+                        nome_municipio: params.term,
                         <?= $csrf_name ?>: '<?= $csrf_value ?>'
                     }
                     return query;
@@ -321,7 +321,7 @@
                 method: 'POST',
                 data: function(params) {
                     let query = {
-                        estabelecimento: params.term,
+                        cota_nome: params.term,
                         <?= $csrf_name ?>: '<?= $csrf_value ?>'
                     }
                     return query;

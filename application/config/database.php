@@ -14,7 +14,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
 		'hostname' => 'localhost',
 		'username' => 'phpmyadmin',
 		'password' => '106.312.266-05',
-		'database' => 'infosus_matias',
+		'database' => 'infosus',
 		'dbdriver' => 'mysqli',
 		'dbprefix' => '',
 		'pconnect' => FALSE,

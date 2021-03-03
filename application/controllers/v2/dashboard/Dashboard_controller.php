@@ -10,6 +10,49 @@ class Dashboard_controller extends Sistema_Controller
      */
     public function index(): void
     {
+
+        // $procedimentos_backup = $this->db->get('procedimentos_backup')->result_array();
+
+
+        // foreach ($procedimentos_backup as $pb) {
+
+        //     $pb['tabela_proced_id'] = $this->db->get_where('tabela_proced', ['nome' => $pb['nome_procedimento']])->row_array()['id'] ?? 999999;
+        //     unset($pb['nome_procedimento']);
+
+        //     $pb['especialidade'] = $this->db->get_where('especialidades', ['especialidade_nome' => $pb['especialidade']])->row_array()['especialidades_id'] ?? 999999;
+
+        //     $pb['especialidade'] = $this->db->get_where('especialidades', ['especialidade_nome' => $pb['especialidade']])->row_array()['especialidades_id'] ?? 999999;
+
+        //     $pb['cidade_prestador'] = $this->db->get_where('municipios_ibge', ['nome_municipio' => $pb['cidade_prestador']])->row_array()['municipio_id'] ?? 999999;
+
+        //     if ($pb['data'] == '0000-00-00') {
+        //         $pb['data'] = NULL;
+        //     } else {
+        //         $pb['data'] =  $pb['data'];
+        //     }
+
+        //     if ($pb['data_solicitacao'] == '0000-00-00') {
+        //         $pb['data_solicitacao'] = '2021-03-01';
+        //     } else {
+        //         $pb['data_solicitacao'] =  $pb['data_solicitacao'];
+        //     }
+
+        //     $pb['profissional_solicitante'] = 999999;
+
+        //     $pb['estabelecimento_solicitante'] = 999999;
+
+        //     $pb['estabelecimento_prestador'] = 999999;
+
+
+        //     // $this->db->insert(
+        //     //     'procedimentos',
+        //     //     $pb
+        //     //     );
+
+        // }
+
+
+
         $dados['title'] = 'Dashboard';
 
         $dados['procedimentos'] =

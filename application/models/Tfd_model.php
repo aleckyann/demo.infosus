@@ -62,6 +62,7 @@ class Tfd_model extends CI_model
     {
         $this->db->join('pacientes', 'tfd.paciente_id =  pacientes.paciente_id');
         $this->db->join('estabelecimentos', 'estabelecimentos.estabelecimento_id =  tfd.tfd_estabelecimento_solicitante');
+        return $this->db->order_by('tfd_risco DESC, tfd_data_solicitacao ASC')->get_where('tfd', $where)->result_array();
         return $this->db->get_where('tfd', $where)->result_array();
     }
 }

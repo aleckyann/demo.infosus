@@ -14,7 +14,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
 		'hostname' => 'localhost',
 		'username' => 'phpmyadmin',
 		'password' => '106.312.266-05',
-		'database' => 'infosus',
+		'database' => 'infosus_matias',
 		'dbdriver' => 'mysqli',
 		'dbprefix' => '',
 		'pconnect' => FALSE,
@@ -90,7 +90,7 @@ if ($_SERVER['SERVER_NAME'] == 'homologacao.infosus.net.br') {
 } elseif ($_SERVER['SERVER_NAME'] == 'localhost') {
 	$hostname = 'localhost';
 	$username = 'phpmyadmin';
-	$database = 'infosus';
+	$database = 'infosus_matias';
 	$password = '106.312.266-05';
 }
 

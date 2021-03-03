@@ -53,9 +53,9 @@ class Procedimentos_model extends CI_model
      */
     public function porPaciente(array $where = []): array
     {
-        $this->db->join('tabela_proced', 'procedimentos.tabela_proced_id =  tabela_proced.id');
-        $this->db->join('pacientes', 'procedimentos.paciente_id =  pacientes.paciente_id');
-        return $this->db->order_by('procedimento_risco', 'DESC')->get_where('procedimentos', $where)->result_array();
+        $this->db->join('tabela_proced', 'procedimentos.tabela_proced_id =  tabela_proced.id', 'left');
+        $this->db->join('pacientes', 'procedimentos.paciente_id =  pacientes.paciente_id', 'left');
+        return $this->db->order_by('procedimento_risco DESC, data_solicitacao ASC')->get_where('procedimentos', $where)->result_array();
     }
 
     /**

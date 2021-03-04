@@ -4,17 +4,17 @@
         <!--/.bg-holder-->
         <div class="card-body position-relative">
             <a class="float-right btn" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                <i class="fas fa-question-circle"></i>
+                <i class="fas fa-question-circle"></i> <span class="font-weight-light">Ajuda</span>
             </a>
-            <h3 class="font-weight-light">
+            <h4 class="font-weight-light">
 
                 <i class="fas fa-user-injured"></i> Pacientes
                 <!-- <span class="badge badge-soft-warning rounded-pill ml-2">-0.23%</span> -->
-            </h3>
+            </h4>
             <div class="collapse" id="collapseExample">
                 <div class="p-card">
                     <p class="mb-2">
-                        Nesta página você pode visualizar todos os pacientes cadastrados.
+                        Nesta página você pode visualizar todos os pacientes cadastrados no sistema. <br> Você também pode editar o paciente e acessar o histórico do mesmo.
                     </p>
                 </div>
             </div>
@@ -54,7 +54,7 @@
                                 <div class="btn-group mb-2">
                                     <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item text-primary" href="<?=base_url('v2/pacientes/historicos/'.$p['paciente_id'])?>"><i class="fa fa-database"></i> Históricos</a>
+                                        <a class="dropdown-item text-primary" href="<?= base_url('v2/pacientes/historicos/' . $p['paciente_id']) ?>"><i class="fa fa-database"></i> Históricos</a>
                                         <div class="dropdown-divider"></div>
                                         <button class="dropdown-item text-warning editar_paciente_button" data-id="<?= $p['paciente_id'] ?>"><i class="fa fa-edit"></i> Editar paciente</button>
                                     </div>

@@ -4,12 +4,12 @@
         <!--/.bg-holder-->
         <div class="card-body position-relative">
             <a class="float-right btn" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                <i class="fas fa-question-circle"></i>
+                <i class="fas fa-question-circle"></i> <span class="font-weight-light">Ajuda</span>
             </a>
-            <h3 class="font-weight-light">
+            <h4 class="font-weight-light">
                 <i class="fas fa-calendar-check text-success"></i> <?= $title ?>
                 <!-- <span class="badge badge-soft-warning rounded-pill ml-2">-0.23%</span> -->
-            </h3>
+            </h4>
             <div class="collapse" id="collapseExample">
                 <div class="p-card">
                     <p class="mb-2">
@@ -105,7 +105,7 @@
         `).addClass('disabled');
         });
 
-        
+
         //Cria modal para reagendar tfd
         var reagendar_tfd_modal = new bootstrap.Modal(document.getElementById('reagendar_tfd_modal'))
 

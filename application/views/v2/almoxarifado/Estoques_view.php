@@ -4,13 +4,12 @@
         <!--/.bg-holder-->
         <div class="card-body position-relative">
             <a class="float-right btn" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                <i class="fas fa-question-circle"></i>
+                <i class="fas fa-question-circle"></i> <span class="font-weight-light">Ajuda</span>
             </a>
-            <h3 class="font-weight-light">
-
+            <h4 class="font-weight-light">
                 <i class="fas fa-boxes"></i> <?= $estoque['estoque_nome'] ?><br>
                 <!-- <span class="badge badge-soft-warning rounded-pill ml-2">-0.23%</span> -->
-            </h3>
+            </h4>
             <div class="collapse" id="collapseExample">
                 <div class="p-card">
                     <p class="mb-2">
@@ -52,12 +51,12 @@
                         </td>
                         <td class="small">
                             <?php
-                                $diff = floor((strtotime($p['produto_validade']) - strtotime(date('Y-m-d'))) / (60 * 60 * 24));
-                                if ($diff <= $p['produto_aviso_validade']) {
-                                    $aviso = 'class="text-danger font-weight-bold" data-toggle="tooltip" title="Produto está próximo do vencimento!"';
-                                } else {
-                                    $aviso = '';
-                                }
+                            $diff = floor((strtotime($p['produto_validade']) - strtotime(date('Y-m-d'))) / (60 * 60 * 24));
+                            if ($diff <= $p['produto_aviso_validade']) {
+                                $aviso = 'class="text-danger font-weight-bold" data-toggle="tooltip" title="Produto está próximo do vencimento!"';
+                            } else {
+                                $aviso = '';
+                            }
                             ?>
                             <span <?= $aviso ?>>
                                 <?= ($p['produto_validade'] != '0000-00-00') ? date_format(date_create($p['produto_validade']), 'd/m/Y') : '' ?>

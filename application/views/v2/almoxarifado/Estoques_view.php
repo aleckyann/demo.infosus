@@ -93,6 +93,23 @@
 <script>
     window.onload = function() {
 
+        // SET LOADING BUTTONS
+        $('#add_produto_estoque_form').on('submit', function() {
+            $('#add_produto_estoque_submit_button').html(`
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Aguarde...
+        `).addClass('disabled');
+        })
+        $('#repor_produto_estoque_form').on('submit', function() {
+            $('#repor_produto_estoque_submit_button').html(`
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Aguarde...
+        `).addClass('disabled');
+        })
+        $('#retirar_produto_estoque_form').on('submit', function() {
+            $('#retirar_produto_estoque_submit_button').html(`
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Aguarde...
+        `).addClass('disabled');
+        })
+
         let add_estoque_modal = new bootstrap.Modal(document.getElementById('add_produto_estoque_modal'));
         let repor_produto_estoque_modal = new bootstrap.Modal(document.getElementById('repor_produto_estoque_modal'));
         let retirar_produto_estoque_modal = new bootstrap.Modal(document.getElementById('retirar_produto_estoque_modal'));

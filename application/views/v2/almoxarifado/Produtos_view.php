@@ -52,6 +52,14 @@
 <script>
     window.onload = function() {
 
+        // SET LOADING BUTTONS
+        $('#add_produtos_form').on('submit', function() {
+            $('#add_produtos_submit_button').html(`
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Aguarde...
+        `).addClass('disabled');
+        })
+
+
         //Add input de filtro às colunas
         $('#cadastro_produtos_modal thead th').each(function() {
             let title = $(this).text();

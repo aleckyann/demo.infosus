@@ -77,7 +77,7 @@ if ($_SERVER['SERVER_NAME'] == 'homologacao.infosus.net.br') {
 	$username = 'juvenilia';
 	$database = 'juvenilia';
 	$password = 'l33tsupah4x0r';
-} elseif ($_SERVER['SERVER_NAME'] == 'matiascardoso.infosus.net.br') {
+} elseif ($_SERVER['SERVER_NAME'] == 'matias.infosus.net.br') {
 	$hostname = 'mysql743.umbler.com';
 	$username = 'matiascardoso';
 	$database = 'matiascardoso';

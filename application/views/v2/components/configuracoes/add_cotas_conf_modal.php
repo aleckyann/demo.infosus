@@ -5,7 +5,7 @@
             <div class="modal-header bg-primary">
                 <h5 class="modal-title font-weight-light text-white" id="add_municipio_label"><i class="fas fa-ticket-alt"></i> Adicionar nova cota/convênio</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= base_url('v2/configuracoes/cotas/novo') ?>" method="post">
+            <form action="<?= base_url('v2/configuracoes/cotas/novo') ?>" id="add_cotas_conf_form" method="post">
                 <div class="modal-body modal-scroll">
                     <?= $csrf_input ?>
                     <div class="row">
@@ -20,7 +20,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Cancelar</button>
-                    <button class="btn btn-primary btn-sm" type="submit">Salvar</button>
+                    <button class="btn btn-primary btn-sm" id="add_cotas_conf_submit_button" type="submit">Adicionar</button>
                 </div>
             </form>
         </div>

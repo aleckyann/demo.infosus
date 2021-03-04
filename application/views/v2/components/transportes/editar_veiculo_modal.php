@@ -5,7 +5,7 @@
             <div class="modal-header bg-warning">
                 <h5 class="modal-title font-weight-light text-white" id="editar_veiculo_modal_label"><i class="fas fa-car-side"></i> Editar veículo</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= base_url('v2/transportes/veiculos/editar') ?>" method="post">
+            <form action="<?= base_url('v2/transportes/veiculos/editar') ?>" id="editar_veiculo_form" method="post">
                 <div class="modal-body">
                     <?= $csrf_input ?>
                     <input type="hidden" id="veiculo_id" name="veiculo_id">
@@ -35,7 +35,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Cancelar</button>
-                    <button class="btn btn-primary btn-sm" type="submit">Salvar</button>
+                    <button class="btn btn-primary btn-sm" id="editar_veiculo_submit_button" type="submit">Editar</button>
                 </div>
             </form>
         </div>

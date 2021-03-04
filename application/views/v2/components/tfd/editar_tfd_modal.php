@@ -2,7 +2,7 @@
 <div class="modal fade" id="editar_tfd_modal" role="dialog" aria-labelledby="editar_tfd_label" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
-            <form action="<?= base_url('v2/regulacao/tfd/editar') ?>" method="post" enctype="multipart/form-data">
+            <form action="<?= base_url('v2/regulacao/tfd/editar') ?>" id="editar_tfd_form" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="tfd_id" id="editar_tfd_id">
                 <input type="hidden" name="editar_tfd_anexo" id="editar_tfd_anexo">
                 <div class="modal-header bg-warning">
@@ -80,7 +80,7 @@
 
                 <div class="modal-footer">
                     <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Cancelar</button>
-                    <button class="btn btn-primary btn-sm" type="submit">Salvar</button>
+                    <button class="btn btn-primary btn-sm" id="editar_tfd_submit_button" type="submit">Editar</button>
                 </div>
             </form>
         </div>

@@ -102,6 +102,24 @@
 <script>
     window.onload = function() {
 
+        // SET LOADING BUTTONS
+        $('#editar_procedimento_form').on('submit', function() {
+            $('#editar_procedimento_submit_button').html(`
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Aguarde...
+        `).addClass('disabled');
+        });
+        $('#agendar_procedimento_form').on('submit', function() {
+            $('#agendar_procedimento_submit_button').html(`
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Aguarde...
+        `).addClass('disabled');
+        });
+        $('#negar_procedimento_form').on('submit', function() {
+            $('#negar_procedimento_submit_button').html(`
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Aguarde...
+        `).addClass('disabled');
+        });
+
+
         //Cria modal para editar procedimento
         var editar_procedimento_modal = new bootstrap.Modal(document.getElementById('editar_procedimento_modal'))
 

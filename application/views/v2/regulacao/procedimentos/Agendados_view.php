@@ -92,6 +92,12 @@
 <script>
     window.onload = function() {
 
+        $('#negar_procedimento_form').on('submit', function() {
+            $('#negar_procedimento_submit_button').html(`
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Aguarde...
+        `).addClass('disabled');
+        })
+
         //ADICIONANDO FILTRO AS COLUNAS
         $('#procedimentos_agendados_datatable thead th').each(function() {
             let title = $(this).text();

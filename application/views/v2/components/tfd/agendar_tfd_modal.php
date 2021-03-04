@@ -2,7 +2,7 @@
 <div class="modal fade" id="agendar_tfd_modal" role="dialog" aria-labelledby="agendar_tfd_label" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
-            <form action="<?= base_url('v2/regulacao/tfd/agendar') ?>" method="post">
+            <form action="<?= base_url('v2/regulacao/tfd/agendar') ?>" id="agendar_tfd_form" method="post">
                 <div class="modal-header bg-warning">
                     <h5 class="modal-title font-weight-light text-white" id="agendar_tfd_label"><i class="fas fa-laptop-medical"></i> Agendamento de procedimento</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -121,7 +121,7 @@
 
                 <div class="modal-footer">
                     <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Cancelar</button>
-                    <button class="btn btn-primary btn-sm" type="submit">Salvar</button>
+                    <button class="btn btn-primary btn-sm" id="agendar_tfd_submit_button" type="submit">Agendar</button>
                 </div>
             </form>
         </div>

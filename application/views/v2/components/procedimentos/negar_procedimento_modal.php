@@ -5,7 +5,7 @@
             <div class="modal-header bg-danger">
                 <h5 class="modal-title font-weight-light text-white" id="negar_procedimento_label"><i class="fas fa-calendar-times"></i> Negar procedimento</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= base_url('v2/regulacao/procedimentos/negar') ?>" method="post">
+            <form action="<?= base_url('v2/regulacao/procedimentos/negar') ?>" id="negar_procedimento_form" method="post">
                 <div class="modal-body">
                     <?= $csrf_input ?>
                     <input type="hidden" name="procedimentos_id" id="negar_procedimentos_id">
@@ -18,7 +18,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Cancelar</button>
-                    <button class="btn btn-primary btn-sm" type="submit">Salvar</button>
+                    <button class="btn btn-primary btn-sm" id="negar_procedimento_submit_button" type="submit">Salvar</button>
                 </div>
             </form>
         </div>

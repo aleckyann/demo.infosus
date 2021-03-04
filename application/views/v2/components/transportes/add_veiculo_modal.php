@@ -5,7 +5,7 @@
             <div class="modal-header bg-primary">
                 <h5 class="modal-title font-weight-light text-white" id="add_veiculo_modal_label"><i class="fas fa-car-side"></i> Adicionar veículo</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= base_url('v2/transportes/veiculos/novo') ?>" method="post">
+            <form action="<?= base_url('v2/transportes/veiculos/novo') ?>" id="add_veiculo_form" method="post">
                 <div class="modal-body">
                     <?= $csrf_input ?>
                     <div class="row">
@@ -34,7 +34,7 @@
 
                 <div class="modal-footer">
                     <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Cancelar</button>
-                    <button class="btn btn-primary btn-sm" type="submit">Salvar</button>
+                    <button class="btn btn-primary btn-sm" id="add_veiculo_submit_button" type="submit">Adicionar</button>
                 </div>
             </form>
         </div>

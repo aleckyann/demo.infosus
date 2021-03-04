@@ -43,7 +43,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Cancelar</button>
-                    <button class="btn btn-primary btn-sm" id="add_casa_de_apoio_submit_button" type="submit">Salvar</button>
+                    <button class="btn btn-primary btn-sm" id="add_casa_de_apoio_submit_button" type="submit">Adicionar</button>
                 </div>
             </form>
         </div>

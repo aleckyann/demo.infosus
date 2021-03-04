@@ -2,7 +2,7 @@
 <div class="modal fade" id="reagendar_tfd_modal" role="dialog" aria-labelledby="reagendar_tfd_label" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
-            <form action="<?= base_url('v2/regulacao/tfd/reagendar') ?>" method="post" enctype="multipart/form-data">
+            <form action="<?= base_url('v2/regulacao/tfd/reagendar') ?>" id="reagendar_tfd_form" method="post" enctype="multipart/form-data">
                 <?= $csrf_input ?>
                 <input type="hidden" name="paciente_id" id="reagendar_tfd_paciente_id">
                 <input type="hidden" name="novo_tfd_anexo" id="reagendar_tfd_anexo">
@@ -162,7 +162,7 @@
 
                 <div class="modal-footer">
                     <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Cancelar</button>
-                    <button class="btn btn-primary btn-sm" type="submit">Salvar</button>
+                    <button class="btn btn-primary btn-sm" id="reagendar_tfd_submit_button" type="submit">Reagendar</button>
                 </div>
             </form>
         </div>

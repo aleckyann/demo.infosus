@@ -64,7 +64,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Cancelar</button>
-                    <button class="btn btn-primary btn-sm" type="submit" id="add_paciente_submit_button">Salvar</button>
+                    <button class="btn btn-primary btn-sm" type="submit" id="add_paciente_submit_button">Adicionar</button>
                 </div>
             </form>
         </div>

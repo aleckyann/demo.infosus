@@ -5,7 +5,7 @@
             <div class="modal-header bg-danger">
                 <h5 class="modal-title font-weight-light text-white" id="retirar_produto_estoque_label"><i class="fas fa-box"></i> Retirar do estoque</h5><button class="btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= base_url('v2/almoxarifado/produtos/retirar') ?>" method="post">
+            <form action="<?= base_url('v2/almoxarifado/produtos/retirar') ?>" id="retirar_produto_estoque_form" method="post">
                 <input type="hidden" id="retirar_produto_id" name="produto_id">
                 <div class="modal-body modal-scroll">
                     <?= $csrf_input ?>
@@ -34,7 +34,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Cancelar</button>
-                    <button class="btn btn-primary btn-sm" type="submit">Retirar</button>
+                    <button class="btn btn-primary btn-sm" id="retirar_produto_estoque_submit_button" type="submit">Retirar</button>
                 </div>
             </form>
         </div>

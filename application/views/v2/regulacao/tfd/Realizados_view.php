@@ -78,7 +78,7 @@
                                     <div class="dropdown-menu">
                                         <button class="dropdown-item reagendar_tfd_button text-warning" data-tfd_id="<?= $t['tfd_id'] ?>"><i class="fas fa-retweet"></i> Reagendar TFD</button>
                                         <div class="dropdown-divider"></div>
-                                        <a target="_new" href="<?=base_url('v2/regulacao/tfd/print/').$t['tfd_id']?>" class="dropdown-item" data-tfd_id="<?= $t['tfd_id'] ?>"><i class="fa fa-file"></i> Visualizar TFD</a>
+                                        <a target="_new" href="<?= base_url('v2/regulacao/tfd/print/') . $t['tfd_id'] ?>" class="dropdown-item" data-tfd_id="<?= $t['tfd_id'] ?>"><i class="fa fa-file"></i> Visualizar TFD</a>
                                     </div>
                                 </div>
                             </div>
@@ -98,6 +98,14 @@
 <script>
     window.onload = function() {
 
+        // SET LOADING BUTTONS
+        $('#reagendar_tfd_form').on('submit', function() {
+            $('#reagendar_tfd_submit_button').html(`
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Aguarde...
+        `).addClass('disabled');
+        });
+
+        
         //Cria modal para reagendar tfd
         var reagendar_tfd_modal = new bootstrap.Modal(document.getElementById('reagendar_tfd_modal'))
 

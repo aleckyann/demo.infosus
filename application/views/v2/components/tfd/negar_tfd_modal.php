@@ -5,7 +5,7 @@
             <div class="modal-header bg-danger">
                 <h5 class="modal-title font-weight-light text-white" id="negar_tfd_label"><i class="fas fa-laptop-medical"></i> Negar TFD</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= base_url('v2/regulacao/tfd/negar') ?>" method="post">
+            <form action="<?= base_url('v2/regulacao/tfd/negar') ?>" id="negar_tfd_form" method="post">
                 <?= $csrf_input ?>
                 <div class="modal-body">
                     <input type="hidden" name="tfd_id" id="negar_tfd_id">
@@ -18,7 +18,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Cancelar</button>
-                    <button class="btn btn-primary btn-sm" type="submit">Salvar</button>
+                    <button class="btn btn-primary btn-sm" id="negar_tfd_submit_button" type="submit">Negar</button>
                 </div>
             </form>
         </div>

@@ -81,6 +81,19 @@
 <script>
     window.onload = function() {
 
+        // SET LOADING BUTTONS
+        $('#add_veiculo_form').on('submit', function() {
+            $('#add_veiculo_submit_button').html(`
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Aguarde...
+        `).addClass('disabled');
+        });
+        $('#editar_veiculo_form').on('submit', function() {
+            $('#editar_veiculo_submit_button').html(`
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Aguarde...
+        `).addClass('disabled');
+        });
+
+
         //Cria modal para editar paciente
         let editar_veiculo_modal = new bootstrap.Modal(document.getElementById('editar_veiculo_modal'))
 

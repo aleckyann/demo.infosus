@@ -5,7 +5,7 @@
             <div class="modal-header bg-primary">
                 <h5 class="modal-title font-weight-light text-white" id="add_produto_estoque_label"><i class="fas fa-box"></i> Adicionar produto ao estoque</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= base_url('v2/almoxarifado/produtos/novo') ?>" method="post">
+            <form action="<?= base_url('v2/almoxarifado/produtos/novo') ?>" id="add_produto_estoque_form" method="post">
                 <input type="hidden" value="<?= $this->uri->segment(4) ?>" name="produto_estoque_id">
                 <div class="modal-body modal-scroll">
                     <?= $csrf_input ?>
@@ -44,7 +44,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Cancelar</button>
-                    <button class="btn btn-primary btn-sm" type="submit">Salvar</button>
+                    <button class="btn btn-primary btn-sm" id="add_produto_estoque_submit_button" type="submit">Adicionar</button>
                 </div>
             </form>
         </div>

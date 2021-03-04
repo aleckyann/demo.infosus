@@ -108,6 +108,18 @@
 <script>
     window.onload = function() {
 
+        // SET LOADING BUTTONS
+        $('#editar_tfd_form').on('submit', function() {
+            $('#editar_tfd_submit_button').html(`
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Aguarde...
+        `).addClass('disabled');
+        });
+        $('#negar_tfd_form').on('submit', function() {
+            $('#negar_tfd_submit_button').html(`
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Aguarde...
+        `).addClass('disabled');
+        });
+
         //Cria modal para editar tfd
         var editar_tfd_modal = new bootstrap.Modal(document.getElementById('editar_tfd_modal'))
 

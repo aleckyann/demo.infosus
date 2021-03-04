@@ -5,7 +5,7 @@
             <div class="modal-header bg-primary">
                 <h5 class="modal-title font-weight-light text-white" id="add_procedimento_label"><i class="far fa-calendar-plus"></i> Adicionar novo procedimento</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= base_url('v2/regulacao/procedimentos/novo') ?>" method="post">
+            <form action="<?= base_url('v2/regulacao/procedimentos/novo') ?>" id="add_procedimento_form" method="post">
                 <div class="modal-body modal-scroll">
                     <?= $csrf_input ?>
                     <div class="row">
@@ -88,7 +88,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Cancelar</button>
-                    <button class="btn btn-primary btn-sm" type="submit">Salvar</button>
+                    <button class="btn btn-primary btn-sm" id="add_procedimento_submit_button" type="submit">Salvar</button>
                 </div>
             </form>
         </div>
@@ -97,6 +97,12 @@
 <script>
     //Cria modal para editar paciente
     let add_procedimento_modal = new bootstrap.Modal(document.getElementById('add_procedimento_modal'))
+
+    $('#add_procedimento_form').on('submit', function() {
+        $('#add_procedimento_submit_button').html(`
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Aguarde...
+        `).addClass('disabled');
+    })
 
     $(document).ready(function() {
         let procedimentoSelect2 = $('#add_procedimentos_select2').select2({

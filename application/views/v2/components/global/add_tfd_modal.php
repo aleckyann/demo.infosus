@@ -5,7 +5,7 @@
             <div class="modal-header bg-primary">
                 <h5 class="modal-title font-weight-light text-white" id="add_tfd_label"><i class="fas fa-laptop-medical"></i> Adicionar novo TFD</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= base_url('v2/regulacao/tfd/novo') ?>" method="post" enctype="multipart/form-data">
+            <form action="<?= base_url('v2/regulacao/tfd/novo') ?>" method="post" id="add_tfd_form" enctype="multipart/form-data">
                 <?= $csrf_input ?>
                 <div class="modal-body modal-scroll">
                     <div class="row">
@@ -88,7 +88,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Cancelar</button>
-                    <button class="btn btn-primary btn-sm" type="submit">Salvar</button>
+                    <button class="btn btn-primary btn-sm" id="add_tfd_submit_button" type="submit">Salvar</button>
                 </div>
             </form>
         </div>
@@ -97,6 +97,12 @@
 <script>
     //Cria modal para editar paciente
     let add_tfd_modal = new bootstrap.Modal(document.getElementById('add_tfd_modal'));
+
+    $('#add_tfd_form').on('submit', function() {
+        $('#add_tfd_submit_button').html(`
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Aguarde...
+        `).addClass('disabled');
+    })
 
     $(document).ready(function() {
         let tfdSelect2 = $('#addTfdSelect2').select2({

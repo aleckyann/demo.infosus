@@ -5,7 +5,7 @@
             <div class="modal-header bg-primary">
                 <h5 class="modal-title font-weight-light text-white" id="add_viagem_label"><i class="fas fa-route"></i> Adicionar nova viagem</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= base_url('v2/transportes/viagens/novo') ?>" method="post">
+            <form action="<?= base_url('v2/transportes/viagens/novo') ?>" id="add_viagem_form" method="post">
                 <?= $csrf_input ?>
                 <div class="modal-body">
                     <div class="row">
@@ -35,7 +35,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Cancelar</button>
-                    <button class="btn btn-primary btn-sm" type="submit">Salvar</button>
+                    <button class="btn btn-primary btn-sm" id="add_viagem_submit_button" type="submit">Salvar</button>
                 </div>
             </form>
         </div>
@@ -46,6 +46,11 @@
 <script>
     //Cria modal para editar paciente
     // var add_viagem_modal = new bootstrap.Modal(document.getElementById('add_viagem_modal'));
+    $('#add_viagem_form').on('submit', function() {
+        $('#add_viagem_submit_button').html(`
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Aguarde...
+        `).addClass('disabled');
+    })
 
     $(document).ready(function() {
         var add_cidade_viagem_select2 = $('.add_cidade_viagem_select2').select2({

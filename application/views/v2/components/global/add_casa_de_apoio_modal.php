@@ -5,7 +5,7 @@
             <div class="modal-header bg-primary">
                 <h5 class="modal-title font-weight-light text-white" id="add_casa_de_apoio_label"><i class="fas fa-house-user"></i> Adicionar paciente na casa de apoio</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= base_url('v2/regulacao/casa-de-apoio/novo') ?>" method="post">
+            <form action="<?= base_url('v2/regulacao/casa-de-apoio/novo') ?>" id="add_casa_de_apoio_form" method="post">
                 <div class="modal-body modal-scroll">
                     <?= $csrf_input ?>
                     <div class="row">
@@ -43,7 +43,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Cancelar</button>
-                    <button class="btn btn-primary btn-sm" type="submit">Salvar</button>
+                    <button class="btn btn-primary btn-sm" id="add_casa_de_apoio_submit_button" type="submit">Salvar</button>
                 </div>
             </form>
         </div>
@@ -53,7 +53,13 @@
 <script>
     //Cria modal para adição de pacientes na casa de apoio
     var add_casa_de_apoio_modal = new bootstrap.Modal(document.getElementById('add_casa_de_apoio_modal'))
-    
+
+    $('#add_casa_de_apoio_form').on('submit', function() {
+        $('#add_casa_de_apoio_submit_button').html(`
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Aguarde...
+        `).addClass('disabled');
+    })
+
     $(document).ready(function() {
         var casaDeApoio_select2 = $('#pacientesCasaDeApoio_select2').select2({
             ajax: {

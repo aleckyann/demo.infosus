@@ -5,7 +5,7 @@
             <div class="modal-header bg-primary">
                 <h5 class="modal-title font-weight-light text-white" id="add_paciente_label"><i class="fas fa-user-injured"></i> Cadastrar novo paciente</h5><button class=" btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= base_url('v2/pacientes/new') ?>" method="post">
+            <form action="<?= base_url('v2/pacientes/new') ?>" id="add_paciente_form" method="post">
                 <div class="modal-body modal-scroll">
                     <?= $csrf_input ?>
                     <div class="row">
@@ -64,7 +64,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Cancelar</button>
-                    <button class="btn btn-primary btn-sm" type="submit">Salvar</button>
+                    <button class="btn btn-primary btn-sm" type="submit" id="add_paciente_submit_button">Salvar</button>
                 </div>
             </form>
         </div>
@@ -73,5 +73,11 @@
 
 <script>
     //Cria modal para adição de pacientes
-    var add_paciente_modal = new bootstrap.Modal(document.getElementById('add_paciente_modal'))
+    var add_paciente_modal = new bootstrap.Modal(document.getElementById('add_paciente_modal'));
+
+    $('#add_paciente_form').on('submit', function() {
+        $('#add_paciente_submit_button').html(`
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Aguarde...
+        `).addClass('disabled');
+    })
 </script>

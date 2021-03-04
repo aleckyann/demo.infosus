@@ -37,9 +37,9 @@ class Pacientes_controller extends Sistema_Controller
     {
         $paciente = $this->input->post();
         $this->Pacientes->insert($paciente);
-
+           
         $this->session->set_flashdata('success', '<i class="far fa-check-circle"></i> Paciente cadastrado com sucesso!');
-        redirect('v2/pacientes/listagem');
+        redirect($this->agent->referrer());
     }
 
     /**

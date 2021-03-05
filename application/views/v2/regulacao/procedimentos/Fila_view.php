@@ -197,7 +197,7 @@
         //PROCEDIMENTOS [MODAL EDITAR]
         let editar_procedimentos_solicitante = $('#agendar_procedimento_nome_procedimento').select2({
             ajax: {
-                url: '<?= base_url('v2/api/procedimentos/json') ?>',
+                url: '<?= base_url('v2/api/tabela_proced/select2') ?>',
                 method: 'POST',
                 data: function(params) {
                     let query = {
@@ -212,7 +212,7 @@
                     }
                 },
                 dataType: 'json',
-                placeholder: "Selecione um estabelecimento",
+                placeholder: "Selecione um procedimento",
             },
             delay: 250,
             minimumInputLength: 1,

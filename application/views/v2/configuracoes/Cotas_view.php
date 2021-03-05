@@ -53,7 +53,6 @@
 
         var add_cotas_conf_modal = new bootstrap.Modal(document.getElementById('add_cotas_conf_modal'))
 
-
         //Add input de filtro às colunas
         $('#cotas_conf_datatable thead th').each(function() {
             let title = $(this).text();

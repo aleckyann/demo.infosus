@@ -51,6 +51,13 @@
 <script>
     window.onload = function() {
 
+        // SET LOADING BUTTONS
+        $('#add_profissionais_conf_form').on('submit', function() {
+            $('#add_profissionais_conf_submit_button').html(`
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Aguarde...
+        `).addClass('disabled');
+        });
+
         var add_profissionais_conf_modal = new bootstrap.Modal(document.getElementById('add_profissionais_conf_modal'))
 
         //Add input de filtro às colunas

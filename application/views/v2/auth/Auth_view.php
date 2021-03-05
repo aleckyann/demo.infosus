@@ -28,6 +28,7 @@
     <meta name="theme-color" content="#ffffff">
 
     <script src="<?= base_url() ?>/public/v2/assets/js/config.navbar-vertical.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <link href="<?= base_url() ?>/public/v2/assets/css/theme-rtl.min.css" rel="stylesheet" id="style-rtl" />
     <link href="<?= base_url() ?>/public/v2/assets/css/theme.min.css" rel="stylesheet" id="style-default" />
     <script>
@@ -78,7 +79,7 @@
                                                 <h3>Faça login para continuar:</h3>
                                             </div>
                                         </div>
-                                        <form action="<?= base_url('auth') ?>" method="post">
+                                        <form action="<?= base_url('auth') ?>" method="post" id="auth_form">
                                             <input type="hidden" name="<?= $this->security->get_csrf_token_name() ?>" value="<?= $this->security->get_csrf_hash() ?>">
                                             <div class="mb-3"><label class="form-label" for="card-email">Email</label>
                                                 <input class="form-control" name="usuario_email" id="card-email" type="email" required />
@@ -93,7 +94,7 @@
                                                 <input class="form-check-input" type="checkbox" id="card-checkbox" checked="checked" /><label class="form-check-label" for="card-checkbox">Lembrar-me</label>
                                             </div>
                                             <div class="mb-3">
-                                                <button class="btn btn-primary btn-block mt-3" type="submit">Autenticar</button>
+                                                <button class="btn btn-primary btn-block mt-3" id="auth_submit_button" type="submit">Autenticar</button>
                                             </div>
                                         </form>
                                     </div>
@@ -104,11 +105,7 @@
                 </div>
             </div>
         </div>
-    </main><!-- ===============================================-->
-    <!--    End of Main Content-->
-    <!-- ===============================================-->
-
-
+    </main>
 
     <!-- ===============================================-->
     <!--    JavaScripts-->
@@ -123,6 +120,17 @@
     <script src="<?= base_url() ?>/public/v2/vendors/list.js/list.min.js"></script>
     <script src="<?= base_url() ?>/public/v2/assets/js/theme.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:100,200,300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
+
+    <script>
+        window.onload = function() {
+            // SET LOADING BUTTONS
+            $('#auth_form').on('submit', function() {
+                $('#auth_submit_button').html(`
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Aguarde...
+        `).addClass('disabled');
+            });
+        }
+    </script>
 </body>
 
 </html>

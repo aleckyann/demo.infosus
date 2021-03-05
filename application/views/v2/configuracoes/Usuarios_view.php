@@ -74,6 +74,18 @@
 <script>
     window.onload = function() {
 
+        // SET LOADING BUTTONS
+        $('#add_usuario_conf_form').on('submit', function() {
+            $('#add_usuario_conf_submit_button').html(`
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Aguarde...
+        `).addClass('disabled');
+        });
+        $('#editar_usuario_conf_form').on('submit', function() {
+            $('#editar_usuario_conf_submit_button').html(`
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Aguarde...
+        `).addClass('disabled');
+        });
+
         var editar_usuario_conf_modal = new bootstrap.Modal(document.getElementById('editar_usuario_conf_modal'))
 
         $('.editar_usuario_button').on('click', function() {

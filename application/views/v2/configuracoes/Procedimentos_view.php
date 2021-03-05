@@ -55,6 +55,12 @@
 <script>
     window.onload = function() {
 
+        // SET LOADING BUTTONS
+        $('#add_procedimento_conf_form').on('submit', function() {
+            $('#add_procedimento_conf_submit_button').html(`
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Aguarde...
+        `).addClass('disabled');
+        });
 
         $('.editar_paciente_button').on('click', function() {
             var paciente_id = this.dataset.id;

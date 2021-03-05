@@ -29,8 +29,8 @@ class Auth_controller extends CI_Controller
             redirect('v2/dashboard');
             
         } else {
-            $this->session->set_flashdata('danger', 'Login ou senha incorretos.');
-            redirect();
+            $this->session->set_flashdata('danger', 'Dados de acesso incorretos.');
+            redirect('auth');
         }
     }
 

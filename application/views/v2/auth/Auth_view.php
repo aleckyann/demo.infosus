@@ -81,7 +81,7 @@
                                         </div>
                                         <form action="<?= base_url('auth') ?>" method="post" id="auth_form">
                                             <input type="hidden" name="<?= $this->security->get_csrf_token_name() ?>" value="<?= $this->security->get_csrf_hash() ?>">
-                                            <div class="mb-3"><label class="form-label" for="card-email">Email</label>
+                                            <div class="mb-3"><label class="form-label" for="card-email">Email de acesso</label>
                                                 <input class="form-control" name="usuario_email" id="card-email" type="email" required />
                                             </div>
                                             <div class="mb-3">

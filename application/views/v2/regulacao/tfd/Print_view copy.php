@@ -30,39 +30,28 @@
     </style>
 </head>
 
-<?php
-// Dados complementares temporários
-$estabelecimento_prestador = $this->db->get_where('estabelecimentos', ['estabelecimento_id' => $procedimento['estabelecimento_prestador']])->row_array();
-?>
-
-<body onload="window.prints()">
+<body onload="window.print()">
     <div class=" mb-3" style="width:21cm">
         <div class="card-body">
-                <div class="col-12 mb-5">
-                    <h5 class="font-weight-bold">DADOS DO PACIENTE</h5>
-                    <label for="">Nome do paciente</label>
-                    <input type="text" class="form-control col-9" value="<?=$procedimento['nome_paciente']?>" readonly>
-                    <label for="">Data de nascimento</label>
-                    <input type="text" class="form-control col-3" value="<?= date_format(date_create($procedimento['nascimento']), 'd/m/Y')?>" readonly>
-                    <label for="">Endereço</label>
-                    <input type="text" class="form-control" value="<?= $procedimento['endereco_paciente']?>" readonly>
-                    <label for="">Telefone</label>
-                    <input type="text" class="form-control" value="<?= $procedimento['telefone_paciente'] ?>" readonly>
-                    
+            <div class="row align-items-center">
+                <div class="col">
+                    <h5 class="font-weight-bold">PACIENTE</h5>
+                    <p class="font-weight-light mb-1"><span class="text-dark">Nome:</span> <?= $tfd['nome_paciente'] ?></p>
+                    <p class="font-weight-light mb-1"><span class="text-dark">Nascimento:</span> <?= date_format(date_create($tfd['nascimento']), 'd/m/Y') ?></p>
+                    <p class="font-weight-light mb-1"><span class="text-dark">Endereço:</span> <?= $tfd['endereco_paciente'] ?></p>
+                    <p class="font-weight-light mb-1"><span class="text-dark">Telefone:</span> <?= $tfd['telefone_paciente'] ?></p>
                 </div>
-                <div class="col-12">
-                    <h5 class="font-weight-bold">DADOS DO PROCEDIMENTO</h5>
-                    <p class="font-weight-light mb-1"><span class="text-dark font-weight-bold">Procedimento:</span> <?= $procedimento['nome'] ?></p>
-                    <p class="font-weight-light mb-1"><span class="text-dark font-weight-bold">Urgência (1-4):</span> <?= $procedimento['procedimento_risco'] ?></p>
-                    <p class="font-weight-light mb-1"><span class="text-dark font-weight-bold">Cota utilizada:</span> <?= $procedimento['cota'] ?></p>
-                    <p class="font-weight-light mb-1"><span class="text-dark font-weight-bold">Data da solicitação:</span> <?= date_format(date_create($procedimento['data_solicitacao']), 'd/m/Y') ?></p>
-                    <p class="font-weight-light mb-1"><span class="text-dark font-weight-bold">Data da solicitação:</span> <?= date_format(date_create($procedimento['data_solicitacao']), 'd/m/Y') ?></p>
-                    <p class="font-weight-light mb-1"><span class="text-dark font-weight-bold">Data do atendimento:</span> <?= date_format(date_create($procedimento['data']), 'd/m/Y') ?></p>
-                    <p class="font-weight-light mb-1"><span class="text-dark font-weight-bold">Profissional solicitante:</span> <?= $procedimento['profissional_nome'] ?></p>
-                    <p class="font-weight-light mb-1"><span class="text-dark font-weight-bold">Estabelecimento solicitante:</span> <?= $procedimento['estabelecimento_nome'] ?></p>
-                    <p class="font-weight-light mb-1"><span class="text-dark font-weight-bold">Estabelecimento prestador:</span> <?= @$estabelecimento_prestador['estabelecimento_nome'] ?></p>
-                    <p class="font-weight-light mb-1"><span class="text-dark font-weight-bold">Cidade do prestador:</span> <?= $procedimento['nome_municipio'] ?></p>
-                </div>
+            </div>
+
+            <div>
+                Data da solicitação:
+                Data do atendimento:
+                Cidade de destino:
+                Estabelecimento_prestador:
+                Estabelecimento_solicitante:
+
+                <?= pre($tfd) ?>
+            </div>
 
         </div>
         <div class="card-footer bg-light">

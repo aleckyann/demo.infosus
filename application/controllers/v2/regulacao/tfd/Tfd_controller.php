@@ -271,6 +271,6 @@ class Tfd_controller extends Sistema_Controller
         ->join('municipios_ibge', 'municipios_ibge.municipio_id = tfd.tfd_cidade_destino', 'left')
         ->get_where('tfd', ['tfd_id' => $tfd_id])->row_array();
         
-        $this->load->view('v2/regulacao/tfd/Print_view', $data);
+        $this->view('regulacao/tfd/Print_view', $data);
     }
 }

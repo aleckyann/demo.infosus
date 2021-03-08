@@ -123,7 +123,7 @@ $estabelecimento_prestador = $this->db->get_where('estabelecimentos', ['estabele
             </div>
         </div>
 
-        <div class="card-footer bg-light mt-2">
+        <div class="card-footer pb-0 mt-2">
             <p class="text-center small"><strong>Documento gerado na data de </strong> <u><?= date('d/m/Y H:i:s') ?></u> <strong>em</strong> <u><?= base_url() ?></u></p>
         </div>
     </div>

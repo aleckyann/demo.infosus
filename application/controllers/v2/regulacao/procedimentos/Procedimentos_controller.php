@@ -205,7 +205,7 @@ _Administração: ' . $geral['geral_slogan'] . '_'
         ->join('municipios_ibge', 'municipios_ibge.municipio_id = procedimentos.cidade_prestador', 'left')
         ->get_where('procedimentos', ['procedimentos_id'=>$procedimento_id])->row_array();
         
-        $this->load->view('v2/regulacao/procedimentos/Print_view', $data);
+        $this->view('regulacao/procedimentos/Print_view', $data);
     }
 
 }

@@ -118,14 +118,14 @@ $estabelecimento_prestador = $this->db->get_where('estabelecimentos', ['estabele
 
         <div class="d-none d-print-block mt-4">
             <div class="row">
-                <div class="col-6 text-center small"><u>_________________________</u> <br><?= $procedimento['nome_paciente']?></div>
+                <div class="col-6 text-center small"><u>_________________________</u> <br><?= $procedimento['nome_paciente'] ?></div>
                 <div class="col-6 text-center small"><u>_________________________</u> <br>Secretária Municipal de Saúde</div>
             </div>
+            <p class="text-center small mt-3"><strong>Documento gerado na data de </strong> <u><?= date('d/m/Y H:i:s') ?></u> <strong>em</strong> <u><?= base_url() ?></u></p>
         </div>
 
-        <div class="card-footer pb-0 mt-2">
-            <p class="text-center small"><strong>Documento gerado na data de </strong> <u><?= date('d/m/Y H:i:s') ?></u> <strong>em</strong> <u><?= base_url() ?></u></p>
+        <div class="card-footer pb-0 mt-2 d-print-none">
+            <button class="btn btn-secondary float-right font-weight-light" onclick="window.print()"><i class="fas fa-print"></i> Imprimir página</button>
         </div>
     </div>
 </div>
-<button class="btn btn-primary font-weight-light d-print-none" onclick="window.print()"><i class="fas fa-print"></i> Imprimir página</button>

@@ -12,13 +12,13 @@ $estabelecimento_prestador = $this->db->get_where('estabelecimentos', ['estabele
             </a>
             <h4 class="font-weight-light">
 
-                <i class="fas fa-list"></i> Procedimento
+                <i class="fas fa-list"></i> TFD
                 <!-- <span class="badge badge-soft-warning rounded-pill ml-2">-0.23%</span> -->
             </h4>
             <div class="collapse" id="collapseExample">
                 <div class="p-card">
                     <p class="mb-2">
-                        Confira todas as informações do procedimento e realize a impressão.
+                        Confira todas as informações do TFD e realize a impressão.
                     </p>
                 </div>
             </div>
@@ -123,16 +123,16 @@ $estabelecimento_prestador = $this->db->get_where('estabelecimentos', ['estabele
             <input class="form-control" value="<?= $tfd['tfd_acompanhante'] ?>" readonly>
         </div>
 
-        <div class="d-none d-print-block mt-4">
+        <div class="d-none d-print-block mt-5">
             <div class="row">
                 <div class="col-6 text-center small"><u>_________________________</u> <br><?= $tfd['nome_paciente'] ?></div>
                 <div class="col-6 text-center small"><u>_________________________</u> <br>Secretária Municipal de Saúde</div>
             </div>
+            <p class="text-center small mt-3"><strong>Documento gerado na data de </strong> <u><?= date('d/m/Y H:i:s') ?></u> <strong>em</strong> <u><?= base_url() ?></u></p>
         </div>
 
-        <div class="card-footer pb-0 mt-2">
-            <p class="text-center small"><strong>Documento gerado na data de </strong> <u><?= date('d/m/Y H:i:s') ?></u> <strong>em</strong> <u><?= base_url() ?></u></p>
+        <div class="card-footer pb-0 mt-2 d-print-none">
+            <button class="btn btn-secondary float-right font-weight-light" onclick="window.print()"><i class="fas fa-print"></i> Imprimir página</button>
         </div>
     </div>
 </div>
-<button class="btn btn-primary font-weight-light d-print-none" onclick="window.print()"><i class="fas fa-print"></i> Imprimir página</button>

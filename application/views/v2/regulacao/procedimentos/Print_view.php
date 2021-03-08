@@ -92,7 +92,7 @@ $estabelecimento_prestador = $this->db->get_where('estabelecimentos', ['estabele
         </div>
         <div class="col-12">
             <label>Sintomas/Observações</label>
-            <textarea class="form-control" rows="3" readonly><?= $procedimento['procedimento_risco'] ?></textarea>
+            <textarea class="form-control" rows="3" readonly><?= $procedimento['sintomas'] ?></textarea>
         </div>
 
         <div class="my-2"></div>

@@ -201,7 +201,7 @@
                 method: 'POST',
                 data: function(params) {
                     let query = {
-                        procedimento_nome: params.term,
+                        nome: params.term,
                         <?= $csrf_name ?>: '<?= $csrf_value ?>'
                     }
                     return query;

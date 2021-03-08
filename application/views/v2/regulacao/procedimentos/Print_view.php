@@ -87,12 +87,12 @@ $estabelecimento_prestador = $this->db->get_where('estabelecimentos', ['estabele
             <input class="form-control" value="<?= date_format(date_create($procedimento['data_solicitacao']), 'd/m/Y') ?>" readonly>
         </div>
         <div class="col-3">
-            <label>Grau de urgência (1-4)</label>
+            <label>Urgência (1-4)</label>
             <input class="form-control" value="<?= $procedimento['procedimento_risco'] ?>" readonly>
         </div>
         <div class="col-12">
             <label>Sintomas/Observações</label>
-            <textarea class="form-control" readonly><?= $procedimento['procedimento_risco'] ?></textarea>
+            <textarea class="form-control" rows="3" readonly><?= $procedimento['procedimento_risco'] ?></textarea>
         </div>
 
         <div class="my-2"></div>
@@ -116,7 +116,7 @@ $estabelecimento_prestador = $this->db->get_where('estabelecimentos', ['estabele
             <input class="form-control" value="<?= $procedimento['cota'] ?>" readonly>
         </div>
 
-        <div class="d-none d-print-block mt-5">
+        <div class="d-none d-print-block mt-4">
             <div class="row">
                 <div class="col-6 text-center small"><u>_________________________</u> <br><?= $procedimento['nome_paciente']?></div>
                 <div class="col-6 text-center small"><u>_________________________</u> <br>Secretária Municipal de Saúde</div>

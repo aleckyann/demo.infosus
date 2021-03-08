@@ -72,7 +72,7 @@
                                 <div class="btn-group mb-2">
                                     <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" target="_new" href="<?= base_url('v2/regulacao/procedimentos/print/') . $p['procedimentos_id'] ?>"><i class="fa fa-print"></i> Visualizar procedimento</a>
+                                        <a class="dropdown-item" href="<?= base_url('v2/regulacao/procedimentos/print/') . $p['procedimentos_id'] ?>"><i class="fa fa-print"></i> Imprimir</a>
                                         <div class="dropdown-divider"></div>
                                     </div>
                                 </div>

@@ -71,6 +71,7 @@
                                 <div class="btn-group mb-2">
                                     <button class="btn btn-sm dropdown-toggle dropdown-toggle-split btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-caret-down"></i></button>
                                     <div class="dropdown-menu">
+                                        <a href="<?= base_url('v2/regulacao/procedimentos/print/') . $p['procedimentos_id'] ?>" class="dropdown-item"><i class="fa fa-print"></i> Imprimir</a>
                                         <button class="dropdown-item text-success finalizar_procedimento_button" data-procedimentos_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-check"></i> Concluir procedimento</button>
                                         <div class="dropdown-divider"></div>
                                         <button class="dropdown-item text-danger negar_procedimento_button" data-procedimentos_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-times"></i> Negar procedimento</button>

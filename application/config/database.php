@@ -32,6 +32,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
 	);
 }
 
+
 /**
  * Método utilizado para automatizar novos clientes
  * os usuários e bancos de dados devem ser criados

@@ -38,10 +38,10 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
  * os usuários e bancos de dados devem ser criados
  * com o máximo de caracteres da umbler (16)
  */
-if ($_SERVER['SERVER_NAME'] == 'homologacao.infosus.net.br') {
-	$hostname = 'mysql741.umbler.com';
-	$username = 'homologacao.info';
-	$database = 'homologacao.info';
+if ($_SERVER['SERVER_NAME'] == 'demo.infosus.net.br') {
+	$hostname = 'mysql743.umbler.com';
+	$username = 'demo-infosus';
+	$database = 'demo-infosus';
 	$password = 'l33tsupah4x0r';
 } elseif ($_SERVER['SERVER_NAME'] == 'vargemgrande.infosus.net.br') {
 	$hostname = 'mysql742.umbler.com';

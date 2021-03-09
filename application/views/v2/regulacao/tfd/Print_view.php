@@ -36,7 +36,7 @@ $estabelecimento_prestador = $this->db->get_where('estabelecimentos', ['estabele
         </div>
         <div class="col-4">
             <label for="">Nascimento</label>
-            <input type="text" class="form-control pr-0" value="<?= date_format(date_create($tfd['nascimento']), 'd/m/Y') ?>" readonly>
+            <input type="date" class="form-control pr-0" value="<?= $tfd['nascimento']?>" readonly>
         </div>
         <div class="col-8">
             <label for="">Endereço</label>
@@ -76,7 +76,7 @@ $estabelecimento_prestador = $this->db->get_where('estabelecimentos', ['estabele
         </div>
         <div class="col-3">
             <label>Data da solicitação</label>
-            <input class="form-control" value="<?= date_format(date_create($tfd['tfd_data_solicitacao']), 'd/m/Y') ?>" readonly>
+            <input type="date" class="form-control" value="<?= $tfd['tfd_data_solicitacao'] ?>" readonly>
         </div>
         <div class="col-3">
             <label>Urgência (1-4)</label>
@@ -100,7 +100,7 @@ $estabelecimento_prestador = $this->db->get_where('estabelecimentos', ['estabele
         </div>
         <div class="col-4">
             <label>Data do atendimento</label>
-            <input class="form-control" value="<?= date_format(date_create($tfd['tfd_data_atendimento']), 'd/m/Y') ?>" readonly>
+            <input type="date" class="form-control" value="<?= $tfd['tfd_data_atendimento'] ?>" readonly>
         </div>
         <div class="col-4">
             <label>Veículo</label>

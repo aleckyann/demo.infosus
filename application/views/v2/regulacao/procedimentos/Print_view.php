@@ -36,7 +36,7 @@ $estabelecimento_prestador = $this->db->get_where('estabelecimentos', ['estabele
         </div>
         <div class="col-4">
             <label for="">Nascimento</label>
-            <input type="text" class="form-control pr-0" value="<?= date_format(date_create($procedimento['nascimento']), 'd/m/Y') ?>" readonly>
+            <input type="date" class="form-control pr-0" value="<?= $procedimento['nascimento']?>" readonly>
         </div>
         <div class="col-8">
             <label for="">Endereço</label>
@@ -84,7 +84,7 @@ $estabelecimento_prestador = $this->db->get_where('estabelecimentos', ['estabele
         </div>
         <div class="col-3">
             <label>Data da solicitação</label>
-            <input class="form-control" value="<?= date_format(date_create($procedimento['data_solicitacao']), 'd/m/Y') ?>" readonly>
+            <input type="date" class="form-control" value="<?= $procedimento['data_solicitacao']?>" readonly>
         </div>
         <div class="col-3">
             <label>Urgência (1-4)</label>
@@ -109,7 +109,7 @@ $estabelecimento_prestador = $this->db->get_where('estabelecimentos', ['estabele
         </div>
         <div class="col-4">
             <label>Data do atendimento</label>
-            <input class="form-control" value="<?= date_format(date_create($procedimento['data']), 'd/m/Y') ?>" readonly>
+            <input type="date" class="form-control" value="<?= $procedimento['data']?>" readonly>
         </div>
         <div class="col-12">
             <label>Cota utilizada</label>

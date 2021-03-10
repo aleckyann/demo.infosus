@@ -32,13 +32,14 @@
             <thead>
                 <th class="text-dark small text-left">PACIENTE</th>
                 <th class="text-dark small text-left">POCEDIMENTO</th>
+                <th class="text-dark small text-left">ESPECIALIDADE</th>
                 <th class="text-dark small text-left">DATA</th>
                 <th class="text-dark small text-center align-middle">OPÇÕES</th>
             </thead>
             <tbody>
                 <?php foreach ($procedimentos as $p) : ?>
                     <tr>
-                        <td class="small">
+                        <td>
                             <?php switch ($p['procedimento_risco']) {
                                 case '1':
                                     echo ('<span class="mr-2 fas fa-user-injured text-info" style="font-size:20px"></span>');
@@ -62,6 +63,9 @@
                         </td>
                         <td class="small">
                             <?= $p['nome'] ?>
+                        </td>
+                        <td class="small">
+                            <?= $p['especialidade_nome'] ?>
                         </td>
                         <td class="small">
                             <?= date_format(date_create($p['data_solicitacao']), 'd/m/Y') ?>
@@ -143,6 +147,9 @@
             },
 
             "aoColumns": [{
+                    "bSortable": false
+                },
+                {
                     "bSortable": false
                 },
                 {

@@ -37,7 +37,7 @@
             <tbody>
                 <?php foreach ($procedimentos as $p) : ?>
                     <tr>
-                        <td class="small">
+                        <td>
                             <?php switch ($p['procedimento_risco']) {
                                 case '1':
                                     echo ('<span class="mr-2 fas fa-user-injured text-info" style="font-size:20px"></span>');

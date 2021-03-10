@@ -31,6 +31,7 @@
             <thead>
                 <th class="text-dark small text-left">PACIENTE</th>
                 <th class="text-dark small text-left">PROCEDIMENTO</th>
+                <th class="text-dark small text-left">ESPECIALIDADE</th>
                 <th class="text-dark small text-left">DATA</th>
                 <th class="text-dark small text-center align-top">OPÇÕES</th>
             </thead>
@@ -61,6 +62,9 @@
                         </td>
                         <td class="small">
                             <?= $p['nome'] ?>
+                        </td>
+                        <td class="small">
+                            <?= $p['especialidade_nome'] ?>
                         </td>
                         <td class="small">
                             <?= date_format(date_create($p['data']), 'd/m/Y') ?>
@@ -158,6 +162,9 @@
                 },
                 {
                     "bSortable": false
+                },
+                {
+                    "bSortable": false
                 }
             ],
             dom: 'Brtip',
@@ -166,7 +173,7 @@
                     extend: 'print',
                     text: '<i class="fa fa-print"></i> imprimir',
                     exportOptions: {
-                        columns: [0, 1, 2]
+                        columns: [0, 1, 2, 3]
                     },
                     customize: function(win) {
                         $(win.document.body)

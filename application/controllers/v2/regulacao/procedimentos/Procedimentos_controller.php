@@ -24,23 +24,32 @@ class Procedimentos_controller extends Sistema_Controller
     public function novo(): void
     {
         $dados = $this->input->post();
-
-        $notificar_whatsapp = $dados['notificar_whatsapp'];
-        unset($dados['notificar_whatsapp']);
-
-        $this->Procedimentos->insert($dados);
+        
+        foreach($dados['procedimento'] as $p){
+            $dados_procedimento = [
+                'paciente_id' => $dados['paciente_id'],
+                'estabelecimento_solicitante' => $dados['estabelecimento_solicitante'],
+                'profissional_solicitante' => $dados['profissional_solicitante'],
+                'data_solicitacao' => $dados['data_solicitacao'],
+                'sintomas' => $dados['sintomas'],
+                'procedimento_risco' => $dados['procedimento_risco'],
+                'tabela_proced_id' => $p['tabela_proced_id'],
+                'especialidade' => $p['especialidade']
+            ];
+            $this->Procedimentos->insert($dados_procedimento);
+        }
         
         $geral = $this->db->get('geral')->row_array();
-        $procedimento = $this->db->get_where('tabela_proced',['id'=>$dados['tabela_proced_id']])->row_array();
+        // $procedimento = $this->db->get_where('tabela_proced',['id'=>$dados['tabela_proced_id']])->row_array();
         $paciente = $this->Pacientes->getAll(['paciente_id'=>$dados['paciente_id']])[0];
         $paciente_nome = explode(' ', $paciente['nome_paciente'])[0] .' '.explode(' ', $paciente['nome_paciente'])[1];
 
         //NOTIFICAÇÃO NO WHATSAPP
-        if($notificar_whatsapp){
+        if($dados['notificar_whatsapp']){
         $this->whatsapp->enviar(
             $paciente['telefone_paciente'],
             'Olá ' .$paciente_nome. ', 
-Já cadastramos sua solicitação do procedimento *'.$procedimento['nome'].'* em nosso sistema. Retornaremos assim que a a nossa equipe encontrar uma data disponível.
+Já cadastramos sua solicitação em nosso sistema. Retornaremos assim que a a nossa equipe encontrar uma data disponível.
 
 *Secretaria Municipal de Saúde de '.$geral['geral_cidade'].'*
 _Administração: '.$geral['geral_slogan'].'_'

@@ -77,6 +77,7 @@
                                     <div class="dropdown-menu">
                                         <a href="<?= base_url('v2/regulacao/procedimentos/print/') . $p['procedimentos_id'] ?>" class="dropdown-item"><i class="fa fa-print"></i> Imprimir</a>
                                         <button class="dropdown-item text-success finalizar_procedimento_button" data-procedimentos_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-check"></i> Concluir procedimento</button>
+                                        <button class="dropdown-item text-warning editar_procedimento_button" data-procedimentos_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-edit"></i> Editar procedimento</button>
                                         <div class="dropdown-divider"></div>
                                         <button class="dropdown-item text-danger negar_procedimento_button" data-procedimentos_id="<?= $p['procedimentos_id'] ?>"><i class="fa fa-times"></i> Negar procedimento</button>
                                     </div>
@@ -93,12 +94,18 @@
 
 <!-- CARREGAR COMPONENTES -->
 <?php $this->load->view('v2/components/procedimentos/negar_procedimento_modal') ?>
+<?php $this->load->view('v2/components/procedimentos/editar_procedimento_modal') ?>
 
 <script>
     window.onload = function() {
 
         $('#negar_procedimento_form').on('submit', function() {
             $('#negar_procedimento_submit_button').html(`
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Aguarde...
+        `).addClass('disabled');
+        })
+        $('#editar_procedimento_form').on('submit', function() {
+            $('#editar_procedimento_submit_button').html(`
             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Aguarde...
         `).addClass('disabled');
         })
@@ -200,8 +207,129 @@
         });
 
         // ============================
-
         //Cria modal para editar procedimento
+        var editar_procedimento_modal = new bootstrap.Modal(document.getElementById('editar_procedimento_modal'))
+
+        // ABRE MODAL DE EDITAR
+        $('body').on('click', '.editar_procedimento_button', function() {
+            $('#editar_procedimento_form').each(function() {
+                this.reset();
+            });
+            console.log('%c editar_procedimento_form: RESETADO', 'color: white; background-color: orange; border-radius:4px; padding:2px; font-size:12px');
+
+            var procedimentos_id = this.dataset.procedimentos_id;
+            $.ajax({
+                    method: "POST",
+                    url: "<?= base_url('v2/api/procedimentos/json/') ?>",
+                    data: {
+                        procedimentos_id: procedimentos_id,
+                        <?= $csrf_name ?>: "<?= $csrf_value ?>"
+                    }
+                })
+                .done(function(procedimento) {
+                    console.log(procedimento)
+                    $('#procedimentos_id').val(procedimento.procedimentos_id);
+                    $('#nome_paciente').val(procedimento.nome_paciente);
+                    $('#editar_procedimento_nome_procedimento').append(`
+                        <option value="${procedimento.id}">
+                            ${procedimento.nome}
+                        </option>
+                    `)
+                    $("#especialidade").val(procedimento.especialidade);
+                    $('#profissional_solicitante').append(`
+                        <option value="${procedimento.profissional_id}">
+                            ${procedimento.profissional_nome}
+                        </option>
+                    `);
+
+                    $('#estabelecimento_solicitante').append(`
+                        <option value="${procedimento.estabelecimento_id}">
+                            ${procedimento.estabelecimento_nome}
+                        </option>
+                    `);
+                    $('#nome_paciente').val(procedimento.nome_paciente);
+                    $(".editarProcedimentoButton[value='" + procedimento.procedimento_risco + "']").prop("checked", true);
+                    $('#data_solicitacao').val(procedimento.data_solicitacao);
+                    $('#data').val(procedimento.data_solicitacao);
+                    $('#sintomas').val(procedimento.sintomas);
+
+                });
+            editar_procedimento_modal.toggle()
+        });
+
+        //ESTABELECIMENTOS SOLICITANTES [MODAL EDITAR]
+        let estabelecimento_solicitante = $('#estabelecimento_solicitante').select2({
+            ajax: {
+                url: '<?= base_url('v2/api/estabelecimentos-solicitantes/json') ?>',
+                method: 'POST',
+                data: function(params) {
+                    let query = {
+                        estabelecimento: params.term,
+                        <?= $csrf_name ?>: '<?= $csrf_value ?>'
+                    }
+                    return query;
+                },
+                processResults: function(data, params) {
+                    return {
+                        results: data
+                    }
+                },
+                dataType: 'json',
+                placeholder: "Selecione um estabelecimento",
+            },
+            delay: 250,
+            minimumInputLength: 1,
+        });
+
+        //PROCEDIMENTOS [MODAL EDITAR]
+        let editar_procedimentos_solicitante = $('#editar_procedimento_nome_procedimento').select2({
+            ajax: {
+                url: '<?= base_url('v2/api/tabela_proced/select2') ?>',
+                method: 'POST',
+                data: function(params) {
+                    let query = {
+                        nome: params.term,
+                        <?= $csrf_name ?>: '<?= $csrf_value ?>'
+                    }
+                    return query;
+                },
+                processResults: function(data, params) {
+                    return {
+                        results: data
+                    }
+                },
+                dataType: 'json',
+                placeholder: "Selecione um procedimento",
+            },
+            delay: 250,
+            minimumInputLength: 1,
+        });
+
+        //PROFISSIONAIS [MODAL EDITAR]
+        let editar_profissionais_solicitante = $('#profissional_solicitante').select2({
+            ajax: {
+                url: '<?= base_url('v2/api/profissionais/json') ?>',
+                method: 'POST',
+                data: function(params) {
+                    let query = {
+                        profissional_nome: params.term,
+                        <?= $csrf_name ?>: '<?= $csrf_value ?>'
+                    }
+                    return query;
+                },
+                processResults: function(data, params) {
+                    return {
+                        results: data
+                    }
+                },
+                dataType: 'json',
+                placeholder: "Selecione um profissional",
+            },
+            delay: 250,
+            minimumInputLength: 1,
+        });
+
+        //Cria modal para negar procedimento
         var negar_procedimento_modal = new bootstrap.Modal(document.getElementById('negar_procedimento_modal'))
 
         // ABRE MODAL DE NEGAR PROCEDIMENTO

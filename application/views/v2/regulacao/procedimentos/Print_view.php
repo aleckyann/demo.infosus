@@ -111,10 +111,6 @@ $estabelecimento_prestador = $this->db->get_where('estabelecimentos', ['estabele
             <label>Data do atendimento</label>
             <input type="date" class="form-control" value="<?= $procedimento['data']?>" readonly>
         </div>
-        <div class="col-12">
-            <label>Cota utilizada</label>
-            <input class="form-control" value="<?= $procedimento['cota'] ?>" readonly>
-        </div>
 
         <div class="d-none d-print-block mt-4">
             <div class="row">

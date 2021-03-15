@@ -142,6 +142,7 @@ _Administração: ' . $geral['geral_slogan'] . '_'
         $dados['procedimento_risco'] = $dados['editar_procedimento_risco'];
         unset($dados['editar_procedimento_risco']);
 
+        pre($dados);
         $this->Procedimentos->update(
             [
                 'procedimentos_id' => $dados['procedimentos_id']

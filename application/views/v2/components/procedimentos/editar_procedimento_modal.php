@@ -16,7 +16,7 @@
                         </div>
                         <div class="mb-2 col-lg-6">
                             <label for="">Nome do procedimento</label>
-                            <select name="tabela_proced_id" id="agendar_procedimento_nome_procedimento" required style="width:100%"></select>
+                            <select name="tabela_proced_id" id="editar_procedimento_nome_procedimento" required style="width:100%"></select>
                         </div>
                         <div class="mb-2 col-lg-6">
                             <label for="">Especialidade</label>
@@ -28,11 +28,11 @@
                             </select>
 
                         </div>
-                        <div class="mb-2 col-lg-4">
+                        <div class="mb-2 col-lg-6">
                             <label for="">Estabelecimento solicitante</label>
                             <select name="estabelecimento_solicitante" id="estabelecimento_solicitante" required style="width:100%"></select>
                         </div>
-                        <div class="mb-2 col-lg-4">
+                        <div class="mb-2 col-lg-6">
                             <label for="">Profissional solicitante</label>
                             <select name="profissional_solicitante" id="profissional_solicitante" required style="width:100%"></select>
                         </div>

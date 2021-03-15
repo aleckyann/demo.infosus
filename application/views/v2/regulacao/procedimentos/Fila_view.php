@@ -144,10 +144,12 @@
                     }
                 })
                 .done(function(procedimento) {
+                    console.log(procedimento)
+
                     $('#procedimentos_id').val(procedimento.procedimentos_id);
                     $('#nome_paciente').val(procedimento.nome_paciente);
-                    $('#agendar_procedimento_nome_procedimento').append(`
-                        <option value="${procedimento.procedimentos_id}">
+                    $('#editar_procedimento_nome_procedimento').append(`
+                        <option value="${procedimento.id}" selected>
                             ${procedimento.nome}
                         </option>
                     `)
@@ -199,7 +201,7 @@
         });
 
         //PROCEDIMENTOS [MODAL EDITAR]
-        let editar_procedimentos_solicitante = $('#agendar_procedimento_nome_procedimento').select2({
+        let editar_procedimentos_solicitante = $('#editar_procedimento_nome_procedimento').select2({
             ajax: {
                 url: '<?= base_url('v2/api/tabela_proced/select2') ?>',
                 method: 'POST',
@@ -285,7 +287,7 @@
         });
 
 
-        //CARREGA SELECT2 COM ESTABELECIMENTO PRESTADOR [MODAL EDITAR]
+        //CARREGA SELECT2 COM ESTABELECIMENTO PRESTADOR [MODAL AGENDAR]
         let agendar_procedimento_estabelecimento_prestador = $('#agendar_procedimento_estabelecimento_prestador').select2({
             ajax: {
                 url: '<?= base_url('v2/api/estabelecimentos-prestadores/json') ?>',
@@ -310,7 +312,7 @@
         });
 
         //CARREGA SELECT2 COM MUNICIPIOS SOLICITANTES [MODAL EDITAR]
-        let agendar_procedimento_municipios = $('#agendar_procedimento_municipios').select2({
+        let editar_procedimento_municipios = $('#editar_procedimento_municipios').select2({
             ajax: {
                 url: '<?= base_url('v2/api/municipios/json') ?>',
                 method: 'POST',
@@ -334,7 +336,7 @@
         });
 
         //CARREGA SELECT2 COM MUNICIPIOS SOLICITANTES [MODAL EDITAR]
-        let agendar_procedimento_cotas = $('#agendar_procedimento_cotas').select2({
+        let editar_procedimento_cotas = $('#editar_procedimento_cotas').select2({
             ajax: {
                 url: '<?= base_url('v2/api/cotas/json') ?>',
                 method: 'POST',

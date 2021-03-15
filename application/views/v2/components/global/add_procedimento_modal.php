@@ -111,7 +111,7 @@
 
     let config_pacientes = {
         ajax: {
-            url: '<?= base_url('v2/pacientes/json/select2') ?>',
+            url: '<?= base_url('v2/api/pacientes/select2') ?>',
             method: 'POST',
             data: function(params) {
                 let query = {

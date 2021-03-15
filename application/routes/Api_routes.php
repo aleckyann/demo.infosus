@@ -14,6 +14,7 @@ $route['v2/api/passageiros/json']['post'] = 'v2/api/Passageiros_controller/json'
 $route['v2/api/veiculos/json']['post'] = 'v2/api/Veiculos_controller/json';
 $route['v2/api/usuarios/json']['post'] = 'v2/api/Usuarios_controller/json';
 $route['v2/api/pacientes/json']['post'] = 'v2/api/Pacientes_controller/json';
+$route['v2/api/pacientes/select2']['post'] = 'v2/api/Pacientes_controller/select2';
 $route['v2/api/estabelecimentos-prestadores/json']['post'] = 'v2/api/Estabelecimentos_controller/prestadores';
 $route['v2/api/estabelecimentos-solicitantes/json']['post'] = 'v2/api/Estabelecimentos_controller/solicitantes';
 $route['v2/api/tfd/json']['post'] = 'v2/api/Tfd_controller/json';

@@ -12,7 +12,7 @@ class Sistema_Controller extends CI_Controller
         }
 
         //LOG PARA TODAS AS REQUISIÇÕES POST
-        if($this->input->post()){
+        if($this->input->post() AND $this->uri->segment(2) != 'api'){
             $json = [
                 'log_tipo' => 'automatic log',
                 'log_desc' => json_encode([

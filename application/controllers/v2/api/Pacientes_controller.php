@@ -24,4 +24,15 @@ class Pacientes_controller extends Sistema_Controller
             show_404();
         }
     }
+
+
+    public function select2(): void
+    {
+        $nome = $this->input->post('nome_paciente');
+        $resultado = $this->db->select('paciente_id id, nome_paciente text')->like(['nome_paciente' => $nome])->get('pacientes')->result_array();
+
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($resultado));
+    }
 }

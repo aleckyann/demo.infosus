@@ -37,7 +37,6 @@
                             <textarea type="date" name="observacao" class="form-control"></textarea>
                         </div>
 
-
                     </div>
 
                 </div>

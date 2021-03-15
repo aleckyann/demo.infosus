@@ -34,7 +34,8 @@ class Procedimentos_controller extends Sistema_Controller
                 'sintomas' => $dados['sintomas'],
                 'procedimento_risco' => $dados['procedimento_risco'],
                 'tabela_proced_id' => $p['tabela_proced_id'],
-                'especialidade' => $p['especialidade']
+                'especialidade' => $p['especialidade'],
+                'procedimento_risco' => $p['risco']
             ];
             $this->Procedimentos->insert($dados_procedimento);
         }

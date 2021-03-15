@@ -40,29 +40,7 @@
                             <textarea type="date" name="sintomas" class="form-control"></textarea>
                         </div>
 
-                        <div class="col-lg-12 mt-1">
-                            <label>Classificação de risco / vunerabilidade:</label>
-                        </div>
-                        <div class="my-2 col-3 text-center">
-                            <input type="radio" class="btn-check" name="procedimento_risco" value="1" id="btn-check-outlined" autocomplete="off" required>
-                            <label class="btn btn-outline-info" for="btn-check-outlined"><span class="m-2">1</span></label><br>
-                            Não agudo
-                        </div>
-                        <div class="my-2 col-3 text-center">
-                            <input type="radio" class="btn-check" name="procedimento_risco" value="2" id="btn-check-outlined1" autocomplete="off" required>
-                            <label class="btn btn-outline-success" for="btn-check-outlined1"><span class="m-2">2</span></label><br>
-                            Baixa
-                        </div>
-                        <div class="my-2 col-3 text-center">
-                            <input type="radio" class="btn-check" name="procedimento_risco" value="3" id="btn-check-outlined2" autocomplete="off" required>
-                            <label class="btn btn-outline-warning" for="btn-check-outlined2"><span class="m-2">3</span></label><br>
-                            Intermediária
-                        </div>
-                        <div class="my-2 col-3 text-center">
-                            <input type="radio" class="btn-check" name="procedimento_risco" value="4" id="btn-check-outlined3" autocomplete="off" required>
-                            <label class="btn btn-outline-danger" for="btn-check-outlined3"><span class="m-2">4</span></label><br>Alta
-                        </div>
-                        <hr>
+                        <span class="badge bg-secondary col-auto ml-2 my-1" data-toggle="tooltip" title="Agora você pode cadastrar vários procedimentos do mesmo paciente de uma vez!">Recurso novo!</span>
                         <div class="col-12 bg-light">
                             <ul class="nav nav-tabs" id="nav_procedimentos" role="tablist">
                                 <?php for ($index = 1; $index <= 7; $index++) { ?>
@@ -75,17 +53,27 @@
                                 <?php for ($index = 1; $index <= 7; $index++) { ?>
                                     <div class="tab-pane fade show <?= ($index == 1) ? 'active' : '' ?>" id="tab_procedimentos_<?= $index ?>" role="tabpanel" aria-labelledby="home-tab">
                                         <div class="row">
-                                            <div class="mb-2 col-lg-8">
+                                            <div class="mb-2 col-lg-6">
                                                 <label for="">Nome do procedimento <?= $index ?>:</label>
-                                                <select name="procedimento[<?= $index ?>][tabela_proced_id]" style="width:100%" class="tabela_procedimentos_select2" <?= ($index==1) ? 'required' : ''?>></select>
+                                                <select name="procedimento[<?= $index ?>][tabela_proced_id]" style="width:100%" class="tabela_procedimentos_select2" <?= ($index == 1) ? 'required' : '' ?>></select>
                                             </div>
-                                            <div class="mb-2 col-lg-4">
+                                            <div class="mb-2 col-lg-3">
                                                 <label for="">Especialidade:</label>
-                                                <select name="procedimento[<?= $index ?>][especialidade]" class="form-select" <?= ($index==1) ? 'required' : ''?>>
+                                                <select name="procedimento[<?= $index ?>][especialidade]" class="form-select" <?= ($index == 1) ? 'required' : '' ?>>
                                                     <option selected disabled>Selecione uma especialidade</option>
                                                     <?php foreach ($this->Especialidades->getAll() as $e) : ?>
                                                         <option value="<?= $e['especialidades_id'] ?>"><?= $e['especialidade_nome'] ?></option>
                                                     <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                            <div class="mb-2 col-lg-3">
+                                                <label>Risco/Vuneralbilidade</label>
+                                                <select name="procedimento[<?= $index ?>][risco]" class="form-select" <?= ($index == 1) ? 'required' : '' ?>>
+                                                    <option value="" selected disabled>Classificação</option>
+                                                    <option value="1" class="text-info">1.Não agudo</option>
+                                                    <option value="2" class="text-success">2.Baixo risco</option>
+                                                    <option value="3" class="text-warning">3.Médio risco</option>
+                                                    <option value="4" class="text-danger">4.Alto risco</option>
                                                 </select>
                                             </div>
                                         </div>

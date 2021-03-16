@@ -60,7 +60,7 @@
                                             <div class="mb-2 col-lg-3">
                                                 <label for="">Especialidade:</label>
                                                 <select name="procedimento[<?= $index ?>][especialidade]" class="form-select" <?= ($index == 1) ? 'required' : '' ?>>
-                                                    <option selected disabled>Selecione uma especialidade</option>
+                                                    <option value="" selected disabled>Selecione uma especialidade</option>
                                                     <?php foreach ($this->Especialidades->getAll() as $e) : ?>
                                                         <option value="<?= $e['especialidades_id'] ?>"><?= $e['especialidade_nome'] ?></option>
                                                     <?php endforeach; ?>

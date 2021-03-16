@@ -249,7 +249,6 @@
         });
 
 
-
         //Cria modal para agendar procedimento
         var agendar_procedimento_modal = new bootstrap.Modal(document.getElementById('agendar_procedimento_modal'))
 

@@ -32,7 +32,6 @@ class Procedimentos_controller extends Sistema_Controller
                 'profissional_solicitante' => $dados['profissional_solicitante'],
                 'data_solicitacao' => $dados['data_solicitacao'],
                 'sintomas' => $dados['sintomas'],
-                'procedimento_risco' => $dados['procedimento_risco'],
                 'tabela_proced_id' => $p['tabela_proced_id'],
                 'especialidade' => $p['especialidade'],
                 'procedimento_risco' => $p['risco']

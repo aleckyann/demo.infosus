@@ -29,7 +29,7 @@ class Pacientes_controller extends Sistema_Controller
     public function select2(): void
     {
         $nome = $this->input->post('nome_paciente');
-        $resultado = $this->db->select('paciente_id id, nome_paciente text')->like(['nome_paciente' => $nome])->get('pacientes')->result_array();
+        $resultado = $this->db->select('paciente_id id, nome_paciente text, cpf, nascimento')->like(['nome_paciente' => $nome])->get('pacientes')->result_array();
 
         $this->output
             ->set_content_type('application/json')

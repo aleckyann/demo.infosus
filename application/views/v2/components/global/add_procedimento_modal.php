@@ -210,6 +210,7 @@
 
         // Preenche Telefone e cpf
         add_procedimentos_paciente.on('select2:select', function(e) {
+            console.log(e.params.data.cpf)
             $('#disabledProcedimentoCpf').val(e.params.data.cpf)
             $('#disabledProcedimentoNascimento').val(e.params.data.nascimento)
         });

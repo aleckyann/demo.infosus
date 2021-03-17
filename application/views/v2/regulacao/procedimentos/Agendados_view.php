@@ -262,11 +262,7 @@
                             ${procedimento.nome_municipio}
                         </option>
                     `);
-                    $('#estabelecimento_prestador').append(`
-                        <option value="${procedimento.estabelecimento_prestador}">
-                            Nome não carregou...
-                        </option>
-                    `);
+                    $('#estabelecimento_prestador').val(procedimento.estabelecimento_prestador);
                     $('#data').val(procedimento.data);
 
                     $('#nome_paciente').val(procedimento.nome_paciente);

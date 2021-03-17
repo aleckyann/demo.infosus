@@ -39,7 +39,11 @@
                         <!--  -->
                         <div class="mb-2 col-lg-6">
                             <label for="">Estabelecimento prestador</label>
-                            <select name="estabelecimento_prestador" id="estabelecimento_prestador" required style="width:100%"></select>
+                            <select name="estabelecimento_prestador" required class="form-select">
+                                <?php foreach($this->db->get_where('estabelecimentos', ['estabelecimento_tipo'=>'PRESTADOR'])->result_array() as $e): ?>
+                                    <option value="<?=$e['estabelecimento_id']?>"><?=$e['estabelecimento_nome']?></option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                         <div class="mb-2 col-lg-6">
                             <label for="">Cidade</label>

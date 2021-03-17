@@ -269,7 +269,6 @@
                     `);
                     $('#data').val(procedimento.data);
 
-
                     $('#nome_paciente').val(procedimento.nome_paciente);
                     $(".editarProcedimentoButton[value='" + procedimento.procedimento_risco + "']").prop("checked", true);
                     $('#data_solicitacao').val(procedimento.data_solicitacao);

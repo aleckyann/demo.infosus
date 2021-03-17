@@ -94,7 +94,7 @@
 
 <!-- CARREGAR COMPONENTES -->
 <?php $this->load->view('v2/components/procedimentos/negar_procedimento_modal') ?>
-<?php $this->load->view('v2/components/procedimentos/editar_procedimento_modal') ?>
+<?php $this->load->view('v2/components/procedimentos/editar_procedimento_agendado_modal') ?>
 
 <script>
     window.onload = function() {
@@ -207,8 +207,8 @@
         });
 
         // ============================
-        //Cria modal para editar procedimento
-        var editar_procedimento_modal = new bootstrap.Modal(document.getElementById('editar_procedimento_modal'))
+        //Cria modal para editar procedimento PROVISÓRIO
+        var editar_procedimento_agendado_modal = new bootstrap.Modal(document.getElementById('editar_procedimento_agendado_modal'))
 
         // ABRE MODAL DE EDITAR
         $('body').on('click', '.editar_procedimento_button', function() {
@@ -243,10 +243,33 @@
                     `);
 
                     $('#estabelecimento_solicitante').append(`
-                        <option value="${procedimento.estabelecimento_id}">
+                        <option value="${procedimento.estabelecimento_solicitante}">
                             ${procedimento.estabelecimento_nome}
                         </option>
                     `);
+                    $('#estabelecimento_solicitante').append(`
+                        <option value="${procedimento.estabelecimento_solicitante}">
+                            ${procedimento.estabelecimento_nome}
+                        </option>
+                    `);
+                    $('#cotas').append(`
+                        <option value="${procedimento.cota}">
+                            ${procedimento.cota_nome}
+                        </option>
+                    `);
+                    $('#cidade_prestador').append(`
+                        <option value="${procedimento.municipio_id}">
+                            ${procedimento.nome_municipio}
+                        </option>
+                    `);
+                    $('#estabelecimento_prestador').append(`
+                        <option value="${procedimento.estabelecimento_prestador}">
+                            Nome não carregou...
+                        </option>
+                    `);
+                    $('#data').val(procedimento.data);
+
+
                     $('#nome_paciente').val(procedimento.nome_paciente);
                     $(".editarProcedimentoButton[value='" + procedimento.procedimento_risco + "']").prop("checked", true);
                     $('#data_solicitacao').val(procedimento.data_solicitacao);
@@ -254,13 +277,36 @@
                     $('#sintomas').val(procedimento.sintomas);
 
                 });
-            editar_procedimento_modal.toggle()
+            editar_procedimento_agendado_modal.toggle()
         });
 
         //ESTABELECIMENTOS SOLICITANTES [MODAL EDITAR]
         let estabelecimento_solicitante = $('#estabelecimento_solicitante').select2({
             ajax: {
                 url: '<?= base_url('v2/api/estabelecimentos-solicitantes/json') ?>',
+                method: 'POST',
+                data: function(params) {
+                    let query = {
+                        estabelecimento: params.term,
+                        <?= $csrf_name ?>: '<?= $csrf_value ?>'
+                    }
+                    return query;
+                },
+                processResults: function(data, params) {
+                    return {
+                        results: data
+                    }
+                },
+                dataType: 'json',
+                placeholder: "Selecione um estabelecimento",
+            },
+            delay: 250,
+            minimumInputLength: 1,
+        });
+        //ESTABELECIMENTOS PRESTADOR [MODAL EDITAR]
+        let estabelecimento_prestador = $('#estabelecimento_prestador').select2({
+            ajax: {
+                url: '<?= base_url('v2/api/estabelecimentos-prestadores/json') ?>',
                 method: 'POST',
                 data: function(params) {
                     let query = {
@@ -305,6 +351,31 @@
             minimumInputLength: 1,
         });
 
+        //CIDADE [MODAL EDITAR]
+        let cidade_prestador = $('#cidade_prestador').select2({
+            ajax: {
+                url: '<?= base_url('v2/api/municipios/json') ?>',
+                method: 'POST',
+                data: function(params) {
+                    let query = {
+                        nome_municipio: params.term,
+                        <?= $csrf_name ?>: '<?= $csrf_value ?>'
+                    }
+                    return query;
+                },
+                processResults: function(data, params) {
+                    return {
+                        results: data
+                    }
+                },
+                dataType: 'json',
+                placeholder: "Selecione um procedimento",
+            },
+            delay: 250,
+            minimumInputLength: 1,
+        });
+
+
         //PROFISSIONAIS [MODAL EDITAR]
         let editar_profissionais_solicitante = $('#profissional_solicitante').select2({
             ajax: {
@@ -328,6 +399,31 @@
             delay: 250,
             minimumInputLength: 1,
         });
+
+        //COTAS [MODAL EDITAR]
+        let cotas = $('#cotas').select2({
+            ajax: {
+                url: '<?= base_url('v2/api/cotas/json') ?>',
+                method: 'POST',
+                data: function(params) {
+                    let query = {
+                        cota_nome: params.term,
+                        <?= $csrf_name ?>: '<?= $csrf_value ?>'
+                    }
+                    return query;
+                },
+                processResults: function(data, params) {
+                    return {
+                        results: data
+                    }
+                },
+                dataType: 'json',
+                placeholder: "Selecione um profissional",
+            },
+            delay: 250,
+            minimumInputLength: 1,
+        });
+
 
         //Cria modal para negar procedimento
         var negar_procedimento_modal = new bootstrap.Modal(document.getElementById('negar_procedimento_modal'))

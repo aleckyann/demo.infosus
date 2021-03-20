@@ -311,7 +311,6 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right py-0" aria-labelledby="navbarDropdownUser">
                                 <div class="bg-white rounded-lg py-2">
-                                    <a class="dropdown-item" href="#">Configurações</a>
                                     <a class="dropdown-item text-danger" href="<?= base_url('logout') ?>">Sair</a>
                                 </div>
                             </div>

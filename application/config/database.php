@@ -88,6 +88,16 @@ if ($_SERVER['SERVER_NAME'] == 'demo.infosus.net.br') {
 	$username = 'miravania';
 	$database = 'miravania';
 	$password = 'l33tsupah4x0r';
+} elseif ($_SERVER['SERVER_NAME'] == 'monteazul.infosus.net.br') {
+	$hostname = 'mysql743.umbler.com';
+	$username = 'monteazul';
+	$database = 'monteazul';
+	$password = 'l33tsupah4x0r';
+} elseif ($_SERVER['SERVER_NAME'] == 'riachodosmachados.infosus.net.br') {
+	$hostname = 'mysql743.umbler.com';
+	$username = 'riacho';
+	$database = 'riacho';
+	$password = 'l33tsupah4x0r';
 } elseif ($_SERVER['SERVER_NAME'] == 'localhost') {
 	$hostname = 'localhost';
 	$username = 'phpmyadmin';

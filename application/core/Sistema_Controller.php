@@ -25,7 +25,7 @@ class Sistema_Controller extends CI_Controller
          */
         $acess_control_list = [
             'gestão' => ['api', 'dashboard', 'pacientes', 'regulacao', 'transportes', 'almoxarifado', 'configuracoes'],
-            'regulação' => ['api', 'dashboard', 'pacientes', 'regulacao', 'transportes'],
+            'regulação' => ['api', 'configuracoes', 'dashboard', 'pacientes', 'regulacao', 'transportes'],
             'transportes' => ['api', 'dashboard', 'pacientes', 'transportes'],
             'almoxarifado' => ['api', 'dashboard', 'almoxarifado']
         ];

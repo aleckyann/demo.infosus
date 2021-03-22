@@ -24,10 +24,10 @@ class Sistema_Controller extends CI_Controller
          * Controla o acesso dos recursos de acordo o segmneto 2 de url
          */
         $acess_control_list = [
-            'gestão' => ['dashboard', 'pacientes', 'regulacao', 'transportes', 'almoxarifado', 'configuracoes'],
-            'regulação' => ['dashboard', 'pacientes', 'regulacao', 'transportes'],
-            'transportes' => ['dashboard', 'pacientes', 'transportes'],
-            'almoxarifado' => ['dashboard', 'almoxarifado']
+            'gestão' => ['api', 'dashboard', 'pacientes', 'regulacao', 'transportes', 'almoxarifado', 'configuracoes'],
+            'regulação' => ['api', 'dashboard', 'pacientes', 'regulacao', 'transportes'],
+            'transportes' => ['api', 'dashboard', 'pacientes', 'transportes'],
+            'almoxarifado' => ['api', 'dashboard', 'almoxarifado']
         ];
         if( !in_array($this->uri->segment(2), $acess_control_list[$this->session->usuario_nivel]) ){
             $this->session->set_flashdata('danger', '<i class="fas fa-hand-paper"></i> VOCÊ NÃO TEM PERMISSÃO PARA ESTA PÁGINA OU FUNCIONALIDADE.');

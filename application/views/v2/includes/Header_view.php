@@ -95,6 +95,8 @@
                 </div>
                 <div class="collapse navbar-collapse" id="navbarVerticalCollapse">
                     <div class="navbar-vertical-content scrollbar">
+                        <span class="badge p-2 bg-dark nav-link-text"><i class="fas fa-sitemap"></i> MÓDULOS</span>
+
                         <ul class="navbar-nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link font-weight-light <?= (segment(2) == 'dashboard') ? 'active' : '' ?>" href="<?= base_url('v2/dashboard') ?>">
@@ -286,12 +288,6 @@
                             </li>
                         </ul>
 
-                        <div class="settings">
-                            <div class="navbar-vertical-divider">
-                                <hr class="navbar-vertical-hr my-3" />
-                            </div>
-                            <a class="btn btn-sm btn-block btn-primary mb-4 font-weight-light" href="https://wa.me/5538999892125" target="_blank"><i class="fab fa-whatsapp"></i> Suporte</a>
-                        </div>
                     </div>
                 </div>
             </nav>
@@ -306,14 +302,8 @@
                     </a>
                     <ul class="navbar-nav navbar-nav-icons ml-auto flex-row align-items-center">
                         <li class="nav-item dropdown">
-                            <a class="nav-link pr-0" id="navbarDropdownUser" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <a href="<?= base_url('logout') ?>" class="btn btn-sm btn-danger" data-toggle="tooltip" title="Sair do sistema"> <i class="fas fa-times-circle"></i></a>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right py-0" aria-labelledby="navbarDropdownUser">
-                                <div class="bg-white rounded-lg py-2">
-                                    <a class="dropdown-item text-danger" href="<?= base_url('logout') ?>">Sair</a>
-                                </div>
-                            </div>
+                            <a href="https://wa.me/5538999892125" target="_new" class="btn btn-sm btn-success mr-2" data-toggle="tooltip" title="Suporte técnico"> <i class="fab fa-whatsapp"></i></a>
+                            <a href="<?= base_url('logout') ?>" class="btn btn-sm btn-danger" data-toggle="tooltip" title="Sair do sistema"> <i class="fas fa-times-circle"></i></a>
                         </li>
                     </ul>
                 </nav>

@@ -2,7 +2,7 @@
 // Dados complementares temporários
 $estabelecimento_prestador = $this->db->get_where('estabelecimentos', ['estabelecimento_id' => $procedimento['estabelecimento_prestador']])->row_array();
 ?>
-<div class="d-flex mb-2 d-print-none">
+<div class="d-flex my-3 d-prin-none">
     <div class="card overflow-hidden flex-1">
         <div class="bg-holder bg-card" style="background-image:url(<?= base_url('public/v2/assets/img/illustrations/corner-4.png') ?>);"></div>
         <!--/.bg-holder-->
@@ -36,7 +36,7 @@ $estabelecimento_prestador = $this->db->get_where('estabelecimentos', ['estabele
         </div>
         <div class="col-4">
             <label for="">Nascimento</label>
-            <input type="date" class="form-control pr-0" value="<?= $procedimento['nascimento']?>" readonly>
+            <input type="date" class="form-control pr-0" value="<?= $procedimento['nascimento'] ?>" readonly>
         </div>
         <div class="col-8">
             <label for="">Endereço</label>
@@ -84,7 +84,7 @@ $estabelecimento_prestador = $this->db->get_where('estabelecimentos', ['estabele
         </div>
         <div class="col-3">
             <label>Data da solicitação</label>
-            <input type="date" class="form-control" value="<?= $procedimento['data_solicitacao']?>" readonly>
+            <input type="date" class="form-control" value="<?= $procedimento['data_solicitacao'] ?>" readonly>
         </div>
         <div class="col-3">
             <label>Urgência (1-4)</label>
@@ -109,7 +109,7 @@ $estabelecimento_prestador = $this->db->get_where('estabelecimentos', ['estabele
         </div>
         <div class="col-4">
             <label>Data do atendimento</label>
-            <input type="date" class="form-control" value="<?= $procedimento['data']?>" readonly>
+            <input type="date" class="form-control" value="<?= $procedimento['data'] ?>" readonly>
         </div>
 
         <div class="d-none d-print-block mt-4">

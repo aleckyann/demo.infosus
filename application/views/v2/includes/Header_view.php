@@ -78,7 +78,7 @@
                 }
             </script>
 
-            <nav class="navbar navbar-light navbar-glass navbar-vertical navbar-expand-xl d-print-none" style="display: none;">
+            <nav class="navbar navbar-light navbar-vertical navbar-expand-xl d-print-none" style="display: none;">
 
                 <script>
                     var navbarStyle = localStorage.getItem("navbarStyle");
@@ -86,7 +86,7 @@
                         document.querySelector('.navbar-vertical').classList.add(`navbar-${navbarStyle}`);
                     }
                 </script>
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center py-2">
                     <div class="toggle-icon-wrapper">
                         <button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle" data-toggle="tooltip" data-placement="left" title="Expandir ou reduzir menu"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
                     </div>
@@ -229,25 +229,25 @@
                                         <a class="nav-link dropdown-indicator <?= (segment(3) == 'brasil-previne') ? 'active collapsed' : '' ?>" href="#previne_brasil_nav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="previne_brasil_nav"><i class="fas fa-globe-americas"></i> Previne Brasil</a>
                                         <ul class="nav collapse <?= (segment(3) == 'brasil-previne') ? 'show' : '' ?>" id="previne_brasil_nav" data-parent="#atencao_primaria_nav">
                                             <li class="nav-item">
-                                                <a class="nav-link font-weight-light <?= (segment(4) == '1') ? 'active' : '' ?>" href="<?= base_url('v2/atencao-primaria/brasil-previne/1') ?>"><i class="fas fa-thermometer"></i> Indicador 1</a>
+                                                <a class="nav-link font-weight-light <?= (segment(4) == '1') ? 'active' : '' ?>" href="#"><i class="fas fa-thermometer"></i> Indicador 1</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link font-weight-light <?= (segment(4) == '2') ? 'active' : '' ?>" href="<?= base_url('v2/atencao-primaria/brasil-previne/2') ?>"><i class="fas fa-thermometer"></i> Indicador 2</a>
+                                                <a class="nav-link font-weight-light <?= (segment(4) == '2') ? 'active' : '' ?>" href="#"><i class="fas fa-thermometer"></i> Indicador 2</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link font-weight-light <?= (segment(4) == '3') ? 'active' : '' ?>" href="<?= base_url('v2/atencao-primaria/brasil-previne/3') ?>"><i class="fas fa-thermometer"></i> Indicador 3</a>
+                                                <a class="nav-link font-weight-light <?= (segment(4) == '3') ? 'active' : '' ?>" href="#"><i class="fas fa-thermometer"></i> Indicador 3</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link font-weight-light <?= (segment(4) == '4') ? 'active' : '' ?>" href="<?= base_url('v2/atencao-primaria/brasil-previne/4') ?>"><i class="fas fa-thermometer"></i> Indicador 4</a>
+                                                <a class="nav-link font-weight-light <?= (segment(4) == '4') ? 'active' : '' ?>" href="#"><i class="fas fa-thermometer"></i> Indicador 4</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link font-weight-light <?= (segment(4) == '5') ? 'active' : '' ?>" href="<?= base_url('v2/atencao-primaria/brasil-previne/5') ?>"><i class="fas fa-thermometer"></i> Indicador 5</a>
+                                                <a class="nav-link font-weight-light <?= (segment(4) == '5') ? 'active' : '' ?>" href="#"><i class="fas fa-thermometer"></i> Indicador 5</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link font-weight-light <?= (segment(4) == '6') ? 'active' : '' ?>" href="<?= base_url('v2/atencao-primaria/brasil-previne/6') ?>"><i class="fas fa-thermometer"></i> Indicador 6</a>
+                                                <a class="nav-link font-weight-light <?= (segment(4) == '6') ? 'active' : '' ?>" href="#"><i class="fas fa-thermometer"></i> Indicador 6</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link font-weight-light <?= (segment(4) == '7') ? 'active' : '' ?>" href="<?= base_url('v2/atencao-primaria/brasil-previne/7') ?>"><i class="fas fa-thermometer"></i> Indicador 7</a>
+                                                <a class="nav-link font-weight-light <?= (segment(4) == '7') ? 'active' : '' ?>" href="#"><i class="fas fa-thermometer"></i> Indicador 7</a>
                                             </li>
                                         </ul>
                                     </li>

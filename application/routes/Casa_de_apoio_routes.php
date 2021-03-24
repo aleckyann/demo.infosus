@@ -1,6 +1,8 @@
 <?php
 
 
+$route['v2/regulacao/casa-de-apoio/dashboard']['get'] = 'v2/regulacao/casa_de_apoio/Dashboard_controller/index';
+
 $route['v2/regulacao/casa-de-apoio/agendados']['get'] = 'v2/regulacao/casa_de_apoio/Casa_de_apoio_controller/agendados';
 $route['v2/regulacao/casa-de-apoio/historico']['get'] = 'v2/regulacao/casa_de_apoio/Casa_de_apoio_controller/historico';
 $route['v2/regulacao/casa-de-apoio/novo']['post'] = 'v2/regulacao/casa_de_apoio/Casa_de_apoio_controller/novo';

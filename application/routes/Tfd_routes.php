@@ -1,5 +1,7 @@
 <?php
 
+$route['v2/regulacao/tfd/dashboard']['get'] = 'v2/regulacao/tfd/Dashboard_controller/index';
+
 $route['v2/regulacao/tfd/novo']['post'] = 'v2/regulacao/tfd/Tfd_controller/novo';
 $route['v2/regulacao/tfd/negar']['post'] = 'v2/regulacao/tfd/Tfd_controller/negar';
 $route['v2/regulacao/tfd/editar'][ 'post'] = 'v2/regulacao/tfd/Tfd_controller/editar';

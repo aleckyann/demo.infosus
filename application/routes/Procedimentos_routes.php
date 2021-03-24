@@ -1,5 +1,7 @@
 <?php
 
+$route['v2/regulacao/procedimentos/dashboard']['get'] = 'v2/regulacao/procedimentos/Dashboard_controller/index';
+
 $route['v2/regulacao/procedimentos/novo']['post'] = 'v2/regulacao/procedimentos/Procedimentos_controller/novo';
 $route['v2/regulacao/procedimentos/negar']['post'] = 'v2/regulacao/procedimentos/Procedimentos_controller/negar';
 $route['v2/regulacao/procedimentos/editar'][ 'post'] = 'v2/regulacao/procedimentos/Procedimentos_controller/editar';

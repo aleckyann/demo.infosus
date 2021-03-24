@@ -1,5 +1,7 @@
 <?php
 
+$route['v2/pacientes/dashboard']['get'] = 'v2/pacientes/Dashboard_controller/index';
+
 $route['v2/pacientes/listagem']['get'] = 'v2/pacientes/Pacientes_controller/listagem';
 $route['v2/pacientes/historicos/(:num)']['get'] = 'v2/pacientes/Historicos_controller/index/$1';
 $route['v2/pacientes/new']['post'] = 'v2/pacientes/Pacientes_controller/new';

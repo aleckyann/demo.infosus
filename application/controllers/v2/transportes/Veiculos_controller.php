@@ -12,7 +12,7 @@ class Veiculos_controller extends Sistema_Controller
     {
         $data['title'] = 'Veículos cadastrados';
         $data['veiculos'] = $this->Veiculos->getAll();
-        $this->view('transporte/Veiculos_view', $data);
+        $this->view('transportes/Veiculos_view', $data);
     }
 
     /**

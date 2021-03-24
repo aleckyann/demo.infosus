@@ -2,13 +2,16 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 
-class Procedimentos_controller extends CI_Controller
+class Dashboard_controller extends Sistema_Controller
 {
+
     /**
-     * GET: 
+    * GET: v2/
      */
     public function index(): void
     {
-        $this->load->view('v2/acompanhar/Procedimentos_view');
+        $data['title'] = 'Dashboard';
+        
     }
+    
 }

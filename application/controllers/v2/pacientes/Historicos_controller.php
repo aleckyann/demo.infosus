@@ -3,7 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Historicos_controller extends Sistema_Controller
 {
-    
    
     /**
      * GET: v2/pacientes/historicos/(num)
@@ -12,7 +11,7 @@ class Historicos_controller extends Sistema_Controller
     {
         $data['title'] = 'Histórico do paciente';
 
-        $data['paciente'] = $this->db->get_where('pacientes',['paciente_id'=>$paciente_id])->row_array();
+        $data['paciente'] = $this->db->get_where('pacientes', ['paciente_id'=>$paciente_id])->row_array();
         $data['procedimentos'] = $this->db
             ->join('tabela_proced', 'tabela_proced.id = procedimentos.tabela_proced_id', 'left')
             ->join('estabelecimentos', 'estabelecimentos.estabelecimento_id = procedimentos.estabelecimento_prestador', 'left')

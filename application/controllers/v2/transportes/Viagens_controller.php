@@ -12,7 +12,7 @@ class Viagens_controller extends Sistema_Controller
     {
         $data['title'] = 'Veículos cadastrados';
         $data['pacientes'] = $this->Viagens->getAll();
-        $this->view('transporte/Veiculos_view', $data);
+        $this->view('transportes/Veiculos_view', $data);
     }
 
     /**
@@ -22,7 +22,7 @@ class Viagens_controller extends Sistema_Controller
     {
         $data['title'] = 'Viagens agendadas';
         $data['viagens'] = $this->Viagens->getAll(['viagem_realizada' => NULL, 'deleted_at' => NULL]);
-        $this->view('transporte/Viagens_agendadas_view', $data);
+        $this->view('transportes/Viagens_agendadas_view', $data);
     }
 
     /**
@@ -32,7 +32,7 @@ class Viagens_controller extends Sistema_Controller
     {
         $data['title'] = 'Viagens realizadas';
         $data['viagens'] = $this->Viagens->getAll(['viagem_realizada !='=>NULL, 'deleted_at'=>NULL]);
-        $this->view('transporte/Viagens_realizadas_view', $data);
+        $this->view('transportes/Viagens_realizadas_view', $data);
     }
 
     /**
@@ -42,7 +42,7 @@ class Viagens_controller extends Sistema_Controller
     {
         $data['title'] = 'Viagens canceladas';
         $data['viagens'] = $this->Viagens->getAll(['deleted_at !=' => NULL]);
-        $this->view('transporte/Viagens_canceladas_view', $data);
+        $this->view('transportes/Viagens_canceladas_view', $data);
     }
 
 
@@ -123,7 +123,7 @@ class Viagens_controller extends Sistema_Controller
         $this->db->join('viagens', 'viagens.viagem_id = passageiros.passageiro_viagem_id');
         $resultado['passageiros'] = $this->db->get_where('passageiros', ['passageiro_viagem_id' => $viagem_id])->result_array();
         
-        $this->load->view('v2/transporte/Impressao_view', $resultado);
+        $this->load->view('v2/transportes/Impressao_view', $resultado);
 
     }
     

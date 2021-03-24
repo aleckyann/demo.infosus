@@ -1,5 +1,7 @@
 <?php
 
+$route['v2/transportes/dashboard']['get'] = 'v2/transportes/Dashboard_controller/index';
+
 $route['v2/transportes/veiculos']['get'] = 'v2/transportes/Veiculos_controller/index';
 $route['v2/transportes/veiculos/novo']['post'] = 'v2/transportes/Veiculos_controller/novo';
 $route['v2/transportes/veiculos/editar']['post'] = 'v2/transportes/Veiculos_controller/editar';

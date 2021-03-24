@@ -89,19 +89,20 @@
                 <div class="d-flex align-items-center">
                     <div class="toggle-icon-wrapper">
                         <button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle" data-toggle="tooltip" data-placement="left" title="Expandir ou reduzir menu"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
-                    </div><a class="navbar-brand" href="#">
-                        <div class="d-flex align-items-center py-3"><span class="font-sans-serif">Infosus</span></div>
+                    </div>
+                    <a class="navbar-brand" href="#">
+                        <div class="d-flex align-items-center py-2"><span class="font-sans-serif">INFOSUS</span></div>
                     </a>
                 </div>
                 <div class="collapse navbar-collapse" id="navbarVerticalCollapse">
                     <div class="navbar-vertical-content scrollbar">
-                        <span class="badge p-2 bg-dark nav-link-text"><i class="fas fa-sitemap"></i> MÓDULOS</span>
+                        <span class="badge p-2 my-2 bg-dark nav-link-text"><i class="fas fa-sitemap"></i> MÓDULOS</span>
 
                         <ul class="navbar-nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link font-weight-light <?= (segment(2) == 'dashboard') ? 'active' : '' ?>" href="<?= base_url('v2/dashboard') ?>">
+                                <a class="nav-link font-weight-light <?= (segment(2) == 'inicio') ? 'active' : '' ?>" href="<?= base_url('v2/inicio') ?>">
                                     <div class="d-flex align-items-center">
-                                        <span class="nav-link-icon"><i class="fas fa-chart-line"></i></span><span class="nav-link-text font-weight-light"> Dashboard</span>
+                                        <span class="nav-link-icon"><i class="fas fa-house-user"></i></span><span class="nav-link-text font-weight-light"> Início</span>
                                     </div>
                                 </a>
                             </li>
@@ -116,7 +117,8 @@
                                     </div>
                                 </a>
                                 <ul class="nav collapse <?= (segment(2) == 'pacientes') ? 'show' : '' ?>" id="pacientesNav" data-parent="#navbarVerticalCollapse">
-                                    <li class="nav-item"><a class="nav-link font-weight-light <?= (segment(3) == 'listagem') ? 'active' : '' ?>" href="<?= base_url('v2/pacientes/listagem') ?>"><i class="fas fa-clipboard-list mr-1"></i> Lista</a></li>
+                                    <li class="nav-item"><a class="nav-link font-weight-light <?= (segment(3) == 'dashboard') ? 'active' : '' ?>" href="<?= base_url('v2/pacientes/dashboard') ?>"><i class="fas fa-chart-line mr-1"></i> Dashboard</a></li>
+                                    <li class="nav-item"><a class="nav-link font-weight-light <?= (segment(3) == 'listagem') ? 'active' : '' ?>" href="<?= base_url('v2/pacientes/listagem') ?>"><i class="fas fa-clipboard-list mr-1"></i> Listagem</a></li>
                                     <li class="nav-item"><a class="nav-link font-weight-light" href="#" data-toggle="modal" data-target="#add_paciente_modal"><i class=" fas fa-user-plus"></i> Novo paciente</a></li>
                                 </ul>
 
@@ -134,6 +136,9 @@
                                     <li class="nav-item">
                                         <a class="nav-link dropdown-indicator font-weight-light <?= (segment(3) == 'tfd') ? 'active collapsed' : '' ?>" href="#TfdNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="TfdNav"><i class="fas fa-laptop-medical"></i> Tfd</a>
                                         <ul class="nav collapse <?= (segment(3) == 'tfd') ? 'show' : '' ?>" id="TfdNav" data-parent="#regulacaoNav">
+                                            <li class="nav-item">
+                                                <a class="nav-link font-weight-light <?= (segment(4) == 'dashboard') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/tfd/dashboard') ?>"><i class="fas fa-chart-line mr-1"></i> Dashboard</a>
+                                            </li>
                                             <li class="nav-item">
                                                 <a class="nav-link font-weight-light <?= (segment(4) == 'fila') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/tfd/fila') ?>"><i class="fas fa-sort-amount-down"></i> Fila</a>
                                             </li>
@@ -154,6 +159,9 @@
                                     <li class="nav-item">
                                         <a class="nav-link dropdown-indicator font-weight-light <?= (segment(3) == 'procedimentos') ? 'active collapsed' : '' ?>" href="#procedimentosNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="procedimentosNav"><i class="fas fa-diagnoses"></i> Procedimentos</a>
                                         <ul class="nav collapse <?= (segment(3) == 'procedimentos') ? 'show' : '' ?>" id="procedimentosNav" data-parent="#regulacaoNav">
+                                            <li class="nav-item">
+                                                <a class="nav-link font-weight-light <?= (segment(4) == 'dashboard') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/procedimentos/dashboard') ?>"><i class="fas fa-chart-line mr-1"></i> Dashboard</a>
+                                            </li>
                                             <li class="nav-item">
                                                 <a class="nav-link font-weight-light <?= (segment(4) == 'fila') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/procedimentos/fila') ?>"><i class="fas fa-sort-amount-down"></i> Fila</a>
                                             </li>
@@ -176,6 +184,9 @@
                                         <a class="nav-link dropdown-indicator font-weight-light <?= (segment(3) == 'casa-de-apoio') ? 'active collapsed' : '' ?>" href="#casaDeApoioNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="casaDeApoioNav"><i class="fas fa-house-user"></i> Casa de apoio</a>
                                         <ul class="nav collapse <?= (segment(3) == 'casa-de-apoio') ? 'show' : '' ?>" id="casaDeApoioNav" data-parent="#regulacaoNav">
                                             <li class="nav-item">
+                                                <a class="nav-link font-weight-light <?= (segment(4) == 'dashboard') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/casa-de-apoio/dashboard') ?>"><i class="fas fa-chart-line mr-1"></i> Dashboard</a>
+                                            </li>
+                                            <li class="nav-item">
                                                 <a class="nav-link font-weight-light <?= (segment(4) == 'agendados') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/casa-de-apoio/agendados') ?>"><i class="far fa-calendar-alt text-warning"></i> Agendados</a>
                                             </li>
                                             <li class="nav-item">
@@ -193,6 +204,9 @@
                                     <div class="d-flex align-items-center"><span class="nav-link-icon"><i class="fas fa-bus"></i></span><span class="nav-link-text font-weight-light"> Transportes</span></div>
                                 </a>
                                 <ul class="nav collapse <?= (segment(2) == 'transportes') ? 'show' : '' ?>" id="veiculosNav" data-parent="#navbarVerticalCollapse">
+                                    <li class="nav-item">
+                                        <a class="nav-link font-weight-light <?= (segment(4) == 'transportes') ? 'active' : '' ?>" href="<?= base_url('v2/transportes/dashboard') ?>"><i class="fas fa-chart-line mr-1"></i> Dashboard</a>
+                                    </li>
                                     <li class="nav-item"><a class="nav-link font-weight-light <?= (segment(3) == 'veiculos') ? 'active' : '' ?>" href="<?= base_url('v2/transportes/veiculos') ?>"><i class="fas fa-car-side"></i> Veiculos</a></li>
                                     <li class="nav-item"><a class="nav-link font-weight-light <?= (segment(3) == 'viagens-agendadas') ? 'active' : '' ?>" href="<?= base_url('v2/transportes/viagens-agendadas') ?>"><i class="fas fa-route text-warning"></i> Viagens agendadas</a></li>
                                     <li class="nav-item"><a class="nav-link font-weight-light <?= (segment(3) == 'viagens-realizadas') ? 'active' : '' ?>" href="<?= base_url('v2/transportes/viagens-realizadas') ?>"><i class="fas fa-route text-success"></i> Viagens realizadas</a></li>
@@ -201,7 +215,7 @@
                                 </ul>
                             </li>
                             <!-- antenção -->
-                            <li class="nav-item d-none">
+                            <li class="nav-item">
                                 <a class="nav-link dropdown-indicator <?= (segment(2) == 'atencao-primaria') ? 'active' : '' ?>" href="#atencao_primaria_nav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="atencao_primaria_nav">
                                     <div class="d-flex align-items-center">
                                         <span class="nav-link-icon">
@@ -249,7 +263,10 @@
                                 </a>
                                 <ul class="nav collapse" id="almoxarifadoNav" data-parent="#navbarVerticalCollapse">
                                     <li class="nav-item">
-                                        <a class="nav-link dropdown-indicator <?= (segment(3) == 'estoques') ? 'active collapsed' : '' ?>" href="#estoquesNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="previne_brasil_nav"><i class="fas fa-boxes"></i> Estoques</a>
+                                        <a class="nav-link font-weight-light <?= (segment(4) == 'dashboard') ? 'active' : '' ?>" href="<?= base_url('v2/almoxarifado/dashboard') ?>"><i class="fas fa-chart-line mr-1"></i> Dashboard</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link dropdown-indicator font-weight-light <?= (segment(3) == 'estoques') ? 'active collapsed' : '' ?>" href="#estoquesNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="previne_brasil_nav"><i class="fas fa-boxes"></i> Estoques</a>
                                         <ul class="nav collapse <?= (segment(3) == 'estoques') ? 'show' : '' ?>" id="estoquesNav" data-parent="#estoquesNav">
                                             <?php foreach ($this->Estoques->getAll() as $e) : ?>
                                                 <li class="nav-item">
@@ -260,7 +277,7 @@
                                                 <a class="nav-link font-weight-light" href="#" data-toggle="modal" data-target="#add_estoque_modal"><i class="fas fa-cart-plus"></i> Novo estoque</a>
                                             </li>
                                         </ul>
-                                        <a class="nav-link <?= (segment(3) == 'historico') ? 'active collapsed' : '' ?>" href="<?= base_url('v2/almoxarifado/historico') ?>"><i class="fas fa-history mr-1"></i> Histórico</a>
+                                        <a class="nav-link font-weight-light <?= (segment(3) == 'historico') ? 'active collapsed' : '' ?>" href="<?= base_url('v2/almoxarifado/historico') ?>"><i class="fas fa-history mr-1"></i> Histórico</a>
                                     </li>
                                 </ul>
                             </li>

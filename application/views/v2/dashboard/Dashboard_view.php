@@ -6,7 +6,7 @@
         <div class="card h-100">
             <div class="bg-holder d-none d-xl-block bg-card" style="background-image:url(<?= base_url() ?>/public/v2/assets/img/illustrations/corner-2.png);"></div>
             <div class="card-body">
-                <h6>Dashboards</h6>
+                <h5><i class="fas fa-chart-line"></i> Dashboards</h5>
                 <p class="font-weight-light my-0">
                     Acesso rápido e de forma visual aos números de cada módulo do seu infosus.
                 <div class="btn-group float-right" role="group">
@@ -26,7 +26,7 @@
         <div class="card h-100">
             <div class="bg-holder d-none d-xl-block bg-card" style="background-image:url(<?= base_url() ?>/public/v2/assets/img/illustrations/corner-3.png);"></div>
             <div class="card-body">
-                <h6>Pacientes</h6>
+                <h5><i class="fas fa-user-injured"></i> Pacientes</h5>
                 <p class="font-weight-light my-0">
                     Controle total e facilidade para adicionar, editar e visualizar históricos dos pacientes.
                 <div class="btn-group float-right" role="group">
@@ -43,7 +43,7 @@
         <div class="card h-100">
             <div class="bg-holder d-none d-xl-block bg-card" style="background-image:url(<?= base_url() ?>/public/v2/assets/img/illustrations/corner-4.png);"></div>
             <div class="card-body">
-                <h6>Regulação</h6>
+                <h5><i class="fas fa-balance-scale"></i> Regulação</h5>
                 <p class="font-weight-light my-0">
                     Controle todos os processos envolvidos nos Procedimentos, TFD e Casa de apoio.
                 <div class="btn-group float-right" role="group">
@@ -62,7 +62,7 @@
         <div class="card h-100">
             <div class="bg-holder d-none d-xl-block bg-card" style="background-image:url(<?= base_url() ?>/public/v2/assets/img/illustrations/corner-3.png);"></div>
             <div class="card-body">
-                <h6>Transportes</h6>
+                <h5><i class="fas fa-bus"></i> Transportes</h5>
                 <p class="font-weight-light my-0">
                     Faça o controle dos veículos e gestão das viagens e passageiros.
                 <div class="btn-group float-right" role="group">
@@ -80,7 +80,7 @@
         <div class="card h-100">
             <div class="bg-holder d-none d-xl-block bg-card" style="background-image:url(<?= base_url() ?>/public/v2/assets/img/illustrations/corner-2.png);"></div>
             <div class="card-body">
-                <h6>Almoxarifado</h6>
+                <h5><i class="fas fa-people-carry"></i> Almoxarifado</h5>
                 <p class="font-weight-light my-0">
                     Realização de controle de estoques, produtos e almoxarifados.
                 <div class="btn-group float-right" role="group">
@@ -98,7 +98,7 @@
         <div class="card h-100">
             <div class="bg-holder d-none d-xl-block bg-card" style="background-image:url(<?= base_url() ?>/public/v2/assets/img/illustrations/corner-1.png);"></div>
             <div class="card-body">
-                <h6><i class="fas fa-globe-americas"></i> Brasil previne</h6>
+                <h5><i class="fas fa-globe-americas"></i> Brasil previne</h5>
                 <p class="font-weight-light mb-0">
                     Em breve todos os indicadores estarão disponíveis para acesso como um módulo do seu infosus.
                 </p>
@@ -114,12 +114,12 @@
         <div class="card h-100">
             <div class="bg-holder d-none d-xl-block bg-card" style="background-image:url(<?= base_url() ?>/public/v2/assets/img/illustrations/corner-4.pngXXX);"></div>
             <div class="card-body">
-                <h6>API Whatsapp</h6>
+                <h5>API Whatsapp</h5>
                 <div><strong class="mr-2">Status: </strong>
                     <div class="badge rounded-pill badge-soft-success fs--2">Operando<span class="fas fa-check ml-1" data-fa-transform="shrink-2"></span></div>
                 </div>
                 <hr>
-                <small class="text-danger"><i class="fas fa-info-circle"></i> A API do Whatsapp é responsável pelo envio de mensagens aos pacientes e usuários do sistema.</small>
+                <small class="text-muted"><i class="fas fa-info-circle"></i> A API do Whatsapp é responsável pelo envio de mensagens aos pacientes e usuários do sistema.</small>
             </div>
         </div>
     </div>
@@ -127,12 +127,12 @@
         <div class="card h-100">
             <div class="bg-holder d-none d-xl-block bg-card" style="background-image:url(<?= base_url() ?>/public/v2/assets/img/illustrations/corner-4.pngXXX);"></div>
             <div class="card-body">
-                <h6>API de dados</h6>
+                <h5>API de dados</h5>
                 <div><strong class="mr-2">Status: </strong>
                     <div class="badge rounded-pill badge-soft-success fs--2">Operando<span class="fas fa-check ml-1" data-fa-transform="shrink-2"></span></div>
                 </div>
                 <hr>
-                <small class="text-danger"><i class="fas fa-info-circle"></i> API de dados é responsável pela integridade dos dados fornecidos pelo sistema.</small>
+                <small class="text-muted"><i class="fas fa-info-circle"></i> API de dados é responsável pela integridade dos dados fornecidos pelo sistema.</small>
             </div>
         </div>
     </div>
@@ -140,12 +140,12 @@
         <div class="card h-100">
             <div class="bg-holder d-none d-xl-block bg-card" style="background-image:url(<?= base_url() ?>/public/v2/assets/img/illustrations/corner-4.pngXXX);"></div>
             <div class="card-body">
-                <h6>Backup automático</h6>
+                <h5>Backup automático</h5>
                 <div><strong class="mr-2">Realizado: </strong>
                     <div class="badge rounded-pill badge-soft-success fs--2"><?= date('d/m/Y') ?><span class="fas fa-check ml-1" data-fa-transform="shrink-2"></span></div>
                 </div>
                 <hr>
-                <small class="text-danger"><i class="fas fa-info-circle"></i> Backups do banco de dados são realizados constantemente para segurança do município.</small>
+                <small class="text-muted"><i class="fas fa-info-circle"></i> Backups do banco de dados são realizados constantemente para segurança do município.</small>
             </div>
         </div>
     </div>

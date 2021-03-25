@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" dir="ltr">
+<html lang="pt-BR">
 
 <head>
     <meta charset="utf-8">
@@ -8,9 +8,7 @@
 
     <title>INFOSUS | <?= $title ?? '' ?></title>
 
-    <!-- ===============================================-->
     <!-- Favicons-->
-    <!-- ===============================================-->
     <meta name="author" content="Aleck Yann Mattos" />
     <link rel="apple-touch-icon" sizes="57x57" href="<?= base_url() ?>/public/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="<?= base_url() ?>/public/favicon/apple-icon-60x60.png">
@@ -31,12 +29,8 @@
     <meta name="theme-color" content="#ffffff">
 
 
-    <script src="<?= base_url() ?>/public/v2/assets/js/config.navbar-vertical.js"></script>
-
-    <!-- ===============================================-->
     <!-- Stylesheets-->
-    <!-- ===============================================-->
-    <link href="<?= base_url() ?>/public/v2/assets/css/theme-rtl.min.css" rel="stylesheet" id="style-rtl" />
+    <script src="<?= base_url() ?>/public/v2/assets/js/config.navbar-vertical.js"></script>
     <link href="<?= base_url() ?>/public/v2/assets/css/theme.min.css" rel="stylesheet" id="style-default" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:100,200,300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -49,17 +43,6 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
-    <script>
-        var isRTL = JSON.parse(localStorage.getItem('isRTL'));
-        if (isRTL) {
-            var linkDefault = document.getElementById('style-default');
-            linkDefault.setAttribute('disabled', true);
-            document.querySelector('html').setAttribute('dir', 'rtl');
-        } else {
-            var linkRTL = document.getElementById('style-rtl');
-            linkRTL.setAttribute('disabled', true);
-        }
-    </script>
 </head>
 
 <body>
@@ -68,24 +51,8 @@
     <!-- ===============================================-->
     <main class="main" id="top">
         <div class="container" data-layout="container">
-
-            <script>
-                var isFluid = JSON.parse(localStorage.getItem('isFluid'));
-                if (isFluid) {
-                    var container = document.querySelector('[data-layout]');
-                    container.classList.remove('container');
-                    container.classList.add('container-fluid');
-                }
-            </script>
-
-            <nav class="navbar navbar-light navbar-vertical navbar-expand-xl d-print-none" style="display: none;">
-
-                <script>
-                    var navbarStyle = localStorage.getItem("navbarStyle");
-                    if (navbarStyle && navbarStyle !== 'transparent') {
-                        document.querySelector('.navbar-vertical').classList.add(`navbar-${navbarStyle}`);
-                    }
-                </script>
+            <!-- ESTILOS DE NAVBAR TRANSPARENT, INVERTED, VIBRANT E CARD -->
+            <nav class="navbar navbar-light navbar-vertical navbar-expand-xl navbar-card d-print-none" style="display: none;">
                 <div class="d-flex align-items-center py-2">
                     <div class="toggle-icon-wrapper">
                         <button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle" data-toggle="tooltip" data-placement="left" title="Expandir ou reduzir menu"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>

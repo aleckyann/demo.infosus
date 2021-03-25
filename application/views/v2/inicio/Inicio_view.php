@@ -1,7 +1,5 @@
 <?= $this->ui->alert_flashdata() ?>
-<div class="row">
-    <hr>
-    <h4>Módulos do sistema</h4>
+<div class="row my-2">
     <div class="col-lg-4 col-sm-12 mb-3">
         <div class="card h-100">
             <div class="bg-holder d-none d-xl-block bg-card" style="background-image:url(<?= base_url() ?>/public/v2/assets/img/illustrations/corner-2.png);"></div>

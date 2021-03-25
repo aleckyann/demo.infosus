@@ -52,13 +52,13 @@
     <main class="main" id="top">
         <div class="container" data-layout="container">
             <!-- ESTILOS DE NAVBAR TRANSPARENT, INVERTED, VIBRANT E CARD -->
-            <nav class="navbar navbar-light navbar-vertical navbar-expand-xl navbar-card d-print-none" style="display: none;">
+            <nav class="navbar navbar-light navbar-vertical navbar-expand-xl navbar-card d-print-none" >
                 <div class="d-flex align-items-center py-2">
                     <div class="toggle-icon-wrapper">
                         <button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle" data-toggle="tooltip" data-placement="left" title="Expandir ou reduzir menu"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
                     </div>
                     <a class="navbar-brand" href="#">
-                        <div class="d-flex align-items-center py-2"><span class="font-sans-serif">INFOSUS</span></div>
+                        <div class="d-flex align-items-center py-2"><span class="font-sans-serif" style="font-size:0.8em">INFOSUS</span></div>
                     </a>
                 </div>
                 <div class="collapse navbar-collapse" id="navbarVerticalCollapse">
@@ -276,13 +276,13 @@
                 </div>
             </nav>
 
-            <nav class="navbar navbar-light navbar-glass navbar-top navbar-expand-xl" style="display: none;"></nav>
+            <nav class="navbar navbar-light navbar-glass navbar-top navbar-expand-xl" ></nav>
 
             <div class="content pt-2">
-                <nav class="navbar navbar-light navbar-glass navbar-top navbar-expand d-print-none" style="display: none;">
+                <nav class="navbar navbar-light navbar-glass navbar-top navbar-expand d-print-none" >
                     <button class="btn navbar-toggler-humburger-icon navbar-toggler mr-1 mr-sm-3" type="button" data-toggle="collapse" data-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
                     <a class="navbar-brand mr-1 mr-sm-3" href="#">
-                        <div class="d-flex align-items-center"><span class="font-sans-serif">Infosus</span></div>
+                        <div class="d-flex align-items-center"><span class="font-sans-serif">INFOSUS</span></div>
                     </a>
                     <ul class="navbar-nav navbar-nav-icons ml-auto flex-row align-items-center">
                         <li class="nav-item dropdown">
@@ -293,13 +293,6 @@
                 </nav>
 
                 <script>
-                    var navbarPosition = localStorage.getItem('navbarPosition');
-                    var navbarVertical = document.querySelector('.navbar-vertical');
-                    var navbarTopVertical = document.querySelector('.content .navbar-top');
                     var navbarTop = document.querySelector('[data-layout] .navbar-top');
-                    var navbarTopCombo = document.querySelector('.content [data-navbar-top="combo"]');
-
-                    navbarVertical.removeAttribute('style');
-                    navbarTopVertical.removeAttribute('style');
                     navbarTop.remove(navbarTop);
                 </script>

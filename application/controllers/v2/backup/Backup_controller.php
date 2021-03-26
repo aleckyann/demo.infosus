@@ -18,7 +18,7 @@ class Backup_controller extends CI_Controller
         
         if(write_file('private/backup/'.$config['filename'], $backup)){
             $this->whatsapp->enviar('38999538975', '
-*👍BACKUP REALIZADO COM SUCESSO👍*
+*BACKUP REALIZADO COM SUCESSO*
 
 *Arquivo:* _'.base_url('private/backup/'.$config['filename']).'_
             ');

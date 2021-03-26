@@ -11,6 +11,9 @@ class Whatsapp
         $this->CI = &get_instance();
     }
 
+    /**
+     * API Z-API.IO
+     */
     public function enviar($telefone, $mensagem)
     {
         $url = 'https://api.z-api.io/instances/392D8E79328F703BF4FDC28CC8B3DA05/token/895B9EBF4E8F9BDCE69D95E0/send-messages';
@@ -37,5 +40,26 @@ class Whatsapp
         $result = curl_exec($ch);
         print_r($result);
         curl_close($ch);
+    }
+
+    /**
+     * API UTALK.UMBLER
+     */
+    public function enviar2($telefone, $mensagem)
+    {
+        $link = 'https://v1.utalk.chat/send/ozqzh9p/?cmd=chat&to=55' . urlencode($telefone) . '@c.us&msg=' . urlencode($mensagem);
+
+        $cURLConnection = curl_init();
+
+        curl_setopt($cURLConnection, CURLOPT_URL, $link);
+        curl_setopt($cURLConnection, CURLOPT_RETURNTRANSFER, true);
+
+        $res = curl_exec($cURLConnection);
+        curl_close($cURLConnection);
+
+
+
+        return $res;
+
     }
 }

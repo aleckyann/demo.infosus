@@ -25,7 +25,7 @@
             <div class="card-body">
                 <h5><i class="fas fa-laptop-medical"></i> TFD</h5>
                 <p class="font-weight-light my-0">
-                    Controle todos os processos envolvidos nos Procedimentos, TFD e Casa de apoio.
+                    Controle todos os processos envolvidos nos Tratamentos fora de domícilio.
                 <div class="btn-group float-right" role="group">
                     <button class="btn btn-sm rounded-pill btn-outline-dark" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-bars"></i></button>
                     <div class="dropdown-menu">
@@ -47,7 +47,7 @@
             <div class="card-body">
                 <h5><i class="fas fa-diagnoses"></i> Procedimentos</h5>
                 <p class="font-weight-light my-0">
-                    Controle todos os processos envolvidos nos Procedimentos, TFD e Casa de apoio.
+                    Controle todos os processos envolvidos nos Procedimentos dos pacientes.
                 <div class="btn-group float-right" role="group">
                     <button class="btn btn-sm rounded-pill btn-outline-dark" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-bars"></i></button>
                     <div class="dropdown-menu">
@@ -69,7 +69,7 @@
             <div class="card-body">
                 <h5><i class="fas fa-house-user"></i> Casa de apoio</h5>
                 <p class="font-weight-light my-0">
-                    Controle todos os processos envolvidos nos Procedimentos, TFD e Casa de apoio.
+                    Faça o agendamento e controle da utilização da casa de apoio do municipio.
                 <div class="btn-group float-right" role="group">
                     <button class="btn btn-sm rounded-pill btn-outline-dark" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-bars"></i></button>
                     <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop4">
@@ -89,7 +89,7 @@
             <div class="card-body">
                 <h5><i class="fas fa-bus"></i> Transportes</h5>
                 <p class="font-weight-light my-0">
-                    Controle todos os processos envolvidos nos Procedimentos, TFD e Casa de apoio.
+                    Controle as a agenda de viagens dos veículos e listas de pacientes.
                 <div class="btn-group float-right" role="group">
                     <button class="btn btn-sm rounded-pill btn-outline-dark" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-bars"></i></button>
                     <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop4">
@@ -110,7 +110,7 @@
             <div class="card-body">
                 <h5><i class="fas fa-people-carry"></i> Almoxarifado</h5>
                 <p class="font-weight-light my-0">
-                    Faça o controle dos veículos e gestão das viagens e passageiros.
+                    Controle estoques, produtos com o módulo de almoxarifados do seu infosus.
                 <div class="btn-group float-right" role="group">
                     <button class="btn btn-sm rounded-pill btn-outline-dark" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-bars"></i></button>
                     <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop4">
@@ -130,7 +130,7 @@
             <div class="card-body">
                 <h5><i class="fas fa-sliders-h"></i> Configurações</h5>
                 <p class="font-weight-light my-0">
-                    Realização de controle de estoques, produtos e almoxarifados.
+                    Faça o cadastro e configurações necessárias para a utilização do seu infosus.
                 <div class="btn-group float-right" role="group">
                     <button class="btn btn-sm rounded-pill btn-outline-dark" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-bars"></i></button>
                     <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop4">
@@ -151,7 +151,7 @@
         <div class="card h-100">
             <div class="bg-holder d-none d-xl-block bg-card" style="background-image:url(<?= base_url() ?>/public/v2/assets/img/illustrations/corner-1.png);"></div>
             <div class="card-body">
-                <h5><i class="fas fa-globe-americas"></i> Brasil previne</h5>
+                <h5><i class="fas fa-globe-americas"></i> Previne Brasil</h5>
                 <p class="font-weight-light mb-0">
                     Em breve todos os indicadores estarão disponíveis para acesso como um módulo do seu infosus.
                 </p>

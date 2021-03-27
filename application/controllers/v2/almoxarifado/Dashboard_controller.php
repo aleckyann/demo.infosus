@@ -11,6 +11,7 @@ class Dashboard_controller extends Sistema_Controller
     public function index(): void
     {
         $data['title'] = 'Dashboard';
+        $this->view('almoxarifado/Dashboard_view', $data);
         
     }
     

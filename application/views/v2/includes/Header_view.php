@@ -127,7 +127,7 @@
                                         <a class="nav-link dropdown-indicator font-weight-light <?= (segment(3) == 'procedimentos') ? 'active collapsed' : '' ?>" href="#procedimentosNav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="procedimentosNav"><i class="fas fa-diagnoses"></i> Procedimentos</a>
                                         <ul class="nav collapse <?= (segment(3) == 'procedimentos') ? 'show' : '' ?>" id="procedimentosNav" data-parent="#regulacaoNav">
                                             <li class="nav-item">
-                                                <a class="nav-link font-weight-light <?= (segment(4) == 'dashboard') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/procedimentos/dashboard') ?>"><i class="fas fa-chart-line mr-1"></i> Dashboard</a>
+                                                <a class="nav-link font-weight-light <?= (segment(4) == 'dashboard') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/procedimentos/dashboard') ?>"><i class="fas fa-chart-line mr-1"></i> Dashboard <span class="badge bg-primary small font-weight-light float-right">Novo!</i></span></a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link font-weight-light <?= (segment(4) == 'fila') ? 'active' : '' ?>" href="<?= base_url('v2/regulacao/procedimentos/fila') ?>"><i class="fas fa-sort-amount-down"></i> Fila</a>

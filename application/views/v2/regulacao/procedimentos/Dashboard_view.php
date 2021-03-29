@@ -23,19 +23,48 @@
     <?= $this->ui->alert_flashdata() ?>
 
     <div class="card-body">
-        <div class="row">
-            <div class="col-lg-3 col-12">
-                <label for="">Filtrar dados pelo ano de:</label>
-                <select name="ano" id="paciente_filtro_chart" class="form-select">
-                    <option value="<?= date('Y') ?>"><?= date('Y') ?></optcion>
+        <div class="row justify-content-end">
+            <h3>Acompanhamento</h3>
+            <hr>
+            <div class="col-lg-3">
+                <select name="ano" id="paciente_filtro_chart" class="form-select form-sm">
+                    <option value="<?= date('Y') ?>">Dados de <?= date('Y') ?></optcion>
                         <?php for ($i = 2020; $i < date('Y'); $i++) { ?>
-                    <option value="<?= $i ?>" <?= ($i == $ano) ? 'selected' : '' ?>><?= $i ?></option>
+                    <option value="<?= $i ?>" <?= ($i == $ano) ? 'selected' : '' ?>>Dados de <?= $i ?></option>
                 <?php } ?>
                 </select>
             </div>
             <canvas id="clientes_chart" class="my-1" style="position: relative; height:40vh; width:80vw"></canvas>
+            <hr>
+            <span class="small text-primary"><i class="fas fa-info-circle"></i> Os valores referentes são referentes exatamente ao mês em que o procedimento foi adicionado à fila, agendado, realizado ou negado.</span>
         </div>
 
+    </div>
+</div>
+<div class="card mb-3">
+    <div class="card-body">
+        <div class="row">
+            <h1>Geral</h1>
+            <hr>
+            <div class="col-lg-3">
+                <h3 data-countup='{"endValue":<?= $geral['fila'] ?>,"duration":3, "separator":"."}'>0</h3>
+                <p>Na fila <a data-toggle="tooltip" title="Ver procedimentos na fila" href="<?= base_url('v2/regulacao/procedimentos/fila') ?>"><i class="fas fa-external-link-alt"></i></a></p>
+            </div>
+            <div class="col-lg-3">
+                <h3 data-countup='{"endValue":<?= $geral['agendados'] ?>,"duration":3, "separator":"."}'>0</h3>
+                <p class="text-warning">Agendados <a data-toggle="tooltip" title="Ver procedimentos na agendados" href="<?= base_url('v2/regulacao/procedimentos/agendados') ?>"><i class="fas fa-external-link-alt"></i></a></p>
+            </div>
+            <div class="col-lg-3">
+                <h3 data-countup='{"endValue":<?= $geral['realizados'] ?>,"duration":3, "separator":"."}'>0</h3>
+                <p class="text-success">Realizados <a data-toggle="tooltip" title="Ver procedimentos realizados" href="<?= base_url('v2/regulacao/procedimentos/realizados') ?>"><i class="fas fa-external-link-alt"></i></a></p>
+            </div>
+            <div class="col-lg-3">
+                <h3 data-countup='{"endValue":<?= $geral['negados'] ?>,"duration":3, "separator":"."}'>0</h3>
+                <p class="text-danger">Negados <a data-toggle="tooltip" title="Ver procedimentos negados" href="<?= base_url('v2/regulacao/procedimentos/negados') ?>"><i class="fas fa-external-link-alt"></i></a></p>
+            </div>
+            <hr>
+            <span class="small text-primary"><i class="fas fa-info-circle"></i> Mostra todos os dados do sistema, independente da data em que foram inseridos ou alterados.</span>
+        </div>
     </div>
 </div>
 
@@ -135,7 +164,7 @@
                         ],
                     },
                     {
-                        label: 'Total',
+                        label: 'Total do mês',
                         fill: false,
                         backgroundColor: 'rgba(1,1,1,1)',
                         borderColor: 'rgba(1,1,1,1)',

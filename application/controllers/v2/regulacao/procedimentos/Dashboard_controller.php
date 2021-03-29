@@ -13,6 +13,13 @@ class Dashboard_controller extends Sistema_Controller
         $data['title'] = 'Dashboard';
         $data['ano'] = $this->input->get('ano') ?? date('Y');
 
+        $data['geral'] = [
+            'fila' => $this->db->get_where('procedimentos', ['realizado' => '', 'data' => NULL, 'negado_por' => NULL])->num_rows(),
+            'agendados' => $this->db->get_where('procedimentos', ['realizado' => '', 'data !=' => NULL, 'negado_por' => NULL])->num_rows(),
+            'realizados' => $this->db->get_where('procedimentos', ['realizado' => 'sim'])->num_rows(),
+            'negados' => $this->db->get_where('procedimentos', ['negado_por !=' => NULL])->num_rows()
+        ];
+
         $data['procedimentos'][1] =
         [
             'fila' => $this->db->like('data_solicitacao', $data['ano'] . '-01-')->get_where('procedimentos', ['realizado' => '', 'data' => NULL, 'negado_por' => NULL])->num_rows(),

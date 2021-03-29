@@ -87,6 +87,10 @@
                             beginAtZero: true // minimum value will be 0.
                         }
                     }]
+                },
+                animation: {
+                    durations: 1000,
+                    easing: 'easeInOutBounce'
                 }
             }
         });

@@ -1,4 +1,4 @@
-<div class="card my-2">
+<div class="card my-3">
     <?= $this->ui->alert_flashdata() ?>
 
     <div class="card-body">

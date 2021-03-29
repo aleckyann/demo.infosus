@@ -278,7 +278,7 @@
 
             <nav class="navbar navbar-light navbar-glass navbar-top navbar-expand-xl" ></nav>
 
-            <div class="content pt-2">
+            <div class="content pt-0">
                 <nav class="navbar navbar-light navbar-glass navbar-top navbar-expand d-print-none" >
                     <button class="btn navbar-toggler-humburger-icon navbar-toggler mr-1 mr-sm-3" type="button" data-toggle="collapse" data-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
                     <a class="navbar-brand mr-1 mr-sm-3" href="#">

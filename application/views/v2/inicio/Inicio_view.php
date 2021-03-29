@@ -1,5 +1,5 @@
 <?= $this->ui->alert_flashdata() ?>
-<div class="row my-2">
+<div class="row my-3">
     <div class="col-lg-4 col-sm-12 mb-3">
         <div class="card h-100">
             <div class="bg-holder d-none d-xl-block bg-card" style="background-image:url(<?= base_url() ?>/public/v2/assets/img/illustrations/corner-3.png);"></div>
@@ -89,7 +89,7 @@
             <div class="card-body">
                 <h5><i class="fas fa-bus"></i> Transportes</h5>
                 <p class="font-weight-light my-0">
-                    Controle as a agenda de viagens dos veículos e listas de pacientes.
+                    Controle a sua agenda de viagens, veículos e listas de pacientes.
                 <div class="btn-group float-right" role="group">
                     <button class="btn btn-sm rounded-pill btn-outline-dark" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-bars"></i></button>
                     <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop4">

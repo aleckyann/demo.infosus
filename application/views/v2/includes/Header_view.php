@@ -52,7 +52,7 @@
     <main class="main" id="top">
         <div class="container" data-layout="container">
             <!-- ESTILOS DE NAVBAR TRANSPARENT, INVERTED, VIBRANT E CARD -->
-            <nav class="navbar navbar-light navbar-vertical navbar-expand-xl navbar-card d-print-none" >
+            <nav class="navbar navbar-light navbar-vertical navbar-expand-xl navbar-card d-print-none">
                 <div class="d-flex align-items-center py-2">
                     <div class="toggle-icon-wrapper">
                         <button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle" data-toggle="tooltip" data-placement="left" title="Expandir ou reduzir menu"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
@@ -84,7 +84,7 @@
                                     </div>
                                 </a>
                                 <ul class="nav collapse <?= (segment(2) == 'pacientes') ? 'show' : '' ?>" id="pacientesNav" data-parent="#navbarVerticalCollapse">
-                                    <li class="nav-item"><a class="nav-link font-weight-light <?= (segment(3) == 'dashboard') ? 'active' : '' ?>" href="<?= base_url('v2/pacientes/dashboard') ?>"><i class="fas fa-chart-line mr-1"></i> Dashboard</a></li>
+                                    <li class="nav-item"><a class="nav-link font-weight-light <?= (segment(3) == 'dashboard') ? 'active' : '' ?>" href="<?= base_url('v2/pacientes/dashboard') ?>"><i class="fas fa-chart-line mr-1"></i> Dashboard <span class="badge bg-primary small font-weight-light float-right">Novo!</i></span></a></li>
                                     <li class="nav-item"><a class="nav-link font-weight-light <?= (segment(3) == 'listagem') ? 'active' : '' ?>" href="<?= base_url('v2/pacientes/listagem') ?>"><i class="fas fa-clipboard-list mr-1"></i> Listagem</a></li>
                                     <li class="nav-item"><a class="nav-link font-weight-light" href="#" data-toggle="modal" data-target="#add_paciente_modal"><i class=" fas fa-user-plus"></i> Novo paciente</a></li>
                                 </ul>
@@ -276,10 +276,10 @@
                 </div>
             </nav>
 
-            <nav class="navbar navbar-light navbar-glass navbar-top navbar-expand-xl" ></nav>
+            <nav class="navbar navbar-light navbar-glass navbar-top navbar-expand-xl"></nav>
 
             <div class="content pt-0">
-                <nav class="navbar navbar-light navbar-glass navbar-top navbar-expand d-print-none" >
+                <nav class="navbar navbar-light navbar-glass navbar-top navbar-expand d-print-none">
                     <button class="btn navbar-toggler-humburger-icon navbar-toggler mr-1 mr-sm-3" type="button" data-toggle="collapse" data-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
                     <a class="navbar-brand mr-1 mr-sm-3" href="#">
                         <div class="d-flex align-items-center"><span class="font-sans-serif">INFOSUS</span></div>

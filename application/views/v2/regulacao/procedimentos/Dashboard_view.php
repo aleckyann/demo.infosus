@@ -11,7 +11,7 @@
             <div class="collapse" id="collapseExample">
                 <div class="p-card">
                     <p class="mb-2">
-                        Acompanhe dashboard de procedimentos do seu infosus
+                        Esta dashboard mostrará de forma visual informações que podem ser importantes para o auxilio na tomada de decisões.
                     </p>
                 </div>
             </div>
@@ -36,7 +36,7 @@
             </div>
             <canvas id="clientes_chart" class="my-1" style="position: relative; height:40vh; width:80vw"></canvas>
             <hr>
-            <span class="small text-primary"><i class="fas fa-info-circle"></i> Os valores referentes são referentes exatamente ao mês em que o procedimento foi adicionado à fila, agendado, realizado ou negado.</span>
+            <span class="small text-primary"><i class="fas fa-info-circle"></i> Os valores são referentes exatamente ao mês em que o procedimento foi adicionado à fila, agendado, realizado ou negado.</span>
         </div>
 
     </div>
@@ -44,7 +44,7 @@
 <div class="card mb-3">
     <div class="card-body">
         <div class="row">
-            <h1>Geral</h1>
+            <h3>Geral</h3>
             <hr>
             <div class="col-lg-3">
                 <h3 data-countup='{"endValue":<?= $geral['fila'] ?>,"duration":3, "separator":"."}'>0</h3>

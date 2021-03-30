@@ -25,17 +25,18 @@
     <?= $this->ui->alert_flashdata() ?>
 
     <div class="card-body">
-        <div class="row">
-            <div class="col-lg-3 col-12">
-                <label for="">Filtrar dados pelo ano de:</label>
+        <div class="row justify-content-end">
+            <div class="col-lg-3">
                 <select name="ano" id="paciente_filtro_chart" class="form-select">
-                    <option value="<?= date('Y') ?>"><?= date('Y') ?></optcion>
+                    <option value="<?= date('Y') ?>">Dados de <?= date('Y') ?></optcion>
                         <?php for ($i = 2020; $i < date('Y'); $i++) { ?>
-                    <option value="<?= $i ?>" <?= ($i == $ano) ? 'selected' : '' ?>><?= $i ?></option>
+                    <option value="<?= $i ?>" <?= ($i == $ano) ? 'selected' : '' ?>>Dados de <?= $i ?></option>
                 <?php } ?>
                 </select>
             </div>
             <canvas id="clientes_chart" class="my-1" style="position: relative; height:40vh; width:80vw"></canvas>
+            <hr>
+            <span class="small text-primary"><i class="fas fa-info-circle"></i> Os valores correspondem ao número de pacientes cadastrados no sistema.</span>
         </div>
 
     </div>
